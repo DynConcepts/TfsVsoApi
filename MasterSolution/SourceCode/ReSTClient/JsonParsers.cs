@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient
@@ -67,10 +67,11 @@ namespace DynCon.OSI.VSO.ReSTClient
         ///     Wiqls the query parse.
         /// </summary>
         /// <param name="jObject">The j object.</param>
+        /// <param name="func"></param>
         /// <returns>List&lt;JsonWorkItem&gt;.</returns>
-        internal static List<JsonWorkItem> WiqlQueryParse(JObject jObject)
+        internal static List<T> WiqlQueryParse<T>(JObject jObject, Func<JToken, T> func) where T : JsonWorkItem
         {
-            var workitems = new List<JsonWorkItem>();
+            var workitems = new List<T>();
             foreach (KeyValuePair<string, JToken> item in jObject)
             {
                 switch (item.Key)
@@ -93,7 +94,7 @@ namespace DynCon.OSI.VSO.ReSTClient
                         var array = (JArray) item.Value;
                         foreach (JToken workItemInfo in array)
                         {
-                            JsonWorkItem workItem = JsonWorkItem.FromToken(workItemInfo);
+                            T workItem = func(workItemInfo);
                             workitems.Add(workItem);
                         }
                     }

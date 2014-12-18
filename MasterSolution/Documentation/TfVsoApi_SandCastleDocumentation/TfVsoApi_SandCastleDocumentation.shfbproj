@@ -15,7 +15,7 @@
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
-    <HtmlHelpName>TfVsoApi_SandCastleDocumentation</HtmlHelpName>
+    <HtmlHelpName>TfVsoApi_Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="Help.png" xmlns="" />
@@ -29,6 +29,44 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="..\..\TfsVsoApi_MasterSolution.sln" xmlns="" />
     </DocumentationSources>
+    <MaximumGroupParts>2</MaximumGroupParts>
+    <NamespaceGrouping>True</NamespaceGrouping>
+    <SyntaxFilters>Standard</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceTitle>Class Reference Documentation</RootNamespaceTitle>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <PresentationStyle>VS2013</PresentationStyle>
+    <Preliminary>True</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <HelpTitle>TFS/VSO API Technical Documentation</HelpTitle>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <IndentHtml>False</IndentHtml>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>False</CppCommentsFixup>
+    <CleanIntermediates>True</CleanIntermediates>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, ProtectedInternalAsProtected</VisibleItems>
+    <MissingTags>Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <ProjectSummary>The following namespaces are utilized within the library. DynCon is the standard root namespace for all software which has originated from Dynamic Concepts Development Corp. The OSI [Open Software Initiative] sub-namespace is used for all software that has been released to the public with extremely permissive rights. See the Licensing section for additional information.</ProjectSummary>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="DynCon.OSI.Core" isDocumented="True" xmlns="">Cure functions that are shared across multiple OSI projects.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.Core.AdvancedEvents" isDocumented="True" xmlns="">Advanced event handling, including expanded support for EvenArgs with generic content.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.Core.Helpers" isDocumented="True" xmlns="">Various helper functions that do not fit into a more specific category.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.Core_UnitTests" isDocumented="True" xmlns="">Unit Tests for elements within the DynCon.OSI.Core namespace.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.JasonBackedObjects" isDocumented="True" xmlns="">Root namespace for C# objects wich use Newtonsoft JSON.NET as the actual backing store for the content. This approach facilitate the development of high performance object models when the primary source of information is JSON based ReST services.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.JasonBackedObjects.Communications" isDocumented="True" xmlns="">Functions for making ReST calls, including dynamic, deterministic management of HttpContext based connections.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.JasonBackedObjects_UnitTests" isDocumented="True" xmlns="">Unit tests for items in the DynCon.ISO.JsonBackedObjects namespace</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.JasonBackedObjects_UnitTests.Communications" isDocumented="True" xmlns="">Unit tests for items in the DynCon.ISO.JsonBackedObjects.Communication namespace</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.ObjectModelClient.APIs" isDocumented="True" xmlns="">API implementations that communicate with TFS/VSO using the "classic" TFS Client Object Model.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.ObjectModelClient.Factories" isDocumented="True" xmlns="">Public Factories for obtaining interface reference to the various elements within the ObjectModelClient</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.ObjectModelClient.WrapperImplementations" isDocumented="True" xmlns="">Implementations that use a wrapper around an actual instance from the TFS Client Object Model to implement the matching Wrapper Interface</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.ObjectModelClient.WrapperInterfaces" isDocumented="True" xmlns="">Interfaces that were created by "extraction" from TFS Client Object Model classes.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.ReSTClient.Factories" isDocumented="True" xmlns="">Public Factories for obtaining interface reference to the various elements within the ReSTClient</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.SharedInterfaces.APIs" isDocumented="True" xmlns="">Public Interfaces for the API's within this library that are implemented by both the Object Model and ReST implementations.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.SharedInterfaces.Interfaces" isDocumented="True" xmlns="">Public Interfaces for the Interfaces within this library that are implemented by both the Object Model and ReST implementations.</NamespaceSummaryItem>
+<NamespaceSummaryItem name="DynCon.OSI.VSO.SharedInterfaces.Objects" isDocumented="True" xmlns="">Public Interfaces for the Objects within this library that are implemented by both the Object Model and ReST implementations.</NamespaceSummaryItem></NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -49,13 +87,16 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Content\Concepts\" />
     <Folder Include="Content" />
     <Folder Include="Content\VersionHistory" />
     <Folder Include="icons" />
     <Folder Include="Media" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\VersionHistory\v1.0.0.0.aml" />
+    <None Include="Content\Glossary.aml" />
+    <None Include="Content\Concepts\ConceptsIntro.aml" />
+    <None Include="Content\VersionHistory\v0.0.3.0.aml" />
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Welcome.aml" />
   </ItemGroup>

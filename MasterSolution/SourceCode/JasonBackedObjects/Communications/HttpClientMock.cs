@@ -16,33 +16,24 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <summary>
         ///     Cancels the pending requests.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void CancelPendingRequests() { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public void CancelPendingRequests() { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Deletes the asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> DeleteAsync(string requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> DeleteAsync(string requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Deletes the asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> DeleteAsync(Uri requestUri) { throw new NotImplementedException(); }
-
-        /// <summary>
-        ///     Deletes the asynchronous.
-        /// </summary>
-        /// <param name="requestUri">The request URI.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> DeleteAsync(string requestUri, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> DeleteAsync(Uri requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Deletes the asynchronous.
@@ -50,39 +41,39 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> DeleteAsync(Uri requestUri, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> DeleteAsync(string requestUri, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
+
+        /// <summary>
+        ///     Deletes the asynchronous.
+        /// </summary>
+        /// <param name="requestUri">The request URI.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> DeleteAsync(Uri requestUri, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Disposes this instance.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Dispose() { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public void Dispose() { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(string requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(string requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(Uri requestUri) { throw new NotImplementedException(); }
-
-        /// <summary>
-        ///     Gets the asynchronous.
-        /// </summary>
-        /// <param name="requestUri">The request URI.</param>
-        /// <param name="completionOption">The completion option.</param>
-        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(Uri requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the asynchronous.
@@ -90,36 +81,35 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="completionOption">The completion option.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption) { throw new NotImplementedException(); }
-
-        /// <summary>
-        ///     Gets the asynchronous.
-        /// </summary>
-        /// <param name="requestUri">The request URI.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(string requestUri, CancellationToken cancellationToken) { throw new NotImplementedException(); }
-
-        /// <summary>
-        ///     Gets the asynchronous.
-        /// </summary>
-        /// <param name="requestUri">The request URI.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(Uri requestUri, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <param name="completionOption">The completion option.</param>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
+
+        /// <summary>
+        ///     Gets the asynchronous.
+        /// </summary>
+        /// <param name="requestUri">The request URI.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(string requestUri, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
+
+        /// <summary>
+        ///     Gets the asynchronous.
+        /// </summary>
+        /// <param name="requestUri">The request URI.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(Uri requestUri, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the asynchronous.
@@ -128,56 +118,66 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="completionOption">The completion option.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
+
+        /// <summary>
+        ///     Gets the asynchronous.
+        /// </summary>
+        /// <param name="requestUri">The request URI.</param>
+        /// <param name="completionOption">The completion option.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the byte array asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;System.Byte[]&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<byte[]> GetByteArrayAsync(string requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<byte[]> GetByteArrayAsync(string requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the byte array asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;System.Byte[]&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<byte[]> GetByteArrayAsync(Uri requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<byte[]> GetByteArrayAsync(Uri requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the stream asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;Stream&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<Stream> GetStreamAsync(string requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<Stream> GetStreamAsync(string requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the stream asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;Stream&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<Stream> GetStreamAsync(Uri requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<Stream> GetStreamAsync(Uri requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the string asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<string> GetStringAsync(string requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<string> GetStringAsync(string requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets the string asynchronous.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<string> GetStringAsync(Uri requestUri) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<string> GetStringAsync(Uri requestUri) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Posts the asynchronous.
@@ -185,8 +185,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="content">The content.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Posts the asynchronous.
@@ -194,18 +194,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="content">The content.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content) { throw new NotImplementedException(); }
-
-        /// <summary>
-        ///     Posts the asynchronous.
-        /// </summary>
-        /// <param name="requestUri">The request URI.</param>
-        /// <param name="content">The content.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Posts the asynchronous.
@@ -214,8 +204,18 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="content">The content.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
+
+        /// <summary>
+        ///     Posts the asynchronous.
+        /// </summary>
+        /// <param name="requestUri">The request URI.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Puts the asynchronous.
@@ -223,8 +223,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="content">The content.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PutAsync(string requestUri, HttpContent content) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PutAsync(string requestUri, HttpContent content) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Puts the asynchronous.
@@ -232,8 +232,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="requestUri">The request URI.</param>
         /// <param name="content">The content.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PutAsync(Uri requestUri, HttpContent content) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PutAsync(Uri requestUri, HttpContent content) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Puts the asynchronous.
@@ -242,8 +242,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="content">The content.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PutAsync(string requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PutAsync(string requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Puts the asynchronous.
@@ -252,16 +252,16 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="content">The content.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> PutAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> PutAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Sends the asynchronous.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Sends the asynchronous.
@@ -269,8 +269,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="request">The request.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Sends the asynchronous.
@@ -278,8 +278,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="request">The request.</param>
         /// <param name="completionOption">The completion option.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Sends the asynchronous.
@@ -288,8 +288,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <param name="completionOption">The completion option.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotImplementedException(); }
+        /// <exception cref="System.NotSupportedException"></exception>
+        public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken) { throw new NotSupportedException("This functionallity will be implemented when there is a concrete requirement"); }
 
         /// <summary>
         ///     Gets or sets the base address.
@@ -301,7 +301,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         ///     Gets the default request headers.
         /// </summary>
         /// <value>The default request headers.</value>
-        public HttpRequestHeaders DefaultRequestHeaders { get; private set; }
+        public HttpRequestHeaders DefaultRequestHeaders { get { throw new NotImplementedException(); } }
 
         /// <summary>
         ///     Gets or sets the maximum size of the response content buffer.

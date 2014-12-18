@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DynCon.OSI.VSO.ObjectModelClient.Helpers;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
@@ -37,7 +38,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         /// <summary>
         ///     Connects this instance.
         /// </summary>
-        /// <returns>TfsTeamProjectCollection.</returns>
+        /// <returns>ITfsTeamProjectCollection.</returns>
         private TfsTeamProjectCollection Connect()
         {
             // Connect to the work item store
@@ -50,11 +51,18 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         ///     Works the item store.
         /// </summary>
         /// <returns>WorkItemStore.</returns>
-        protected WorkItemStoreHelper WorkItemStore()
+        protected IWorkItemStore WorkItemStore()
         {
             var workItemStore = r_Tpc.GetService<WorkItemStore>();
-            return new WorkItemStoreHelper(workItemStore);
+            return WorkItemStoreWrapper.GetWrapper(workItemStore);
         }
+
+        //protected VersionControlServerHelper VersionControl()
+        //{
+        //    var versionControlServer = r_Tpc.GetService<VersionControlServer>();
+        //    return new VersionControlServer Helper(versionControlServer);
+        //}
+
 
         /// <summary>
         ///     Gets or sets the team project collection.
@@ -66,7 +74,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         ///     The _team project collection
         /// </summary>
         private static Uri s_TeamProjectCollection = new Uri("*****");  // TODO Put in appropriate value, then refactor
-        
+
         /// <summary>
         ///     The _TPC
         /// </summary>

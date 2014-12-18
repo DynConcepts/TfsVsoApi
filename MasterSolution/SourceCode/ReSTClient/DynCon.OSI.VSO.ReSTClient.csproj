@@ -22,6 +22,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ReSTClient.XML</DocumentationFile>
+    <NoWarn>1591,0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,12 +34,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,29 +53,224 @@
     <Compile Include="APIs\VSOApi.cs" />
     <Compile Include="APIs\VSOClientManager.cs" />
     <Compile Include="APIs\VsoRestAPIBase.cs" />
-    <Compile Include="APIs\WorkItemAPI.cs" />
+    <Compile Include="APIs\JsonWorkItemAPI.cs" />
     <Compile Include="Factories\APIFactory.cs" />
+    <Compile Include="APIs\TFSVersionControlAPI.cs" />
     <Compile Include="JsonParsers.cs" />
-    <Compile Include="Objects\JsonArea.cs" />
+    <Compile Include="Objects\Base\NoReStAPIEquivilantException.cs" />
+    <Compile Include="Objects\WIT\JsonArea.cs" />
     <Compile Include="Objects\JsonAvailableRestCall.cs" />
-    <Compile Include="Objects\JsonClassificationNode.cs" />
-    <Compile Include="Objects\JsonIteration.cs" />
-    <Compile Include="Objects\JsonLink.cs" />
-    <Compile Include="Objects\JsonRelationType.cs" />
+    <Compile Include="Objects\WIT\JsonAttachedFileLink.cs" />
+    <Compile Include="Objects\WIT\JsonClassificationNode.cs" />
+    <Compile Include="Objects\Base\JsonListBase.cs" />
+    <Compile Include="Objects\Base\JsonReadOnlyListBase.cs" />
+    <Compile Include="Objects\WIT\JsonField.cs" />
+    <Compile Include="Objects\WIT\JsonFieldCollection.cs" />
+    <Compile Include="Objects\WIT\JsonFieldDefinitionCollection.cs" />
+    <Compile Include="Objects\WIT\JsonIteration.cs" />
+    <Compile Include="Objects\WIT\JsonLink.cs" />
+    <Compile Include="Objects\WIT\JsonRelationType.cs" />
     <Compile Include="Objects\JsonTeamRoom.cs" />
-    <Compile Include="Objects\JsonWorkItem.cs" />
-    <Compile Include="Objects\JsonWorkItemFieldDefinition.cs" />
-    <Compile Include="Objects\JsonWorkItemType.cs" />
-    <Compile Include="Objects\JsonWorkItemTypeCategory.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItem.cs" />
+    <Compile Include="Objects\WIT\JsonFieldDefinition.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItemLink.cs" />
+    <Compile Include="Objects\WIT\JsonLinkCollection.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItemLinkCollection.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItemType.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItemTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelImpl.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerImpl.cs" />
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateImpl.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderImpl.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageImpl.cs" />
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsImpl.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsImpl.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerImpl.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsImpl.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerImpl.cs" />
+    <Compile Include="TFS\Client\FederatedCredentialImpl.cs" />
+    <Compile Include="TFS\Client\ICancelableAsyncResultImpl.cs" />
+    <Compile Include="TFS\Client\IResultCollectionImpl.cs" />
+    <Compile Include="TFS\Client\IssuedTokenCredentialImpl.cs" />
+    <Compile Include="TFS\Client\IssuedTokenImpl.cs" />
+    <Compile Include="TFS\Client\IssuedTokenProviderImpl.cs" />
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectImpl.cs" />
+    <Compile Include="TFS\Client\ITfsXmlSerializableImpl.cs" />
+    <Compile Include="TFS\Client\ServerCapabilitiesImpl.cs" />
+    <Compile Include="TFS\Client\TeamFoundationServerImpl.cs" />
+    <Compile Include="TFS\Client\TFProxyServerImpl.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialsImpl.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialStorageImpl.cs" />
+    <Compile Include="TFS\Client\TfsConfigurationServerImpl.cs" />
+    <Compile Include="TFS\Client\TfsConnectionImpl.cs" />
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl.cs" />
+    <Compile Include="ToBeImplementedException.cs" />
+    <Compile Include="TFS\Client\WindowsCredentialImpl.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlEntryImpl.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlListImpl.cs" />
+    <Compile Include="TFS\Framework\Client\AccessMappingImpl.cs" />
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationImpl.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupImpl.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogNodeImpl.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceImpl.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeImpl.cs" />
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorImpl.cs" />
+    <Compile Include="TFS\Framework\Client\ILocationServiceImpl.cs" />
+    <Compile Include="TFS\Framework\Client\IServerDataProviderImpl.cs" />
+    <Compile Include="TFS\Framework\Client\LocationMappingImpl.cs" />
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionImpl.cs" />
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityImpl.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsImpl.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogTreeImpl.cs" />
+    <Compile Include="TFS\Framework\Common\ConnectOptionsImpl.cs" />
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeImpl.cs" />
+    <Compile Include="TFS\Framework\Common\RelativeToSettingImpl.cs" />
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeImpl.cs" />
+    <Compile Include="TFS\Server\IdentityImpl.cs" />
+    <Compile Include="TFS\Server\IdentityTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ValuesCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesImpl.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
+      <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
+      <Name>DynCon.OSI.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>
@@ -81,6 +279,9 @@
       <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
       <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

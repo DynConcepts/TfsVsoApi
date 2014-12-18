@@ -6,7 +6,10 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.APIs
 {
-    internal class VsoRestAPIBase : RestAPIBase
+    /// <summary>
+    ///     Class VsoRestAPIBase.
+    /// </summary>
+    public class VsoRestAPIBase : RestAPIBase
     {
         /// <summary>
         ///     Appends the target API version.
@@ -51,13 +54,14 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <summary>
         ///     Processes the collection get request.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="query">The query.</param>
         /// <param name="func">The function.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
         protected Task<IReadOnlyList<T>> ProcessCollectionGetRequest<T>(string query, Func<JObject, IReadOnlyList<T>> func) { return ProcessGetRequest(MakeCollectionScopeRequestString(query), func); }
 
         /// <summary>
-        /// Processes the collection get request.
+        ///     Processes the collection get request.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="query">The query.</param>
@@ -66,7 +70,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         protected Task<T> ProcessCollectionGetRequest<T>(string query, Func<JObject, T> xform) { return ProcessGetRequest(MakeCollectionScopeRequestString(query), xform); }
 
         /// <summary>
-        /// Processes the collection option request.
+        ///     Processes the collection option request.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="query">The query.</param>
@@ -97,6 +101,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <summary>
         ///     Processes the project get request.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="project">The project.</param>
         /// <param name="query">The query.</param>
         /// <param name="func">The function.</param>
@@ -119,14 +124,15 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <typeparam name="T"></typeparam>
         /// <param name="project">The project.</param>
         /// <param name="query">The query.</param>
-        /// <param name="body"></param>
-        /// <param name="func"></param>
+        /// <param name="body">The body.</param>
+        /// <param name="func">The function.</param>
         /// <returns>Task&lt;T&gt;.</returns>
         protected Task<T> ProcessProjectPatchRequest<T>(string project, string query, string body, Func<JObject, T> func) { return ProcessPatchRequest(MakeProjectScopeRequestString(project, query), body, func); }
 
         /// <summary>
         ///     Processes the project post request.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="project">The project.</param>
         /// <param name="query">The query.</param>
         /// <param name="body">The body.</param>

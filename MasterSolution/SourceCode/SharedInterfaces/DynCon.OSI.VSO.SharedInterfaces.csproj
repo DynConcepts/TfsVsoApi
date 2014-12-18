@@ -22,6 +22,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\DynCon.OSI.VSO.SharedInterfaces.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,9 +34,11 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,22 +46,555 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\IArea.cs" />
-    <Compile Include="Objects\IAvailableRestCalls.cs" />
-    <Compile Include="Objects\IClassificationNode.cs" />
-    <Compile Include="Objects\IIteration.cs" />
-    <Compile Include="Objects\ILink.cs" />
-    <Compile Include="Objects\IRelationType.cs" />
-    <Compile Include="Objects\ITeamRoom.cs" />
+    <Compile Include="APIs\ITFSVersionControlAPI.cs" />
     <Compile Include="APIs\ITeamRoomAPI.cs" />
     <Compile Include="APIs\IVSOApi.cs" />
     <Compile Include="APIs\IWorkItemAPI.cs" />
-    <Compile Include="Objects\IWorkItemFieldDefinition.cs" />
-    <Compile Include="Objects\IWorkItemType.cs" />
-    <Compile Include="Objects\IWorkItemTypeCategory.cs" />
-    <Compile Include="Objects\IWorkItem.cs" />
+    <Compile Include="Objects\IAvailableRestCalls.cs" />
+    <Compile Include="Objects\ITeamRoom.cs" />
+    <Compile Include="Objects\WIT\IArea.cs" />
+    <Compile Include="Objects\WIT\IClassificationNode.cs" />
+    <Compile Include="Objects\WIT\IIteration.cs" />
+    <Compile Include="Objects\WIT\IRelationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReSTHelpers\IHttpClient.cs" />
+    <Compile Include="TFS\Client\Channels\IITfsRequestChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\IITfsRequestChannelFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\IITfsRequestListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsHttpClientState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsMessageHeader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IConnectivityFailureStatusChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IConnectivityFailureStatusChangedEventHandler.cs" />
+    <Compile Include="TFS\Client\ICredentialsChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ICredentialsChangedEventHandler.cs" />
+    <Compile Include="TFS\Client\IFederatedCredential.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IICancelableAsyncResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IIResultCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IIssuedToken.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IIssuedTokenCredential.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IIssuedTokenProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IITfsTeamProjectCollectionObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IITfsXmlSerializable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IServerCapabilities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITeamFoundationServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITFProxyServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsClientCredentials.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsClientCredentialStorage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsConfigurationServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsTeamProjectCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IWindowsCredential.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IAccessControlEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IAccessControlList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IAccessMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IAceExtendedInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ICatalogDependencyGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ICatalogNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ICatalogResource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ICatalogResourceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IIdentityDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IILocationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IIServerDataProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ILocationMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IServiceDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ITeamFoundationIdentity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\ICatalogQueryOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\ICatalogTree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IConnectOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IIdentityPropertyScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IRelativeToSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Server\IApplicationGroupSpecialType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Server\IIdentity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Server\IIdentityType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IAllowedValuesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IAttachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IAttachmentCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IBaseLinkType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IBatchReadParameter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IBatchReadParameterCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IBatchSaveError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ICancelableActionState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ICancelableAsyncResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ICategory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ICategoryCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ICoreField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IDisplayFieldList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IExternalLink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldDefinitionCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldFilterList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IFieldUsages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IHyperlink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IIFieldStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IImportEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IImportEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IImportSeverity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IIRevisionInternal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ILink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ILinkCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IMetadataChangeEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IMetadataChangeTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IMetadataEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\INode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\INodeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IProject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IProjectCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryFolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryFolderAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryFolderContentsChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryFolderContentsChangedEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryHierarchy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryHierarchyProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryHierarchyRefreshData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryScope.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IQueryType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IRegisteredLinkType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IRegisteredLinkTypeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IRelatedLink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IReportingAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IReportingType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IRevision.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IRevisionCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ISaveFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IServerInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ISortField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ISortFieldList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ISortType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IStoredQueriesAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IStoredQueriesChangedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IStoredQueriesEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IStoredQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IStoredQueryCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IUserDisplayMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IValuesCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemAsyncEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemAsyncEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemCopyFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemFieldChangeEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemFieldData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkTypeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkTypeEnd.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemLinkTypeEndCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemOperationError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemPreSaveEventHandler.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemStoreDiagnostics.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemSyncData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\IWorkItemTypeCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\ICache.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\ISnapshot.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\IPsFieldDefinitionTypeEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\IPsUserRightsMask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IIVersionTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IOrderedVariableSizeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IReadOnlyList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IVariableSizeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IWorkItemServerVersion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IIWorkItemOpenFieldDataHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IIWorkItemRelation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IIWorkItemSaveFieldDataHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IIWorkItemSaveLinkDataHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\ILinkInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\ILinkProperties.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\ILinkUpdate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemLinkInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IAccessControlEntryData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IAccessControlEntryExtendedData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IAccessControlListMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IArtifactWorkItemIds.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IExtendedAccessControlListData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IFileAttachment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIdentityDescriptorData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIdRevisionPair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIMetadataRowSets.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIPagedItemsRowSets.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIRowSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IISerializeRow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IIWorkItemRowSets.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetNames.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataTableHaveEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetNames.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IQuerySortOrderEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRequiredPermissions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemId.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemLinkChange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRelation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetNames.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

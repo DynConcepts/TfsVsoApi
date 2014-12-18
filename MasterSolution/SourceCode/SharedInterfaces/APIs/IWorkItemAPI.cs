@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
-using DynCon.OSI.VSO.SharedInterfaces.Objects;
+using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.APIs
 {
@@ -13,10 +13,12 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         /// <summary>
         ///     Builds the work item.
         /// </summary>
+        /// <param name="projectNanme"></param>
+        /// <param name="workItemType"></param>
         /// <param name="headings">The headings.</param>
         /// <param name="data">The data.</param>
         /// <returns>IWorkItem.</returns>
-        IWorkItem BuildWorkItem(IReadOnlyList<string> headings, IReadOnlyList<object> data);
+        IWorkItem BuildWorkItem(string projectNanme, string workItemType, IReadOnlyList<string> headings, IReadOnlyList<object> data);
 
         /// <summary>
         ///     Creates the work item.
@@ -34,13 +36,7 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         /// <returns>Task&lt;IList&lt;IArea&gt;&gt;.</returns>
         Task<IReadOnlyList<IArea>> GetAreas(string project, int depth);
 
-        /// <summary>
-        ///     Gets the fields.
-        /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;IWorkItemFieldDefinition&gt;&gt;.</returns>
-        Task<IReadOnlyList<IWorkItemFieldDefinition>> GetFields();
-
-        /// <summary>
+         /// <summary>
         ///     Gets the iterations.
         /// </summary>
         /// <param name="project">The project.</param>
@@ -52,15 +48,15 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         ///     Gets the work item type categories.
         /// </summary>
         /// <param name="project">The project.</param>
-        /// <returns>Task&lt;IList&lt;IWorkItemTypeCategory&gt;&gt;.</returns>
-        Task<IReadOnlyList<IWorkItemTypeCategory>> GetWorkItemTypeCategories(string project);
+        /// <returns>Task&lt;IList&lt;ICategory&gt;&gt;.</returns>
+        Task<IReadOnlyList<ICategory>> GetWorkItemTypeCategories(string project);
 
         /// <summary>
         ///     Gets the work item types.
         /// </summary>
         /// <param name="project">The project.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;IWorkItemType&gt;&gt;.</returns>
-        Task<IReadOnlyList<IWorkItemType>> GetWorkItemTypes(string project);
+        Task<IReadOnlyDictionary<string, IWorkItemType>> GetWorkItemTypes(string project);
 
         /// <summary>
         ///     Gets the work items.
@@ -72,11 +68,10 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         /// <summary>
         ///     Wiqls the query.
         /// </summary>
-        /// <param name="project">The project.</param>
         /// <param name="wiql">The wiql.</param>
         /// <param name="fullyPopulate">if set to <c>true</c> [fully populate].</param>
         /// <returns>Task&lt;IReadOnlyList&lt;IWorkItem&gt;&gt;.</returns>
-        Task<IReadOnlyList<IWorkItem>> WiqlQuery(string project, string wiql, bool fullyPopulate);
+        Task<IReadOnlyList<IWorkItem>> WiqlQuery(string wiql, bool fullyPopulate);
 
 
         /// <summary>
@@ -86,10 +81,16 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         Task<IReadOnlyList<IRelationType>> GetRelationTypes();
 
         /// <summary>
-        /// Gets the work item links.
+        /// Gets the links for work item.
         /// </summary>
         /// <param name="workItem">The work item.</param>
-        /// <returns>List&lt;ILink&gt;.</returns>
-        Task<IReadOnlyList<ILink>> GetWorkItemLinks(IWorkItem workItem);
+        /// <returns>Task&lt;ILinkCollection&gt;.</returns>
+        Task<ILinkCollection> GetLinksForWorkItem(IWorkItem workItem);
+
+        /// <summary>
+        ///     Gets the fields.
+        /// </summary>
+        /// <returns>Task&lt;IReadOnlyList&lt;IFieldDefinition&gt;&gt;.</returns>
+        Task<IReadOnlyList<IFieldDefinition>> GetFieldDefinitions();
     }
 }

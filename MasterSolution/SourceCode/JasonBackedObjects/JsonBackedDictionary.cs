@@ -28,18 +28,18 @@ namespace DynCon.OSI.JasonBackedObjects
 
 
         /// <summary>
-        ///     Sets the value.
+        ///     Sets the json.
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <param name="fieldName">Name of the field.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The json.</param>
         public void SetValue(JsonBackedObjectBase instance, string fieldName, T value)
         {
             Dictionary<string, Tuple<JToken, T>> dictionary = GetDictionary(instance);
             Tuple<JToken, T> existing;
             if (dictionary.TryGetValue(fieldName, out existing))
             {
-                var originalToken = (JProperty) existing.Item1;
+                var originalToken = (JProperty)existing.Item1;
                 originalToken.Value = MakeToken(value);
             }
             else
@@ -47,7 +47,40 @@ namespace DynCon.OSI.JasonBackedObjects
                 if (instance.JsonValue != null)
                 {
                     var property = new JProperty(fieldName, MakeToken(value));
-                    var owner = (JObject) instance.JsonValue[r_Key];
+                    var owner = (JObject)instance.JsonValue[r_Key];
+                    owner.Add(property);
+                    dictionary.Add(fieldName, new Tuple<JToken, T>(property, value));
+                }
+                else
+                {
+                    throw new Exception("No Json backing object found!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the value.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="json">The json.</param>
+        /// <exception cref="System.Exception">No Json backing object found!</exception>
+        public void SetValue(JsonBackedObjectBase instance, string fieldName, T value, JToken json)
+        {
+            Dictionary<string, Tuple<JToken, T>> dictionary = GetDictionary(instance);
+            Tuple<JToken, T> existing;
+            if (dictionary.TryGetValue(fieldName, out existing))
+            {
+                var originalToken = (JProperty)existing.Item1;
+                originalToken.Value = json;
+            }
+            else
+            {
+                if (instance.JsonValue != null)
+                {
+                    var property = new JProperty(fieldName, json);
+                    var owner = (JObject)instance.JsonValue[r_Key];
                     owner.Add(property);
                     dictionary.Add(fieldName, new Tuple<JToken, T>(property, value));
                 }
@@ -65,7 +98,9 @@ namespace DynCon.OSI.JasonBackedObjects
         /// <param name="func">The function.</param>
         public JsonBackedDictionary(string key, Func<JToken, T> func)
         {
-            r_Locator = token => token[key].Value<JObject>();
+            if (key == string.Empty)
+                r_Locator = token => (JObject) token;
+            else r_Locator = token => token[key].Value<JObject>();
             r_Key = key;
             r_Func = func;
         }
@@ -81,8 +116,9 @@ namespace DynCon.OSI.JasonBackedObjects
                 return new Dictionary<string, Tuple<JToken, T>>();
             var retVal = new Dictionary<string, Tuple<JToken, T>>();
             JObject elements = r_Locator(json);
-            foreach (JProperty property in elements.Children())
+            foreach (var jToken in elements.Children())
             {
+                var property = (JProperty) jToken;
                 var raw = property.Value<JToken>();
                 T value = r_Func(raw);
                 retVal.Add(property.Name, new Tuple<JToken, T>(raw, value));

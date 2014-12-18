@@ -56,7 +56,11 @@
     <Compile Include="AdvancedEvents\GenericEventArgs.cs" />
     <Compile Include="AdvancedEvents\GenericEventHolder.cs" />
     <Compile Include="AdvancedEvents\MultiTypeEvent.cs" />
-    <Compile Include="ObjectMapper.cs" />
+    <Compile Include="Helpers\LazyWirhReset.cs" />
+    <Compile Include="Helpers\ObjectMapper.cs" />
+    <Compile Include="ObjectMapping\MappedObjectBase.cs" />
+    <Compile Include="ObjectMapping\MappedObjectInitializer.cs" />
+    <Compile Include="ObjectMapping\ObjectMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\TaskHelpers.cs" />
   </ItemGroup>

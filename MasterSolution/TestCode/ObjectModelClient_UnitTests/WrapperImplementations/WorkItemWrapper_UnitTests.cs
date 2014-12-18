@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using DynCon.OSI.VSO.ObjectModelClient.WrapperImplementations;
-using DynCon.OSI.VSO.ObjectModelClient.WrapperInterfaces;
-using Microsoft.TeamFoundation.Client;
+﻿using System.Collections;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
     ///     Class WorkItemWrapper_UnitTests.
     /// </summary>
     [TestClass]
-    public class WorkItemWrapper_UnitTests
+    public class WorkItemWrapper_UnitTests : Wrapper_UnitTestsBase
     {
         /// <summary>
         ///     Applies the rules_ parameters_ unit test1.
@@ -21,7 +18,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void ApplyRules_Parameters_UnitTest1()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             const bool copyChangedByFromLatestinstance = true;
             instance.ApplyRules(copyChangedByFromLatestinstance);
         }
@@ -32,7 +29,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void ApplyRules_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.ApplyRules();
         }
 
@@ -42,20 +39,20 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void CalculateFieldLists_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.CalculateFieldLists(0);
         }
 
-        /// <summary>
-        ///     Changes the work item type_ unit test.
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof (NotSupportedException))]
-        public void ChangeWorkItemType_UnitTest()
-        {
-            IWorkItemOM instance = GetTestInstance();
-            instance.ChangeWorkItemType(null);
-        }
+        /////// <summary>
+        ///////     Changes the work item type_ unit test.
+        /////// </summary>
+        ////[TestMethod]
+        ////[ExpectedException(typeof (NotSupportedException))]
+        ////public void ChangeWorkItemType_UnitTest()
+        ////{
+        ////    IWorkItem instance = GetTestWorkItem();
+        ////    instance.ChangeWorkItemType(null);
+        ////}
 
         /// <summary>
         ///     Close_s the unit test.
@@ -63,7 +60,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Close_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.Close();
         }
 
@@ -73,7 +70,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Copy_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.Copy();
         }
 
@@ -83,7 +80,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Copy_UnitTest1()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             WorkItemType targetType = FindWorkItemType("Task");
             instance.Copy(WorkItemTypeWrapper.GetWrapper(targetType));
         }
@@ -94,9 +91,9 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Copy_UnitTest2()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             WorkItemType targetType = FindWorkItemType("Task");
-            const WorkItemCopyFlags flags = WorkItemCopyFlags.None;
+            const IWorkItemCopyFlags flags = IWorkItemCopyFlags.None;
             instance.Copy(WorkItemTypeWrapper.GetWrapper(targetType), flags);
         }
 
@@ -106,8 +103,9 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void GetActionObject_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
-            instance.GetActionObject(new WorkItem.EditActionInfo());
+            IWorkItem instance = GetTestWorkItem();
+            IWorkItem_EditActionInfo value = null;
+            instance.GetActionObject(value);
         }
 
         /// <summary>
@@ -116,20 +114,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void GetActionsHistory_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.GetActionsHistory();
         }
 
-        /// <summary>
-        ///     Gets the field type_ unit test.
-        /// </summary>
-        [TestMethod]
-        public void GetFieldType_UnitTest()
-        {
-            IWorkItemOM instance = GetTestInstance();
-            instance.GetFieldType("System.WorkItemType");
-        }
-
+   
         /// <summary>
         ///     Gets the field value external_ unit test.
         /// </summary>
@@ -137,7 +126,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [Ignore]
         public void GetFieldValueExternal_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.GetFieldValueExternal(null, 0);
         }
 
@@ -147,7 +136,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void GetFieldValue_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.GetFieldValue(0, 0);
         }
 
@@ -158,7 +147,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [Ignore]
         public void GetLatestSyncData_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.GetLatestSyncData();
         }
 
@@ -168,7 +157,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void GetNextState_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.GetNextState("Save");
         }
 
@@ -178,7 +167,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void IsValid_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.IsValid();
         }
 
@@ -188,7 +177,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Open_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.Open();
         }
 
@@ -198,7 +187,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void PartialOpen_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.PartialOpen();
         }
 
@@ -208,7 +197,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Reset_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.Reset();
         }
 
@@ -218,7 +207,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Save_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.Save();
         }
 
@@ -228,8 +217,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void Save_WithFlags_UnitTest1()
         {
-            IWorkItemOM instance = GetTestInstance();
-            const SaveFlags saveFlag = SaveFlags.None;
+            IWorkItem instance = GetTestWorkItem();
+            var saveFlag = ISaveFlags.None;
             instance.Save(saveFlag);
         }
 
@@ -239,7 +228,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void SetDirty_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.SetDirty(false);
         }
 
@@ -249,7 +238,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void SyncToLatest_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             instance.SyncToLatest();
         }
 
@@ -260,29 +249,19 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [Ignore]
         public void SyncWorkItem_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
-            WorkItemSyncData workItemSyncData = null;
+            IWorkItem instance = GetTestWorkItem();
+            IWorkItemSyncData workItemSyncData = null;
             instance.SyncWorkItem(workItemSyncData);
         }
 
-        /// <summary>
-        ///     Tries the get field_ unit test.
-        /// </summary>
-        [TestMethod]
-        public void TryGetField_UnitTest()
-        {
-            IWorkItemOM instance = GetTestInstance();
-            object fieldValue;
-            instance.TryGetField("System.WorkItemType", out fieldValue);
-        }
-
+  
         /// <summary>
         ///     Validate_s the unit test.
         /// </summary>
         [TestMethod]
         public void Validate_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             ArrayList results = instance.Validate();
             Assert.AreEqual(0, results.Count);
         }
@@ -293,39 +272,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void WorkItemWrapper_UnitTest()
         {
-            IWorkItemOM instance = GetTestInstance();
+            IWorkItem instance = GetTestWorkItem();
             Assert.IsNotNull(instance);
-        }
-
-        /// <summary>
-        ///     Finds the type of the work item.
-        /// </summary>
-        /// <param name="workItemTypeName">Name of the work item type.</param>
-        /// <returns>WorkItemType.</returns>
-        private static WorkItemType FindWorkItemType(string workItemTypeName)
-        {
-            var uri = new Uri("*****"); // TODO Put in appropriate value, then refactor
-            var tpc = new TfsTeamProjectCollection(uri);
-            tpc.EnsureAuthenticated();
-            var workItemStore = tpc.GetService<WorkItemStore>();
-            const string projectName = "RestPlaypen";
-            Project item = workItemStore.Projects[projectName];
-            WorkItemTypeCollection workItemTypes = item.WorkItemTypes;
-            WorkItemType workItemType = workItemTypes.Cast<WorkItemType>().First(entry => entry.Name == workItemTypeName);
-            return workItemType;
-        }
-
-        /// <summary>
-        ///     Gets the test instance.
-        /// </summary>
-        /// <returns>IWorkItemOM.</returns>
-        private static IWorkItemOM GetTestInstance()
-        {
-            WorkItemType workItemType = FindWorkItemType("Task");
-            var realInstance = new WorkItem(workItemType);
-            IWorkItemOM instance = WorkItemWrapper.GetWrapper(realInstance);
-            instance.Title = "Dummy Work Item Created by Unit Tests of WorkItemWrapper";
-            return instance;
         }
     }
 }

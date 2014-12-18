@@ -69,9 +69,6 @@
     <Compile Include="TestJsonBackedObject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>
@@ -80,6 +77,9 @@
       <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
       <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

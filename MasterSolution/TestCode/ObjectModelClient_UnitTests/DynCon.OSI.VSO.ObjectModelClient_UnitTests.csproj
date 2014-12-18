@@ -58,9 +58,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkItemWrapper_Model_UnitTests.cs" />
     <Compile Include="WorkItemAPI_UnitTests.cs" />
+    <Compile Include="WrapperImplementations\AttachmentWrapper_UnitTests.cs" />
+    <Compile Include="WrapperImplementations\WorkItemCollectionWrapper_UnitTests.cs" />
+    <Compile Include="WrapperImplementations\FieldCollectionWrapper_UnitTests.cs" />
     <Compile Include="WrapperImplementations\WorkItemWrapper_UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
+      <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
+      <Name>DynCon.OSI.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SourceCode\ObjectModelClient\DynCon.OSI.VSO.ObjectModelClient.csproj">
       <Project>{338A6F10-BB26-4794-9170-DA1E761808FF}</Project>
       <Name>DynCon.OSI.VSO.ObjectModelClient</Name>

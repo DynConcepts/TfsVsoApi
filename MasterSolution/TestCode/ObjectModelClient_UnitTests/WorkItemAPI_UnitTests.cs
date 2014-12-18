@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ObjectModelClient.Factories;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
-using DynCon.OSI.VSO.SharedInterfaces.Objects;
+using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
@@ -24,7 +24,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
             IWorkItemAPI api = APIFactory.WorkItemAPI;
             IReadOnlyList<string> headings = new List<string> {"System.Title", "System.Project", "System.WorkItemType"};
             IReadOnlyList<object> data = new List<object> {"Sample Title", "RestPlaypen", "Task"};
-            IWorkItem workItem = api.BuildWorkItem(headings, data);
+            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
             Assert.IsNotNull(workItem);
         }
 
@@ -38,7 +38,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
 
             IReadOnlyList<string> headings = new List<string> {"System.Title", "System.Project", "System.WorkItemType"};
             IReadOnlyList<object> data = new List<object> {"Sample Title", "RestPlaypen", "Task"};
-            IWorkItem workItem = api.BuildWorkItem(headings, data);
+            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
             const string project = "RestPlaypen";
             Task<IWorkItem> createTask = api.CreateWorkItem(project, workItem);
             IWorkItem finalResult = createTask.Result;
@@ -64,12 +64,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
         ///     Gets the fields_ unit test.
         /// </summary>
         [TestMethod]
-        public void GetFields_UnitTest()
+        public void GetFieldDefinitions_UnitTest()
         {
             IWorkItemAPI api = APIFactory.WorkItemAPI;
 
-            Task<IReadOnlyList<IWorkItemFieldDefinition>> task = api.GetFields();
-            IReadOnlyList<IWorkItemFieldDefinition> result = task.Result;
+            Task<IReadOnlyList<IFieldDefinition>> task = api.GetFieldDefinitions();
+            IReadOnlyList<IFieldDefinition> result = task.Result;
             Assert.IsNotNull(result);
         }
 
@@ -96,8 +96,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
             IWorkItemAPI api = APIFactory.WorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<IWorkItemTypeCategory>> task = api.GetWorkItemTypeCategories(project);
-            IReadOnlyList<IWorkItemTypeCategory> result = task.Result;
+            Task<IReadOnlyList<ICategory>> task = api.GetWorkItemTypeCategories(project);
+            IReadOnlyList<ICategory> result = task.Result;
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count > 0);
         }
@@ -111,8 +111,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
             IWorkItemAPI api = APIFactory.WorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<IWorkItemType>> task = api.GetWorkItemTypes(project);
-            IReadOnlyList<IWorkItemType> result = task.Result;
+            Task<IReadOnlyDictionary<string, IWorkItemType>> task = api.GetWorkItemTypes(project);
+            IReadOnlyDictionary<string, IWorkItemType> result = task.Result;
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count > 0);
         }
@@ -140,9 +140,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
         {
             IWorkItemAPI api = APIFactory.WorkItemAPI;
 
-            const string project = "RestPlaypen";
             const string wiql = "SELECT [System.Id], [System.WorkItemType], [System.Title], [System.AssignedTo], [System.State], [System.Tags] FROM WorkItems";
-            Task<IReadOnlyList<IWorkItem>> task = api.WiqlQuery(project, wiql, true);
+            Task<IReadOnlyList<IWorkItem>> task = api.WiqlQuery(wiql, true);
             IReadOnlyList<IWorkItem> result = task.Result;
             Debug.WriteLine("WIQL Query returned {0} Items", result.Count);
             Assert.IsNotNull(result);

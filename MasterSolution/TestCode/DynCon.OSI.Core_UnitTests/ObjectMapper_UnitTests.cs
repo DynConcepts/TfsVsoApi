@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using DynCon.OSI.Core;
+using DynCon.OSI.Core.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.Core_UnitTests
@@ -20,19 +20,9 @@ namespace DynCon.OSI.Core_UnitTests
         public void Conversion_UnitTest()
         {
             ObjectMapper<A, B> mapper = GetTestInstance();
-            var aList = new List<A>();
-            var bList = new List<B>();
-            for (int count = 0; count < 1000; ++count)
-            {
-                var b = new B();
-                bList.Add(b);
-                aList.Add(mapper.Convert(b));
-            }
-            Assert.AreEqual(1000, aList.Count);
-            Assert.AreEqual(1000, bList.Count);
-            Assert.AreEqual(1000, mapper.Count);
-
-            RunGC();
+            List<A> aList;
+            List<B> bList;
+            CreateData(mapper, out aList, out bList);
             mapper.Purge();
             Assert.AreEqual(1000, aList.Count);
             Assert.AreEqual(1000, bList.Count);
@@ -40,6 +30,7 @@ namespace DynCon.OSI.Core_UnitTests
 
             foreach (A a in bList.Select(mapper.Convert))
             {
+                Assert.IsNotNull(a);
             }
             Assert.AreEqual(1000, aList.Count);
             Assert.AreEqual(1000, bList.Count);
@@ -60,17 +51,10 @@ namespace DynCon.OSI.Core_UnitTests
             Assert.IsTrue(mapper.Count < 2);
         }
 
-
-        /// <summary>
-        ///     Mapper_s the purge_ unit test.
-        /// </summary>
-        [TestMethod]
-        public void Mapper_Purge_UnitTest()
+        private static void CreateData(ObjectMapper<A, B> mapper, out List<A> aList, out List<B> bList)
         {
-            ObjectMapper<A, B> mapper = GetTestInstance();
-            mapper.PurgeTime = TimeSpan.FromMilliseconds(10);
-            var aList = new List<A>();
-            var bList = new List<B>();
+            aList = new List<A>();
+            bList = new List<B>();
             for (int count = 0; count < 1000; ++count)
             {
                 var b = new B();
@@ -81,10 +65,29 @@ namespace DynCon.OSI.Core_UnitTests
             Assert.AreEqual(1000, bList.Count);
             Assert.AreEqual(1000, mapper.Count);
 
+            RunGC();
+        }
+
+
+        /// <summary>
+        ///     Mapper_s the purge_ unit test.
+        /// </summary>
+        [TestMethod]
+        public void Mapper_Purge_UnitTest()
+        {
+            ObjectMapper<A, B> mapper = GetTestInstance();
+            mapper.PurgeTime = TimeSpan.FromMilliseconds(10);
+            List<A> aList;
+            List<B> bList;
+            CreateData(mapper, out aList, out bList);
+            Assert.AreEqual(1000, aList.Count);
+            Assert.AreEqual(1000, bList.Count);
+            Assert.AreEqual(1000, mapper.Count);
+
             aList.Clear();
             bList.Clear();
             RunGC();
-            Thread.Sleep(TimeSpan.FromSeconds(10).Add(mapper.PurgeTime));
+            Thread.Sleep(TimeSpan.FromMilliseconds(100).Add(mapper.PurgeTime));
 
             Assert.IsTrue(mapper.Count < 2);
         }
@@ -93,7 +96,11 @@ namespace DynCon.OSI.Core_UnitTests
         ///     Objects the mapper_ unit test.
         /// </summary>
         [TestMethod]
-        public void ObjectMapper_UnitTest() { ObjectMapper<A, B> mapper = GetTestInstance(); }
+        public void ObjectMapper_UnitTest()
+        {
+            ObjectMapper<A, B> mapper = GetTestInstance(); 
+            Assert.IsNotNull(mapper);
+        }
 
         /// <summary>
         ///     Gets the test instance.

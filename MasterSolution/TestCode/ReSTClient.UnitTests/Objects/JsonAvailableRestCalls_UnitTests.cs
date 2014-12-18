@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ReSTClient.APIs;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.APIs

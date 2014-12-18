@@ -22,6 +22,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ObjectModelClient.XML</DocumentationFile>
+    <NoWarn>1591,0618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,14 +32,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591,0618</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Proxy, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,40 +53,546 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WrapperImplementations\DisplayFieldListWrapper.cs" />
-    <Compile Include="WrapperImplementations\LinkWrapper.cs" />
-    <Compile Include="WrapperImplementations\MappedObjectInitializer.cs" />
-    <Compile Include="WrapperImplementations\MappedObjectBase.cs" />
-    <Compile Include="WrapperImplementations\QueryWrapper.cs" />
-    <Compile Include="WrapperImplementations\SortFieldListWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemFieldWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemStoreWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemTypeCategoryWrapper.cs" />
-    <Compile Include="WrapperImplementations\AreaWrapper.cs" />
-    <Compile Include="WrapperImplementations\IterationWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemTypeWrapper.cs" />
+    <Compile Include="APIs\TFSVersionControlAPI.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerWrapper.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerWrapper.cs" />
+    <Compile Include="TFS\Client\FederatedCredentialWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ICancelableAsyncResultWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IResultCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenCredentialWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenProviderWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsXmlSerializableWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\ServerCapabilitiesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TeamFoundationServerWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TFProxyServerWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialStorageWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConfigurationServerWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConnectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Client\WindowsCredentialWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlEntryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessMappingWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogNodeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ILocationServiceWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IServerDataProviderWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\LocationMappingWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogTreeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\ConnectOptionsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\RelativeToSettingWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Partials\ArtifactWorkItemIdsWrapper.cs" />
+    <Compile Include="Partials\CatalogNodeWrapper.cs" />
+    <Compile Include="Partials\LinkUpdateWrapper.cs" />
+    <Compile Include="Partials\ServiceDefinitionWrapper.cs" />
+    <Compile Include="Helpers\EnumeratorWrapper.cs" />
     <Compile Include="Factories\APIFactory.cs" />
     <Compile Include="APIs\ClientObjectModelBasedAPI.cs" />
     <Compile Include="APIs\WorkItemAPI.cs" />
-    <Compile Include="Helpers\WorkItemStoreHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WrapperImplementations\AttachmentCollectionWrapper.cs" />
-    <Compile Include="WrapperImplementations\AttachmentWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemCollectionWrapper.cs" />
-    <Compile Include="WrapperImplementations\WorkItemWrapper.cs" />
-    <Compile Include="WrapperInterfaces\IAttachmentCollectionOM.cs" />
-    <Compile Include="WrapperInterfaces\IAttachmentOM.cs" />
-    <Compile Include="WrapperInterfaces\IDisplayFieldListOM.cs" />
-    <Compile Include="WrapperInterfaces\ILinkCollectionOM.cs" />
-    <Compile Include="WrapperInterfaces\ILinkOM.cs" />
-    <Compile Include="WrapperInterfaces\IQueryOM.cs" />
-    <Compile Include="WrapperInterfaces\IRevisionCollectionOM.cs" />
-    <Compile Include="WrapperInterfaces\ISortFieldListOM.cs" />
-    <Compile Include="WrapperInterfaces\IWorkItemCollectionOM.cs" />
-    <Compile Include="WrapperInterfaces\IWorkItemOM.cs" />
-    <Compile Include="WrapperInterfaces\IWorkItemStoreOM.cs" />
-    <Compile Include="WrapperImplementations\LinkCollectionWrapper.cs" />
-    <Compile Include="WrapperImplementations\RevisionCollectionWrapper.cs" />
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ValuesCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerWrapper.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wrappers\AreaWrapper.cs" />
+    <Compile Include="Wrappers\IterationWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
@@ -90,6 +603,9 @@
       <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
       <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TFS\System\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

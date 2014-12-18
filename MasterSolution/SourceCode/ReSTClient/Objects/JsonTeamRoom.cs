@@ -1,6 +1,5 @@
 using System;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Newtonsoft.Json.Linq;
 

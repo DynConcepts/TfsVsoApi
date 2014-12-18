@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Factories;
-using DynCon.OSI.VSO.SharedInterfaces.APIs;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
-using DynCon.OSI.VSO.SharedInterfaces.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
@@ -36,10 +35,10 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void BuildWorkItem_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
             IReadOnlyList<string> headings = new List<string> {"System.Title"};
             IReadOnlyList<object> data = new List<object> {"Sample Title"};
-            IWorkItem workItem = api.BuildWorkItem(headings, data);
+            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
             Assert.IsNotNull(workItem);
         }
 
@@ -49,14 +48,14 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void CreateWorkItem_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
 
             IReadOnlyList<string> headings = new List<string> {"System.WorkItemType", "System.Title"};
             IReadOnlyList<object> data = new List<object> {"Task", "WorkItem Created by Unit Testing"};
-            IWorkItem workItem = api.BuildWorkItem(headings, data);
+            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
             const string project = "RestPlaypen";
-            Task<IWorkItem> createTask = api.CreateWorkItem(project, workItem);
-            IWorkItem finalResult = createTask.Result;
+            Task<JsonWorkItem> createTask = api.CreateWorkItem(project, workItem);
+            JsonWorkItem finalResult = createTask.Result;
             Assert.IsNotNull(finalResult);
         }
 
@@ -67,11 +66,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetAreas_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<IArea>> task = api.GetAreas(project, 999);
-            IReadOnlyList<IArea> result = task.Result;
+            Task<IReadOnlyList<JsonArea>> task = api.GetAreas(project, 999);
+            IReadOnlyList<JsonArea> result = task.Result;
             Assert.IsNotNull(result);
         }
 
@@ -79,12 +78,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         ///     Gets the fields_ unit test.
         /// </summary>
         [TestMethod]
-        public void GetFields_UnitTest()
+        public void GetFieldDefinitions_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
 
-            Task<IReadOnlyList<IWorkItemFieldDefinition>> task = api.GetFields();
-            IReadOnlyList<IWorkItemFieldDefinition> result = task.Result;
+            Task<IReadOnlyList<JsonFieldDefinition>> task = api.GetFieldDefinitions();
+            IReadOnlyList<JsonFieldDefinition> result = task.Result;
             Assert.IsNotNull(result);
         }
 
@@ -94,7 +93,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetIterations_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
             const string project = "RestPlaypen";
 
             Task<IReadOnlyList<IIteration>> task = api.GetIterations(project, 999);
@@ -108,11 +107,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetWorkItemTypeCategories_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<IWorkItemTypeCategory>> task = api.GetWorkItemTypeCategories(project);
-            IReadOnlyList<IWorkItemTypeCategory> result = task.Result;
+            Task<IReadOnlyList<JsonWorkItemTypeCategory>> task = api.GetWorkItemTypeCategories(project);
+            IReadOnlyList<JsonWorkItemTypeCategory> result = task.Result;
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count > 0);
         }
@@ -123,11 +122,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetWorkItemTypes_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<IWorkItemType>> task = api.GetWorkItemTypes(project);
-            IReadOnlyList<IWorkItemType> result = task.Result;
+            Task<IReadOnlyDictionary<string, JsonWorkItemType>> task = api.GetWorkItemTypes(project);
+            IReadOnlyDictionary<string, JsonWorkItemType> result = task.Result;
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count > 0);
         }
@@ -137,9 +136,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetRelationTypes_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
-            Task<IReadOnlyList<IRelationType>> task = api.GetRelationTypes();
-            IReadOnlyList<IRelationType> result = task.Result;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
+            Task<IReadOnlyList<JsonRelationType>> task = api.GetRelationTypes();
+            IReadOnlyList<JsonRelationType> result = task.Result;
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count > 0);
         }
@@ -150,11 +149,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void GetWorkItems_UnitTest()
         {
-            var api = new WorkItemAPI();
+            var api = new JsonWorkItemAPI();
             var idList = new List<int> {62};
-            Task<IReadOnlyList<IWorkItem>> task = api.GetWorkItems(idList);
+            Task<IReadOnlyList<JsonWorkItem>> task = api.GetWorkItems(idList);
             Assert.IsNotNull(task);
-            IReadOnlyList<IWorkItem> result = task.Result;
+            IReadOnlyList<JsonWorkItem> result = task.Result;
             Assert.IsNotNull(result);
             Assert.AreEqual(idList.Count, result.Count);
         }
@@ -165,13 +164,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         [TestMethod]
         public void WiqlQuery_UnitTest()
         {
-            IWorkItemAPI api = APIFactory.WorkItemAPI;
+            JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
 
-            const string project = "RestPlaypen";
             const string wiql = "SELECT [System.Id], [System.WorkItemType], [System.Title], [System.AssignedTo], [System.State], [System.Tags] FROM WorkItems";
-            Task<IReadOnlyList<IWorkItem>> task = api.WiqlQuery(project, wiql, true);
-            IReadOnlyList<IWorkItem> result = task.Result;
-            Debug.WriteLine("WIQL Query returned {0} Items", result.Count);
+            Task<IReadOnlyList<JsonWorkItem>> task = api.WiqlQuery(wiql, true);
+            IReadOnlyList<JsonWorkItem> result = task.Result;
+            Debug.WriteLine("WIQL Query returned {0} ItemDictionary", result.Count);
             Assert.IsNotNull(result);
         }
     }

@@ -27,7 +27,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Cancels the pending requests_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void CancelPendingRequests_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -38,7 +38,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Deletes the async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void DeleteAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -49,7 +49,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Deletes the async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void DeleteAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -60,7 +60,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Deletes the async_ unit test2.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void DeleteAsync_UnitTest2()
         {
             var instance = new HttpClientMock();
@@ -71,7 +71,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Deletes the async_ unit test3.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void DeleteAsync_UnitTest3()
         {
             var instance = new HttpClientMock();
@@ -82,7 +82,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Dispose_s the unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void Dispose_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -93,7 +93,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -104,7 +104,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -115,7 +115,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test2.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest2()
         {
             var instance = new HttpClientMock();
@@ -126,7 +126,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test3.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest3()
         {
             var instance = new HttpClientMock();
@@ -137,7 +137,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test4.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest4()
         {
             var instance = new HttpClientMock();
@@ -148,7 +148,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test5.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest5()
         {
             var instance = new HttpClientMock();
@@ -159,7 +159,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test6.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest6()
         {
             var instance = new HttpClientMock();
@@ -170,7 +170,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the async_ unit test7.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetAsync_UnitTest7()
         {
             var instance = new HttpClientMock();
@@ -181,7 +181,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the byte array async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetByteArrayAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -192,7 +192,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the byte array async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetByteArrayAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -203,7 +203,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the stream async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetStreamAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -214,7 +214,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the stream async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetStreamAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -225,7 +225,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the string async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetStringAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -236,7 +236,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Gets the string async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void GetStringAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -247,7 +247,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Posts the async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PostAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -258,7 +258,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Posts the async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PostAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -269,7 +269,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Posts the async_ unit test2.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PostAsync_UnitTest2()
         {
             var instance = new HttpClientMock();
@@ -280,7 +280,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Posts the async_ unit test3.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PostAsync_UnitTest3()
         {
             var instance = new HttpClientMock();
@@ -291,7 +291,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Puts the async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PutAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -302,7 +302,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Puts the async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PutAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -313,7 +313,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Puts the async_ unit test2.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PutAsync_UnitTest2()
         {
             var instance = new HttpClientMock();
@@ -324,7 +324,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Puts the async_ unit test3.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void PutAsync_UnitTest3()
         {
             var instance = new HttpClientMock();
@@ -335,7 +335,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Sends the async_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void SendAsync_UnitTest()
         {
             var instance = new HttpClientMock();
@@ -347,7 +347,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Sends the async_ unit test1.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void SendAsync_UnitTest1()
         {
             var instance = new HttpClientMock();
@@ -359,7 +359,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Sends the async_ unit test2.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void SendAsync_UnitTest2()
         {
             var instance = new HttpClientMock();
@@ -371,7 +371,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         ///     Sends the async_ unit test3.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof (NotImplementedException))]
+        [ExpectedException(typeof (NotSupportedException))]
         public void SendAsync_UnitTest3()
         {
             var instance = new HttpClientMock();

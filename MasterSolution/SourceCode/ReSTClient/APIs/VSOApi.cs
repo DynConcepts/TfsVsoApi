@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ReSTClient.Objects;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
-using DynCon.OSI.VSO.SharedInterfaces.Interfaces;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 
 namespace DynCon.OSI.VSO.ReSTClient.APIs

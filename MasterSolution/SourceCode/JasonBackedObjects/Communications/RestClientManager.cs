@@ -105,6 +105,12 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                         result = xform(responseBody);
                     }
                 }
+                catch (AggregateException ex)
+                {
+                    if (ex.InnerExceptions.Count == 1)
+                        throw ex.InnerException;
+                    else throw;
+                }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
@@ -133,6 +139,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                 //    w.Write(content);
                 //}
                 var reader = new JsonTextReader(new StreamReader(stream));
+                var tmp = request;
                 JObject jObject = JObject.Load(reader);
                 result = xform(jObject);
                 return result;
