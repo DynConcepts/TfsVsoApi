@@ -1,9 +1,12 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IIdRevisionPair
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.Int32 Id  { get; set;   }
-    System.Int32 Revision  { get; set;   }
+    void ToXml( XmlWriter writer, String element);
+    Int32 Id  { get; set;   }
+    Int32 Revision  { get; set;   }
   }
 }

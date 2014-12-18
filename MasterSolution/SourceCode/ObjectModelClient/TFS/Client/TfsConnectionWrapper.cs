@@ -22,7 +22,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsConnectionWrapper : TfsConnectionWrapper<ITfsConnection, TfsConnection>, ITfsConnection, IServiceProvider, IDisposable
     {
         protected TfsConnectionWrapper(TfsConnection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConnection, TfsConnection>(src => ((TfsConnectionWrapper) src).r_Instance, src => new TfsConnectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConnection, TfsConnection>(src => src==null ? null : ((TfsConnectionWrapper) src).r_Instance, src => new TfsConnectionWrapper(src)); }
     }
 
 
@@ -191,7 +191,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
 
         private static readonly Dictionary<Type, Func<TfsConnection,Object>> sr_ServiceMap = new Dictionary<Type, Func<TfsConnection, object>>()
         {
-            {typeof (IWorkItemStore), (tfs) => WorkItemStoreWrapper.GetWrapper(tfs.GetService<WorkItemStore>())}
+            {typeof (IWorkItemStore), tfs => WorkItemStoreWrapper.GetWrapper(tfs.GetService<WorkItemStore>())}
         };
 
 

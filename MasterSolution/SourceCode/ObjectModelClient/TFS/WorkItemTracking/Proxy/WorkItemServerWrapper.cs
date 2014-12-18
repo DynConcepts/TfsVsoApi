@@ -19,7 +19,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class WorkItemServerWrapper : WorkItemServerWrapper<IWorkItemServer, WorkItemServer>, IWorkItemServer, IITfsTeamProjectCollectionObject, IITfsRequestListener
     {
         protected WorkItemServerWrapper(WorkItemServer instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemServer, WorkItemServer>(src => ((WorkItemServerWrapper) src).r_Instance, src => new WorkItemServerWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemServer, WorkItemServer>(src => src==null ? null : ((WorkItemServerWrapper) src).r_Instance, src => new WorkItemServerWrapper(src)); }
     }
 
 

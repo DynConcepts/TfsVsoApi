@@ -8,7 +8,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
     internal class IWorkItemRelationWrapper : IWorkItemRelationWrapper<IIWorkItemRelation, IWorkItemRelation>, IIWorkItemRelation
     {
         protected IWorkItemRelationWrapper(IWorkItemRelation instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemRelation, IWorkItemRelation>(src => ((IWorkItemRelationWrapper) src).r_Instance, src => new IWorkItemRelationWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemRelation, IWorkItemRelation>(src => src==null ? null : ((IWorkItemRelationWrapper) src).r_Instance, src => new IWorkItemRelationWrapper(src)); }
     }
 
 

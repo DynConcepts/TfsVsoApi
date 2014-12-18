@@ -1,6 +1,8 @@
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
-  public interface IWorkItemRelation : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemRelation
+  public interface IWorkItemRelation : IIWorkItemRelation
   {
   }
 }

@@ -14,7 +14,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal partial class CatalogNodeWrapper : CatalogNodeWrapper<ICatalogNode, CatalogNode>, ICatalogNode
     {
         protected CatalogNodeWrapper(CatalogNode instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogNode, CatalogNode>(src => ((CatalogNodeWrapper) src).r_Instance, src => new CatalogNodeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogNode, CatalogNode>(src => src==null ? null : ((CatalogNodeWrapper) src).r_Instance, src => new CatalogNodeWrapper(src)); }
     }
 
 

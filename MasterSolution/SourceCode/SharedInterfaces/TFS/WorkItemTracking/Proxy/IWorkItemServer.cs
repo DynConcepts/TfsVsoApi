@@ -1,38 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Xml;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
-  public interface IWorkItemServer : DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsTeamProjectCollectionObject ,DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.IITfsRequestListener
+  public interface IWorkItemServer : IITfsTeamProjectCollectionObject ,IITfsRequestListener
   {
-    System.String GetWorkitemTrackingVersion( System.String requestId);
-    void StampWorkitemCache( System.String requestId);
-    void GetWorkItem( System.String requestId, System.Int32 workItemId, System.Int32 revisionId, System.Int32 minimumRevisionId, System.Nullable<System.DateTime> asOfDate, System.Boolean useMaster,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIWorkItemRowSets workItem, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void QueryWorkitemRevisions( System.String requestId, System.Xml.XmlElement psQuery, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IQuerySortOrderEntry[] sort, System.Boolean useMaster,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIdRevisionPair[] pairs,out System.DateTime asOfDate, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void QueryWorkitems( System.String requestId, System.Xml.XmlElement psQuery, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IQuerySortOrderEntry[] sort, System.Boolean useMaster,out System.Int32[] ids,out System.DateTime asOfDate, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void QueryLinkedWorkitems( System.String requestId, System.Xml.XmlElement psQuery, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IQuerySortOrderEntry[] sort, System.Boolean useMaster,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IWorkItemRelation[] relations,out System.DateTime asOfDate, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void PageWorkitemsByIds( System.String requestId, System.Int32[] ids, System.String[] columns, System.Int32[] longTextColumns, System.Nullable<System.DateTime> asOfDate, System.Boolean useMaster,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIPagedItemsRowSets items, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void PageWorkitemsByIdRevs( System.String requestId, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIdRevisionPair[] pairs, System.String[] columns, System.Int32[] longTextColumns, System.Nullable<System.DateTime> asOfDate,out System.DateTime pageDate, System.Boolean useMaster,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIPagedItemsRowSets items);
-    void QueryWorkitemCount( System.String requestId, System.Xml.XmlElement psQuery, System.Boolean useMaster,out System.Int32 count,out System.DateTime asOfDate, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void GetMetadata( System.String requestId, System.Boolean useMaster, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata,out System.Int32 locale,out System.Int32 comparisonStyle,out System.String callerIdentity);
-    void GetMetadataEx( System.String requestId, System.Boolean useMaster, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata,out System.Int32 locale,out System.Int32 comparisonStyle,out System.String callerIdentity,out System.String callerIdentitySid);
-    void GetMetadataEx2( System.String requestId, System.Boolean useMaster, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata,out System.Int32 locale,out System.Int32 comparisonStyle,out System.Int32 displayMode);
-    System.Boolean BulkUpdate( System.String requestId, System.Xml.XmlElement package,out System.Xml.XmlElement result, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
-    void Update( System.String requestId, System.Xml.XmlElement package,out System.Xml.XmlElement result, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IMetadataTableHaveEntry[] metadataHave,out System.String dbStamp,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIMetadataRowSets metadata);
+    String GetWorkitemTrackingVersion( String requestId);
+    void StampWorkitemCache( String requestId);
+    void GetWorkItem( String requestId, Int32 workItemId, Int32 revisionId, Int32 minimumRevisionId, Nullable<DateTime> asOfDate, Boolean useMaster,out IIWorkItemRowSets workItem, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void QueryWorkitemRevisions( String requestId, XmlElement psQuery, IQuerySortOrderEntry[] sort, Boolean useMaster,out IIdRevisionPair[] pairs,out DateTime asOfDate, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void QueryWorkitems( String requestId, XmlElement psQuery, IQuerySortOrderEntry[] sort, Boolean useMaster,out Int32[] ids,out DateTime asOfDate, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void QueryLinkedWorkitems( String requestId, XmlElement psQuery, IQuerySortOrderEntry[] sort, Boolean useMaster,out IWorkItemRelation[] relations,out DateTime asOfDate, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void PageWorkitemsByIds( String requestId, Int32[] ids, String[] columns, Int32[] longTextColumns, Nullable<DateTime> asOfDate, Boolean useMaster,out IIPagedItemsRowSets items, IMetadataTableHaveEntry[] metadataHave,out IIMetadataRowSets metadata);
+    void PageWorkitemsByIdRevs( String requestId, IIdRevisionPair[] pairs, String[] columns, Int32[] longTextColumns, Nullable<DateTime> asOfDate,out DateTime pageDate, Boolean useMaster,out IIPagedItemsRowSets items);
+    void QueryWorkitemCount( String requestId, XmlElement psQuery, Boolean useMaster,out Int32 count,out DateTime asOfDate, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void GetMetadata( String requestId, Boolean useMaster, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata,out Int32 locale,out Int32 comparisonStyle,out String callerIdentity);
+    void GetMetadataEx( String requestId, Boolean useMaster, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata,out Int32 locale,out Int32 comparisonStyle,out String callerIdentity,out String callerIdentitySid);
+    void GetMetadataEx2( String requestId, Boolean useMaster, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata,out Int32 locale,out Int32 comparisonStyle,out Int32 displayMode);
+    Boolean BulkUpdate( String requestId, XmlElement package,out XmlElement result, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
+    void Update( String requestId, XmlElement package,out XmlElement result, IMetadataTableHaveEntry[] metadataHave,out String dbStamp,out IIMetadataRowSets metadata);
     void UpdateMaxAttachmentSize();
-    void UploadFile( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IFileAttachment fileAttachment);
-    System.String DownloadFile( System.Int32 fileAttachmentId);
-    void GetStoredQuery( System.String requestId, System.Boolean useMaster, System.Guid queryId,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection queryDataSet);
-    void GetStoredQueries( System.String requestId, System.Boolean useMaster, System.Int64 rowVersion, System.Int32 projectId,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection queriesDataSet);
-    void GetStoredQueryItems( System.String requestId, System.Int64 rowVersion, System.Int32 projectId,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection queriesDataSet);
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IWorkItemId> GetDestroyedWorkItemIds( System.String requestId, System.Int64 rowVersion);
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IWorkItemId> GetChangedWorkItemIds( System.String requestId, System.Int64 rowVersion);
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IWorkItemLinkChange> GetWorkItemLinkChanges( System.String requestId, System.Int64 rowVersion);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IExtendedAccessControlListData GetStoredQueryItemAccessControlList( System.String requestId, System.Guid queryItemId, System.Boolean getMetadata);
-    void RequestCancel( System.String requestId, System.String cancelRequestId);
-    void SyncExternalStructures( System.String requestId, System.String projectURI);
-    void SyncBisGroupsAndUsers( System.String requestId, System.String projectUri);
-    System.String[] GetReferencingWorkitemUris( System.String requestId, System.String artifactUri);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIResultCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IArtifactWorkItemIds> GetWorkItemIdsForArtifactUris( System.String[] artifactUris, System.Nullable<System.DateTime> asOfDate);
-    void DestroyAttachments( System.String requestId, System.Int32[] workItemIds);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IWorkItemServerVersion WorkItemServerVersion  { get;   }
-    System.Int64 MaxAttachmentSize  { get;   }
+    void UploadFile( IFileAttachment fileAttachment);
+    String DownloadFile( Int32 fileAttachmentId);
+    void GetStoredQuery( String requestId, Boolean useMaster, Guid queryId,out IRowSetCollection queryDataSet);
+    void GetStoredQueries( String requestId, Boolean useMaster, Int64 rowVersion, Int32 projectId,out IRowSetCollection queriesDataSet);
+    void GetStoredQueryItems( String requestId, Int64 rowVersion, Int32 projectId,out IRowSetCollection queriesDataSet);
+    IEnumerable<IWorkItemId> GetDestroyedWorkItemIds( String requestId, Int64 rowVersion);
+    IEnumerable<IWorkItemId> GetChangedWorkItemIds( String requestId, Int64 rowVersion);
+    IEnumerable<IWorkItemLinkChange> GetWorkItemLinkChanges( String requestId, Int64 rowVersion);
+    IExtendedAccessControlListData GetStoredQueryItemAccessControlList( String requestId, Guid queryItemId, Boolean getMetadata);
+    void RequestCancel( String requestId, String cancelRequestId);
+    void SyncExternalStructures( String requestId, String projectURI);
+    void SyncBisGroupsAndUsers( String requestId, String projectUri);
+    String[] GetReferencingWorkitemUris( String requestId, String artifactUri);
+    IIResultCollection<IArtifactWorkItemIds> GetWorkItemIdsForArtifactUris( String[] artifactUris, Nullable<DateTime> asOfDate);
+    void DestroyAttachments( String requestId, Int32[] workItemIds);
+    IWorkItemServerVersion WorkItemServerVersion  { get;   }
+    Int64 MaxAttachmentSize  { get;   }
   }
 }

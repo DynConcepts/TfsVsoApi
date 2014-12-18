@@ -1,11 +1,14 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IWorkItemFieldData : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper ,DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper
+  public interface IWorkItemFieldData : IIWorkItemOpenFieldDataHelper ,IIWorkItemSaveFieldDataHelper
   {
-    System.Boolean SetUpdateFieldValue( System.Int32 id, System.Object value, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemFieldData_FieldFlags flags);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemFieldData_FieldInfo GetFieldState( System.Int32 id);
-    new System.Boolean IsDirty();
-    System.Boolean GetUpdateFieldValue( System.Int32 id,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemFieldData_FieldUpdate fu);
+    Boolean SetUpdateFieldValue( Int32 id, Object value, IWorkItemFieldData_FieldFlags flags);
+    IWorkItemFieldData_FieldInfo GetFieldState( Int32 id);
+    new Boolean IsDirty();
+    Boolean GetUpdateFieldValue( Int32 id,out IWorkItemFieldData_FieldUpdate fu);
   }
 }
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
@@ -17,7 +20,7 @@ namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IWorkItemFieldData_FieldInfo
   {
-    System.Boolean IsEmpty();
+    Boolean IsEmpty();
   }
 }
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client

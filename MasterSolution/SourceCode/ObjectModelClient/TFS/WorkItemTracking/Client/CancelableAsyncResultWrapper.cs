@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class CancelableAsyncResultWrapper : CancelableAsyncResultWrapper<ICancelableAsyncResult, CancelableAsyncResult>, ICancelableAsyncResult, IAsyncResult
     {
         protected CancelableAsyncResultWrapper(CancelableAsyncResult instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICancelableAsyncResult, CancelableAsyncResult>(src => ((CancelableAsyncResultWrapper) src).r_Instance, src => new CancelableAsyncResultWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICancelableAsyncResult, CancelableAsyncResult>(src => src==null ? null : ((CancelableAsyncResultWrapper) src).r_Instance, src => new CancelableAsyncResultWrapper(src)); }
     }
 
 

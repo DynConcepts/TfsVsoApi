@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class SortFieldListWrapper : SortFieldListWrapper<ISortFieldList, SortFieldList>, ISortFieldList
     {
         protected SortFieldListWrapper(SortFieldList instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ISortFieldList, SortFieldList>(src => ((SortFieldListWrapper) src).r_Instance, src => new SortFieldListWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ISortFieldList, SortFieldList>(src => src==null ? null : ((SortFieldListWrapper) src).r_Instance, src => new SortFieldListWrapper(src)); }
     }
 
 

@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class MetadataEventArgsWrapper : MetadataEventArgsWrapper<IMetadataEventArgs, MetadataEventArgs>, IMetadataEventArgs
     {
         protected MetadataEventArgsWrapper(MetadataEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IMetadataEventArgs, MetadataEventArgs>(src => ((MetadataEventArgsWrapper) src).r_Instance, src => new MetadataEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IMetadataEventArgs, MetadataEventArgs>(src => src==null ? null : ((MetadataEventArgsWrapper) src).r_Instance, src => new MetadataEventArgsWrapper(src)); }
     }
 
 

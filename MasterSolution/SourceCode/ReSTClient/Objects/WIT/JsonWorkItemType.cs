@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT

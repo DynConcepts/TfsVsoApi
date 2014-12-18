@@ -11,7 +11,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemSyncDataWrapper : WorkItemSyncDataWrapper<IWorkItemSyncData, WorkItemSyncData>, IWorkItemSyncData
     {
         protected WorkItemSyncDataWrapper(WorkItemSyncData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemSyncData, WorkItemSyncData>(src => ((WorkItemSyncDataWrapper) src).r_Instance, src => new WorkItemSyncDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemSyncData, WorkItemSyncData>(src => src==null ? null : ((WorkItemSyncDataWrapper) src).r_Instance, src => new WorkItemSyncDataWrapper(src)); }
     }
 
 

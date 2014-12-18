@@ -11,7 +11,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryHierarchyProviderWrapper : QueryHierarchyProviderWrapper<IQueryHierarchyProvider, QueryHierarchyProvider>, IQueryHierarchyProvider
     {
         protected QueryHierarchyProviderWrapper(QueryHierarchyProvider instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyProvider, QueryHierarchyProvider>(src => ((QueryHierarchyProviderWrapper) src).r_Instance, src => new QueryHierarchyProviderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyProvider, QueryHierarchyProvider>(src => src==null ? null : ((QueryHierarchyProviderWrapper) src).r_Instance, src => new QueryHierarchyProviderWrapper(src)); }
     }
 
 

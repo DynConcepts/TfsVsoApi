@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ValuesCollectionWrapper : ValuesCollectionWrapper<IValuesCollection, ValuesCollection>, IValuesCollection
     {
         protected ValuesCollectionWrapper(ValuesCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IValuesCollection, ValuesCollection>(src => ((ValuesCollectionWrapper) src).r_Instance, src => new ValuesCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IValuesCollection, ValuesCollection>(src => src==null ? null : ((ValuesCollectionWrapper) src).r_Instance, src => new ValuesCollectionWrapper(src)); }
     }
 
 

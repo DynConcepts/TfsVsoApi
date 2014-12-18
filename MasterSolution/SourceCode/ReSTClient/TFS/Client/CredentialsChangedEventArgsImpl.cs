@@ -5,6 +5,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
 {
     internal class CredentialsChangedEventArgsImpl : ICredentialsChangedEventArgs
     {
-        ICredentials ICredentialsChangedEventArgs.Credentials { get { throw new ToBeImplementedException(); } }
+        ICredentials ICredentialsChangedEventArgs.Credentials { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

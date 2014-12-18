@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -101,22 +104,22 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <summary>
         ///     Refreshes this instance.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ILinkCollection.Refresh() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ILinkCollection.Refresh() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Removes the specified link.
         /// </summary>
         /// <param name="link">The link.</param>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ILinkCollection.Remove(ILink link) { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ILinkCollection.Remove(ILink link) { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Gets the work item.
         /// </summary>
         /// <value>The work item.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IWorkItem ILinkCollection.WorkItem { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IWorkItem ILinkCollection.WorkItem { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LinkCollectionImpl" /> class.

@@ -1,7 +1,9 @@
+using System.Xml.Serialization;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
-  public interface IRowSet : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IIRowSet ,System.Xml.Serialization.IXmlSerializable
+  public interface IRowSet : IIRowSet ,IXmlSerializable
   {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetColumn[] Columns  { get;   }
+    IRowSetColumn[] Columns  { get;   }
   }
 }

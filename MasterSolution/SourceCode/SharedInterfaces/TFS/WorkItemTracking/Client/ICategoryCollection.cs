@@ -1,14 +1,19 @@
+using System;
+using System.Collections;
+using System.IO;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface ICategoryCollection : System.Collections.IEnumerable
+  public interface ICategoryCollection : IEnumerable
   {
-    void Import( System.IO.Stream stream);
-    void Import( System.String categories);
-    void Import( System.Xml.XmlElement categoriesElement);
-    System.Xml.XmlDocument Export();
-    System.Boolean Contains( System.String name);
-    System.Int32 Count  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.ICategory this[System.Int32 index] { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.ICategory this[System.String name] { get;   }
+    void Import( Stream stream);
+    void Import( String categories);
+    void Import( XmlElement categoriesElement);
+    XmlDocument Export();
+    Boolean Contains( String name);
+    Int32 Count  { get;   }
+    ICategory this[Int32 index] { get;   }
+    ICategory this[String name] { get;   }
   }
 }

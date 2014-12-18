@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class RegisteredLinkTypeWrapper : RegisteredLinkTypeWrapper<IRegisteredLinkType, RegisteredLinkType>, IRegisteredLinkType
     {
         protected RegisteredLinkTypeWrapper(RegisteredLinkType instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRegisteredLinkType, RegisteredLinkType>(src => ((RegisteredLinkTypeWrapper) src).r_Instance, src => new RegisteredLinkTypeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRegisteredLinkType, RegisteredLinkType>(src => src==null ? null : ((RegisteredLinkTypeWrapper) src).r_Instance, src => new RegisteredLinkTypeWrapper(src)); }
     }
 
 

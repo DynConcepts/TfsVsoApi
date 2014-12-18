@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ReportingAttributesWrapper : ReportingAttributesWrapper<IReportingAttributes, ReportingAttributes>, IReportingAttributes
     {
         protected ReportingAttributesWrapper(ReportingAttributes instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IReportingAttributes, ReportingAttributes>(src => ((ReportingAttributesWrapper) src).r_Instance, src => new ReportingAttributesWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IReportingAttributes, ReportingAttributes>(src => src==null ? null : ((ReportingAttributesWrapper) src).r_Instance, src => new ReportingAttributesWrapper(src)); }
     }
 
 

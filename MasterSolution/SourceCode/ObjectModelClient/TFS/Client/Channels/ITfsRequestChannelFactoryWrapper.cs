@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class ITfsRequestChannelFactoryWrapper : ITfsRequestChannelFactoryWrapper<IITfsRequestChannelFactory, ITfsRequestChannelFactory>, IITfsRequestChannelFactory
     {
         protected ITfsRequestChannelFactoryWrapper(ITfsRequestChannelFactory instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestChannelFactory, ITfsRequestChannelFactory>(src => ((ITfsRequestChannelFactoryWrapper) src).r_Instance, src => new ITfsRequestChannelFactoryWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestChannelFactory, ITfsRequestChannelFactory>(src => src==null ? null : ((ITfsRequestChannelFactoryWrapper) src).r_Instance, src => new ITfsRequestChannelFactoryWrapper(src)); }
     }
 
 

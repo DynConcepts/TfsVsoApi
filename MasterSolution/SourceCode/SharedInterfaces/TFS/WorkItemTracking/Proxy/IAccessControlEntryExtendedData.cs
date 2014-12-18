@@ -1,11 +1,14 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IAccessControlEntryExtendedData
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.Int32 EffectiveAllow  { get; set;   }
-    System.Int32 EffectiveDeny  { get; set;   }
-    System.Int32 InheritedAllow  { get; set;   }
-    System.Int32 InheritedDeny  { get; set;   }
+    void ToXml( XmlWriter writer, String element);
+    Int32 EffectiveAllow  { get; set;   }
+    Int32 EffectiveDeny  { get; set;   }
+    Int32 InheritedAllow  { get; set;   }
+    Int32 InheritedDeny  { get; set;   }
   }
 }

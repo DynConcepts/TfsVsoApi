@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects.Communications;
+using DynCon.OSI.VSO.ObjectModelClient.Factories;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
@@ -18,6 +19,10 @@ namespace SimpleSamples
     {
         private static void Main(string[] args)
         {
+            Test t = new Test();
+            Action a= t.Bar();
+            a();
+
             var warmup = Measure(() => ClassicObjectModel(new TfsTeamProjectCollection(new Uri("*****"))));  // TODO Put in appropriate value, then refactor
 
             var classic = Measure(() => ClassicObjectModel(new TfsTeamProjectCollection(new Uri("*****"))));  // TODO Put in appropriate value, then refactor
@@ -209,6 +214,20 @@ namespace SimpleSamples
         static string Write(Hyperlink link)
         {
             return String.Format("(Hyperlink) Location:{0}", link.Location);
+        }
+    }
+
+    class Test
+    {
+        public void Foo(ref int x) { ++x; }
+
+        public Action Bar()
+        {
+            int x = 1;
+            Foo(ref x);
+            Action a = new Action(()=>{Foo(ref x);});
+            a();
+            return a;
         }
     }
 }

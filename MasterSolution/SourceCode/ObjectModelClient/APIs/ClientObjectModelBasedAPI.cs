@@ -73,7 +73,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         /// <summary>
         ///     The _team project collection
         /// </summary>
-        private static Uri s_TeamProjectCollection = new Uri("*****"); // TODO Put in appropriate value, then refactor
+        private static Uri s_TeamProjectCollection = new Uri("*****");// TODO Put in appropriate value, then refactor
 
         /// <summary>
         ///     The _TPC

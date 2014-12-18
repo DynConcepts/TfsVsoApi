@@ -1,8 +1,10 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IQueryDefinition : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryItem
+  public interface IQueryDefinition : IQueryItem
   {
-    System.String QueryText  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryType QueryType  { get;   }
+    String QueryText  { get; set;   }
+    IQueryType QueryType  { get;   }
   }
 }

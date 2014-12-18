@@ -1,12 +1,15 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IFieldFilterList : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IVariableSizeList
+  public interface IFieldFilterList : IVariableSizeList
   {
-    System.Int32 IndexOfFieldId( System.Int32 id);
-    System.Int32 IndexOf( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter filter);
-    System.Int32 Add( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter filter);
-    System.Boolean Contains( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter value);
-    void Remove( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter value);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter this[System.Int32 index] { get;   }
+    Int32 IndexOfFieldId( Int32 id);
+    Int32 IndexOf( IFieldFilter filter);
+    Int32 Add( IFieldFilter filter);
+    Boolean Contains( IFieldFilter value);
+    void Remove( IFieldFilter value);
+    IFieldFilter this[Int32 index] { get;   }
   }
 }

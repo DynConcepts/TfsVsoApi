@@ -1,10 +1,14 @@
+using System;
+using System.Collections;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IQueryHierarchyRefreshData
   {
-    System.Boolean IsLegacy  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy Hierarchy  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection QueriesDataSet  { get;   }
-    System.Collections.ArrayList LegacyQueries  { get;   }
+    Boolean IsLegacy  { get;   }
+    IQueryHierarchy Hierarchy  { get;   }
+    IRowSetCollection QueriesDataSet  { get;   }
+    ArrayList LegacyQueries  { get;   }
   }
 }

@@ -142,5 +142,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         public int IndexOf(TItem item) { throw new NoReStAPIEquivilantException(); }
 
         public void CopyTo(Array array, int index) { throw new NotImplementedException(); }
+
+        public override void CaptureJson(JToken newFields) { base.CaptureJson(newFields); }
+
     }
 }

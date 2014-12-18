@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryFolderContentsChangedEventArgsWrapper : QueryFolderContentsChangedEventArgsWrapper<IQueryFolderContentsChangedEventArgs, QueryFolderContentsChangedEventArgs>, IQueryFolderContentsChangedEventArgs
     {
         protected QueryFolderContentsChangedEventArgsWrapper(QueryFolderContentsChangedEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryFolderContentsChangedEventArgs, QueryFolderContentsChangedEventArgs>(src => ((QueryFolderContentsChangedEventArgsWrapper) src).r_Instance, src => new QueryFolderContentsChangedEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryFolderContentsChangedEventArgs, QueryFolderContentsChangedEventArgs>(src => src==null ? null : ((QueryFolderContentsChangedEventArgsWrapper) src).r_Instance, src => new QueryFolderContentsChangedEventArgsWrapper(src)); }
     }
 
 

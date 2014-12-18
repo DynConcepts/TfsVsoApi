@@ -36,9 +36,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         public void BuildWorkItem_UnitTest()
         {
             JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
-            IReadOnlyList<string> headings = new List<string> {"System.Title"};
-            IReadOnlyList<object> data = new List<object> {"Sample Title"};
-            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
+            var fieldValues = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("System.Title", "Sample Title"),
+   
+            };
+            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", fieldValues);
             Assert.IsNotNull(workItem);
         }
 
@@ -50,11 +53,17 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         {
             JsonWorkItemAPI api = APIFactory.JsonWorkItemAPI;
 
-            IReadOnlyList<string> headings = new List<string> {"System.WorkItemType", "System.Title"};
-            IReadOnlyList<object> data = new List<object> {"Task", "WorkItem Created by Unit Testing"};
-            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
             const string project = "RestPlaypen";
-            Task<JsonWorkItem> createTask = api.CreateWorkItem(project, workItem);
+            const string workItemType = "Task";
+            var fieldValues = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("System.Title", "WorkItem Created by Unit Testing")
+//                new KeyValuePair<string, object>("System.Project", "RestPlaypen"),
+//                new KeyValuePair<string, object>("System.WorkItemType", "Task")
+
+            };
+            JsonWorkItem workItem = api.BuildWorkItem(project,workItemType, fieldValues);
+            Task<JsonWorkItem> createTask = api.CreateWorkItem(project, workItemType, workItem, false);
             JsonWorkItem finalResult = createTask.Result;
             Assert.IsNotNull(finalResult);
         }

@@ -1,11 +1,14 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals
 {
   public interface ILinkUpdate
   {
-    void Submit( System.Xml.XmlElement element);
-    void Submit( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo li);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkProperties Mask  { get;   }
-    System.String Comment  { get; set;   }
-    System.Boolean IsLocked  { get; set;   }
+    void Submit( XmlElement element);
+    void Submit( ILinkInfo li);
+    ILinkProperties Mask  { get;   }
+    String Comment  { get; set;   }
+    Boolean IsLocked  { get; set;   }
   }
 }

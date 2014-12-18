@@ -1,22 +1,26 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
-  public interface IIServerDataProvider : DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IILocationService
+  public interface IIServerDataProvider : IILocationService
   {
     void EnsureAuthenticated();
     void Authenticate();
-    System.String FindServerLocation( System.Guid serverGuid);
-    void Connect( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.IConnectOptions connectOptions);
+    String FindServerLocation( Guid serverGuid);
+    void Connect( IConnectOptions connectOptions);
     void Disconnect();
-    void ReactToPossibleServerUpdate( System.Int32 serverLastChangeId);
-    System.Guid InstanceId  { get;   }
-    System.Guid CachedInstanceId  { get;   }
-    System.Guid CatalogResourceId  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IServerCapabilities ServerCapabilities  { get;   }
-    System.String ClientCacheDirectoryForInstance  { get;   }
-    System.String ClientVolatileCacheDirectoryForInstance  { get;   }
-    System.String ClientCacheDirectoryForUser  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ITeamFoundationIdentity AuthorizedIdentity  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ITeamFoundationIdentity AuthenticatedIdentity  { get;   }
-    System.Boolean HasAuthenticated  { get;   }
+    void ReactToPossibleServerUpdate( Int32 serverLastChangeId);
+    Guid InstanceId  { get;   }
+    Guid CachedInstanceId  { get;   }
+    Guid CatalogResourceId  { get;   }
+    IServerCapabilities ServerCapabilities  { get;   }
+    String ClientCacheDirectoryForInstance  { get;   }
+    String ClientVolatileCacheDirectoryForInstance  { get;   }
+    String ClientCacheDirectoryForUser  { get;   }
+    ITeamFoundationIdentity AuthorizedIdentity  { get;   }
+    ITeamFoundationIdentity AuthenticatedIdentity  { get;   }
+    Boolean HasAuthenticated  { get;   }
   }
 }

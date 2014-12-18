@@ -20,7 +20,7 @@ namespace DynCon.OSI.VSO.ReSTClient
         /// <returns>List&lt;T&gt;.</returns>
         public static List<T> JArrayToObjects<T>(JArray array, Func<JToken, T> creator)
         {
-            var list = new List<T>();
+            List<T> list = new List<T>();
             foreach (JToken entry in array)
             {
                 T instance = creator(entry);
@@ -63,27 +63,33 @@ namespace DynCon.OSI.VSO.ReSTClient
         /// <returns>IList&lt;T&gt;.</returns>
         internal static IReadOnlyList<T> ValuesToObjects<T>(JObject jObject, Func<JToken, T> creator)
         {
-            var list = new List<T>();
+            List<T> list = new List<T>();
             foreach (KeyValuePair<string, JToken> item in jObject)
             {
                 if (item.Key == "value")
                 {
-                    var array = (JArray) item.Value;
+                    JArray array = (JArray) item.Value;
                     list.AddRange(JArrayToObjects(array, creator));
                 }
             }
             return list;
         }
 
+        internal class QueryResult<T>
+        {
+            public List<T> Items;
+            public DateTime TimeStamp;
+        }
         /// <summary>
         ///     Wiqls the query parse.
         /// </summary>
         /// <param name="jObject">The j object.</param>
         /// <param name="func"></param>
         /// <returns>List&lt;JsonWorkItem&gt;.</returns>
-        internal static List<T> WiqlQueryParse<T>(JObject jObject, Func<JToken, T> func) where T : JsonWorkItem
+        internal static QueryResult<T> WiqlQueryParse<T>(JObject jObject, Func<JToken, T> func) where T : JsonWorkItem
         {
-            var workitems = new List<T>();
+            QueryResult<T> retVal = new QueryResult<T>();
+            retVal.Items = new List<T>();
             foreach (KeyValuePair<string, JToken> item in jObject)
             {
                 switch (item.Key)
@@ -91,10 +97,14 @@ namespace DynCon.OSI.VSO.ReSTClient
                     case "queryType":
                         break;
                     case "asOf":
-                        break;
+                        String raw = item.Value.Value<String>();
+                        DateTime timeStamp = item.Value.Value<DateTime>();
+                        retVal.TimeStamp = timeStamp;
+                        string roundTrip = retVal.TimeStamp.ToString("o");
+                         break;
                     case "columns":
                     {
-                        var array = (JArray) item.Value;
+                        JArray array = (JArray) item.Value;
                         //    foreach (JProperty property in array[0])
                         //    {
                         //        int x = 1;
@@ -103,17 +113,17 @@ namespace DynCon.OSI.VSO.ReSTClient
                         break;
                     case "workItems":
                     {
-                        var array = (JArray) item.Value;
+                        JArray array = (JArray) item.Value;
                         foreach (JToken workItemInfo in array)
                         {
                             T workItem = func(workItemInfo);
-                            workitems.Add(workItem);
+                            retVal.Items.Add(workItem);
                         }
                     }
                         break;
                 }
             }
-            return workitems;
+            return retVal;
         }
     }
 }

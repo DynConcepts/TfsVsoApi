@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using Newtonsoft.Json.Linq;
 
@@ -23,7 +24,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
             JsonLink instance;
             if (relationType.IsWorkItemLink)
             {
-                instance = new JsonWorkItemLink(content);
+                instance = JsonRelatedLink.FromToken(content);
             }
             else if (relationType.Name == "AttachedFile")
             {

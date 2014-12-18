@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.APIs
@@ -19,44 +22,75 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// </summary>
         /// <param name="projectNanme">The project nanme.</param>
         /// <param name="workItemTypeName">Name of the work item type.</param>
-        /// <param name="headings">The headings.</param>
-        /// <param name="data">The data.</param>
+        /// <param name="fieldValues">The field values.</param>
         /// <returns>JsonWorkItem.</returns>
-        public JsonWorkItem BuildWorkItem(string projectNanme, string workItemTypeName, IReadOnlyList<string> headings, IReadOnlyList<object> data)
+        public JsonWorkItem BuildWorkItem(string projectNanme, string workItemTypeName, IReadOnlyList<KeyValuePair<string, object>> fieldValues) { return BuildWorkItem(projectNanme, workItemTypeName, fieldValues, JsonWorkItem.FromToken); }
+
+        public TWorkItem BuildWorkItem<TWorkItem>(string projectNanme, string workItemTypeName, IReadOnlyList<KeyValuePair<string, object>> fieldValues, Func<JToken, TWorkItem> fromToken) where TWorkItem : JsonWorkItem
         {
             Task<IReadOnlyDictionary<string, JsonWorkItemType>> workItemTypes = JsonWorkItem.APIFactory().GetWorkItemTypes(projectNanme);
             JsonWorkItemType workItemType = workItemTypes.Result[workItemTypeName];
             JsonFieldDefinitionCollection definitions = workItemType.FieldDefinitions;
             var json = new JObject();
+            json.Add(new JProperty("id", "-1"));
+            json.Add(new JProperty("rev", "-1"));
+            json.Add(new JProperty("url", "http://example.com"));
             var jFieldContainer = new JObject();
-            var jProperty = new JProperty("fields", jFieldContainer);
+            var jFieldsProperty = new JProperty("fields", jFieldContainer);
             foreach (JsonFieldDefinition fieldDefinition in definitions)
             {
-                jFieldContainer.Add(new JProperty(fieldDefinition.ReferenceName, null));
+                object content = null;
+                switch (fieldDefinition.ReferenceName)
+                {
+                    case "System.TeamProject":
+                        content = projectNanme;
+                        break;
+                    case "System.WorkItemType":
+                        content = workItemTypeName;
+                        break;
+                    case "System.Id":
+                        content = -1;
+                        break;
+                    case "System.Rev":
+                        content = -1;
+                        break;
+                }
+                var jProperty = new JProperty(fieldDefinition.ReferenceName, content);
+                jFieldContainer.Add(jProperty);
             }
-            json.Add(jProperty);
-            var retVal = JsonWorkItem.FromToken(json);
-            for (int index = 0; index < headings.Count; ++index)
-                retVal.SetFieldValue(headings[index], data[index]);
+            json.Add(jFieldsProperty);
+            TWorkItem retVal = fromToken(json);
+            foreach (KeyValuePair<string, object> field in fieldValues)
+                retVal.SetFieldValue(field.Key, field.Value);
             return retVal;
         }
 
         /// <summary>
-        ///     Creates the work item.
+        /// Creates the work item.
         /// </summary>
         /// <param name="project">The project.</param>
+        /// <param name="workItemType">Type of the work item.</param>
         /// <param name="workItem">The work item.</param>
+        /// <param name="inPlaceUpdate">if set to <c>true</c> [in place update].</param>
         /// <returns>Task&lt;JsonWorkItem&gt;.</returns>
-        public async Task<JsonWorkItem> CreateWorkItem(string project, JsonWorkItem workItem)
+        public async Task<JsonWorkItem> CreateWorkItem(string project, string workItemType, JsonWorkItem workItem, bool inPlaceUpdate)
         {
-            string request = String.Format("/wit/workitems/${0}", workItem.WorkItemTypeName.Replace(" ", "%20"));
+            string request = String.Format("/wit/workitems/${0}", workItemType.Replace(" ", "%20"));
 
             JArray elements = JsonWorkItem.FieldsToJArray(workItem);
             string body = ToJsonString(elements);
             JsonWorkItem result = await ProcessProjectPatchRequest(project, request, body, jObject =>
             {
-                var newWorkItem = JsonWorkItem.FromToken(jObject);
-                return newWorkItem;
+                if (inPlaceUpdate)
+                {
+                    workItem.CaptureJson(jObject);
+                    return workItem;
+                }
+                else
+                {
+                    JsonWorkItem newWorkItem = JsonWorkItem.FromToken(jObject);
+                    return newWorkItem;
+                }
             });
             return result;
         }
@@ -67,12 +101,14 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="project">The project.</param>
         /// <param name="depth">The depth.</param>
         /// <returns>Task&lt;IList&lt;IArea&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonArea>> GetAreas(string project, int depth)
+        public async Task<IReadOnlyList<JsonArea>> GetAreas(string project, int depth) { return await GetAreas(project, depth, JsonArea.FromToken); }
+
+        public async Task<IReadOnlyList<TArea>> GetAreas<TArea>(string project, int depth, Func<JObject, TArea> fromToken) where TArea : JsonArea
         {
             string request = "/wit/classificationNodes/areas?$depth=" + depth;
-            JsonArea result = await ProcessProjectGetRequest(project, request, o => JsonParsers.JObjectToInstance(o, JsonArea.FromToken));
-            var retVal = new List<JsonArea> {result};
-            AddChildren(retVal, result);
+            TArea result = await ProcessProjectGetRequest(project, request, o => JsonParsers.JObjectToInstance(o, fromToken));
+            var retVal = new List<TArea> {result};
+            AddChildAreas(retVal, result);
             return retVal;
         }
 
@@ -93,17 +129,19 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="project">The project.</param>
         /// <param name="depth">The depth.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;IIteration&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<IIteration>> GetIterations(string project, int depth)
+        public async Task<IReadOnlyList<IIteration>> GetIterations(string project, int depth) { return await GetIterations(project, depth, JsonIteration.FromToken); }
+
+        public async Task<IReadOnlyList<TIteration>> GetIterations<TIteration>(string project, int depth, Func<JObject, TIteration> fromToken) where TIteration : JsonIteration
         {
             string request = "/wit/classificationNodes/iterations?$depth=" + depth;
-            IIteration result = await ProcessProjectGetRequest(project, request, o => JsonParsers.JObjectToInstance(o, JsonIteration.FromToken));
-            var retVal = new List<IIteration> {result};
-            AddChildren(retVal, result);
+            TIteration result = await ProcessProjectGetRequest(project, request, o => JsonParsers.JObjectToInstance(o, fromToken));
+            var retVal = new List<TIteration> {result};
+            AddChildIterations(retVal, result);
             return retVal;
         }
 
         /// <summary>
-        /// Gets the links for work item.
+        ///     Gets the links for work item.
         /// </summary>
         /// <typeparam name="TLinkCollection">The type of the t link collection.</typeparam>
         /// <param name="id">The identifier.</param>
@@ -114,7 +152,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
             where TLinkCollection : JsonLinkCollection
         {
             string request = String.Format("/wit/workitems/{0}/revisions/{1}/?$expand=relations", id, rev);
-            var result = await ProcessCollectionGetRequest(request, o =>
+            TLinkCollection result = await ProcessCollectionGetRequest(request, o =>
             {
                 JProperty rootToken = o.Properties().FirstOrDefault(p => p.Name == "relations");
                 JArray values;
@@ -126,14 +164,13 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
                 {
                     values = new JArray();
                 }
-                var collection = JsonParsers.JArrayToInstance(values, fromToken);
+                TLinkCollection collection = JsonParsers.JArrayToInstance(values, fromToken);
                 return collection;
             });
             return result;
         }
 
         public async Task<JsonLinkCollection> GetLinksForWorkItem(JsonWorkItem workItem) { return await GetLinksForWorkItem(workItem.Id, workItem.Rev, JsonLinkCollection.FromToken); }
-        internal async Task<LinkCollectionImpl> GetLinksForWorkItem(WorkItemImpl workItem) { return await GetLinksForWorkItem(workItem.Id, workItem.Rev, LinkCollectionImpl.FromToken); }
 
         /// <summary>
         ///     Gets the relation types.
@@ -152,8 +189,8 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="uri">The URI.</param>
         /// <returns>JsonWorkItem.</returns>
         public JsonWorkItem GetWorkItem(Uri uri) { return ProcessGetRequest(uri, JsonWorkItem.FromToken).Result; }
-        public T GetWorkItem<T>(Uri uri, Func<JObject, T> fromToken) where T:JsonWorkItem { return ProcessGetRequest(uri, fromToken).Result; }
 
+        public T GetWorkItem<T>(Uri uri, Func<JObject, T> fromToken) where T : JsonWorkItem { return ProcessGetRequest(uri, fromToken).Result; }
 
 
         /// <summary>
@@ -173,11 +210,20 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// </summary>
         /// <param name="project">The project.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonWorkItemType&gt;&gt;.</returns>
-        public async Task<IReadOnlyDictionary<string, JsonWorkItemType>> GetWorkItemTypes(string project)
+        public async Task<IReadOnlyDictionary<string, JsonWorkItemType>> GetWorkItemTypes(string project) { return await GetWorkItemTypes(project, JsonWorkItemType.FromToken); }
+
+        /// <summary>
+        ///     Gets the work item types.
+        /// </summary>
+        /// <typeparam name="TWorkItemType">The type of the t work item type.</typeparam>
+        /// <param name="project">The project.</param>
+        /// <param name="fromToken">From token.</param>
+        /// <returns>Task&lt;IReadOnlyDictionary&lt;System.String, TWorkItemType&gt;&gt;.</returns>
+        public async Task<IReadOnlyDictionary<string, TWorkItemType>> GetWorkItemTypes<TWorkItemType>(string project, Func<JToken, TWorkItemType> fromToken) where TWorkItemType : JsonWorkItemType
         {
             const string request = "/wit/workitemtypes";
-            IReadOnlyList<JsonWorkItemType> result = await ProcessProjectGetRequest(project, request, o => JsonParsers.ValuesToObjects(o, JsonWorkItemType.FromToken));
-            return (IReadOnlyDictionary<string, JsonWorkItemType>) result.ToDictionary(entry => entry.Name);
+            IReadOnlyList<TWorkItemType> result = await ProcessProjectGetRequest(project, request, o => JsonParsers.ValuesToObjects(o, fromToken));
+            return (IReadOnlyDictionary<string, TWorkItemType>) result.ToDictionary(entry => entry.Name);
         }
 
         /// <summary>
@@ -185,47 +231,26 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// </summary>
         /// <param name="ids">The ids.</param>
         /// <returns>Task&lt;IList&lt;JsonWorkItem&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonWorkItem>> GetWorkItems(IEnumerable<int> ids)
-        {
-            IReadOnlyList<JsonWorkItem> result = await JsonWorkItemsLoader(ids, JsonWorkItem.FromToken);
-            return result;
-        }
-
-        internal async Task<T> GetWorkItem<T>(int id, Func<JToken, T> func) where T : JsonWorkItem
-        {
-            IReadOnlyList<T> result = await JsonWorkItemsLoader(new[] {id}, func);
-            return result[0];
-        }
-
-        internal async Task<IReadOnlyList<T>> GetWorkItemRevisions<T>(int id, Func<JToken, T> func)
-        {
-            string request = String.Format("/wit/workitems/{0}/revisions", id);
-            IReadOnlyList<T> result = await ProcessCollectionGetRequest(request, o => JsonParsers.ValuesToObjects(o, func));
-            return result;
-        }
-        internal async Task<IReadOnlyList<JsonWorkItemRevision>> GetWorkItemRevisions(int id)
-        {
-             return await GetWorkItemRevisions(id, JsonWorkItemRevision.FromToken);
-        }
+        public async Task<IReadOnlyList<JsonWorkItem>> GetWorkItems(IEnumerable<int> ids) { return await GetWorkItems(ids, JsonWorkItem.FromToken); }
 
 
-        public async Task<IReadOnlyList<T>> WiqlQuery<T>(string wiql, bool fullyPopulate, Func<JToken, T> mapper) where T : JsonWorkItem
+        public async Task<IReadOnlyList<T>> WiqlQuery<T>(string wiql, bool fullyPopulate, Func<JToken, T> fromToken) where T : JsonWorkItem
         {
             const string request = "/wit/wiql";
             const string format = " \"query\": \"{0}\" ";
             string body = "{" + String.Format(format, wiql) + "}";
-            IReadOnlyList<T> result = await ProcessCollectionPostRequest(request, body, (o) => JsonParsers.WiqlQueryParse(o, mapper));
+            JsonParsers.QueryResult<T> result = await ProcessCollectionPostRequest(request, body, o => JsonParsers.WiqlQueryParse(o, fromToken));
 
             var retVal = new List<T>();
             if (fullyPopulate)
             {
-                List<int> ids = result.Select(workItem => workItem.Id).ToList();
-                Task<IReadOnlyList<T>> populated = JsonWorkItemsLoader(ids, mapper);
+                List<int> ids = result.Items.Select(workItem => workItem.Id).ToList();
+                Task<IReadOnlyList<T>> populated = JsonWorkItemsLoader(ids, result.TimeStamp, fromToken);
                 retVal.AddRange(populated.Result);
             }
             else
             {
-                foreach (var item in result)
+                foreach (T item in result.Items)
                     retVal.Add(item);
             }
             return retVal;
@@ -239,27 +264,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <returns>Task&lt;IList&lt;JsonWorkItem&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonWorkItem>> WiqlQuery(string wiql, bool fullyPopulate) { return await WiqlQuery(wiql, fullyPopulate, JsonWorkItem.FromToken); }
 
-        //public async Task<IReadOnlyList<JsonWorkItem>> WiqlQuery(string project, string wiql, bool fullyPopulate)
-        //{
-        //    const string request = "/wit/wiql";
-        //    const string format = " \"query\": \"{0}\" ";
-        //    string body = "{" + String.Format(format, wiql) + "}";
-        //    IReadOnlyList<JsonWorkItem> result = await ProcessProjectPostRequest(project, request, body, JsonParsers.WiqlQueryParse);
-
-        //    var retVal = new List<JsonWorkItem>();
-        //    if (fullyPopulate)
-        //    {
-        //        List<int> ids = result.Select(workItem => workItem.Id).ToList();
-        //        Task<IReadOnlyList<JsonWorkItem>> populated = JsonWorkItemsLoader(ids);
-        //        retVal.AddRange(populated.Result);
-        //    }
-        //    else
-        //    {
-        //        retVal.AddRange(result);
-        //    }
-        //    return retVal;
-        //}
-
+   
         /// <summary>
         ///     Initializes static members of the <see cref="JsonWorkItemAPI" /> class.
         /// </summary>
@@ -270,12 +275,12 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// </summary>
         /// <param name="retVal">The ret value.</param>
         /// <param name="result">The result.</param>
-        private static void AddChildren(List<JsonArea> retVal, JsonArea result)
+        private static void AddChildAreas<TArea>(List<TArea> retVal, TArea result) where TArea : JsonArea
         {
-            foreach (JsonArea child in result.Children)
+            foreach (TArea child in result.Children)
             {
                 retVal.Add(child);
-                AddChildren(retVal, child);
+                AddChildAreas(retVal, child);
             }
         }
 
@@ -284,13 +289,44 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// </summary>
         /// <param name="retVal">The ret value.</param>
         /// <param name="result">The result.</param>
-        private static void AddChildren(List<IIteration> retVal, IIteration result)
+        private static void AddChildIterations<TIteration>(List<TIteration> retVal, TIteration result) where TIteration : JsonIteration
         {
-            foreach (IIteration child in result.Children)
+            foreach (TIteration child in result.Children)
             {
                 retVal.Add(child);
-                AddChildren(retVal, child);
+                AddChildIterations(retVal, child);
             }
+        }
+
+        internal async Task<LinkCollectionImpl> GetLinksForWorkItem(WorkItemImpl workItem) { return await GetLinksForWorkItem(workItem.Id, workItem.Rev, LinkCollectionImpl.FromToken); }
+
+        internal async Task<T> GetWorkItem<T>(int id, Func<JToken, T> func) where T : JsonWorkItem
+        {
+            IReadOnlyList<T> result = await JsonWorkItemsLoader(new[] {id}, func);
+            return result[0];
+        }
+
+        internal async Task<IReadOnlyList<T>> GetWorkItemRevisions<T>(int id, Func<JToken, T> func)
+        {
+            string request = String.Format("/wit/workitems/{0}/revisions", id);
+            IReadOnlyList<T> result = await ProcessCollectionGetRequest(request, o => JsonParsers.ValuesToObjects(o, func));
+            return result;
+        }
+
+        internal async Task<IReadOnlyList<JsonWorkItemRevision>> GetWorkItemRevisions(int id) { return await GetWorkItemRevisions(id, JsonWorkItemRevision.FromToken); }
+
+        internal async Task<IReadOnlyList<T>> GetWorkItems<T>(IEnumerable<int> ids, Func<JToken, T> func) where T : JsonWorkItem
+        {
+            IReadOnlyList<T> result = await JsonWorkItemsLoader(ids, func);
+            return result;
+        }
+
+        private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids, DateTime timeStamp, Func<JToken, T> func) where T : JsonWorkItem
+        {
+            string request = String.Format("/wit/workitems?ids={0}&fields=System.Title&asOf={1}",ToCommaList(ids),timeStamp.ToString("o"));
+
+            IReadOnlyList<T> result = await ProcessCollectionGetRequest(request, o => JsonParsers.ValuesToObjects(o, func));
+            return result;
         }
 
         /// <summary>
@@ -308,5 +344,53 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
             return result;
         }
 
+        public async Task<JsonWorkItem> UpdateWorkItem(string project, JsonWorkItem workItem)
+        {
+            string request = String.Format("/wit/workitems/{0}/", workItem.Id);
+
+            JArray elements = JsonWorkItem.FieldsToJArray(workItem);
+            string body = ToJsonString(elements);
+            JsonWorkItem result = await ProcessProjectPatchRequest(project, request, body, jObject =>
+            {
+                JsonWorkItem newWorkItem = JsonWorkItem.FromToken(jObject);
+                return newWorkItem;
+            });
+            return result;
+        }
+
+        public async Task<IReadOnlyList<JsonQueryBase>> GetQueries(string project)
+        {
+            const string request = "/wit/queries/?$depth=1";
+            IReadOnlyList<JsonQueryBase> results = await ProcessProjectGetRequest(project, request, o => JsonParsers.ValuesToObjects(o, JsonQueryBase.FromToken));
+            var all = new List<JsonQueryBase>();
+            foreach (var item in results)
+            {
+                var asFolder = item as JsonQueryFolder;
+                if (asFolder != null)
+                {
+                    foreach (var child in asFolder.Children)
+                    {
+                        if (child.IsFolder)
+                             await GetChildQueries(project, child as JsonQueryFolder);
+                    }
+                }
+            }
+            return results;
+        }
+
+        public async Task<IReadOnlyList<JsonQueryBase>> GetChildQueries(string project, JsonQueryFolder parent)
+        {
+            string request = String.Format("/wit/queries/{0}?$depth=1", parent.Path);
+            var result =(JsonQueryFolder) await ProcessProjectGetRequest(project, request, JsonQueryBase.FromToken);
+            foreach (var child in result.Children)
+            {
+                parent.AddChild(child);
+                if (child.IsFolder /* && item.HasChildren*/)
+                {
+                    await GetChildQueries(project, child as JsonQueryFolder);
+                }
+            }
+            return parent.Children;
+        }
     }
 }

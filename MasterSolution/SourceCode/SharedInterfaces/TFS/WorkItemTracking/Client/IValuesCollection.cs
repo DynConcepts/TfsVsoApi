@@ -1,9 +1,12 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IValuesCollection : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IReadOnlyList
+  public interface IValuesCollection : IReadOnlyList
   {
-    System.Boolean Contains( System.String value);
-    System.Int32 IndexOf( System.String value);
-    System.String this[System.Int32 index] { get;   }
+    Boolean Contains( String value);
+    Int32 IndexOf( String value);
+    String this[Int32 index] { get;   }
   }
 }

@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class ITfsTeamProjectCollectionObjectWrapper : ITfsTeamProjectCollectionObjectWrapper<IITfsTeamProjectCollectionObject, ITfsTeamProjectCollectionObject>, IITfsTeamProjectCollectionObject
     {
         protected ITfsTeamProjectCollectionObjectWrapper(ITfsTeamProjectCollectionObject instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsTeamProjectCollectionObject, ITfsTeamProjectCollectionObject>(src => ((ITfsTeamProjectCollectionObjectWrapper) src).r_Instance, src => new ITfsTeamProjectCollectionObjectWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsTeamProjectCollectionObject, ITfsTeamProjectCollectionObject>(src => src==null ? null : ((ITfsTeamProjectCollectionObjectWrapper) src).r_Instance, src => new ITfsTeamProjectCollectionObjectWrapper(src)); }
     }
 
 

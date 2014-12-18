@@ -1,33 +1,37 @@
+using System;
+using System.Collections.Generic;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IQuery
   {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd[] GetLinkTypes();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemCollection RunQuery();
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRevision> RunRevisionQuery();
-    System.Int32[] RunRegularQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkInfo[] RunLinkQuery();
-    System.Int32 RunCountQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginQuery( System.AsyncCallback callBack);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginRegularQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginRegularQuery( System.AsyncCallback callback);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginLinkQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginLinkQuery( System.AsyncCallback callback);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginCountOnlyQuery();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult BeginCountOnlyQuery( System.AsyncCallback callBack);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemCollection EndQuery( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult car);
-    System.Int32[] EndRegularQuery( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult car);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkInfo[] EndLinkQuery( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult car);
-    System.Int32 EndCountOnlyQuery( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult car);
-    System.Boolean IsBatchReadMode  { get;   }
-    System.Boolean IsLinkQuery  { get;   }
-    System.Boolean IsTreeQuery  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemStore WorkItemStore  { get;   }
-    System.DateTime AsOfUTC  { get;   }
-    System.DateTime AsOf  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IDisplayFieldList DisplayFieldList  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.ISortFieldList SortFieldList  { get;   }
-    System.String QueryString  { get;   }
+    IWorkItemLinkTypeEnd[] GetLinkTypes();
+    IWorkItemCollection RunQuery();
+    IEnumerable<IRevision> RunRevisionQuery();
+    Int32[] RunRegularQuery();
+    IWorkItemLinkInfo[] RunLinkQuery();
+    Int32 RunCountQuery();
+    IICancelableAsyncResult BeginQuery();
+    IICancelableAsyncResult BeginQuery( AsyncCallback callBack);
+    IICancelableAsyncResult BeginRegularQuery();
+    IICancelableAsyncResult BeginRegularQuery( AsyncCallback callback);
+    IICancelableAsyncResult BeginLinkQuery();
+    IICancelableAsyncResult BeginLinkQuery( AsyncCallback callback);
+    IICancelableAsyncResult BeginCountOnlyQuery();
+    IICancelableAsyncResult BeginCountOnlyQuery( AsyncCallback callBack);
+    IWorkItemCollection EndQuery( IICancelableAsyncResult car);
+    Int32[] EndRegularQuery( IICancelableAsyncResult car);
+    IWorkItemLinkInfo[] EndLinkQuery( IICancelableAsyncResult car);
+    Int32 EndCountOnlyQuery( IICancelableAsyncResult car);
+    Boolean IsBatchReadMode  { get;   }
+    Boolean IsLinkQuery  { get;   }
+    Boolean IsTreeQuery  { get;   }
+    IWorkItemStore WorkItemStore  { get;   }
+    DateTime AsOfUTC  { get;   }
+    DateTime AsOf  { get;   }
+    IDisplayFieldList DisplayFieldList  { get;   }
+    ISortFieldList SortFieldList  { get;   }
+    String QueryString  { get;   }
   }
 }

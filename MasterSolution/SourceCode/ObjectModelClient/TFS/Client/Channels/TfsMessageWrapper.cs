@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class TfsMessageWrapper : TfsMessageWrapper<ITfsMessage, TfsMessage>, ITfsMessage
     {
         protected TfsMessageWrapper(TfsMessage instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsMessage, TfsMessage>(src => ((TfsMessageWrapper) src).r_Instance, src => new TfsMessageWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsMessage, TfsMessage>(src => src==null ? null : ((TfsMessageWrapper) src).r_Instance, src => new TfsMessageWrapper(src)); }
     }
 
 

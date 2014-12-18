@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class ILocationServiceWrapper : ILocationServiceWrapper<IILocationService, ILocationService>, IILocationService
     {
         protected ILocationServiceWrapper(ILocationService instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IILocationService, ILocationService>(src => ((ILocationServiceWrapper) src).r_Instance, src => new ILocationServiceWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IILocationService, ILocationService>(src => src==null ? null : ((ILocationServiceWrapper) src).r_Instance, src => new ILocationServiceWrapper(src)); }
     }
 
 

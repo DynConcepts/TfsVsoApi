@@ -1,15 +1,19 @@
+using System;
+using System.Xml;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IWorkItemTypeCollection : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IReadOnlyList
+  public interface IWorkItemTypeCollection : IReadOnlyList
   {
-    void Import( System.String definition);
-    void Import( System.Xml.XmlElement definitionElement);
-    void Import( System.String definition, System.String methodologyName);
-    void Import( System.Xml.XmlElement definitionElement, System.String methodologyName);
-    System.Boolean Contains( System.String typeName);
-    System.Int32 IndexOf( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemType value);
-    System.Boolean Contains( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemType value);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemType this[System.Int32 index] { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemType this[System.String typeName] { get;   }
+    void Import( String definition);
+    void Import( XmlElement definitionElement);
+    void Import( String definition, String methodologyName);
+    void Import( XmlElement definitionElement, String methodologyName);
+    Boolean Contains( String typeName);
+    Int32 IndexOf( IWorkItemType value);
+    Boolean Contains( IWorkItemType value);
+    IWorkItemType this[Int32 index] { get;   }
+    IWorkItemType this[String typeName] { get;   }
   }
 }

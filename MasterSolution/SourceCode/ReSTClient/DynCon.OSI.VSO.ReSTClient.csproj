@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\WIT\JsonQueryBase.cs" />
+    <Compile Include="APIs\ProjectsAPI.cs" />
+    <Compile Include="APIs\WorkItemAPI.cs" />
     <Compile Include="Objects\WIT\JsonExternalLink.cs" />
     <Compile Include="Objects\WIT\JsonHyperlink.cs" />
     <Compile Include="Objects\WIT\JsonRelatedLink.cs" />
@@ -69,8 +72,8 @@
     <Compile Include="Objects\Base\JsonListBase.cs" />
     <Compile Include="Objects\Base\JsonReadOnlyListBase.cs" />
     <Compile Include="Objects\WIT\JsonField.cs" />
-    <Compile Include="Objects\WIT\JsonFieldCollection.cs" />
-    <Compile Include="Objects\WIT\JsonFieldDefinitionCollection.cs" />
+    <Compile Include="Objects\WIT\Collections\JsonFieldCollection.cs" />
+    <Compile Include="Objects\WIT\Collections\JsonFieldDefinitionCollection.cs" />
     <Compile Include="Objects\WIT\JsonIteration.cs" />
     <Compile Include="Objects\WIT\JsonLink.cs" />
     <Compile Include="Objects\WIT\JsonRelationType.cs" />
@@ -78,8 +81,8 @@
     <Compile Include="Objects\WIT\JsonWorkItem.cs" />
     <Compile Include="Objects\WIT\JsonFieldDefinition.cs" />
     <Compile Include="Objects\WIT\JsonWorkItemLink.cs" />
-    <Compile Include="Objects\WIT\JsonLinkCollection.cs" />
-    <Compile Include="Objects\WIT\JsonWorkItemLinkCollection.cs" />
+    <Compile Include="Objects\WIT\Collections\JsonLinkCollection.cs" />
+    <Compile Include="Objects\WIT\Collections\JsonWorkItemLinkCollection.cs" />
     <Compile Include="Objects\WIT\JsonWorkItemType.cs" />
     <Compile Include="Objects\WIT\JsonWorkItemTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,8 +113,8 @@
     <Compile Include="TFS\Client\TfsConfigurationServerImpl.cs" />
     <Compile Include="TFS\Client\TfsConnectionImpl.cs" />
     <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl.cs" />
-    <Compile Include="Objects\WIT\ILinkImpl.cs" />
-    <Compile Include="ToBeImplementedException.cs" />
+    <Compile Include="Helpers\ILinkImpl.cs" />
+    <Compile Include="Objects\JsonProject.cs" />
     <Compile Include="TFS\Client\WindowsCredentialImpl.cs" />
     <Compile Include="TFS\Framework\Client\AccessControlEntryImpl.cs" />
     <Compile Include="TFS\Framework\Client\AccessControlListImpl.cs" />

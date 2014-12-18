@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemEventArgsWrapper : WorkItemEventArgsWrapper<IWorkItemEventArgs, WorkItemEventArgs>, IWorkItemEventArgs
     {
         protected WorkItemEventArgsWrapper(WorkItemEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemEventArgs, WorkItemEventArgs>(src => ((WorkItemEventArgsWrapper) src).r_Instance, src => new WorkItemEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemEventArgs, WorkItemEventArgs>(src => src==null ? null : ((WorkItemEventArgsWrapper) src).r_Instance, src => new WorkItemEventArgsWrapper(src)); }
     }
 
 

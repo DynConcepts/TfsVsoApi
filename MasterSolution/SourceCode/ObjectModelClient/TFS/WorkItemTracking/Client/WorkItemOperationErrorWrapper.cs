@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemOperationErrorWrapper : WorkItemOperationErrorWrapper<IWorkItemOperationError, WorkItemOperationError>, IWorkItemOperationError
     {
         protected WorkItemOperationErrorWrapper(WorkItemOperationError instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemOperationError, WorkItemOperationError>(src => ((WorkItemOperationErrorWrapper) src).r_Instance, src => new WorkItemOperationErrorWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemOperationError, WorkItemOperationError>(src => src==null ? null : ((WorkItemOperationErrorWrapper) src).r_Instance, src => new WorkItemOperationErrorWrapper(src)); }
     }
 
 

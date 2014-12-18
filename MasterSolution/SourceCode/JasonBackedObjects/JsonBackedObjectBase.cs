@@ -21,6 +21,11 @@ namespace DynCon.OSI.JasonBackedObjects
         public void SetValue<T>(JsonBackedDataBase jsonBackedField, T value) { r_Cache[jsonBackedField] = value; }
 
         /// <summary>
+        /// Clears the cache.
+        /// </summary>
+        protected void ClearCache() { r_Cache.Clear(); }
+
+        /// <summary>
         ///     To the j son string.
         /// </summary>
         /// <returns>System.String.</returns>
@@ -88,5 +93,7 @@ namespace DynCon.OSI.JasonBackedObjects
         ///     The _json
         /// </summary>
         private JToken m_Json;
+
+        public virtual void CaptureJson(JToken token) { m_Json = token; }
     }
 }

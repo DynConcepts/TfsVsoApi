@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class AceExtendedInformationWrapper : AceExtendedInformationWrapper<IAceExtendedInformation, AceExtendedInformation>, IAceExtendedInformation
     {
         protected AceExtendedInformationWrapper(AceExtendedInformation instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAceExtendedInformation, AceExtendedInformation>(src => ((AceExtendedInformationWrapper) src).r_Instance, src => new AceExtendedInformationWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAceExtendedInformation, AceExtendedInformation>(src => src==null ? null : ((AceExtendedInformationWrapper) src).r_Instance, src => new AceExtendedInformationWrapper(src)); }
     }
 
 

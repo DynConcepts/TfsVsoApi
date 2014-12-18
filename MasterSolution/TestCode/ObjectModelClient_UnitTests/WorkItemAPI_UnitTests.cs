@@ -22,9 +22,14 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
         public void BuildWorkItem_UnitTest()
         {
             IWorkItemAPI api = APIFactory.WorkItemAPI;
-            IReadOnlyList<string> headings = new List<string> {"System.Title", "System.Project", "System.WorkItemType"};
-            IReadOnlyList<object> data = new List<object> {"Sample Title", "RestPlaypen", "Task"};
-            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
+            var fieldValues = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("System.Title", "Sample Title")
+                //new KeyValuePair<string, object>("System.Project", "RestPlaypen"),
+                //new KeyValuePair<string, object>("System.WorkItemType", "Task")
+
+            };
+            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", fieldValues);
             Assert.IsNotNull(workItem);
         }
 
@@ -36,9 +41,13 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
         {
             IWorkItemAPI api = APIFactory.WorkItemAPI;
 
-            IReadOnlyList<string> headings = new List<string> {"System.Title", "System.Project", "System.WorkItemType"};
-            IReadOnlyList<object> data = new List<object> {"Sample Title", "RestPlaypen", "Task"};
-            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", headings, data);
+            var fieldValues = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("System.Title", "Sample Title")
+                //new KeyValuePair<string, object>("System.Project", "RestPlaypen"),
+                //new KeyValuePair<string, object>("System.WorkItemType", "Task")
+            };
+            IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", fieldValues);
             const string project = "RestPlaypen";
             Task<IWorkItem> createTask = api.CreateWorkItem(project, workItem);
             IWorkItem finalResult = createTask.Result;

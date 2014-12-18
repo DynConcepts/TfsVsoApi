@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class FieldFilterWrapper : FieldFilterWrapper<IFieldFilter, FieldFilter>, IFieldFilter
     {
         protected FieldFilterWrapper(FieldFilter instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldFilter, FieldFilter>(src => ((FieldFilterWrapper) src).r_Instance, src => new FieldFilterWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldFilter, FieldFilter>(src => src==null ? null : ((FieldFilterWrapper) src).r_Instance, src => new FieldFilterWrapper(src)); }
     }
 
 

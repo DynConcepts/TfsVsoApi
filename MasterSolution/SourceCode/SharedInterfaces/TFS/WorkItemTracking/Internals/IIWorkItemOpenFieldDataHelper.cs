@@ -1,10 +1,13 @@
+using System;
+using System.Collections.Generic;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals
 {
   public interface IIWorkItemOpenFieldDataHelper
   {
-    void SetLatestData( System.Collections.Generic.Dictionary<System.Int32,System.Object> latestData);
-    void SetRevisionData( System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>> revisionData);
-    System.Int32 GetFieldId( System.String fieldName);
-    System.Boolean HasField( System.Int32 fieldId);
+    void SetLatestData( Dictionary<Int32,Object> latestData);
+    void SetRevisionData( List<Dictionary<Int32,Object>> revisionData);
+    Int32 GetFieldId( String fieldName);
+    Boolean HasField( Int32 fieldId);
   }
 }

@@ -1,37 +1,40 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.DataStore;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IFieldDefinition
   {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IAllowedValuesCollection FilteredAllowedValues( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilterList filters);
-    System.String Name  { get;   }
-    System.String ReferenceName  { get;   }
-    System.Int32 Id  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldUsages Usage  { get;   }
-    System.Boolean IsIndexed  { get;   }
-    System.Boolean IsCoreField  { get;   }
-    System.Boolean IsEditable  { get;   }
-    System.Boolean IsComputed  { get;   }
-    System.Boolean IsUserNameField  { get;   }
-    System.String HelpText  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldType FieldType  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IReportingAttributes ReportingAttributes  { get;   }
-    System.Type SystemType  { get;   }
-    System.Boolean IsQueryable  { get;   }
-    System.Boolean CanSortBy  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.DataStore.IPsFieldDefinitionTypeEnum PsFieldType  { get;   }
-    System.Boolean IsLongText  { get;   }
-    System.Boolean SupportsTextQuery  { get;   }
-    System.Boolean IsCloneable  { get;   }
-    System.Boolean IsInternal  { get;   }
-    System.Int32 PsReportingType  { get;   }
-    System.Int32 PsReportingFormula  { get;   }
-    System.Boolean IsReportable  { get;   }
-    System.String ReportingName  { get;   }
-    System.String ReportingReferenceName  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IAllowedValuesCollection AllowedValues  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IValuesCollection ProhibitedValues  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemStore WorkItemStore  { get;   }
-    System.Boolean IsUsedInWorkItemType  { get;   }
-    System.Boolean IsUsedInGlobalWorkflow  { get;   }
+    IAllowedValuesCollection FilteredAllowedValues( IFieldFilterList filters);
+    String Name  { get;   }
+    String ReferenceName  { get;   }
+    Int32 Id  { get;   }
+    IFieldUsages Usage  { get;   }
+    Boolean IsIndexed  { get;   }
+    Boolean IsCoreField  { get;   }
+    Boolean IsEditable  { get;   }
+    Boolean IsComputed  { get;   }
+    Boolean IsUserNameField  { get;   }
+    String HelpText  { get;   }
+    IFieldType FieldType  { get;   }
+    IReportingAttributes ReportingAttributes  { get;   }
+    Type SystemType  { get;   }
+    Boolean IsQueryable  { get;   }
+    Boolean CanSortBy  { get;   }
+    IPsFieldDefinitionTypeEnum PsFieldType  { get;   }
+    Boolean IsLongText  { get;   }
+    Boolean SupportsTextQuery  { get;   }
+    Boolean IsCloneable  { get;   }
+    Boolean IsInternal  { get;   }
+    Int32 PsReportingType  { get;   }
+    Int32 PsReportingFormula  { get;   }
+    Boolean IsReportable  { get;   }
+    String ReportingName  { get;   }
+    String ReportingReferenceName  { get;   }
+    IAllowedValuesCollection AllowedValues  { get;   }
+    IValuesCollection ProhibitedValues  { get;   }
+    IWorkItemStore WorkItemStore  { get;   }
+    Boolean IsUsedInWorkItemType  { get;   }
+    Boolean IsUsedInGlobalWorkflow  { get;   }
   }
 }

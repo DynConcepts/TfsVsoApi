@@ -8,7 +8,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class IRowSetWrapper : IRowSetWrapper<IIRowSet, IRowSet>, IIRowSet
     {
         protected IRowSetWrapper(IRowSet instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIRowSet, IRowSet>(src => ((IRowSetWrapper) src).r_Instance, src => new IRowSetWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIRowSet, IRowSet>(src => src==null ? null : ((IRowSetWrapper) src).r_Instance, src => new IRowSetWrapper(src)); }
     }
 
 

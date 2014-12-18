@@ -92,7 +92,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         }
 
 
-        public static bool ConsoleLogEnabled = false;
+        public static bool ConsoleLogEnabled = true;
 #pragma warning disable 1998
         /// <summary>
         ///     Processes the request stream.
@@ -113,13 +113,14 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
             var sw = new Stopwatch();
             sw.Start();
             Timing timing = new Timing();
+            Exception thrownException = null;
             UseClient(async client =>
             {
                 try
                 {
                     using (HttpResponseMessage response = client.SendAsync(request).Result)
                     {
-                        response.EnsureSuccessStatusCode();
+                        CheckForSuccess<T>(request, response);
                         Stream responseBody = await response.Content.ReadAsStreamAsync();
                         timing.NetworkTime = sw.Elapsed;
                         result = xform(responseBody);
@@ -128,6 +129,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                 }
                 catch (AggregateException ex)
                 {
+                    thrownException = ex;
                     if (ex.InnerExceptions.Count == 1)
                         throw ex.InnerException;
                     else throw;
@@ -135,14 +137,28 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
+                    thrownException = ex;
                     throw;
                 }
             });
+            if (thrownException != null)
+            {
+                throw thrownException;
+            }
             if (ConsoleLogEnabled)
             {
-                Console.WriteLine("{0}, Net:{1}, Total:{2}  Process:{3}", correlationId, timing.NetworkTime.TotalSeconds, timing.TotalTime.TotalSeconds, (timing.TotalTime - timing.NetworkTime).TotalMilliseconds);
+                Console.WriteLine("{0}, Timing -  Net:{1}mS,     Total:{2}mS       Process:{3}mS", correlationId, timing.NetworkTime.TotalMilliseconds, timing.TotalTime.TotalMilliseconds, (timing.TotalTime - timing.NetworkTime).TotalMilliseconds);
             }
             return result;
+        }
+
+        private static void CheckForSuccess<T>(HttpRequestMessage request, HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                string message = String.Format("Response Code: {0} on {1}", response.StatusCode, request.RequestUri);
+                throw new Exception(message);
+            }
         }
 
         /// <summary>

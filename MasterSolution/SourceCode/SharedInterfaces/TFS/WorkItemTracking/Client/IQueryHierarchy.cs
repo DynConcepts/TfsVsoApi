@@ -1,14 +1,16 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IQueryHierarchy : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryFolder
+  public interface IQueryHierarchy : IQueryFolder
   {
-    void Refresh( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData refreshData);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData GetRefreshData();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryItem Find( System.Guid id);
+    void Refresh( IQueryHierarchyRefreshData refreshData);
+    IQueryHierarchyRefreshData GetRefreshData();
+    IQueryItem Find( Guid id);
     void Save();
     void Reset();
     void Refresh();
-    System.Boolean SupportsFolders  { get;   }
-    System.Boolean SupportsPermissions  { get;   }
+    Boolean SupportsFolders  { get;   }
+    Boolean SupportsPermissions  { get;   }
   }
 }

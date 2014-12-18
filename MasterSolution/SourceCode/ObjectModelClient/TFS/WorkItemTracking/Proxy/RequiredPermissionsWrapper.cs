@@ -9,7 +9,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class RequiredPermissionsWrapper : RequiredPermissionsWrapper<IRequiredPermissions, RequiredPermissions>, IRequiredPermissions
     {
         protected RequiredPermissionsWrapper(RequiredPermissions instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRequiredPermissions, RequiredPermissions>(src => ((RequiredPermissionsWrapper) src).r_Instance, src => new RequiredPermissionsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRequiredPermissions, RequiredPermissions>(src => src==null ? null : ((RequiredPermissionsWrapper) src).r_Instance, src => new RequiredPermissionsWrapper(src)); }
     }
 
 

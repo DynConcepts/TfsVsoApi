@@ -1,4 +1,6 @@
 using System;
+using DynCon.OSI.Core.Helpers;
+using DynCon.OSI.VSO.ReSTClient.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -31,10 +33,10 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         {
         }
 
-        IRegisteredLinkType ILink.ArtifactLinkType { get { throw new ToBeImplementedException(); } }
+        IRegisteredLinkType ILink.ArtifactLinkType { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         IBaseLinkType ILink.BaseType { get { throw new NotSupportedException("Base Link Type does not have an Enumerated Value"); } }
-        String ILink.Comment { get { return base.Comment; } set { throw new ToBeImplementedException(); } }
-        Boolean ILink.IsLocked { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
-        Boolean ILink.IsNew { get { throw new ToBeImplementedException(); } }
+        String ILink.Comment { get { return base.Comment; } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
+        Boolean ILink.IsLocked { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
+        Boolean ILink.IsNew { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class IdentityDescriptorWrapper : IdentityDescriptorWrapper<IIdentityDescriptor, IdentityDescriptor>, IIdentityDescriptor
     {
         protected IdentityDescriptorWrapper(IdentityDescriptor instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentityDescriptor, IdentityDescriptor>(src => ((IdentityDescriptorWrapper) src).r_Instance, src => new IdentityDescriptorWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentityDescriptor, IdentityDescriptor>(src => src==null ? null : ((IdentityDescriptorWrapper) src).r_Instance, src => new IdentityDescriptorWrapper(src)); }
     }
 
 

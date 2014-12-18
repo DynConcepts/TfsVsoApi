@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class FederatedCredentialWrapper : FederatedCredentialWrapper<IFederatedCredential, FederatedCredential>, IFederatedCredential
     {
         protected FederatedCredentialWrapper(FederatedCredential instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IFederatedCredential, FederatedCredential>(src => ((FederatedCredentialWrapper) src).r_Instance, src => new FederatedCredentialWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IFederatedCredential, FederatedCredential>(src => src==null ? null : ((FederatedCredentialWrapper) src).r_Instance, src => new FederatedCredentialWrapper(src)); }
     }
 
 

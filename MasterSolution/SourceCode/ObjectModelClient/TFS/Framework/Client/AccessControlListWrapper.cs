@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class AccessControlListWrapper : AccessControlListWrapper<IAccessControlList, AccessControlList>, IAccessControlList
     {
         protected AccessControlListWrapper(AccessControlList instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlList, AccessControlList>(src => ((AccessControlListWrapper) src).r_Instance, src => new AccessControlListWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlList, AccessControlList>(src => src==null ? null : ((AccessControlListWrapper) src).r_Instance, src => new AccessControlListWrapper(src)); }
     }
 
 

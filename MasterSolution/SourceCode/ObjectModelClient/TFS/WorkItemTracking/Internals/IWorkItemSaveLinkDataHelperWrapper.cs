@@ -8,7 +8,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
     internal class IWorkItemSaveLinkDataHelperWrapper : IWorkItemSaveLinkDataHelperWrapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>, IIWorkItemSaveLinkDataHelper
     {
         protected IWorkItemSaveLinkDataHelperWrapper(IWorkItemSaveLinkDataHelper instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>(src => ((IWorkItemSaveLinkDataHelperWrapper) src).r_Instance, src => new IWorkItemSaveLinkDataHelperWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>(src => src==null ? null : ((IWorkItemSaveLinkDataHelperWrapper) src).r_Instance, src => new IWorkItemSaveLinkDataHelperWrapper(src)); }
     }
 
 

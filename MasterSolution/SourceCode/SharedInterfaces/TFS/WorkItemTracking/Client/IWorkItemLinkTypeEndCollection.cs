@@ -1,13 +1,16 @@
+using System;
+using System.Collections;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IWorkItemLinkTypeEndCollection : System.Collections.IEnumerable
+  public interface IWorkItemLinkTypeEndCollection : IEnumerable
   {
-    System.Boolean Contains( System.Int32 id);
-    System.Boolean Contains( System.String linkTypeName);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd GetById( System.Int32 id);
-    System.Boolean TryGetById( System.Int32 id,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd linkTypeEnd);
-    System.Boolean TryGetByName( System.String linkTypeEndName,out DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd linkTypeEnd);
-    System.Int32 Count  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd this[System.String linkTypeEndName] { get;   }
+    Boolean Contains( Int32 id);
+    Boolean Contains( String linkTypeName);
+    IWorkItemLinkTypeEnd GetById( Int32 id);
+    Boolean TryGetById( Int32 id,out IWorkItemLinkTypeEnd linkTypeEnd);
+    Boolean TryGetByName( String linkTypeEndName,out IWorkItemLinkTypeEnd linkTypeEnd);
+    Int32 Count  { get;   }
+    IWorkItemLinkTypeEnd this[String linkTypeEndName] { get;   }
   }
 }

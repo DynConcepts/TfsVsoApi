@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsClientCredentialsWrapper : TfsClientCredentialsWrapper<ITfsClientCredentials, TfsClientCredentials>, ITfsClientCredentials
     {
         protected TfsClientCredentialsWrapper(TfsClientCredentials instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentials, TfsClientCredentials>(src => ((TfsClientCredentialsWrapper) src).r_Instance, src => new TfsClientCredentialsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentials, TfsClientCredentials>(src => src==null ? null : ((TfsClientCredentialsWrapper) src).r_Instance, src => new TfsClientCredentialsWrapper(src)); }
     }
 
 

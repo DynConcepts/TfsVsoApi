@@ -1,18 +1,21 @@
+using System;
+using System.Globalization;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels
 {
   public interface IITfsRequestChannel
   {
     void Abort();
-    System.IAsyncResult BeginRequest( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage message, System.AsyncCallback callback, System.Object state);
-    System.IAsyncResult BeginRequest( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage message, System.TimeSpan timeout, System.AsyncCallback callback, System.Object state);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage EndRequest( System.IAsyncResult result);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage Request( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage message);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage Request( DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsMessage message, System.TimeSpan timeout);
-    System.Uri Uri  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsClientCredentials Credentials  { get;   }
-    System.Globalization.CultureInfo Culture  { get;   }
-    System.Guid SessionId  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsRequestSettings Settings  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels.ITfsHttpClientState State  { get;   }
+    IAsyncResult BeginRequest( ITfsMessage message, AsyncCallback callback, Object state);
+    IAsyncResult BeginRequest( ITfsMessage message, TimeSpan timeout, AsyncCallback callback, Object state);
+    ITfsMessage EndRequest( IAsyncResult result);
+    ITfsMessage Request( ITfsMessage message);
+    ITfsMessage Request( ITfsMessage message, TimeSpan timeout);
+    Uri Uri  { get;   }
+    ITfsClientCredentials Credentials  { get;   }
+    CultureInfo Culture  { get;   }
+    Guid SessionId  { get;   }
+    ITfsRequestSettings Settings  { get;   }
+    ITfsHttpClientState State  { get;   }
   }
 }

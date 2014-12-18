@@ -1,7 +1,9 @@
+using System.Net;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
-  public interface IWindowsCredential : DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIssuedTokenCredential
+  public interface IWindowsCredential : IIssuedTokenCredential
   {
-    System.Net.ICredentials Credentials  { get; set;   }
+    ICredentials Credentials  { get; set;   }
   }
 }

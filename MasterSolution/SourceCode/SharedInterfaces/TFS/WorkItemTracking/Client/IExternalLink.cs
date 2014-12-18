@@ -1,7 +1,9 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IExternalLink : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.ILink
+  public interface IExternalLink : ILink
   {
-    System.String LinkedArtifactUri  { get;   }
+    String LinkedArtifactUri  { get;   }
   }
 }

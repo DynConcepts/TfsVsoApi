@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemLinkTypeEndCollectionWrapper : WorkItemLinkTypeEndCollectionWrapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>, IWorkItemLinkTypeEndCollection, IEnumerable
     {
         protected WorkItemLinkTypeEndCollectionWrapper(WorkItemLinkTypeEndCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>(src => ((WorkItemLinkTypeEndCollectionWrapper) src).r_Instance, src => new WorkItemLinkTypeEndCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>(src => src==null ? null : ((WorkItemLinkTypeEndCollectionWrapper) src).r_Instance, src => new WorkItemLinkTypeEndCollectionWrapper(src)); }
     }
 
 

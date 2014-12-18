@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
@@ -46,7 +47,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <summary>
         ///     Refreshes.
         /// </summary>
-        void IAttachmentCollection.Refresh() { throw new ToBeImplementedException(); }
+        void IAttachmentCollection.Refresh() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Removes.

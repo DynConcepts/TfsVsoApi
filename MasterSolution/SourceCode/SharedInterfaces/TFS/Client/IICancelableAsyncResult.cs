@@ -1,8 +1,10 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
-  public interface IICancelableAsyncResult : System.IAsyncResult
+  public interface IICancelableAsyncResult : IAsyncResult
   {
     void Cancel();
-    System.Boolean IsCanceled  { get;   }
+    Boolean IsCanceled  { get;   }
   }
 }

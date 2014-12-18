@@ -1,10 +1,13 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
   public interface ICatalogResourceType
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.Guid Identifier  { get;   }
-    System.String DisplayName  { get;   }
-    System.String Description  { get;   }
+    void ToXml( XmlWriter writer, String element);
+    Guid Identifier  { get;   }
+    String DisplayName  { get;   }
+    String Description  { get;   }
   }
 }

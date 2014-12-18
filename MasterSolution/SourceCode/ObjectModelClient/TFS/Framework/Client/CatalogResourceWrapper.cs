@@ -11,7 +11,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class CatalogResourceWrapper : CatalogResourceWrapper<ICatalogResource, CatalogResource>, ICatalogResource
     {
         protected CatalogResourceWrapper(CatalogResource instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogResource, CatalogResource>(src => ((CatalogResourceWrapper) src).r_Instance, src => new CatalogResourceWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogResource, CatalogResource>(src => src==null ? null : ((CatalogResourceWrapper) src).r_Instance, src => new CatalogResourceWrapper(src)); }
     }
 
 

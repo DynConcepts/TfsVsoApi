@@ -12,7 +12,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class RowSetWrapper : RowSetWrapper<IRowSet, RowSet>, IRowSet, IIRowSet, IXmlSerializable
     {
         protected RowSetWrapper(RowSet instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRowSet, RowSet>(src => ((RowSetWrapper) src).r_Instance, src => new RowSetWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRowSet, RowSet>(src => src==null ? null : ((RowSetWrapper) src).r_Instance, src => new RowSetWrapper(src)); }
     }
 
 

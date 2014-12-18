@@ -1,3 +1,7 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IQueryItem
@@ -5,18 +9,18 @@ namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
     void ResetInternal();
     void Delete();
     void ResetDirty();
-    System.Guid Id  { get;   }
-    System.String Name  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryFolder Parent  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IProject Project  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IIdentityDescriptor OwnerDescriptor  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IAccessControlList AccessControlList  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IAccessControlListMetadata AccessControlListMetadata  { get;   }
-    System.Boolean CanManagePermissions  { get; set;   }
-    System.Boolean IsPersonal  { get;   }
-    System.Boolean IsDeleted  { get;   }
-    System.Boolean IsNew  { get;   }
-    System.Boolean IsDirty  { get;   }
-    System.String Path  { get;   }
+    Guid Id  { get;   }
+    String Name  { get; set;   }
+    IQueryFolder Parent  { get;   }
+    IProject Project  { get;   }
+    IIdentityDescriptor OwnerDescriptor  { get; set;   }
+    IAccessControlList AccessControlList  { get;   }
+    IAccessControlListMetadata AccessControlListMetadata  { get;   }
+    Boolean CanManagePermissions  { get; set;   }
+    Boolean IsPersonal  { get;   }
+    Boolean IsDeleted  { get;   }
+    Boolean IsNew  { get;   }
+    Boolean IsDirty  { get;   }
+    String Path  { get;   }
   }
 }

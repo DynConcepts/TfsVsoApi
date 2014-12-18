@@ -11,14 +11,13 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
     public interface IWorkItemAPI
     {
         /// <summary>
-        ///     Builds the work item.
+        /// Builds the work item.
         /// </summary>
-        /// <param name="projectNanme"></param>
-        /// <param name="workItemType"></param>
-        /// <param name="headings">The headings.</param>
-        /// <param name="data">The data.</param>
+        /// <param name="projectNanme">The project nanme.</param>
+        /// <param name="workItemType">Type of the work item.</param>
+        /// <param name="fieldValues">The field values.</param>
         /// <returns>IWorkItem.</returns>
-        IWorkItem BuildWorkItem(string projectNanme, string workItemType, IReadOnlyList<string> headings, IReadOnlyList<object> data);
+        IWorkItem BuildWorkItem(string projectNanme, string workItemType, IReadOnlyList<KeyValuePair<string, object>> fieldValues);
 
         /// <summary>
         ///     Creates the work item.

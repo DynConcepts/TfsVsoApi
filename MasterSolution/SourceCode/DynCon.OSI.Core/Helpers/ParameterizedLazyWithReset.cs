@@ -27,6 +27,7 @@ namespace DynCon.OSI.Core.Helpers
         /// </summary>
         /// <value><c>true</c> if this instance is value created; otherwise, <c>false</c>.</value>
         bool IsValueCreated { get; }
+
     }
 
     /// <summary>

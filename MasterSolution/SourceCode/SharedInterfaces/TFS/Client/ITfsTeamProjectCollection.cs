@@ -1,9 +1,11 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
-  public interface ITfsTeamProjectCollection : DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsConnection
+  public interface ITfsTeamProjectCollection : ITfsConnection
   {
-    System.String DisplayName  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsConfigurationServer ConfigurationServer  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITeamFoundationServer TeamFoundationServer  { get;   }
+    String DisplayName  { get;   }
+    ITfsConfigurationServer ConfigurationServer  { get;   }
+    ITeamFoundationServer TeamFoundationServer  { get;   }
   }
 }

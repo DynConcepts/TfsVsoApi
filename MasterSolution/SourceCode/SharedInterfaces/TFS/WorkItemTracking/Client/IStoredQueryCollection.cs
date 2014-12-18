@@ -1,12 +1,15 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IStoredQueryCollection : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IVariableSizeList
+  public interface IStoredQueryCollection : IVariableSizeList
   {
-    System.Int32 Add( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery storedQuery);
-    System.Int32 IndexOf( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery storedQuery);
-    void Remove( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery storedQuery);
+    Int32 Add( IStoredQuery storedQuery);
+    Int32 IndexOf( IStoredQuery storedQuery);
+    void Remove( IStoredQuery storedQuery);
     void Refresh();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery this[System.Guid guid] { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery this[System.Int32 index] { get;   }
+    IStoredQuery this[Guid guid] { get;   }
+    IStoredQuery this[Int32 index] { get;   }
   }
 }

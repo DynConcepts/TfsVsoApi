@@ -9,7 +9,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class WorkItemLinkChangeWrapper : WorkItemLinkChangeWrapper<IWorkItemLinkChange, WorkItemLinkChange>, IWorkItemLinkChange
     {
         protected WorkItemLinkChangeWrapper(WorkItemLinkChange instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkChange, WorkItemLinkChange>(src => ((WorkItemLinkChangeWrapper) src).r_Instance, src => new WorkItemLinkChangeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkChange, WorkItemLinkChange>(src => src==null ? null : ((WorkItemLinkChangeWrapper) src).r_Instance, src => new WorkItemLinkChangeWrapper(src)); }
     }
 
 

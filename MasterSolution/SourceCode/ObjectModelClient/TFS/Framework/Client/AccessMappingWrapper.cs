@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class AccessMappingWrapper : AccessMappingWrapper<IAccessMapping, AccessMapping>, IAccessMapping
     {
         protected AccessMappingWrapper(AccessMapping instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessMapping, AccessMapping>(src => ((AccessMappingWrapper) src).r_Instance, src => new AccessMappingWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessMapping, AccessMapping>(src => src==null ? null : ((AccessMappingWrapper) src).r_Instance, src => new AccessMappingWrapper(src)); }
     }
 
 

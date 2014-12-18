@@ -1,18 +1,21 @@
+using System;
+using System.Collections.Generic;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
   public interface ICatalogDependencyGroup
   {
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> GetAllDependencies();
-    void SetSingletonDependency( System.String key, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode node);
-    void RemoveSingletonDependency( System.String key);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode GetSingletonDependency( System.String key);
-    void AddSetDependency( System.String key, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode node);
-    void RemoveSetDependency( System.String key);
-    void RemoveSetDependency( System.String key, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode node);
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> GetDependencySet( System.String key);
+    IEnumerable<ICatalogNode> GetAllDependencies();
+    void SetSingletonDependency( String key, ICatalogNode node);
+    void RemoveSingletonDependency( String key);
+    ICatalogNode GetSingletonDependency( String key);
+    void AddSetDependency( String key, ICatalogNode node);
+    void RemoveSetDependency( String key);
+    void RemoveSetDependency( String key, ICatalogNode node);
+    IEnumerable<ICatalogNode> GetDependencySet( String key);
     void ClearSingletonDependencies();
     void ClearDependencySets();
-    System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode>> Singletons  { get;   }
-    System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Collections.Generic.IList<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode>>> Sets  { get;   }
+    IEnumerable<KeyValuePair<String,ICatalogNode>> Singletons  { get;   }
+    IEnumerable<KeyValuePair<String,IList<ICatalogNode>>> Sets  { get;   }
   }
 }

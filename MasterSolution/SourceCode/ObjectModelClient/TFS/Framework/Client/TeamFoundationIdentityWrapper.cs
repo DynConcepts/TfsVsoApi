@@ -12,7 +12,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class TeamFoundationIdentityWrapper : TeamFoundationIdentityWrapper<ITeamFoundationIdentity, TeamFoundationIdentity>, ITeamFoundationIdentity
     {
         protected TeamFoundationIdentityWrapper(TeamFoundationIdentity instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITeamFoundationIdentity, TeamFoundationIdentity>(src => ((TeamFoundationIdentityWrapper) src).r_Instance, src => new TeamFoundationIdentityWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITeamFoundationIdentity, TeamFoundationIdentity>(src => src==null ? null : ((TeamFoundationIdentityWrapper) src).r_Instance, src => new TeamFoundationIdentityWrapper(src)); }
     }
 
 

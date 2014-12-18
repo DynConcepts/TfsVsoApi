@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class AllowedValuesCollectionWrapper : AllowedValuesCollectionWrapper<IAllowedValuesCollection, AllowedValuesCollection>, IAllowedValuesCollection
     {
         protected AllowedValuesCollectionWrapper(AllowedValuesCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAllowedValuesCollection, AllowedValuesCollection>(src => ((AllowedValuesCollectionWrapper) src).r_Instance, src => new AllowedValuesCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAllowedValuesCollection, AllowedValuesCollection>(src => src==null ? null : ((AllowedValuesCollectionWrapper) src).r_Instance, src => new AllowedValuesCollectionWrapper(src)); }
     }
 
 

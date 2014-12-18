@@ -1,4 +1,5 @@
 using System;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 
 namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
@@ -21,19 +22,19 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
         /// Gets the configuration server.
         /// </summary>
         /// <value>The configuration server.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ITfsConfigurationServer ITfsTeamProjectCollection.ConfigurationServer { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ITfsConfigurationServer ITfsTeamProjectCollection.ConfigurationServer { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the display name.
         /// </summary>
         /// <value>The display name.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String ITfsTeamProjectCollection.DisplayName { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String ITfsTeamProjectCollection.DisplayName { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the team foundation server.
         /// </summary>
         /// <value>The team foundation server.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ITeamFoundationServer ITfsTeamProjectCollection.TeamFoundationServer { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ITeamFoundationServer ITfsTeamProjectCollection.TeamFoundationServer { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

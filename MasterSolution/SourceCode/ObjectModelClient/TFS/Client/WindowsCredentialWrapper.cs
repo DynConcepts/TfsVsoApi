@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class WindowsCredentialWrapper : WindowsCredentialWrapper<IWindowsCredential, WindowsCredential>, IWindowsCredential
     {
         protected WindowsCredentialWrapper(WindowsCredential instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWindowsCredential, WindowsCredential>(src => ((WindowsCredentialWrapper) src).r_Instance, src => new WindowsCredentialWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWindowsCredential, WindowsCredential>(src => src==null ? null : ((WindowsCredentialWrapper) src).r_Instance, src => new WindowsCredentialWrapper(src)); }
     }
 
 

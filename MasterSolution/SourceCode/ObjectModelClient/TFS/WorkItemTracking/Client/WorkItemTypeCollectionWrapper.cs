@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemTypeCollectionWrapper : WorkItemTypeCollectionWrapper<IWorkItemTypeCollection, WorkItemTypeCollection>, IWorkItemTypeCollection
     {
         protected WorkItemTypeCollectionWrapper(WorkItemTypeCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemTypeCollection, WorkItemTypeCollection>(src => ((WorkItemTypeCollectionWrapper) src).r_Instance, src => new WorkItemTypeCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemTypeCollection, WorkItemTypeCollection>(src => src==null ? null : ((WorkItemTypeCollectionWrapper) src).r_Instance, src => new WorkItemTypeCollectionWrapper(src)); }
     }
 
 

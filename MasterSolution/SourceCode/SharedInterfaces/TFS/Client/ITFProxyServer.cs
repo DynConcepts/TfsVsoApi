@@ -1,12 +1,14 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
   public interface ITFProxyServer
   {
     void NotifyUnavailable();
-    System.String Url  { get; set;   }
-    System.Boolean IsEnabled  { get; set;   }
-    System.Boolean IsAvailable  { get;   }
-    System.Boolean WasAutoConfigured  { get; set;   }
-    System.DateTime LastConfigureTime  { get; set;   }
+    String Url  { get; set;   }
+    Boolean IsEnabled  { get; set;   }
+    Boolean IsAvailable  { get;   }
+    Boolean WasAutoConfigured  { get; set;   }
+    DateTime LastConfigureTime  { get; set;   }
   }
 }

@@ -4,6 +4,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.Metadata
 {
     internal class CacheImpl : ICache
     {
-        ISnapshot ICache.GetSnapshot() { throw new ToBeImplementedException(); }
+        ISnapshot ICache.GetSnapshot() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
     }
 }

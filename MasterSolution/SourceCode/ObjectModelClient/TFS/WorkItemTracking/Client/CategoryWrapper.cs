@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class CategoryWrapper : CategoryWrapper<ICategory, Category>, ICategory
     {
         protected CategoryWrapper(Category instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICategory, Category>(src => ((CategoryWrapper) src).r_Instance, src => new CategoryWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICategory, Category>(src => src==null ? null : ((CategoryWrapper) src).r_Instance, src => new CategoryWrapper(src)); }
     }
 
 

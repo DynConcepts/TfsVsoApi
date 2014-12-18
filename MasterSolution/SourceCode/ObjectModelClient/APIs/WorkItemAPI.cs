@@ -17,24 +17,15 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
     internal class WorkItemAPI : ClientObjectModelBasedAPI, IWorkItemAPI
     {
         /// <summary>
-        ///     Builds the work item.
+        /// Builds the work item.
         /// </summary>
-        /// <param name="projectNanme"></param>
-        /// <param name="workItemTypeName"></param>
-        /// <param name="headings">The headings.</param>
-        /// <param name="data">The data.</param>
+        /// <param name="projectName">The project name.</param>
+        /// <param name="workItemTypeName">Name of the work item type.</param>
+        /// <param name="fieldValues">The field values.</param>
         /// <returns>IWorkItem.</returns>
-        public IWorkItem BuildWorkItem(string projectNanme, string workItemTypeName, IReadOnlyList<string> headings, IReadOnlyList<object> data)
+        public IWorkItem BuildWorkItem(string projectName, string workItemTypeName, IReadOnlyList<KeyValuePair<string, object>> fieldValues)
         {
-            var dictionary = new Dictionary<string, object>();
-            for (int index = 0; index < headings.Count; ++index)
-            {
-                string fieldName = headings[index];
-                object fieldValue = data[index];
-                dictionary.Add(fieldName, fieldValue);
-            }
-
-            var projectName = (string) FindAndRemove(dictionary, "System.Project");
+            var dictionary = fieldValues.ToDictionary(field => field.Key, field => field.Value);
 
             IWorkItemStore workItemStore = WorkItemStore();
             IProject project = workItemStore.Projects[projectName];
@@ -251,8 +242,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         /// <returns>System.Object.</returns>
         private static object FindAndRemove(Dictionary<string, object> dictionary, string fieldName)
         {
-            object value = dictionary[fieldName];
-            dictionary.Remove(fieldName);
+            object value;
+            Boolean exists = dictionary.TryGetValue(fieldName, out value);
+            if (exists)
+                dictionary.Remove(fieldName);
             return value;
         }
     }

@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ExternalLinkWrapper : ExternalLinkWrapper<IExternalLink, ExternalLink>, IExternalLink
     {
         protected ExternalLinkWrapper(ExternalLink instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IExternalLink, ExternalLink>(src => ((ExternalLinkWrapper) src).r_Instance, src => new ExternalLinkWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IExternalLink, ExternalLink>(src => src==null ? null : ((ExternalLinkWrapper) src).r_Instance, src => new ExternalLinkWrapper(src)); }
     }
 
 

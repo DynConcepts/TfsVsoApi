@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class TfsRequestSettingsWrapper : TfsRequestSettingsWrapper<ITfsRequestSettings, TfsRequestSettings>, ITfsRequestSettings
     {
         protected TfsRequestSettingsWrapper(TfsRequestSettings instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsRequestSettings, TfsRequestSettings>(src => ((TfsRequestSettingsWrapper) src).r_Instance, src => new TfsRequestSettingsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsRequestSettings, TfsRequestSettings>(src => src==null ? null : ((TfsRequestSettingsWrapper) src).r_Instance, src => new TfsRequestSettingsWrapper(src)); }
     }
 
 

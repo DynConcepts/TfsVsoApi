@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ObjectModelClient_UnitTests.XML</DocumentationFile>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,11 +37,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Proxy, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,6 +64,722 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestChannelFactoryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestChannelWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestListenerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsHttpClientStateWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsMessageHeaderWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsMessageWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsRequestSettingsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ConnectivityFailureStatusChangedEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ConnectivityFailureStatusChangedEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsChangedEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsChangedEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\FederatedCredentialWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\FederatedCredentialWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FederatedCredentialWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ICancelableAsyncResultWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ICancelableAsyncResultWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ICancelableAsyncResultWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenCredentialWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenCredentialWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenCredentialWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenProviderWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenProviderWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenProviderWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ITfsTeamProjectCollectionObjectWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsXmlSerializableWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ITfsXmlSerializableWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ITfsXmlSerializableWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ServerCapabilitiesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\ServerCapabilitiesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ServerCapabilitiesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TeamFoundationServerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TeamFoundationServerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TeamFoundationServerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TFProxyServerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TFProxyServerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TFProxyServerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialStorageWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialStorageWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsClientCredentialStorageWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsClientCredentialsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConfigurationServerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsConfigurationServerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsConfigurationServerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConnectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsConnectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsConnectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TfsTeamProjectCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\WindowsCredentialWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Client\WindowsCredentialWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WindowsCredentialWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlEntryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlEntryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessMappingWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessMappingWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessMappingWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AceExtendedInformationWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogDependencyGroupWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogNodeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogNodeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogNodeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogResourceTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogResourceWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdentityDescriptorWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ILocationServiceWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\ILocationServiceWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ILocationServiceWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IServerDataProviderWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\IServerDataProviderWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IServerDataProviderWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\LocationMappingWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\LocationMappingWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LocationMappingWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ServiceDefinitionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityWrapper_UnitTests.Designer.cs">
+      <DependentUpon>TeamFoundationIdentityWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogQueryOptionsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogTreeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogTreeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CatalogTreeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\ConnectOptionsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\ConnectOptionsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ConnectOptionsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdentityPropertyScopeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\RelativeToSettingWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\RelativeToSettingWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RelativeToSettingWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ApplicationGroupSpecialTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Server\IdentityTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdentityTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityWrapper_UnitTests.cs" />
+    <Compile Include="TFS\Server\IdentityWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdentityWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AllowedValuesCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AttachmentCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AttachmentWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>BaseLinkTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>BatchReadParameterCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterWrapper_UnitTests.Designer.cs">
+      <DependentUpon>BatchReadParameterWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorWrapper_UnitTests.Designer.cs">
+      <DependentUpon>BatchSaveErrorWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CancelableActionStateWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CancelableAsyncResultWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CategoryCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CategoryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CoreFieldWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>DisplayFieldListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ExternalLinkWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldDefinitionCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldDefinitionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldFilterListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldFilterWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldStatusWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldUsagesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FieldWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkWrapper_UnitTests.Designer.cs">
+      <DependentUpon>HyperlinkWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ImportEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ImportEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ImportSeverityWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LinkCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LinkWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>MetadataChangeEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>MetadataChangeTypesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>MetadataEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheWrapper_UnitTests.Designer.cs">
+      <DependentUpon>CacheWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotWrapper_UnitTests.Designer.cs">
+      <DependentUpon>SnapshotWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>NodeCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>NodeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ProjectCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ProjectWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryDefinitionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderActionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderContentsChangedEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderContentsChangedEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyProviderWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyRefreshDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryItemWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryScopeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QueryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RegisteredLinkTypeCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RegisteredLinkTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RelatedLinkWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ReportingAttributesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ReportingTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RevisionCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RevisionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>SaveFlagsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ServerInfoWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>SortFieldListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldWrapper_UnitTests.Designer.cs">
+      <DependentUpon>SortFieldWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>SortTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesActionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesChangedEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueryCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>UserDisplayModeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAsyncEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAsyncEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemCopyFlagsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemEventArgsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemFieldChangeEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemFieldDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkInfoWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeEndCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeEndWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemOperationErrorWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemPreSaveEventHandlerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemStoreDiagnosticsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemStoreWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemSyncDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemTypeCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemTypeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumWrapper_UnitTests.Designer.cs">
+      <DependentUpon>PsFieldDefinitionTypeEnumWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskWrapper_UnitTests.Designer.cs">
+      <DependentUpon>PsUserRightsMaskWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IVersionTagWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>OrderedVariableSizeListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListWrapper_UnitTests.Designer.cs">
+      <DependentUpon>VariableSizeListWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemServerVersionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemOpenFieldDataHelperWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemRelationWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemSaveFieldDataHelperWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemSaveLinkDataHelperWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LinkInfoWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LinkPropertiesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateWrapper_UnitTests.Designer.cs">
+      <DependentUpon>LinkUpdateWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkInfoWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryExtendedDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlListMetadataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ArtifactWorkItemIdsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>ExtendedAccessControlListDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentWrapper_UnitTests.Designer.cs">
+      <DependentUpon>FileAttachmentWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdentityDescriptorDataWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IdRevisionPairWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IMetadataRowSetsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IPagedItemsRowSetsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IRowSetWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemRowSetsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>MetadataRowSetNamesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>MetadataTableHaveEntryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>PagedItemsRowSetNamesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryWrapper_UnitTests.Designer.cs">
+      <DependentUpon>QuerySortOrderEntryWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RequiredPermissionsWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RowSetCollectionWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RowSetColumnWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetWrapper_UnitTests.Designer.cs">
+      <DependentUpon>RowSetWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemIdWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkChangeWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemRelationWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemRowSetNamesWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerWrapper_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerWrapper_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemServerWrapper_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkItemWrapper_Model_UnitTests.cs" />
     <Compile Include="WorkItemAPI_UnitTests.cs" />
     <Compile Include="WrapperImplementations\AttachmentWrapper_UnitTests.cs" />
@@ -75,6 +799,10 @@
     <ProjectReference Include="..\..\SourceCode\SharedInterfaces\DynCon.OSI.VSO.SharedInterfaces.csproj">
       <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
       <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DynCon.OSI.DynTest\DynCon.OSI.DynTest.csproj">
+      <Project>{4253B165-E851-4F14-B3B4-13FB6131DEEA}</Project>
+      <Name>DynCon.OSI.DynTest</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

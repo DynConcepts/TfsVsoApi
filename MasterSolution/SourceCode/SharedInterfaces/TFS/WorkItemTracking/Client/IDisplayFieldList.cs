@@ -1,16 +1,19 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IDisplayFieldList : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IOrderedVariableSizeList
+  public interface IDisplayFieldList : IOrderedVariableSizeList
   {
-    void Remove( System.String fieldName);
-    System.Int32 IndexOfFieldId( System.Int32 id);
-    System.Int32 IndexOf( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition value);
-    System.Boolean Contains( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition value);
-    void Remove( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition value);
-    System.Int32 Add( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition value);
-    void Insert( System.Int32 index, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition value);
-    System.Int32 Add( System.String fieldName);
-    void Insert( System.Int32 index, System.String fieldName);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition this[System.Int32 index] { get; set;   }
+    void Remove( String fieldName);
+    Int32 IndexOfFieldId( Int32 id);
+    Int32 IndexOf( IFieldDefinition value);
+    Boolean Contains( IFieldDefinition value);
+    void Remove( IFieldDefinition value);
+    Int32 Add( IFieldDefinition value);
+    void Insert( Int32 index, IFieldDefinition value);
+    Int32 Add( String fieldName);
+    void Insert( Int32 index, String fieldName);
+    IFieldDefinition this[Int32 index] { get; set;   }
   }
 }

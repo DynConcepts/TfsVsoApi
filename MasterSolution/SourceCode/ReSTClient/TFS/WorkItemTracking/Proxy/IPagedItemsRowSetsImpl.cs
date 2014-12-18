@@ -4,6 +4,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy
 {
     internal class IPagedItemsRowSetsImpl : IIPagedItemsRowSets
     {
-        IIRowSet IIPagedItemsRowSets.this[IPagedItemsRowSetNames name] { get { throw new ToBeImplementedException(); } }
+        IIRowSet IIPagedItemsRowSets.this[IPagedItemsRowSetNames name] { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

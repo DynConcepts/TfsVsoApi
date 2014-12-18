@@ -9,7 +9,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class IWorkItemRowSetsWrapper : IWorkItemRowSetsWrapper<IIWorkItemRowSets, IWorkItemRowSets>, IIWorkItemRowSets
     {
         protected IWorkItemRowSetsWrapper(IWorkItemRowSets instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemRowSets, IWorkItemRowSets>(src => ((IWorkItemRowSetsWrapper) src).r_Instance, src => new IWorkItemRowSetsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemRowSets, IWorkItemRowSets>(src => src==null ? null : ((IWorkItemRowSetsWrapper) src).r_Instance, src => new IWorkItemRowSetsWrapper(src)); }
     }
 
 

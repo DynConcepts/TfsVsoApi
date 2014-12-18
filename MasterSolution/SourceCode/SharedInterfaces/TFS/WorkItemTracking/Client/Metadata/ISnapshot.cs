@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.Metadata
 {
   public interface ISnapshot
   {
-    System.Collections.Generic.Dictionary<System.Int32,System.Int32> LoadFieldIdsByWorkItemType( System.Int32 typeId);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemStore Store  { get;   }
+    Dictionary<Int32,Int32> LoadFieldIdsByWorkItemType( Int32 typeId);
+    IWorkItemStore Store  { get;   }
   }
 }

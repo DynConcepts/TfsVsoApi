@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
@@ -21,10 +19,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         /// Fieldses this instance.
         /// </summary>
         [TestMethod]
-        public void Fields()
+        public void Fields_UnitTest()
         {
             JsonWorkItem instance = GetTestInstance();
             JsonFieldCollection actual = instance.Fields;
+            Assert.IsNotNull(actual);
+            Assert.AreSame(typeof(JsonFieldCollection), actual.GetType());
+            Assert.IsTrue(actual.Count > 0);
+            var firstField = actual[0];
+            Assert.IsNotNull(firstField);
+            Assert.AreSame(typeof(JsonField), firstField.GetType());
         }
  
   
@@ -36,6 +40,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         {
             JsonWorkItem instance = GetTestInstance();
             int actual = instance.Rev;
+            Assert.IsNotNull(actual);
         }
 
  
@@ -45,11 +50,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         /// </summary>
         [TestMethod]
         public void Links_UnitTest()
+      {
+          JsonWorkItem instance = GetTestInstance();
+          LinkClassValidation<JsonWorkItem, JsonLinkCollection, JsonRelatedLink>(instance);
+      }
+
+        internal static void LinkClassValidation<TWorkItem, TLinkCollection,TLinkItem>(TWorkItem instance)
+            where TWorkItem : JsonWorkItem
+            where TLinkCollection : JsonLinkCollection
+            where TLinkItem : JsonRelatedLink
         {
-            JsonWorkItem instance = GetTestInstance();
-            JsonLinkCollection actual = instance.Links;
+            object actual = instance.Links;
             Assert.IsNotNull(actual);
-            Assert.IsTrue(actual.Count > 0);
+            Assert.AreSame(typeof(TLinkCollection), actual.GetType());
+            var castCollection = (TLinkCollection)actual;
+            Assert.IsTrue(castCollection.Count > 0);
+            object firstLink = castCollection[0];
+            Assert.IsNotNull(firstLink);
+            Assert.AreSame(typeof(TLinkItem), firstLink.GetType());
         }
 
         /// <summary>

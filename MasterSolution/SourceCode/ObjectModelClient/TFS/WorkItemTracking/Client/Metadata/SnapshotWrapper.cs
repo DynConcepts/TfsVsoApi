@@ -11,7 +11,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.Metadata
     internal class SnapshotWrapper : SnapshotWrapper<ISnapshot, Snapshot>, ISnapshot
     {
         protected SnapshotWrapper(Snapshot instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ISnapshot, Snapshot>(src => ((SnapshotWrapper) src).r_Instance, src => new SnapshotWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ISnapshot, Snapshot>(src => src==null ? null : ((SnapshotWrapper) src).r_Instance, src => new SnapshotWrapper(src)); }
     }
 
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels;
@@ -19,128 +20,128 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
         /// <summary>
         /// Authenticates this instance.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.Authenticate() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.Authenticate() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the authorized identity.
         /// </summary>
         /// <value>The authorized identity.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ITeamFoundationIdentity ITfsConnection.AuthorizedIdentity { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ITeamFoundationIdentity ITfsConnection.AuthorizedIdentity { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the cached instance identifier.
         /// </summary>
         /// <value>The cached instance identifier.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Guid ITfsConnection.CachedInstanceId { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Guid ITfsConnection.CachedInstanceId { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the catalog node.
         /// </summary>
         /// <value>The catalog node.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ICatalogNode ITfsConnection.CatalogNode { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ICatalogNode ITfsConnection.CatalogNode { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the channel factory.
         /// </summary>
         /// <value>The channel factory.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IITfsRequestChannelFactory ITfsConnection.ChannelFactory { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IITfsRequestChannelFactory ITfsConnection.ChannelFactory { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the client cache directory for instance.
         /// </summary>
         /// <value>The client cache directory for instance.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String ITfsConnection.ClientCacheDirectoryForInstance { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String ITfsConnection.ClientCacheDirectoryForInstance { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the client cache directory for user.
         /// </summary>
         /// <value>The client cache directory for user.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String ITfsConnection.ClientCacheDirectoryForUser { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String ITfsConnection.ClientCacheDirectoryForUser { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets or sets the client credentials.
         /// </summary>
         /// <value>The client credentials.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        ITfsClientCredentials ITfsConnection.ClientCredentials { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        ITfsClientCredentials ITfsConnection.ClientCredentials { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the client volatile cache directory for instance.
         /// </summary>
         /// <value>The client volatile cache directory for instance.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String ITfsConnection.ClientVolatileCacheDirectoryForInstance { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String ITfsConnection.ClientVolatileCacheDirectoryForInstance { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Connects the specified connect options.
         /// </summary>
         /// <param name="connectOptions">The connect options.</param>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.Connect(IConnectOptions connectOptions) { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.Connect(IConnectOptions connectOptions) { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the connectivity failure on last web service call.
         /// </summary>
         /// <value>The connectivity failure on last web service call.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Boolean ITfsConnection.ConnectivityFailureOnLastWebServiceCall { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Boolean ITfsConnection.ConnectivityFailureOnLastWebServiceCall { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets or sets the credentials.
         /// </summary>
         /// <value>The credentials.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        ICredentials ITfsConnection.Credentials { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        ICredentials ITfsConnection.Credentials { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets or sets the culture.
         /// </summary>
         /// <value>The culture.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        CultureInfo ITfsConnection.Culture { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        CultureInfo ITfsConnection.Culture { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Disconnects this instance.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.Disconnect() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.Disconnect() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void IDisposable.Dispose() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void IDisposable.Dispose() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the disposed.
         /// </summary>
         /// <value>The disposed.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Boolean ITfsConnection.Disposed { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Boolean ITfsConnection.Disposed { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Ensures the authenticated.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.EnsureAuthenticated() { /*throw new ToBeImplementedException();*/ }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.EnsureAuthenticated() { /*throw new DynCon.OSI.Core.Helpers.ToBeImplementedException();*/ }
         /// <summary>
         /// Flushes the services.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.FlushServices() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.FlushServices() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the authenticated identity.
         /// </summary>
         /// <param name="identity">The identity.</param>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void ITfsConnection.GetAuthenticatedIdentity(out ITeamFoundationIdentity identity) { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void ITfsConnection.GetAuthenticatedIdentity(out ITeamFoundationIdentity identity) { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the client.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>T.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        T ITfsConnection.GetClient<T>() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        T ITfsConnection.GetClient<T>() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the service.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>T.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         T ITfsConnection.GetService<T>() { return (T) FindService(typeof(T)); }
 
         private object FindService(Type type)
@@ -162,81 +163,81 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
         /// </summary>
         /// <param name="serviceType">An object that specifies the type of service object to get.</param>
         /// <returns>A service object of type <paramref name="serviceType" />.-or- null if there is no service object of type <paramref name="serviceType" />.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Object IServiceProvider.GetService(Type serviceType) { return FindService(serviceType); }
         /// <summary>
         /// Gets the has authenticated.
         /// </summary>
         /// <value>The has authenticated.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Boolean ITfsConnection.HasAuthenticated { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Boolean ITfsConnection.HasAuthenticated { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the identity to impersonate.
         /// </summary>
         /// <value>The identity to impersonate.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IIdentityDescriptor ITfsConnection.IdentityToImpersonate { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IIdentityDescriptor ITfsConnection.IdentityToImpersonate { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the instance identifier.
         /// </summary>
         /// <value>The instance identifier.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Guid ITfsConnection.InstanceId { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Guid ITfsConnection.InstanceId { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the is hosted server.
         /// </summary>
         /// <value>The is hosted server.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Boolean ITfsConnection.IsHostedServer { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Boolean ITfsConnection.IsHostedServer { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String ITfsConnection.Name { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String ITfsConnection.Name { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the proxy server.
         /// </summary>
         /// <value>The proxy server.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ITFProxyServer ITfsConnection.ProxyServer { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ITFProxyServer ITfsConnection.ProxyServer { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the server capabilities.
         /// </summary>
         /// <value>The server capabilities.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IServerCapabilities ITfsConnection.ServerCapabilities { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IServerCapabilities ITfsConnection.ServerCapabilities { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the server data provider.
         /// </summary>
         /// <value>The server data provider.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IIServerDataProvider ITfsConnection.ServerDataProvider { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IIServerDataProvider ITfsConnection.ServerDataProvider { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the session identifier.
         /// </summary>
         /// <value>The session identifier.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Guid ITfsConnection.SessionId { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Guid ITfsConnection.SessionId { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets or sets the time zone.
         /// </summary>
         /// <value>The time zone.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        TimeZone ITfsConnection.TimeZone { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        TimeZone ITfsConnection.TimeZone { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets or sets the UI culture.
         /// </summary>
         /// <value>The UI culture.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        CultureInfo ITfsConnection.UICulture { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        CultureInfo ITfsConnection.UICulture { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the URI.
         /// </summary>
         /// <value>The URI.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Uri ITfsConnection.Uri { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Uri ITfsConnection.Uri { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

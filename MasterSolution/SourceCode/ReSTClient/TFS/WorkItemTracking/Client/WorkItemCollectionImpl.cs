@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
@@ -49,7 +50,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Boolean.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Boolean IWorkItemCollection.Contains(IWorkItem value)
         { return Items.Any(item => ReferenceEquals(item, value)); }
 
@@ -57,28 +58,28 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// Gets or sets the default project hint.
         /// </summary>
         /// <value>The default project hint.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        Int32 IWorkItemCollection.DefaultProjectHint { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        Int32 IWorkItemCollection.DefaultProjectHint { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the display fields.
         /// </summary>
         /// <value>The display fields.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IDisplayFieldList IWorkItemCollection.DisplayFields { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IDisplayFieldList IWorkItemCollection.DisplayFields { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the identifier.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>Int32.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Int32 IWorkItemCollection.GetId(Int32 index) {return Items[index].Id; }
         /// <summary>
         /// Indexes the of.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Int32.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Int32 IWorkItemCollection.IndexOf(Int32 id)
         {
             for (var index = 0; index < Items.Count; ++index)
@@ -92,7 +93,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Int32.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Int32 IWorkItemCollection.IndexOf(IWorkItem value)
         {
             for (var index = 0; index < Items.Count; ++index)
@@ -106,37 +107,37 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>IWorkItem.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         IWorkItem IWorkItemCollection.this[Int32 index] { get { return Items[index]; } }
         /// <summary>
         /// Gets or sets the size of the page.
         /// </summary>
         /// <value>The size of the page.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException">
+        /// <exception cref="ToBeImplementedException">
         /// </exception>
-        Int32 IWorkItemCollection.PageSize { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        Int32 IWorkItemCollection.PageSize { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the query.
         /// </summary>
         /// <value>The query.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IQuery IWorkItemCollection.Query { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IQuery IWorkItemCollection.Query { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Resorts this instance.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void IWorkItemCollection.Resort() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void IWorkItemCollection.Resort() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
         /// <summary>
         /// Gets the sort fields.
         /// </summary>
         /// <value>The sort fields.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ISortFieldList IWorkItemCollection.SortFields { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ISortFieldList IWorkItemCollection.SortFields { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
         /// <summary>
         /// Gets the store.
         /// </summary>
         /// <value>The store.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         IWorkItemStore IWorkItemCollection.Store { get { return r_Store; } }
     }
 }

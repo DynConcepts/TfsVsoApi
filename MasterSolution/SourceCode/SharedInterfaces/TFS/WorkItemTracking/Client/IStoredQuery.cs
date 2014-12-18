@@ -1,21 +1,23 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IStoredQuery : System.IComparable
+  public interface IStoredQuery : IComparable
   {
     void Reset();
     void Update();
-    System.Int32 CompareTo( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQuery storedQuery);
-    System.Boolean IsSaved  { get;   }
-    System.String Name  { get; set;   }
-    System.String QueryText  { get; set;   }
-    System.DateTime CreationTime  { get;   }
-    System.DateTime CreationTimeUtc  { get;   }
-    System.DateTime LastWriteTime  { get;   }
-    System.DateTime LastWriteTimeUtc  { get;   }
-    System.String Owner  { get;   }
-    System.String Description  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryScope QueryScope  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IProject Project  { get;   }
-    System.Guid QueryGuid  { get;   }
+    Int32 CompareTo( IStoredQuery storedQuery);
+    Boolean IsSaved  { get;   }
+    String Name  { get; set;   }
+    String QueryText  { get; set;   }
+    DateTime CreationTime  { get;   }
+    DateTime CreationTimeUtc  { get;   }
+    DateTime LastWriteTime  { get;   }
+    DateTime LastWriteTimeUtc  { get;   }
+    String Owner  { get;   }
+    String Description  { get; set;   }
+    IQueryScope QueryScope  { get; set;   }
+    IProject Project  { get;   }
+    Guid QueryGuid  { get;   }
   }
 }

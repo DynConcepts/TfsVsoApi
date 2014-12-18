@@ -19,7 +19,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         [TestMethod]
         public void ReadAllProperties_UnitTest()
         {
-            var uri = new Uri("*****");  // TODO Put in appropriate value, then refactor
+            var uri = new Uri("*****");// TODO Put in appropriate value, then refactor
             var tpc = new TfsTeamProjectCollection(uri);
             tpc.EnsureAuthenticated();
             var workItemStore = tpc.GetService<WorkItemStore>();

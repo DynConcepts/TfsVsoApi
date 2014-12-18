@@ -1,7 +1,10 @@
+using System;
+using System.Xml.Serialization;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
-  public interface IRowSetColumn : System.Xml.Serialization.IXmlSerializable
+  public interface IRowSetColumn : IXmlSerializable
   {
-    System.String Name  { get;   }
+    String Name  { get;   }
   }
 }

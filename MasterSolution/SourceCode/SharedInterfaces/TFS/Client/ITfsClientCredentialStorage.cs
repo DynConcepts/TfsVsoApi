@@ -1,13 +1,16 @@
+using System;
+using Microsoft.VisualStudio.Services.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
   public interface ITfsClientCredentialStorage
   {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIssuedToken RetrieveToken( System.Uri serverUrl, Microsoft.VisualStudio.Services.Common.VssCredentialsType credentialType);
-    System.String[] GetTokenProperty( System.Uri[] serverUrls, System.String propertyName);
-    void StoreToken( System.Uri serverUrl, DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIssuedToken token, System.Boolean matchUserInformation);
-    void RemoveToken( System.Uri serverUrl);
-    System.Boolean RemoveTokenValue( System.Uri serverUrl, DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIssuedToken token);
-    void RemoveTokenValuesByUser( System.Guid userId);
-    System.String GetTokenProperty( System.Uri serverUrl, System.String propertyName);
+    IIssuedToken RetrieveToken( Uri serverUrl, VssCredentialsType credentialType);
+    String[] GetTokenProperty( Uri[] serverUrls, String propertyName);
+    void StoreToken( Uri serverUrl, IIssuedToken token, Boolean matchUserInformation);
+    void RemoveToken( Uri serverUrl);
+    Boolean RemoveTokenValue( Uri serverUrl, IIssuedToken token);
+    void RemoveTokenValuesByUser( Guid userId);
+    String GetTokenProperty( Uri serverUrl, String propertyName);
   }
 }

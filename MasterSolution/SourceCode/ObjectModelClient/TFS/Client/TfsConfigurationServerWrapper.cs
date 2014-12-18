@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsConfigurationServerWrapper : TfsConfigurationServerWrapper<ITfsConfigurationServer, TfsConfigurationServer>, ITfsConfigurationServer
     {
         protected TfsConfigurationServerWrapper(TfsConfigurationServer instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConfigurationServer, TfsConfigurationServer>(src => ((TfsConfigurationServerWrapper) src).r_Instance, src => new TfsConfigurationServerWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConfigurationServer, TfsConfigurationServer>(src => src==null ? null : ((TfsConfigurationServerWrapper) src).r_Instance, src => new TfsConfigurationServerWrapper(src)); }
     }
 
 

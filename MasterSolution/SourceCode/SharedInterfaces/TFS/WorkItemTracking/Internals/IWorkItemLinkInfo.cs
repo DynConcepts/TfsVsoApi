@@ -1,10 +1,12 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals
 {
-  public interface IWorkItemLinkInfo : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo
+  public interface IWorkItemLinkInfo : ILinkInfo
   {
-    System.Int32 LinkType  { get; set;   }
-    System.Int32 SourceId  { get; set;   }
-    System.Int32 TargetId  { get; set;   }
-    System.Boolean IsLocked  { get; set;   }
+    Int32 LinkType  { get; set;   }
+    Int32 SourceId  { get; set;   }
+    Int32 TargetId  { get; set;   }
+    Boolean IsLocked  { get; set;   }
   }
 }

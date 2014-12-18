@@ -39,12 +39,12 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         {
             var initializer = new JsonWorkItemInitializer
             {
-                OtherItemInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, JsonWorkItem>((o) =>
+                OtherItemInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, JsonWorkItem>(o =>
                 {
                     var retVal = JsonWorkItem.APIFactory().GetWorkItem(new Uri(sr_Url.Eval(o)));
                     return retVal;
                 }),
-                LinkTypeEndInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, JsonLinkTypeEnd>((o) =>
+                LinkTypeEndInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, JsonLinkTypeEnd>(o =>
                 {
                     JProperty property = ((JObject)o.JsonValue).Properties().FirstOrDefault(p => p.Name == "rel");
                     var retVal = new JsonLinkTypeEnd(property.Value);

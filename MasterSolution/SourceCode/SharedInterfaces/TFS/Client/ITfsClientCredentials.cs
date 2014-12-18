@@ -1,11 +1,14 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
   public interface ITfsClientCredentials
   {
-    System.Boolean TryGetTokenProvider( System.Uri serverUrl,out DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IIssuedTokenProvider provider);
-    void SignOut( System.Uri serverUrl, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IIServerDataProvider serverDataProvider);
-    System.Boolean AllowInteractive  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IFederatedCredential Federated  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IWindowsCredential Windows  { get; set;   }
+    Boolean TryGetTokenProvider( Uri serverUrl,out IIssuedTokenProvider provider);
+    void SignOut( Uri serverUrl, IIServerDataProvider serverDataProvider);
+    Boolean AllowInteractive  { get; set;   }
+    IFederatedCredential Federated  { get; set;   }
+    IWindowsCredential Windows  { get; set;   }
   }
 }

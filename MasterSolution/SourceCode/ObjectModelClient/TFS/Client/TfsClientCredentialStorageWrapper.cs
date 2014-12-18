@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsClientCredentialStorageWrapper : TfsClientCredentialStorageWrapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>, ITfsClientCredentialStorage
     {
         protected TfsClientCredentialStorageWrapper(TfsClientCredentialStorage instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>(src => ((TfsClientCredentialStorageWrapper) src).r_Instance, src => new TfsClientCredentialStorageWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>(src => src==null ? null : ((TfsClientCredentialStorageWrapper) src).r_Instance, src => new TfsClientCredentialStorageWrapper(src)); }
     }
 
 

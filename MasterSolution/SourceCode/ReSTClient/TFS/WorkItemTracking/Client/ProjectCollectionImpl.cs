@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
@@ -10,13 +11,14 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
     /// </summary>
     internal class ProjectCollectionImpl : ReadOnlyListImpl<IProject>, IProjectCollection
     {
+
         /// <summary>
         ///     Determines whether [contains] [the specified project name].
         /// </summary>
         /// <param name="projectName">Name of the project.</param>
         /// <returns>Boolean.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Boolean IProjectCollection.Contains(String projectName) { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Boolean IProjectCollection.Contains(String projectName) { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Determines whether [contains] [the specified value].
@@ -30,8 +32,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="projectId">The project identifier.</param>
         /// <returns>IProject.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IProject IProjectCollection.GetById(Int32 projectId) { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IProject IProjectCollection.GetById(Int32 projectId) { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Indexes the of.
@@ -52,14 +54,23 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="projectName">Name of the project.</param>
         /// <returns>IProject.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IProject IProjectCollection.this[String projectName] { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IProject IProjectCollection.this[String projectName] {
+            get
+            {
+                foreach (IProject item in Items)
+                {
+                    if (item.Name == projectName)
+                        return item;
+                }
+                throw new KeyNotFoundException();
+            } }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectCollectionImpl" /> class.
         /// </summary>
         /// <param name="items">The items.</param>
-        protected ProjectCollectionImpl(IReadOnlyList<IProject> items)
+        internal ProjectCollectionImpl(IReadOnlyList<IProject> items)
             : base(items) { }
     }
 }

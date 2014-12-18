@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
+using DynCon.OSI.DynTest;
+
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
+{
+/// <summary>Generated Test Template</summary>
+  [TestClass]
+  public partial class CategoryCollectionImpl_UnitTests : DynTestClassBase 
+  {
+  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.CategoryCollectionImpl instance, [CallerMemberName]string callerName = "");
+  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.CategoryCollectionImpl GetInstance([CallerMemberName]string callerName = "") 
+  { 
+    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.CategoryCollectionImpl();
+    InstanceFactory(ref instance, callerName);
+    return  instance;
+  }
+
+  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.CategoryCollectionImpl> GetIEnumerableInstance() { 
+return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.CategoryCollectionImpl>{ GetInstance() }; }
+
+  }
+}

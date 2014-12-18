@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class ICancelableAsyncResultWrapper : ICancelableAsyncResultWrapper<IICancelableAsyncResult, ICancelableAsyncResult>, IICancelableAsyncResult, IAsyncResult
     {
         protected ICancelableAsyncResultWrapper(ICancelableAsyncResult instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IICancelableAsyncResult, ICancelableAsyncResult>(src => ((ICancelableAsyncResultWrapper) src).r_Instance, src => new ICancelableAsyncResultWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IICancelableAsyncResult, ICancelableAsyncResult>(src => src==null ? null : ((ICancelableAsyncResultWrapper) src).r_Instance, src => new ICancelableAsyncResultWrapper(src)); }
     }
 
 

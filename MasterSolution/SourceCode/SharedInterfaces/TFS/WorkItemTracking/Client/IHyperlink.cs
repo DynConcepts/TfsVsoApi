@@ -1,7 +1,9 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IHyperlink : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.ILink
+  public interface IHyperlink : ILink
   {
-    System.String Location  { get;   }
+    String Location  { get;   }
   }
 }

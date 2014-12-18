@@ -1,18 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Xml;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
   public interface IServiceDefinition
   {
-    void AddLocationMapping( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IAccessMapping accessMapping, System.String location);
-    System.Boolean RemoveLocationMapping( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IAccessMapping accessMapping);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ILocationMapping GetLocationMapping( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IAccessMapping accessMapping);
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.String ServiceType  { get; set;   }
-    System.Guid Identifier  { get; set;   }
-    System.String DisplayName  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.IRelativeToSetting RelativeToSetting  { get; set;   }
-    System.String RelativePath  { get; set;   }
-    System.String Description  { get; set;   }
-    System.String ToolType  { get; set;   }
-    System.Collections.Generic.IEnumerable<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ILocationMapping> LocationMappings  { get;   }
+    void AddLocationMapping( IAccessMapping accessMapping, String location);
+    Boolean RemoveLocationMapping( IAccessMapping accessMapping);
+    ILocationMapping GetLocationMapping( IAccessMapping accessMapping);
+    void ToXml( XmlWriter writer, String element);
+    String ServiceType  { get; set;   }
+    Guid Identifier  { get; set;   }
+    String DisplayName  { get; set;   }
+    IRelativeToSetting RelativeToSetting  { get; set;   }
+    String RelativePath  { get; set;   }
+    String Description  { get; set;   }
+    String ToolType  { get; set;   }
+    IEnumerable<ILocationMapping> LocationMappings  { get;   }
   }
 }

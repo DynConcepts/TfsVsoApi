@@ -4,6 +4,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.Client
 {
     internal class IssuedTokenCredentialImpl : IIssuedTokenCredential
     {
-        ITfsClientCredentialStorage IIssuedTokenCredential.TokenStorage { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        ITfsClientCredentialStorage IIssuedTokenCredential.TokenStorage { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } set { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

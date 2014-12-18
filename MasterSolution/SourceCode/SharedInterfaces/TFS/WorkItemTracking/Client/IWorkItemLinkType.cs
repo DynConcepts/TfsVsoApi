@@ -1,22 +1,25 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IWorkItemLinkType
   {
-    System.Xml.XmlDocument Export();
+    XmlDocument Export();
     void Delete();
     void Activate();
     void Deactivate();
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd ForwardEnd  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkTypeEnd ReverseEnd  { get;   }
-    System.String ReferenceName  { get;   }
-    System.Boolean IsDirectional  { get;   }
-    System.Boolean IsNonCircular  { get;   }
-    System.Boolean IsOneToMany  { get;   }
-    System.Boolean IsActive  { get;   }
-    System.Boolean CanDelete  { get;   }
-    System.Boolean CanEdit  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkType_Topology LinkTopology  { get;   }
-    System.Boolean IsDeleted  { get;   }
+    IWorkItemLinkTypeEnd ForwardEnd  { get;   }
+    IWorkItemLinkTypeEnd ReverseEnd  { get;   }
+    String ReferenceName  { get;   }
+    Boolean IsDirectional  { get;   }
+    Boolean IsNonCircular  { get;   }
+    Boolean IsOneToMany  { get;   }
+    Boolean IsActive  { get;   }
+    Boolean CanDelete  { get;   }
+    Boolean CanEdit  { get;   }
+    IWorkItemLinkType_Topology LinkTopology  { get;   }
+    Boolean IsDeleted  { get;   }
   }
 }
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client

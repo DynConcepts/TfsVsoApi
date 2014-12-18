@@ -1,14 +1,17 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IAccessControlListMetadata
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.String FullSelectionPermission  { get; set;   }
-    System.String[] IrrevocableAdminPermissions  { get; set;   }
-    System.String ObjectClassId  { get; set;   }
-    System.String[] PermissionDescriptions  { get; set;   }
-    System.String[] PermissionDisplayStrings  { get; set;   }
-    System.String[] PermissionNames  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRequiredPermissions[] PermissionRequirements  { get; set;   }
+    void ToXml( XmlWriter writer, String element);
+    String FullSelectionPermission  { get; set;   }
+    String[] IrrevocableAdminPermissions  { get; set;   }
+    String ObjectClassId  { get; set;   }
+    String[] PermissionDescriptions  { get; set;   }
+    String[] PermissionDisplayStrings  { get; set;   }
+    String[] PermissionNames  { get; set;   }
+    IRequiredPermissions[] PermissionRequirements  { get; set;   }
   }
 }

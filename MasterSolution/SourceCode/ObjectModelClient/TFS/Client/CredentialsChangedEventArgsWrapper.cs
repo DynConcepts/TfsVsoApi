@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class CredentialsChangedEventArgsWrapper : CredentialsChangedEventArgsWrapper<ICredentialsChangedEventArgs, CredentialsChangedEventArgs>, ICredentialsChangedEventArgs
     {
         protected CredentialsChangedEventArgsWrapper(CredentialsChangedEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICredentialsChangedEventArgs, CredentialsChangedEventArgs>(src => ((CredentialsChangedEventArgsWrapper) src).r_Instance, src => new CredentialsChangedEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICredentialsChangedEventArgs, CredentialsChangedEventArgs>(src => src==null ? null : ((CredentialsChangedEventArgsWrapper) src).r_Instance, src => new CredentialsChangedEventArgsWrapper(src)); }
     }
 
 

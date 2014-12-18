@@ -10,7 +10,7 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal partial class ArtifactWorkItemIdsWrapper : ArtifactWorkItemIdsWrapper<IArtifactWorkItemIds, ArtifactWorkItemIds>, IArtifactWorkItemIds, IITfsXmlSerializable
     {
         protected ArtifactWorkItemIdsWrapper(ArtifactWorkItemIds instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IArtifactWorkItemIds, ArtifactWorkItemIds>(src => ((ArtifactWorkItemIdsWrapper) src).r_Instance, src => new ArtifactWorkItemIdsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IArtifactWorkItemIds, ArtifactWorkItemIds>(src => src==null ? null : ((ArtifactWorkItemIdsWrapper) src).r_Instance, src => new ArtifactWorkItemIdsWrapper(src)); }
     }
 
 

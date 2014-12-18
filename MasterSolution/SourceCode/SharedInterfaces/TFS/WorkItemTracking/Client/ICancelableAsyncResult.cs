@@ -1,11 +1,13 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface ICancelableAsyncResult : System.IAsyncResult
+  public interface ICancelableAsyncResult : IAsyncResult
   {
     void BeginAsync();
     void Cancel();
-    System.Boolean IsCanceled  { get;   }
-    System.AsyncCallback Callback  { get; set;   }
-    System.Object Action  { get;   }
+    Boolean IsCanceled  { get;   }
+    AsyncCallback Callback  { get; set;   }
+    Object Action  { get;   }
   }
 }

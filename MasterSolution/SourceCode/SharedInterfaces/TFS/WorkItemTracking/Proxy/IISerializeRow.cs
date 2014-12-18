@@ -1,7 +1,9 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IISerializeRow
   {
-    void CopyRow( System.Int32 row, System.IntPtr p, System.Int32 esz);
+    void CopyRow( Int32 row, IntPtr p, Int32 esz);
   }
 }

@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class RevisionCollectionWrapper : RevisionCollectionWrapper<IRevisionCollection, RevisionCollection>, IRevisionCollection
     {
         protected RevisionCollectionWrapper(RevisionCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRevisionCollection, RevisionCollection>(src => ((RevisionCollectionWrapper) src).r_Instance, src => new RevisionCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRevisionCollection, RevisionCollection>(src => src==null ? null : ((RevisionCollectionWrapper) src).r_Instance, src => new RevisionCollectionWrapper(src)); }
     }
 
 

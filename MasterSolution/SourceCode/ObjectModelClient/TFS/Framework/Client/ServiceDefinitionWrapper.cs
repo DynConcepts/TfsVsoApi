@@ -13,7 +13,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal partial class ServiceDefinitionWrapper : ServiceDefinitionWrapper<IServiceDefinition, ServiceDefinition>, IServiceDefinition
     {
         protected ServiceDefinitionWrapper(ServiceDefinition instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IServiceDefinition, ServiceDefinition>(src => ((ServiceDefinitionWrapper) src).r_Instance, src => new ServiceDefinitionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IServiceDefinition, ServiceDefinition>(src => src==null ? null : ((ServiceDefinitionWrapper) src).r_Instance, src => new ServiceDefinitionWrapper(src)); }
     }
 
 

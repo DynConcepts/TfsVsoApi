@@ -1,11 +1,14 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IRegisteredLinkTypeCollection : DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IReadOnlyList
+  public interface IRegisteredLinkTypeCollection : IReadOnlyList
   {
-    System.Int32 IndexOf( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType value);
-    System.Boolean Contains( DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType value);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType this[System.Int32 index] { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType this[DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType registeredType] { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IRegisteredLinkType this[System.String name] { get;   }
+    Int32 IndexOf( IRegisteredLinkType value);
+    Boolean Contains( IRegisteredLinkType value);
+    IRegisteredLinkType this[Int32 index] { get;   }
+    IRegisteredLinkType this[IRegisteredLinkType registeredType] { get;   }
+    IRegisteredLinkType this[String name] { get;   }
   }
 }

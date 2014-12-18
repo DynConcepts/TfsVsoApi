@@ -1,11 +1,13 @@
+using System;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IIFieldStore
   {
-    System.Boolean HasValue( System.Int32 row, System.Int32 fieldId);
-    void StoreValue( System.Int32 row, System.Int32 fieldId, System.Object value);
-    System.Object GetStoredValue( System.Int32 row, System.Int32 fieldId);
-    void SetAccessDenied( System.Int32 row);
-    System.Boolean IsAccessDenied( System.Int32 row);
+    Boolean HasValue( Int32 row, Int32 fieldId);
+    void StoreValue( Int32 row, Int32 fieldId, Object value);
+    Object GetStoredValue( Int32 row, Int32 fieldId);
+    void SetAccessDenied( Int32 row);
+    Boolean IsAccessDenied( Int32 row);
   }
 }

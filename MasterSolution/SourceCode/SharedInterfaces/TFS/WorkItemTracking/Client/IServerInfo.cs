@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IServerInfo
   {
-    System.Boolean IsSupported( System.String feature);
-    System.Collections.Generic.IEnumerable<System.String> Features  { get;   }
+    Boolean IsSupported( String feature);
+    IEnumerable<String> Features  { get;   }
   }
 }

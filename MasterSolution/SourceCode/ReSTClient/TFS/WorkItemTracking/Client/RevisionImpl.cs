@@ -1,4 +1,5 @@
 using System;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -27,14 +28,14 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         ///     Gets the attachments.
         /// </summary>
         /// <value>The attachments.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IAttachmentCollection IRevision.Attachments { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IAttachmentCollection IRevision.Attachments { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Gets the fields.
         /// </summary>
         /// <value>The fields.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         IFieldCollection IRevision.Fields { get { return r_FieldCollectionCreator.Value; } }
         private readonly Lazy<IFieldCollection > r_FieldCollectionCreator;
 
@@ -47,14 +48,14 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         ///     Gets the tag line.
         /// </summary>
         /// <returns>String.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        String IRevision.GetTagLine() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        String IRevision.GetTagLine() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Gets the index.
         /// </summary>
         /// <value>The index.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
+        /// <exception cref="ToBeImplementedException"></exception>
         Int32 IRevision.Index { get { return m_Index; } }
 
         /// <summary>
@@ -62,22 +63,22 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>Object.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        Object IRevision.this[String name] { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        Object IRevision.this[String name] { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Gets the links.
         /// </summary>
         /// <value>The links.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ILinkCollection IRevision.Links { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        ILinkCollection IRevision.Links { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Gets the work item.
         /// </summary>
         /// <value>The work item.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IWorkItem IRevision.WorkItem { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IWorkItem IRevision.WorkItem { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RevisionImpl" /> class.

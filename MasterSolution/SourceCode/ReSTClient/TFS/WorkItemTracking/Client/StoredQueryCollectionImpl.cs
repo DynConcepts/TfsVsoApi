@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
@@ -33,8 +34,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="guid">The unique identifier.</param>
         /// <returns>IStoredQuery.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IStoredQuery IStoredQueryCollection.this[Guid guid] { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        IStoredQuery IStoredQueryCollection.this[Guid guid] { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Gets the <see cref="IStoredQuery" /> at the specified index.
@@ -46,8 +47,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <summary>
         ///     Refreshes this instance.
         /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        void IStoredQueryCollection.Refresh() { throw new ToBeImplementedException(); }
+        /// <exception cref="ToBeImplementedException"></exception>
+        void IStoredQueryCollection.Refresh() { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); }
 
         /// <summary>
         ///     Removes the specified stored query.
@@ -59,7 +60,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         ///     Initializes a new instance of the <see cref="StoredQueryCollectionImpl" /> class.
         /// </summary>
         /// <param name="items">The items.</param>
-        protected StoredQueryCollectionImpl(IReadOnlyList<IStoredQuery> items)
+        internal StoredQueryCollectionImpl(IReadOnlyList<IStoredQuery> items)
             : base(items) { }
     }
 }

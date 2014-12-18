@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class CatalogDependencyGroupWrapper : CatalogDependencyGroupWrapper<ICatalogDependencyGroup, CatalogDependencyGroup>, ICatalogDependencyGroup
     {
         protected CatalogDependencyGroupWrapper(CatalogDependencyGroup instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogDependencyGroup, CatalogDependencyGroup>(src => ((CatalogDependencyGroupWrapper) src).r_Instance, src => new CatalogDependencyGroupWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogDependencyGroup, CatalogDependencyGroup>(src => src==null ? null : ((CatalogDependencyGroupWrapper) src).r_Instance, src => new CatalogDependencyGroupWrapper(src)); }
     }
 
 

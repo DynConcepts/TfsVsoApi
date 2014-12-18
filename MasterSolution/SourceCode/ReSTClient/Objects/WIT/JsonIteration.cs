@@ -7,14 +7,14 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
     /// <summary>
     /// Implements Functionallity of a JSON Backed TFS/VSO Iteration.
     /// </summary>
-    internal class JsonIteration : JsonClassificationNode, IIteration
+    public class JsonIteration : JsonClassificationNode, IIteration
     {
         /// <summary>
         /// Froms the token.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <returns>IIteration.</returns>
-        public static IIteration FromToken(JToken content)
+        public static JsonIteration FromToken(JToken content)
         {
             var iteration = new JsonIteration(content);
             foreach (JProperty property in content)
@@ -62,6 +62,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// Initializes a new instance of the <see cref="JsonIteration"/> class.
         /// </summary>
         /// <param name="content">The content.</param>
-        private JsonIteration(JToken content) : base(content) { }
+        protected JsonIteration(JToken content) : base(content) { }
     }
 }

@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class StoredQueriesChangedEventArgsWrapper : StoredQueriesChangedEventArgsWrapper<IStoredQueriesChangedEventArgs, StoredQueriesChangedEventArgs>, IStoredQueriesChangedEventArgs
     {
         protected StoredQueriesChangedEventArgsWrapper(StoredQueriesChangedEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQueriesChangedEventArgs, StoredQueriesChangedEventArgs>(src => ((StoredQueriesChangedEventArgsWrapper) src).r_Instance, src => new StoredQueriesChangedEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQueriesChangedEventArgs, StoredQueriesChangedEventArgs>(src => src==null ? null : ((StoredQueriesChangedEventArgsWrapper) src).r_Instance, src => new StoredQueriesChangedEventArgsWrapper(src)); }
     }
 
 

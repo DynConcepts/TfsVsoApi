@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class BatchSaveErrorWrapper : BatchSaveErrorWrapper<IBatchSaveError, BatchSaveError>, IBatchSaveError
     {
         protected BatchSaveErrorWrapper(BatchSaveError instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchSaveError, BatchSaveError>(src => ((BatchSaveErrorWrapper) src).r_Instance, src => new BatchSaveErrorWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchSaveError, BatchSaveError>(src => src==null ? null : ((BatchSaveErrorWrapper) src).r_Instance, src => new BatchSaveErrorWrapper(src)); }
     }
 
 

@@ -41,7 +41,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
         /// <returns>WorkItemType.</returns>
         internal static WorkItemType FindWorkItemType(string workItemTypeName)
         {
-            var uri = new Uri("*****");  // TODO Put in appropriate value, then refactor
+            var uri = new Uri("*****");// TODO Put in appropriate value, then refactor
             var tpc = new TfsTeamProjectCollection(uri);
             tpc.EnsureAuthenticated();
             var workItemStore = tpc.GetService<WorkItemStore>();

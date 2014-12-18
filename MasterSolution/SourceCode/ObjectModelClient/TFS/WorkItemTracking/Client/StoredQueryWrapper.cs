@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class StoredQueryWrapper : StoredQueryWrapper<IStoredQuery, StoredQuery>, IStoredQuery, IComparable
     {
         protected StoredQueryWrapper(StoredQuery instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQuery, StoredQuery>(src => ((StoredQueryWrapper) src).r_Instance, src => new StoredQueryWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQuery, StoredQuery>(src => src==null ? null : ((StoredQueryWrapper) src).r_Instance, src => new StoredQueryWrapper(src)); }
     }
 
 

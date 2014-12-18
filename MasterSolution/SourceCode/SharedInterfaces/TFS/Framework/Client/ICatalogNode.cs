@@ -1,21 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Xml;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
   public interface ICatalogNode
   {
-    System.Collections.ObjectModel.ReadOnlyCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> QueryChildren( System.Collections.Generic.IEnumerable<System.Guid> resourceTypeFilters, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.String>> propertyFilters, System.Boolean recurse, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogQueryOptions queryOptions);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode CreateChild( System.Guid resourceTypeIdentifier, System.String resourceDisplayName);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode CreateChild( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogResource existingResource);
-    System.Collections.ObjectModel.ReadOnlyCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> QueryChildren( System.Collections.Generic.IEnumerable<System.Guid> resourceTypeFilters, System.Boolean recurse, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogQueryOptions queryOptions);
-    System.Collections.ObjectModel.ReadOnlyCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> QueryParents( System.Collections.Generic.IEnumerable<System.Guid> resourceTypeFilters, System.Boolean recurseToRoot, DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogQueryOptions queryOptions);
-    System.Collections.ObjectModel.ReadOnlyCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> QueryDependents( DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogQueryOptions queryOptions);
+    ReadOnlyCollection<ICatalogNode> QueryChildren( IEnumerable<Guid> resourceTypeFilters, IEnumerable<KeyValuePair<String,String>> propertyFilters, Boolean recurse, ICatalogQueryOptions queryOptions);
+    ICatalogNode CreateChild( Guid resourceTypeIdentifier, String resourceDisplayName);
+    ICatalogNode CreateChild( ICatalogResource existingResource);
+    ReadOnlyCollection<ICatalogNode> QueryChildren( IEnumerable<Guid> resourceTypeFilters, Boolean recurse, ICatalogQueryOptions queryOptions);
+    ReadOnlyCollection<ICatalogNode> QueryParents( IEnumerable<Guid> resourceTypeFilters, Boolean recurseToRoot, ICatalogQueryOptions queryOptions);
+    ReadOnlyCollection<ICatalogNode> QueryDependents( ICatalogQueryOptions queryOptions);
     void ExpandDependencies();
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode ParentNode  { get;   }
-    System.String ParentPath  { get;   }
-    System.String FullPath  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogResource Resource  { get;   }
-    System.Boolean IsDefault  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogDependencyGroup Dependencies  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogTree CatalogTree  { get;   }
+    void ToXml( XmlWriter writer, String element);
+    ICatalogNode ParentNode  { get;   }
+    String ParentPath  { get;   }
+    String FullPath  { get;   }
+    ICatalogResource Resource  { get;   }
+    Boolean IsDefault  { get; set;   }
+    ICatalogDependencyGroup Dependencies  { get;   }
+    ICatalogTree CatalogTree  { get;   }
   }
 }

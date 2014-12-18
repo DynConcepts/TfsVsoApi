@@ -1,15 +1,18 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
   public interface IWorkItemType
   {
-    System.Xml.XmlDocument Export( System.Boolean includeGlobalListsFlag);
-    System.String GetNextState( System.String currentState, System.String action);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItem NewWorkItem();
-    System.String Name  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IProject Project  { get;   }
-    System.String DisplayForm  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection FieldDefinitions  { get;   }
-    System.String Description  { get;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemStore Store  { get;   }
+    XmlDocument Export( Boolean includeGlobalListsFlag);
+    String GetNextState( String currentState, String action);
+    IWorkItem NewWorkItem();
+    String Name  { get;   }
+    IProject Project  { get;   }
+    String DisplayForm  { get;   }
+    IFieldDefinitionCollection FieldDefinitions  { get;   }
+    String Description  { get;   }
+    IWorkItemStore Store  { get;   }
   }
 }

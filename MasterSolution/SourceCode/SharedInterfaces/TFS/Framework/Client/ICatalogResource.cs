@@ -1,14 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client
 {
   public interface ICatalogResource
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.Guid Identifier  { get;   }
-    System.String DisplayName  { get; set;   }
-    System.String Description  { get; set;   }
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogResourceType ResourceType  { get;   }
-    System.Collections.Generic.IDictionary<System.String,System.String> Properties  { get;   }
-    System.Collections.Generic.IDictionary<System.String,DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.IServiceDefinition> ServiceReferences  { get;   }
-    System.Collections.ObjectModel.ReadOnlyCollection<DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client.ICatalogNode> NodeReferences  { get;   }
+    void ToXml( XmlWriter writer, String element);
+    Guid Identifier  { get;   }
+    String DisplayName  { get; set;   }
+    String Description  { get; set;   }
+    ICatalogResourceType ResourceType  { get;   }
+    IDictionary<String,String> Properties  { get;   }
+    IDictionary<String,IServiceDefinition> ServiceReferences  { get;   }
+    ReadOnlyCollection<ICatalogNode> NodeReferences  { get;   }
   }
 }

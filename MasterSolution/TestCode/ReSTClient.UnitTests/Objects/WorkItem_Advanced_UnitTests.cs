@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

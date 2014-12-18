@@ -59,6 +59,7 @@
     <Compile Include="Helpers\ParameterizedLazyWithReset.cs" />
     <Compile Include="Helpers\LazyWirhReset.cs" />
     <Compile Include="Helpers\ObjectMapper.cs" />
+    <Compile Include="Helpers\ToBeImplementedException.cs" />
     <Compile Include="ObjectMapping\MappedObjectBase.cs" />
     <Compile Include="ObjectMapping\MappedObjectInitializer.cs" />
     <Compile Include="ObjectMapping\ObjectMapper.cs" />

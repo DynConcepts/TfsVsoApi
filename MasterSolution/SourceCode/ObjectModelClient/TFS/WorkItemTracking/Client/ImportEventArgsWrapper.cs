@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ImportEventArgsWrapper : ImportEventArgsWrapper<IImportEventArgs, ImportEventArgs>, IImportEventArgs
     {
         protected ImportEventArgsWrapper(ImportEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IImportEventArgs, ImportEventArgs>(src => ((ImportEventArgsWrapper) src).r_Instance, src => new ImportEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IImportEventArgs, ImportEventArgs>(src => src==null ? null : ((ImportEventArgsWrapper) src).r_Instance, src => new ImportEventArgsWrapper(src)); }
     }
 
 

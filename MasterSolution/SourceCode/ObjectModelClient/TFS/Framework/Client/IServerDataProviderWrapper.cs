@@ -14,7 +14,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class IServerDataProviderWrapper : IServerDataProviderWrapper<IIServerDataProvider, IServerDataProvider>, IIServerDataProvider, IILocationService
     {
         protected IServerDataProviderWrapper(IServerDataProvider instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIServerDataProvider, IServerDataProvider>(src => ((IServerDataProviderWrapper) src).r_Instance, src => new IServerDataProviderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIServerDataProvider, IServerDataProvider>(src => src==null ? null : ((IServerDataProviderWrapper) src).r_Instance, src => new IServerDataProviderWrapper(src)); }
     }
 
 

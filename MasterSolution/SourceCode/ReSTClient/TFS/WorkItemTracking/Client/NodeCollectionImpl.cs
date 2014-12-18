@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
@@ -36,8 +37,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>INode.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        INode INodeCollection.this[String name] { get { throw new ToBeImplementedException(); } }
+        /// <exception cref="ToBeImplementedException"></exception>
+        INode INodeCollection.this[String name] { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NodeCollectionImpl" /> class.

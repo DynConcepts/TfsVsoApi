@@ -30,7 +30,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
                         break;
                 }
             }
-            return fieldDefinition;
+             return fieldDefinition;
         }
     
    
@@ -67,7 +67,11 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        public JsonFieldDefinition(JToken json) : base(json) { }
+        public JsonFieldDefinition(JToken json) : base(json)
+        {
+            if (ReferenceName == "System.WorkItemType")
+                Console.WriteLine();
+        }
 
         /// <summary>
         ///     The SR_ name

@@ -1,9 +1,12 @@
+using System;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
-  public interface IArtifactWorkItemIds : DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable
+  public interface IArtifactWorkItemIds : IITfsXmlSerializable
   {
-    System.Int32[] GetWorkItemIds();
-    System.Int32 UriListOffset  { get; set;   }
-    System.String Uri  { get;   }
+    Int32[] GetWorkItemIds();
+    Int32 UriListOffset  { get; set;   }
+    String Uri  { get;   }
   }
 }

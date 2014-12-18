@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class AttachmentCollectionWrapper : AttachmentCollectionWrapper<IAttachmentCollection, AttachmentCollection>, IAttachmentCollection
     {
         protected AttachmentCollectionWrapper(AttachmentCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAttachmentCollection, AttachmentCollection>(src => ((AttachmentCollectionWrapper) src).r_Instance, src => new AttachmentCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAttachmentCollection, AttachmentCollection>(src => src==null ? null : ((AttachmentCollectionWrapper) src).r_Instance, src => new AttachmentCollectionWrapper(src)); }
     }
 
 

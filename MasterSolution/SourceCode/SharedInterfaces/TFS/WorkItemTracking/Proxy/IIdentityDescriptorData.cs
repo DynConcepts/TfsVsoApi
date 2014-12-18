@@ -1,9 +1,12 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IIdentityDescriptorData
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.String Identifier  { get; set;   }
-    System.String IdentityType  { get; set;   }
+    void ToXml( XmlWriter writer, String element);
+    String Identifier  { get; set;   }
+    String IdentityType  { get; set;   }
   }
 }

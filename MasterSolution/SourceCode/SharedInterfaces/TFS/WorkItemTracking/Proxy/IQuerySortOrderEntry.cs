@@ -1,9 +1,12 @@
+using System;
+using System.Xml;
+
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy
 {
   public interface IQuerySortOrderEntry
   {
-    void ToXml( System.Xml.XmlWriter writer, System.String element);
-    System.Boolean Ascending  { get; set;   }
-    System.String ColumnName  { get; set;   }
+    void ToXml( XmlWriter writer, String element);
+    Boolean Ascending  { get; set;   }
+    String ColumnName  { get; set;   }
   }
 }

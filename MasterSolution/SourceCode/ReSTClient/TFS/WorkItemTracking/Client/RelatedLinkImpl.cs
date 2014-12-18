@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DynCon.OSI.Core.Helpers;
+using DynCon.OSI.VSO.ReSTClient.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -18,12 +19,12 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         {
             var initializer = new JsonWorkItemInitializer
             {
-                OtherItemInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, WorkItemImpl>((o) =>
+                OtherItemInitializer = new ParameterizedLazyWithReset<JsonRelatedLink, WorkItemImpl>(o =>
                 {
                     var retVal = JsonWorkItem.APIFactory().GetWorkItem(new Uri(sr_Url.Eval(o)), WorkItemImpl.FromToken);
                     return retVal;
                 }),
-                LinkTypeEndInitializer = new ParameterizedLazyWithReset<JsonRelatedLink,WorkItemLinkTypeEndImpl>((o) =>
+                LinkTypeEndInitializer = new ParameterizedLazyWithReset<JsonRelatedLink,WorkItemLinkTypeEndImpl>(o =>
                 {
                     JProperty property = ((JObject)o.JsonValue).Properties().FirstOrDefault(p => p.Name == "rel");
                     var retVal = new WorkItemLinkTypeEndImpl(property.Value);

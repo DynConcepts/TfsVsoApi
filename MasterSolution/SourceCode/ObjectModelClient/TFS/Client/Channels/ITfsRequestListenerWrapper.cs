@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class ITfsRequestListenerWrapper : ITfsRequestListenerWrapper<IITfsRequestListener, ITfsRequestListener>, IITfsRequestListener
     {
         protected ITfsRequestListenerWrapper(ITfsRequestListener instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestListener, ITfsRequestListener>(src => ((ITfsRequestListenerWrapper) src).r_Instance, src => new ITfsRequestListenerWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestListener, ITfsRequestListener>(src => src==null ? null : ((ITfsRequestListenerWrapper) src).r_Instance, src => new ITfsRequestListenerWrapper(src)); }
     }
 
 

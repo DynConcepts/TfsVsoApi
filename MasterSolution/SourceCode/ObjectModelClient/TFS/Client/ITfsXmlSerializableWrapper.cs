@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class ITfsXmlSerializableWrapper : ITfsXmlSerializableWrapper<IITfsXmlSerializable, ITfsXmlSerializable>, IITfsXmlSerializable
     {
         protected ITfsXmlSerializableWrapper(ITfsXmlSerializable instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsXmlSerializable, ITfsXmlSerializable>(src => ((ITfsXmlSerializableWrapper) src).r_Instance, src => new ITfsXmlSerializableWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsXmlSerializable, ITfsXmlSerializable>(src => src==null ? null : ((ITfsXmlSerializableWrapper) src).r_Instance, src => new ITfsXmlSerializableWrapper(src)); }
     }
 
 

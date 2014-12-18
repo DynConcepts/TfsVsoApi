@@ -4,6 +4,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
 {
     internal class MetadataEventArgsImpl : IMetadataEventArgs
     {
-        IMetadataChangeTypes IMetadataEventArgs.MetadataChangeFlags { get { throw new ToBeImplementedException(); } }
+        IMetadataChangeTypes IMetadataEventArgs.MetadataChangeFlags { get { throw new DynCon.OSI.Core.Helpers.ToBeImplementedException(); } }
     }
 }

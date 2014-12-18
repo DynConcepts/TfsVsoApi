@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ServerInfoWrapper : ServerInfoWrapper<IServerInfo, ServerInfo>, IServerInfo
     {
         protected ServerInfoWrapper(ServerInfo instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IServerInfo, ServerInfo>(src => ((ServerInfoWrapper) src).r_Instance, src => new ServerInfoWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IServerInfo, ServerInfo>(src => src==null ? null : ((ServerInfoWrapper) src).r_Instance, src => new ServerInfoWrapper(src)); }
     }
 
 
