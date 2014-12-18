@@ -48,7 +48,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         /// Query_s the unit test.
         /// </summary>
         [TestMethod()]
-        [ExpectedException(typeof(NotSupportedException))]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void Query_UnitTest()
         {
             var instance = GetTestInstance();
@@ -160,30 +160,33 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         /// Gets the work item_ unit test2.
         /// </summary>
         [TestMethod()]
-        public void GetWorkItem_UnitTest2()
+        [ExpectedException(typeof(ToBeImplementedException))]
+        void GetWorkItem_UnitTest2()
         {
             var instance = GetTestInstance();
-            var actual = instance.GetWorkItem(new Uri(""));
+            var actual = instance.GetWorkItem(new Uri("*****")); // TODO Put in appropriate value, then refactor
         }
 
         /// <summary>
         /// Gets the work item_ unit test3.
         /// </summary>
         [TestMethod()]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void GetWorkItem_UnitTest3()
         {
             var instance = GetTestInstance();
-            var actual = instance.GetWorkItem(new Uri(""), DateTime.Now);
+            var actual = instance.GetWorkItem(new Uri("*****"), DateTime.Now);// TODO Put in appropriate value, then refactor
         }
 
         /// <summary>
         /// Gets the work item_ unit test4.
         /// </summary>
         [TestMethod()]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void GetWorkItem_UnitTest4()
         {
             var instance = GetTestInstance();
-            var actual = instance.GetWorkItem(new Uri(""), 0);
+            var actual = instance.GetWorkItem(new Uri("*****"), 0); // TODO Put in appropriate value, then refactor
         }
 
         /// <summary>
@@ -200,10 +203,11 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         /// Gets the referencing work item uris_ unit test.
         /// </summary>
         [TestMethod()]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void GetReferencingWorkItemUris_UnitTest()
         {
             var instance = GetTestInstance();
-            var actual = instance.GetReferencingWorkItemUris(new Uri(""));
+            var actual = instance.GetReferencingWorkItemUris(new Uri("*****"));// TODO Put in appropriate value, then refactor
         }
 
         /// <summary>

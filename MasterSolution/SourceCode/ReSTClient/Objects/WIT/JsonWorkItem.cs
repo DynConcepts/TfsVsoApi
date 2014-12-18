@@ -260,8 +260,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <returns>JsonFieldCollection.</returns>
         private static JsonFieldCollection ParseFields(JsonWorkItem jsonWorkItem)
         {
-            JProperty value = ((JObject)jsonWorkItem.JsonValue).Properties().FirstOrDefault(p => p.Name == "fields");
-            JsonFieldCollection fields = JsonFieldCollection.FromToken(value);
+            JProperty property = ((JObject)jsonWorkItem.JsonValue).Properties().FirstOrDefault(p => p.Name == "fields");
+            JsonFieldCollection fields = JsonFieldCollection.FromToken(property.Value);
             return fields;
         }
 

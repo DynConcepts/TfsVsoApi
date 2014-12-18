@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using Newtonsoft.Json.Linq;
@@ -8,6 +9,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
     /// <summary>
     /// Class JsonField.
     /// </summary>
+    [DebuggerDisplay("{ReferenceName}:{Value}")]
     public class JsonField : JsonBackedObjectBase
     {
         /// <summary>
@@ -42,7 +44,11 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
                 var value = jToken.ToObject<Object>();
                 return value;
             }
-            set { }
+            set
+            {
+                var token = JToken.FromObject(value);
+                ((JProperty) JsonValue).Value = token;
+            }
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using DynCon.OSI.JasonBackedObjects;
 using Newtonsoft.Json.Linq;
 
@@ -8,6 +9,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
     /// <summary>
     ///     Implements Functionallity of a JSON Backed TFS/VSO WorkItemFieldDefinition.
     /// </summary>
+    [DebuggerDisplay("{ReferenceName}")]
     public class JsonFieldDefinition : JsonBackedObjectBase
     {
         /// <summary>

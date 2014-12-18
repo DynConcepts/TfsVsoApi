@@ -22,15 +22,25 @@ namespace SimpleSamples
 
             var classic = Measure(() => ClassicObjectModel(new TfsTeamProjectCollection(new Uri("*****"))));  // TODO Put in appropriate value, then refactor
 
+            Console.WriteLine("==========================");
+            Console.WriteLine("======   WRAPPED  ========");
+            Console.WriteLine("==========================");
             var wrapped = Measure(() => TfsVSOApi(DynCon.OSI.VSO.ObjectModelClient.Factories.APIFactory.Connect(new Uri("*****"))));  // TODO Put in appropriate value, then refactor
 
 
             RestClientManager.BasicAuthorizationUsername = "*****";  // TODO Put in appropriate value, then refactor
             RestClientManager.BasicAuthorizationPassword = "*****";  // TODO Put in appropriate value, then refactor
             VSOClientManager.VsoCollection = "*****";  // TODO Put in appropriate value, then refactor
+            Console.WriteLine("==========================");
+            Console.WriteLine("=======   REST  ==========");
+            Console.WriteLine("==========================");
             var rest = Measure(() => TfsVSOApi(DynCon.OSI.VSO.ReSTClient.Factories.APIFactory.Connect(new Uri("*****"))));  // TODO Put in appropriate value, then refactor
-            Console.WriteLine("W@arm-Up={0}Sec", warmup.TotalSeconds);
-            Console.WriteLine("Classic={0}Sec     Wrapped={1}Sec      ReST={2}Sec", classic.TotalSeconds, wrapped.TotalSeconds, rest.TotalSeconds);
+
+
+            //    Console.WriteLine("Warm-Up={0}Sec       Classic={1}Sec    ", warmup.TotalSeconds, classic.TotalSeconds);
+            // Console.WriteLine(" Wrapped={0}Sec      ReST={1}Sec", wrapped.TotalSeconds, rest.TotalSeconds);
+            Console.WriteLine("Done!");
+            Console.ReadLine();
         }
 
         static TimeSpan Measure(Action action)

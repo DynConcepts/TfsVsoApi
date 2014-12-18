@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,6 +14,12 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
     [TestClass()]
     public class WorkItemCollectionImpl_UnitTests
     {
+        [ClassInitialize]
+        public static void Class_Initialize(TestContext context)
+        {
+            var api = new JsonWorkItemAPI();
+        }
+ 
         /// <summary>
         /// Works the item collection impl_ unit test.
         /// </summary>
@@ -37,7 +44,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         ///     Copies the to_ unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(NotSupportedException))]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void CopyTo_UnitTest()
         {
             IWorkItemCollection instance = GetTestInstance();
@@ -88,7 +95,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         ///     Resort_s the unit test.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(NotSupportedException))]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void Resort_UnitTest()
         {
             IWorkItemCollection instance = GetTestInstance();
@@ -102,6 +109,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         private IWorkItemCollection GetTestInstance()
         {
             var initialItems = new List<WorkItemImpl>();
+            initialItems.Add(JsonWorkItem.APIFactory().GetWorkItem(195, WorkItemImpl.FromToken).Result);
             var instance = new WorkItemCollectionImpl(null,initialItems);
             Assert.IsNotNull(instance); ;
             return instance;

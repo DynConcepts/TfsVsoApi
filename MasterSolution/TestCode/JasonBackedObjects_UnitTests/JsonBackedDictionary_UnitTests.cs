@@ -30,7 +30,7 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests
         public void Eval_UnitTest()
         {
             JsonBackedDictionary<string> instance = GetInstance();
-            JsonBackedObjectBase source = new TestJsonBackedObject(null);
+            JsonBackedObjectBase source = new TestJsonBackedObject(SourceJsonObject());
             IReadOnlyDictionary<string, string> result = instance.Eval(source);
             Assert.IsNotNull(result);
         }
