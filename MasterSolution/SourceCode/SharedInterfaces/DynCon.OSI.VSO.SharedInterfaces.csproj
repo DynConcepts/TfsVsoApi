@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IArea.cs" />
+    <Compile Include="Interfaces\IClassificationNode.cs" />
+    <Compile Include="Interfaces\IIteration.cs" />
+    <Compile Include="Interfaces\IWorkItemAPI.cs" />
+    <Compile Include="Interfaces\IWorkItemFieldDefinition.cs" />
+    <Compile Include="Interfaces\IWorkItemType.cs" />
+    <Compile Include="Interfaces\IWorkItemTypeCategory.cs" />
     <Compile Include="Objects\IWorkItem.cs" />
     <Compile Include="Objects\IWorkItemFieldDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -29,6 +30,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// </summary>
         /// <value>The password.</value>
         public static string BasicAuthorizationPassword { get; set; }
+
 
         /// <summary>
         /// Creates the client.
@@ -92,15 +94,26 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
             T result = default(T);
             UseClient(async client =>
             {
-                using (HttpResponseMessage response = client.SendAsync(request).Result)
+                try
                 {
-                    response.EnsureSuccessStatusCode();
-                    Stream responseBody = await response.Content.ReadAsStreamAsync();
-                    result = xform(responseBody);
+                    using (HttpResponseMessage response = client.SendAsync(request).Result)
+                    {
+                        response.EnsureSuccessStatusCode();
+                        Stream responseBody = await response.Content.ReadAsStreamAsync();
+                        result = xform(responseBody);
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    throw;
+                }
+
             });
             return result;
         }
+
         /// <summary>
         /// Processes the request j object.
         /// </summary>

@@ -56,10 +56,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
+      <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
+      <Name>DynCon.OSI.JasonBackedObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\ReSTClient\DynCon.OSI.VSO.ReSTClient.csproj">
+      <Project>{CE58EDCC-7E05-48B8-8C52-8F31FDDEA5C3}</Project>
+      <Name>DynCon.OSI.VSO.ReSTClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\SharedInterfaces\DynCon.OSI.VSO.SharedInterfaces.csproj">
+      <Project>{d42275be-b928-4c19-ba51-b4dfefd66127}</Project>
+      <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

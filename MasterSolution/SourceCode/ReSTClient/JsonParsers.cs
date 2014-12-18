@@ -58,7 +58,7 @@ namespace DynCon.OSI.VSO.ReSTClient
         /// <param name="jObject">The j object.</param>
         /// <param name="creator">The creator.</param>
         /// <returns>IList&lt;T&gt;.</returns>
-        internal static IList<T> ValuesToObjects<T>(JObject jObject, Func<JToken, T> creator)
+        internal static IReadOnlyList<T> ValuesToObjects<T>(JObject jObject, Func<JToken, T> creator)
         {
             var list = new List<T>();
             foreach (var item in jObject)
