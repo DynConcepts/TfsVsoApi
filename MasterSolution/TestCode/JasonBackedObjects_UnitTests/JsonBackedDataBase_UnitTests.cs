@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DynCon.OSI.JasonBackedObjects;
+﻿using DynCon.OSI.JasonBackedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace DynCon.OSI.JasonBackedObjects.UnitTests
+using Newtonsoft.Json.Linq;
+
+namespace DynCon.OSI.JasonBackedObjects_UnitTests
 {
-    [TestClass()]
+    /// <summary>
+    ///     Class JsonBackedDataBase_UnitTests.
+    /// </summary>
+    [TestClass]
     public class JsonBackedDataBase_UnitTests
     {
-        [TestMethod()]
+        /// <summary>
+        ///     Makes the token_ unit test.
+        /// </summary>
+        [TestMethod]
         public void MakeToken_UnitTest()
         {
-            string source = "Hello";
-            var result = JsonBackedDataBase<Object>.MakeToken(source);
+            const string source = "Hello";
+            JToken result = JsonBackedDataBase.MakeToken(source);
             Assert.IsNotNull(result);
         }
     }

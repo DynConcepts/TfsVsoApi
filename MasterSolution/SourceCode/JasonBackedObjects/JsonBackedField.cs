@@ -4,54 +4,13 @@ using Newtonsoft.Json.Linq;
 namespace DynCon.OSI.JasonBackedObjects
 {
     /// <summary>
-    /// Class JsonBackedField.
+    ///     Class JsonBackedField.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class JsonBackedField<T> : JsonBackedDataBase<T>
+    public class JsonBackedField<T> : JsonBackedDataBase
     {
         /// <summary>
-        /// The _func
-        /// </summary>
-        private readonly Func<JToken, T> _func;
-
-        /// <summary>
-        /// The _action
-        /// </summary>
-        private readonly Action<JToken, T> _action;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
-        /// </summary>
-        /// <param name="func">The function.</param>
-        public JsonBackedField(Func<JToken, T> func) { _func = func; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedField{T}"/> class.
-        /// </summary>
-        /// <param name="func">The function.</param>
-        /// <param name="action">The action.</param>
-        public JsonBackedField(Func<JToken, T> func, Action<JToken, T> action)
-        {
-            _func = func;
-            _action = action;
-        }
-
-
-        /// <summary>
-        /// Sets the specified json.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <param name="value">The value.</param>
-        public void Set(JToken json, T value) { _action(json, value); }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
-        /// </summary>
-        /// <param name="key">The key.</param>
-        public JsonBackedField(string key) : this(token => token[key].Value<T>(), (token, value) => token.Replace(MakeToken(value))) { }
-
-        /// <summary>
-        /// Evals the specified json.
+        ///     Evals the specified json.
         /// </summary>
         /// <param name="json">The json.</param>
         /// <returns>T.</returns>
@@ -59,16 +18,16 @@ namespace DynCon.OSI.JasonBackedObjects
         {
             if (json == null)
                 return default(T);
-            var retVal = _func(json);
+            T retVal = r_Func(json);
             return retVal;
         }
 
 
         /// <summary>
-        /// Evals the specified instance.
+        ///     Evals the specified instance.
         /// </summary>
         /// <param name="instance">The instance.</param>
-        /// <returns>System.Int32.</returns>
+        /// <returns>T.</returns>
         public T Eval(JsonBackedObjectBase instance)
         {
             T result;
@@ -78,5 +37,46 @@ namespace DynCon.OSI.JasonBackedObjects
             instance.SetValue(this, result);
             return result;
         }
+
+        /// <summary>
+        ///     Sets the specified json.
+        /// </summary>
+        /// <param name="json">The json.</param>
+        /// <param name="value">The value.</param>
+        public void Set(JToken json, T value) { r_Action(json, value); }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
+        /// </summary>
+        /// <param name="func">The function.</param>
+        public JsonBackedField(Func<JToken, T> func) { r_Func = func; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
+        /// </summary>
+        /// <param name="func">The function.</param>
+        /// <param name="action">The action.</param>
+        public JsonBackedField(Func<JToken, T> func, Action<JToken, T> action)
+        {
+            r_Func = func;
+            r_Action = action;
+        }
+
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        public JsonBackedField(string key) : this(token => token[key].Value<T>(), (token, value) => token.Replace(MakeToken(value))) { }
+
+        /// <summary>
+        ///     The _action
+        /// </summary>
+        private readonly Action<JToken, T> r_Action;
+
+        /// <summary>
+        ///     The _func
+        /// </summary>
+        private readonly Func<JToken, T> r_Func;
     }
 }

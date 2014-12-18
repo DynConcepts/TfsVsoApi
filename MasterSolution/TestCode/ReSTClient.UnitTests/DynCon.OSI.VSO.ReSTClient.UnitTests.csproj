@@ -26,6 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ReSTClient.UnitTests.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,7 +57,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="APIs\TeamRoomAPI_UnitTests.cs" />
     <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
+    <Compile Include="Objects\JsonAvailableRestCalls_UnitTests.cs" />
+    <Compile Include="Objects\WorkItem_Advanced_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

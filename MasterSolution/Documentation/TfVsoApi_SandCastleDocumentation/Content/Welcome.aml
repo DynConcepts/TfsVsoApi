@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="0d7fa3a5-34f8-4557-a5bb-e731e9306569" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>This Client library is an Open Source Public Release based on work done by Dynamic Concepts Development Corp. since the
+			introduction of TFS nearly a decade ago..</para>
+		</introduction>
+
+		<section>
+			<title>Getting Started</title>
+			<content>
+				<para>To get started using the library</para>
+
+				<list class="bullet">
+					<listItem>
+						<para>Download the latest distribution from NuGet</para>
+					</listItem>
+
+					<listItem>
+						<para>If you are developing a new TFS/VSO client, proceed to ...</para>
+					</listItem>
+
+					<listItem>
+						<para>If you are going to be updating an application based on the TFS Client Object Model published by Microsoft,
+						processed to ...</para>
+					</listItem>
+
+				</list>
+
+				<para>See the <legacyBold>Conceptual Content</legacyBold> for various "How-To" types of material. 
+				See the <legacyBold>Class Reference Documentation</legacyBold> for details on the interfaces and classes implemented within this library.
+				</para>
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="cb66187a-fe5d-4753-98dc-4913deb0b993" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

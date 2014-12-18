@@ -5,17 +5,16 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.JasonBackedObjects_UnitTests
 {
-    [TestClass()]
+    /// <summary>
+    ///     Class JsonBackedObjectBase_UnitTests.
+    /// </summary>
+    [TestClass]
     public class JsonBackedObjectBase_UnitTests
     {
-        [TestMethod()]
-        public void ToJSonString_UnitTest()
-        {
-            var instance = GetInstance();
-            var result = instance.ToJSonString();
-            Assert.IsNotNull(result);
-        }
-
+        /// <summary>
+        ///     Gets the instance.
+        /// </summary>
+        /// <returns>JsonBackedObjectBase.</returns>
         public static JsonBackedObjectBase GetInstance()
         {
             const string expectedValue = "TokenValue";
@@ -26,25 +25,41 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests
             return instance;
         }
 
-        [TestMethod()]
+        /// <summary>
+        ///     Sets the value_ unit test.
+        /// </summary>
+        [TestMethod]
+        public void SetValue_UnitTest()
+        {
+            JsonBackedObjectBase instance = GetInstance();
+            JsonBackedDataBase source = new JsonBackedField<string>((Func<JToken, string>) null);
+            const string target = "Target Value";
+            instance.SetValue(source, target);
+        }
+
+        /// <summary>
+        ///     To the j son string_ unit test.
+        /// </summary>
+        [TestMethod]
+        public void ToJSonString_UnitTest()
+        {
+            JsonBackedObjectBase instance = GetInstance();
+            string result = instance.ToJSonString();
+            Assert.IsNotNull(result);
+        }
+
+        /// <summary>
+        ///     Tries the get value_ unit test.
+        /// </summary>
+        [TestMethod]
         public void TryGetValue_UnitTest()
         {
-            var instance = GetInstance();
-            JsonBackedDataBase<string> source = new JsonBackedField<string>((Func<JToken, string>) null);
+            JsonBackedObjectBase instance = GetInstance();
+            JsonBackedDataBase source = new JsonBackedField<string>((Func<JToken, string>) null);
             string target;
             bool result = instance.TryGetValue(source, out target);
             Assert.IsFalse(result);
             Assert.IsNull(target);
-
-        }
-
-        [TestMethod()]
-        public void SetValue_UnitTest()
-        {
-            var instance = GetInstance();
-            JsonBackedDataBase<string> source = new JsonBackedField<string>((Func<JToken, string>)null); ;
-            string target = "Target Value";
-            instance.SetValue(source, target);
         }
     }
 }

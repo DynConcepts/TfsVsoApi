@@ -5,8 +5,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using DynCon.OSI.Core;
 using DynCon.OSI.Core.AdvancedEvents;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.SharedInterfaces.ReSTHelpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,75 +14,76 @@ using Newtonsoft.Json.Linq;
 namespace DynCon.OSI.JasonBackedObjects.Communications
 {
     /// <summary>
-    /// Class RestClientManager.
+    ///     Class RestClientManager.
     /// </summary>
     public class RestClientManager
     {
-  
         /// <summary>
-        /// Gets or sets the Basic Authorization username.
+        ///     Gets or sets the Basic Authorization username.
         /// </summary>
         /// <value>The username.</value>
         public static string BasicAuthorizationUsername { get; set; }
 
         /// <summary>
-        /// Gets or sets the BasicAuthorization password.
+        ///     Gets or sets the BasicAuthorization password.
         /// </summary>
         /// <value>The password.</value>
         public static string BasicAuthorizationPassword { get; set; }
 
 
         /// <summary>
-        /// Creates the client.
+        ///     Creates the client.
         /// </summary>
         private void CreateClient()
         {
             lock (r_SyncRoot)
             {
-                if (_client == null)
+                if (m_Client == null)
                 {
-                    _client = new HttpClientLive();
-                    _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    Fire_OnClientCreated(_client);
+                    m_Client = new HttpClientLive();
+                    m_Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    Fire_OnClientCreated(m_Client);
 
-                    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    m_Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                         Convert.ToBase64String(
                             Encoding.ASCII.GetBytes(string.Format("{0}:{1}", BasicAuthorizationUsername, BasicAuthorizationPassword))));
 
-                    _deadman = TaskHelpers.DeadmanAction(TimeSpan.FromMilliseconds(1000), FreeClient);
-
+                    m_Deadman = TaskHelpers.DeadmanAction(TimeSpan.FromMilliseconds(1000), FreeClient);
                 }
             }
         }
 
-        public static event EventHandler<GenericEventArgs<IHttpClient>>  OnClientCreated;
+        /// <summary>
+        ///     Occurs when [on client created].
+        /// </summary>
+        public static event EventHandler<GenericEventArgs<IHttpClient>> OnClientCreated;
 
         private void Fire_OnClientCreated(IHttpClient client)
         {
-            var shadow = OnClientCreated;
+            EventHandler<GenericEventArgs<IHttpClient>> shadow = OnClientCreated;
             if (shadow != null)
                 shadow(this, new GenericEventArgs<IHttpClient>(client));
         }
 
         /// <summary>
-        /// Frees the client.
+        ///     Frees the client.
         /// </summary>
         private void FreeClient()
         {
             lock (r_SyncRoot)
             {
-                if (_client != null)
+                if (m_Client != null)
                 {
-                    _client.Dispose();
-                    _client = null;
+                    m_Client.Dispose();
+                    m_Client = null;
                 }
             }
         }
 
-  
+
 #pragma warning disable 1998
         /// <summary>
-        /// Processes the request stream.
+        ///     Processes the request stream.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
@@ -92,6 +93,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
 #pragma warning restore 1998
         {
             T result = default(T);
+            Console.WriteLine("Request [{0}: {1}", request.Method, request.RequestUri);
             UseClient(async client =>
             {
                 try
@@ -102,20 +104,18 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                         Stream responseBody = await response.Content.ReadAsStreamAsync();
                         result = xform(responseBody);
                     }
-
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
                     throw;
                 }
-
             });
             return result;
         }
 
         /// <summary>
-        /// Processes the request j object.
+        ///     Processes the request j object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="request">The request.</param>
@@ -133,7 +133,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                 //    w.Write(content);
                 //}
                 var reader = new JsonTextReader(new StreamReader(stream));
-                var jObject = JObject.Load(reader);
+                JObject jObject = JObject.Load(reader);
                 result = xform(jObject);
                 return result;
             });
@@ -142,37 +142,38 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
 
 
         /// <summary>
-        /// Uses the client.
+        ///     Uses the client.
         /// </summary>
         /// <param name="action">The action.</param>
         private void UseClient(Action<IHttpClient> action)
         {
             lock (r_SyncRoot)
             {
-                if (_client == null)
+                if (m_Client == null)
                 {
                     CreateClient();
                 }
                 else
                 {
-                    _deadman.ReTrigger();
+                    m_Deadman.ReTrigger();
                 }
-                action(_client);
+                action(m_Client);
             }
         }
 
         /// <summary>
-        /// The r_ synchronize root
+        ///     The r_ synchronize root
         /// </summary>
         private readonly object r_SyncRoot = new object();
 
         /// <summary>
-        /// The _client
+        ///     The _client
         /// </summary>
-        private IHttpClient _client;
+        private IHttpClient m_Client;
+
         /// <summary>
-        /// The _deadman
+        ///     The _deadman
         /// </summary>
-        private TaskHelpers.DeadmanHandle _deadman;
+        private TaskHelpers.DeadmanHandle m_Deadman;
     }
 }

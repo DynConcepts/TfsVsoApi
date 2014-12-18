@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\DynCon.OSI.VSO.SharedInterfaces.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,10 +33,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -46,20 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IArea.cs" />
-    <Compile Include="Interfaces\IClassificationNode.cs" />
-    <Compile Include="Interfaces\IIteration.cs" />
-    <Compile Include="Interfaces\IWorkItemAPI.cs" />
-    <Compile Include="Interfaces\IWorkItemFieldDefinition.cs" />
-    <Compile Include="Interfaces\IWorkItemType.cs" />
-    <Compile Include="Interfaces\IWorkItemTypeCategory.cs" />
-    <Compile Include="Objects\IWorkItem.cs" />
+    <Compile Include="Objects\IArea.cs" />
+    <Compile Include="Objects\IAvailableRestCalls.cs" />
+    <Compile Include="Objects\IClassificationNode.cs" />
+    <Compile Include="Objects\IIteration.cs" />
+    <Compile Include="Objects\ILink.cs" />
+    <Compile Include="Objects\IRelationType.cs" />
+    <Compile Include="Objects\ITeamRoom.cs" />
+    <Compile Include="APIs\ITeamRoomAPI.cs" />
+    <Compile Include="APIs\IVSOApi.cs" />
+    <Compile Include="APIs\IWorkItemAPI.cs" />
     <Compile Include="Objects\IWorkItemFieldDefinition.cs" />
+    <Compile Include="Objects\IWorkItemType.cs" />
+    <Compile Include="Objects\IWorkItemTypeCategory.cs" />
+    <Compile Include="Objects\IWorkItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReSTHelpers\IHttpClient.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

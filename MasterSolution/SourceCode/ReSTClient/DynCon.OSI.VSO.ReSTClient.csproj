@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ReSTClient.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,12 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIs\TeamRoomAPI.cs" />
+    <Compile Include="APIs\VSOApi.cs" />
     <Compile Include="APIs\VSOClientManager.cs" />
     <Compile Include="APIs\VsoRestAPIBase.cs" />
     <Compile Include="APIs\WorkItemAPI.cs" />
     <Compile Include="Factories\APIFactory.cs" />
     <Compile Include="JsonParsers.cs" />
+    <Compile Include="Objects\JsonArea.cs" />
+    <Compile Include="Objects\JsonAvailableRestCall.cs" />
+    <Compile Include="Objects\JsonClassificationNode.cs" />
+    <Compile Include="Objects\JsonIteration.cs" />
+    <Compile Include="Objects\JsonLink.cs" />
+    <Compile Include="Objects\JsonRelationType.cs" />
+    <Compile Include="Objects\JsonTeamRoom.cs" />
     <Compile Include="Objects\JsonWorkItem.cs" />
+    <Compile Include="Objects\JsonWorkItemFieldDefinition.cs" />
+    <Compile Include="Objects\JsonWorkItemType.cs" />
+    <Compile Include="Objects\JsonWorkItemTypeCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

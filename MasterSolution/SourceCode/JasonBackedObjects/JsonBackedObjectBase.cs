@@ -7,29 +7,20 @@ using Newtonsoft.Json.Linq;
 namespace DynCon.OSI.JasonBackedObjects
 {
     /// <summary>
-    /// Class JsonBackedObjectBase.
+    ///     Class JsonBackedObjectBase.
     /// </summary>
     public abstract class JsonBackedObjectBase
     {
         /// <summary>
-        /// The _json
+        ///     Sets the value.
         /// </summary>
-        private JToken _json;
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jsonBackedField">The json backed field.</param>
+        /// <param name="value">The value.</param>
+        public void SetValue<T>(JsonBackedDataBase jsonBackedField, T value) { r_Cache[jsonBackedField] = value; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedObjectBase"/> class.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        protected JsonBackedObjectBase(JToken json) { _json = json; }
-
-        /// <summary>
-        /// Gets the json value.
-        /// </summary>
-        /// <value>The json value.</value>
-        public JToken JsonValue { get { return _json; }}
-
-        /// <summary>
-        /// To the j son string.
+        ///     To the j son string.
         /// </summary>
         /// <returns>System.String.</returns>
         public string ToJSonString()
@@ -38,23 +29,23 @@ namespace DynCon.OSI.JasonBackedObjects
             var serializer = new JsonSerializer();
             var textWriter = new StringWriter(sb);
             var jsonWriter = new JsonTextWriter(textWriter);
-            serializer.Serialize(jsonWriter, _json);
+            serializer.Serialize(jsonWriter, m_Json);
             jsonWriter.Close();
             textWriter.Close();
             return sb.ToString();
         }
 
         /// <summary>
-        /// Tries the get value.
+        ///     Tries the get value.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="jsonBackedField">The json backed field.</param>
         /// <param name="result">The result.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool TryGetValue<T>(JsonBackedDataBase<T> jsonBackedField, out T result)
+        public bool TryGetValue<T>(JsonBackedDataBase jsonBackedField, out T result)
         {
             object cachedValue;
-            if (_cache.TryGetValue(jsonBackedField, out cachedValue))
+            if (r_Cache.TryGetValue(jsonBackedField, out cachedValue))
             {
                 result = (T) cachedValue;
                 return true;
@@ -64,22 +55,32 @@ namespace DynCon.OSI.JasonBackedObjects
         }
 
         /// <summary>
-        /// Sets the value.
+        ///     Gets the json value.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="jsonBackedField">The json backed field.</param>
-        /// <param name="value">The value.</param>
-        public void SetValue<T>(JsonBackedDataBase<T> jsonBackedField, T value) { _cache[jsonBackedField] = value; }
+        /// <value>The json value.</value>
+        public JToken JsonValue { get { return m_Json; } }
+
 
         /// <summary>
-        /// The _cache
-        /// </summary>
-        private readonly Dictionary<object, object> _cache = new Dictionary<object, object>();
-
-        /// <summary>
-        /// Sets the json.
+        ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        protected void SetJson(JToken json) { _json = json; }
+        protected JsonBackedObjectBase(JToken json) { m_Json = json; }
+
+        /// <summary>
+        ///     Sets the json.
+        /// </summary>
+        /// <param name="json">The json.</param>
+        protected void SetJson(JToken json) { m_Json = json; }
+
+        /// <summary>
+        ///     The _cache
+        /// </summary>
+        private readonly Dictionary<object, object> r_Cache = new Dictionary<object, object>();
+
+        /// <summary>
+        ///     The _json
+        /// </summary>
+        private JToken m_Json;
     }
 }

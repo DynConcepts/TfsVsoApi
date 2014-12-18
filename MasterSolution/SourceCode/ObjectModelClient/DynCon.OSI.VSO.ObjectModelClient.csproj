@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\Debug\DynCon.OSI.VSO.ObjectModelClient.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,10 +33,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,10 +46,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WrapperImplementations\DisplayFieldListWrapper.cs" />
+    <Compile Include="WrapperImplementations\LinkWrapper.cs" />
+    <Compile Include="WrapperImplementations\MappedObjectInitializer.cs" />
+    <Compile Include="WrapperImplementations\MappedObjectBase.cs" />
+    <Compile Include="WrapperImplementations\QueryWrapper.cs" />
+    <Compile Include="WrapperImplementations\SortFieldListWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemFieldWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemStoreWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemTypeCategoryWrapper.cs" />
+    <Compile Include="WrapperImplementations\AreaWrapper.cs" />
+    <Compile Include="WrapperImplementations\IterationWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemTypeWrapper.cs" />
+    <Compile Include="Factories\APIFactory.cs" />
+    <Compile Include="APIs\ClientObjectModelBasedAPI.cs" />
+    <Compile Include="APIs\WorkItemAPI.cs" />
+    <Compile Include="Helpers\WorkItemStoreHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WrapperImplementations\AttachmentCollectionWrapper.cs" />
+    <Compile Include="WrapperImplementations\AttachmentWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemCollectionWrapper.cs" />
+    <Compile Include="WrapperImplementations\WorkItemWrapper.cs" />
+    <Compile Include="WrapperInterfaces\IAttachmentCollectionOM.cs" />
+    <Compile Include="WrapperInterfaces\IAttachmentOM.cs" />
+    <Compile Include="WrapperInterfaces\IDisplayFieldListOM.cs" />
+    <Compile Include="WrapperInterfaces\ILinkCollectionOM.cs" />
+    <Compile Include="WrapperInterfaces\ILinkOM.cs" />
+    <Compile Include="WrapperInterfaces\IQueryOM.cs" />
+    <Compile Include="WrapperInterfaces\IRevisionCollectionOM.cs" />
+    <Compile Include="WrapperInterfaces\ISortFieldListOM.cs" />
+    <Compile Include="WrapperInterfaces\IWorkItemCollectionOM.cs" />
+    <Compile Include="WrapperInterfaces\IWorkItemOM.cs" />
+    <Compile Include="WrapperInterfaces\IWorkItemStoreOM.cs" />
+    <Compile Include="WrapperImplementations\LinkCollectionWrapper.cs" />
+    <Compile Include="WrapperImplementations\RevisionCollectionWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
+      <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
+      <Name>DynCon.OSI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedInterfaces\DynCon.OSI.VSO.SharedInterfaces.csproj">
+      <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
+      <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

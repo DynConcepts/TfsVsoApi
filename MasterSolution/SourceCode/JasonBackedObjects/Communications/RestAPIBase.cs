@@ -10,13 +10,10 @@ using Newtonsoft.Json.Linq;
 namespace DynCon.OSI.JasonBackedObjects.Communications
 {
     /// <summary>
-    /// Class RestAPIBase.
+    ///     Class RestAPIBase.
     /// </summary>
     public class RestAPIBase
     {
- 
-
-    
         //protected async Task<T> ProcessGetRequest<T>(string query, Func<Stream, T> xform)
         //{
         //    string requestString = MakeCollectionScopeRequestString(query);
@@ -25,7 +22,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         //}
 
         /// <summary>
-        /// Processes the get request.
+        ///     Processes the get request.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestString">The request string.</param>
@@ -33,52 +30,85 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// <returns>Task&lt;T&gt;.</returns>
         protected async Task<T> ProcessGetRequest<T>(string requestString, Func<JObject, T> xform)
         {
-            HttpRequestMessage request = _requestHelper.CreateGetRequest(requestString);
-            return await _clientManager.ProcessRequestJObject(request, xform);
+            HttpRequestMessage request = r_RequestHelper.CreateGetRequest(requestString);
+            return await r_ClientManager.ProcessRequestJObject(request, xform);
+        }
+
+        /// <summary>
+        /// Processes the get request.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="uri">The URI.</param>
+        /// <param name="xform">The xform.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        protected async Task<T> ProcessGetRequest<T>(Uri uri, Func<JObject, T> xform)
+        {
+            HttpRequestMessage request = r_RequestHelper.CreateGetRequest(uri);
+            return await r_ClientManager.ProcessRequestJObject(request, xform);
+        }
+
+        /// <summary>
+        ///     Processes the option request.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestString">The request string.</param>
+        /// <param name="xform">The xform.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        protected async Task<T> ProcessOptionRequest<T>(string requestString, Func<JObject, T> xform)
+        {
+            HttpRequestMessage request = r_RequestHelper.CreateOptionRequest(requestString);
+            return await r_ClientManager.ProcessRequestJObject(request, xform);
         }
 
 
         /// <summary>
-        /// Processes the post request.
+        ///     Processes the patch request.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="requestString">The request string.</param>
         /// <param name="content">The content.</param>
         /// <param name="xform">The xform.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-  
-       protected async Task<T> ProcessPostRequest<T>(string requestString, string content, Func<JObject, T> xform)
+        protected async Task<T> ProcessPatchRequest<T>(string requestString, string content, Func<JObject, T> xform)
         {
-            HttpRequestMessage request = _requestHelper.CreatePostRequest(requestString, content);
-            return await _clientManager.ProcessRequestJObject(request, xform);
+            HttpRequestMessage request = r_RequestHelper.CreatePatchRequest(requestString, content);
+            return await r_ClientManager.ProcessRequestJObject(request, xform);
         }
 
-       /// <summary>
-       /// Processes the patch request.
-       /// </summary>
-       /// <typeparam name="T"></typeparam>
-       /// <param name="requestString">The request string.</param>
-       /// <param name="content">The content.</param>
-       /// <param name="xform">The xform.</param>
-       /// <returns>Task&lt;T&gt;.</returns>
-       protected async Task<T> ProcessPatchRequest<T>(string requestString, string content, Func<JObject, T> xform)
+        /// <summary>
+        ///     Processes the post request.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="requestString">The request string.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="xform">The xform.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        protected async Task<T> ProcessPostRequest<T>(string requestString, string content, Func<JObject, T> xform)
         {
-            HttpRequestMessage request = _requestHelper.CreatePatchRequest(requestString, content);
-            return await _clientManager.ProcessRequestJObject(request, xform);
+            HttpRequestMessage request = r_RequestHelper.CreatePostRequest(requestString, content);
+            return await r_ClientManager.ProcessRequestJObject(request, xform);
         }
 
 
-      /// <summary>
-        /// The _request helper
-        /// </summary>
-        private readonly RequestHelpers _requestHelper = new RequestHelpers();
         /// <summary>
-        /// The _client manager
+        ///     To the comma list.
         /// </summary>
-        private readonly RestClientManager _clientManager = new RestClientManager();
+        /// <param name="ids">The ids.</param>
+        /// <returns>System.String.</returns>
+        protected static string ToCommaList(IEnumerable<int> ids)
+        {
+            string result = String.Empty;
+            foreach (int id in ids)
+            {
+                if (!String.IsNullOrEmpty(result))
+                    result += ",";
+                result += id;
+            }
+            return result;
+        }
 
         /// <summary>
-        /// To the json string.
+        ///     To the json string.
         /// </summary>
         /// <param name="elements">The elements.</param>
         /// <returns>System.String.</returns>
@@ -95,20 +125,13 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         }
 
         /// <summary>
-        /// To the comma list.
+        ///     The _client manager
         /// </summary>
-        /// <param name="ids">The ids.</param>
-        /// <returns>System.String.</returns>
-        protected static string ToCommaList(IEnumerable<int> ids)
-        {
-            string result = String.Empty;
-            foreach (int id in ids)
-            {
-                if (!String.IsNullOrEmpty(result))
-                    result += ",";
-                result += id;
-            }
-            return result;
-        }
+        private readonly RestClientManager r_ClientManager = new RestClientManager();
+
+        /// <summary>
+        ///     The _request helper
+        /// </summary>
+        private readonly RequestHelpers r_RequestHelper = new RequestHelpers();
     }
 }

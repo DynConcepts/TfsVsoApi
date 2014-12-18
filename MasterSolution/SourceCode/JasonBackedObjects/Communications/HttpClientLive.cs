@@ -4,10 +4,9 @@ using DynCon.OSI.VSO.SharedInterfaces.ReSTHelpers;
 namespace DynCon.OSI.JasonBackedObjects.Communications
 {
     /// <summary>
-    /// Class HttpClientLive.
+    ///     Class HttpClientLive.
     /// </summary>
     internal class HttpClientLive : HttpClient, IHttpClient
     {
-        
     }
 }

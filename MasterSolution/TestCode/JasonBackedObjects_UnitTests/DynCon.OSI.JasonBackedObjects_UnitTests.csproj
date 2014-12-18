@@ -26,6 +26,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\DynCon.OSI.JasonBackedObjects_UnitTests.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,6 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Communications\HttpClientMock_UnitTests.cs" />
     <Compile Include="JsonBackedDataBase_UnitTests.cs" />
     <Compile Include="JsonBackedDictionary_UnitTests.cs" />
     <Compile Include="JsonBackedField_UnitTests.cs" />
@@ -71,6 +75,10 @@
     <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\SharedInterfaces\DynCon.OSI.VSO.SharedInterfaces.csproj">
+      <Project>{D42275BE-B928-4C19-BA51-B4DFEFD66127}</Project>
+      <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -9,31 +9,12 @@ using System.Reflection;
 namespace DynCon.OSI.Core.AdvancedEvents
 {
     /// <summary>
-    /// Class MultiTypeEvent.
+    ///     Class MultiTypeEvent.
     /// </summary>
     public class MultiTypeEvent
     {
         /// <summary>
-        /// Holders this instance.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>GenericEventHolder&lt;T&gt;.</returns>
-        public GenericEventHolder<T> Holder<T>() //where T : EventArgs
-        {
-            GenericEventHolder raw;
-            if (r_EventHolders.TryGetValue(typeof (T), out raw)) return (GenericEventHolder<T>) raw;
-            raw = new GenericEventHolder<T>();
-            r_EventHolders.Add(typeof (T), raw);
-            return (GenericEventHolder<T>) raw;
-        }
-
-        /// <summary>
-        /// The r_ event holders
-        /// </summary>
-        private readonly Dictionary<Type, GenericEventHolder> r_EventHolders = new Dictionary<Type, GenericEventHolder>();
-
-        /// <summary>
-        /// Fires the specified sender.
+        ///     Fires the specified sender.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="data">The data.</param>
@@ -51,17 +32,36 @@ namespace DynCon.OSI.Core.AdvancedEvents
         }
 
         /// <summary>
-        /// The r_ dispatch
+        ///     Holders this instance.
         /// </summary>
-        private readonly Dictionary<Type, MethodInfo> r_Dispatch = new Dictionary<Type, MethodInfo>();
+        /// <typeparam name="T"></typeparam>
+        /// <returns>GenericEventHolder&lt;T&gt;.</returns>
+        public GenericEventHolder<T> Holder<T>() //where T : EventArgs
+        {
+            GenericEventHolder raw;
+            if (r_EventHolders.TryGetValue(typeof (T), out raw)) return (GenericEventHolder<T>) raw;
+            raw = new GenericEventHolder<T>();
+            r_EventHolders.Add(typeof (T), raw);
+            return (GenericEventHolder<T>) raw;
+        }
 
         /// <summary>
-        /// Internals the fire.
+        ///     Internals the fire.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sender">The sender.</param>
         /// <param name="data">The data.</param>
         private void InternalFire<T>(object sender, T data) // where T : EventArgs
         { Holder<T>().Fire(sender, data); }
+
+        /// <summary>
+        ///     The r_ dispatch
+        /// </summary>
+        private readonly Dictionary<Type, MethodInfo> r_Dispatch = new Dictionary<Type, MethodInfo>();
+
+        /// <summary>
+        ///     The r_ event holders
+        /// </summary>
+        private readonly Dictionary<Type, GenericEventHolder> r_EventHolders = new Dictionary<Type, GenericEventHolder>();
     }
 }

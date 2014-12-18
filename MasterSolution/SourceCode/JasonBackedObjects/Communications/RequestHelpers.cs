@@ -1,16 +1,44 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace DynCon.OSI.JasonBackedObjects.Communications
 {
     /// <summary>
-    /// Class RequestHelpers.
+    ///     Class RequestHelpers.
     /// </summary>
-    class RequestHelpers
+    internal class RequestHelpers
     {
+        /// <summary>
+        ///     Creates the get request.
+        /// </summary>
+        /// <param name="requestString">The request string.</param>
+        /// <returns>HttpRequestMessage.</returns>
+        public HttpRequestMessage CreateGetRequest(string requestString)
+        {
+            var request = new HttpRequestMessage(new HttpMethod("GET"), requestString);
+            return request;
+        }
 
         /// <summary>
-        /// Creates the patch request.
+        /// Creates the get request.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <returns>HttpRequestMessage.</returns>
+        public HttpRequestMessage CreateGetRequest(Uri uri)
+        {
+            var request = new HttpRequestMessage(new HttpMethod("GET"), uri);
+            return request;
+        }
+
+        public HttpRequestMessage CreateOptionRequest(string requestString)
+        {
+            var request = new HttpRequestMessage(new HttpMethod("OPTIONS"), requestString);
+            return request;
+        }
+
+        /// <summary>
+        ///     Creates the patch request.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <param name="jsonContent">Content of the json.</param>
@@ -19,12 +47,12 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         {
             var content = new StringContent(jsonContent);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json-patch+json");
-            var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
+            var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) {Content = content};
             return request;
         }
 
         /// <summary>
-        /// Creates the post request.
+        ///     Creates the post request.
         /// </summary>
         /// <param name="requestUri">The request URI.</param>
         /// <param name="jsonContent">Content of the json.</param>
@@ -33,18 +61,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         {
             var content = new StringContent(jsonContent);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var request = new HttpRequestMessage(new HttpMethod("POST"), requestUri) { Content = content };
-            return request;
-        }
-
-        /// <summary>
-        /// Creates the get request.
-        /// </summary>
-        /// <param name="requestString">The request string.</param>
-        /// <returns>HttpRequestMessage.</returns>
-        public HttpRequestMessage CreateGetRequest(string requestString)
-        {
-            var request = new HttpRequestMessage(new HttpMethod("GET"), requestString);
+            var request = new HttpRequestMessage(new HttpMethod("POST"), requestUri) {Content = content};
             return request;
         }
     }
