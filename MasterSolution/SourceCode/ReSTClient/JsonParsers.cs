@@ -41,6 +41,18 @@ namespace DynCon.OSI.VSO.ReSTClient
             T instance = creator(jObject);
             return instance;
         }
+        /// <summary>
+        /// js the array to instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jArray">The j array.</param>
+        /// <param name="creator">The creator.</param>
+        /// <returns>T.</returns>
+        public static T JArrayToInstance<T>(JArray jArray, Func<JArray, T> creator)
+        {
+            T instance = creator(jArray);
+            return instance;
+        }
 
         /// <summary>
         ///     Valueses to objects.

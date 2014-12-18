@@ -56,6 +56,7 @@
     <Compile Include="AdvancedEvents\GenericEventArgs.cs" />
     <Compile Include="AdvancedEvents\GenericEventHolder.cs" />
     <Compile Include="AdvancedEvents\MultiTypeEvent.cs" />
+    <Compile Include="Helpers\ParameterizedLazyWithReset.cs" />
     <Compile Include="Helpers\LazyWirhReset.cs" />
     <Compile Include="Helpers\ObjectMapper.cs" />
     <Compile Include="ObjectMapping\MappedObjectBase.cs" />

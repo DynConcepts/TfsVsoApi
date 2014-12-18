@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
-using DynCon.OSI.VSO.ReSTClient.TFS.Client;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.APIs
@@ -37,7 +35,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
                 jFieldContainer.Add(new JProperty(fieldDefinition.ReferenceName, null));
             }
             json.Add(jProperty);
-            var retVal = new JsonWorkItem(json);
+            var retVal = JsonWorkItem.FromToken(json);
             for (int index = 0; index < headings.Count; ++index)
                 retVal.SetFieldValue(headings[index], data[index]);
             return retVal;
@@ -73,7 +71,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         {
             string request = "/wit/classificationNodes/areas?$depth=" + depth;
             JsonArea result = await ProcessProjectGetRequest(project, request, o => JsonParsers.JObjectToInstance(o, JsonArea.FromToken));
-            var retVal = new List<JsonArea> { result };
+            var retVal = new List<JsonArea> {result};
             AddChildren(retVal, result);
             return retVal;
         }
@@ -105,17 +103,37 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         }
 
         /// <summary>
-        ///     Gets the work item links.
+        /// Gets the links for work item.
         /// </summary>
-        /// <param name="workItem">The work item.</param>
-        /// <returns>List&lt;JsonLink&gt;.</returns>
-        public async Task<JsonLinkCollection> GetLinksForWorkItem(JsonWorkItem workItem)
+        /// <typeparam name="TLinkCollection">The type of the t link collection.</typeparam>
+        /// <param name="id">The identifier.</param>
+        /// <param name="rev">The rev.</param>
+        /// <param name="fromToken">From token.</param>
+        /// <returns>System.Threading.Tasks.Task&lt;TLinkCollection&gt;.</returns>
+        public async Task<TLinkCollection> GetLinksForWorkItem<TLinkCollection>(int id, int rev, Func<JArray, TLinkCollection> fromToken)
+            where TLinkCollection : JsonLinkCollection
         {
-            string request = String.Format("/wit/workitems/{0}/revisions/{1}/?$expand=relations", workItem.Id, workItem.Rev);
-            JsonWorkItem result = await ProcessCollectionGetRequest(request, o => JsonParsers.JObjectToInstance(o, JsonWorkItem.FromToken));
-            JsonLinkCollection resultLinks = result.Links;
-            return resultLinks;
+            string request = String.Format("/wit/workitems/{0}/revisions/{1}/?$expand=relations", id, rev);
+            var result = await ProcessCollectionGetRequest(request, o =>
+            {
+                JProperty rootToken = o.Properties().FirstOrDefault(p => p.Name == "relations");
+                JArray values;
+                if (rootToken != null)
+                {
+                    values = (JArray) rootToken.Value;
+                }
+                else
+                {
+                    values = new JArray();
+                }
+                var collection = JsonParsers.JArrayToInstance(values, fromToken);
+                return collection;
+            });
+            return result;
         }
+
+        public async Task<JsonLinkCollection> GetLinksForWorkItem(JsonWorkItem workItem) { return await GetLinksForWorkItem(workItem.Id, workItem.Rev, JsonLinkCollection.FromToken); }
+        internal async Task<LinkCollectionImpl> GetLinksForWorkItem(WorkItemImpl workItem) { return await GetLinksForWorkItem(workItem.Id, workItem.Rev, LinkCollectionImpl.FromToken); }
 
         /// <summary>
         ///     Gets the relation types.
@@ -134,8 +152,9 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="uri">The URI.</param>
         /// <returns>JsonWorkItem.</returns>
         public JsonWorkItem GetWorkItem(Uri uri) { return ProcessGetRequest(uri, JsonWorkItem.FromToken).Result; }
+        public T GetWorkItem<T>(Uri uri, Func<JObject, T> fromToken) where T:JsonWorkItem { return ProcessGetRequest(uri, fromToken).Result; }
 
-     
+
 
         /// <summary>
         ///     Gets the work item type categories.
@@ -171,13 +190,26 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
             IReadOnlyList<JsonWorkItem> result = await JsonWorkItemsLoader(ids, JsonWorkItem.FromToken);
             return result;
         }
-        internal async Task<T> GetWorkItem<T>(int id, Func<JToken,T> func ) where T : JsonWorkItem
+
+        internal async Task<T> GetWorkItem<T>(int id, Func<JToken, T> func) where T : JsonWorkItem
         {
-            IReadOnlyList<T> result = await JsonWorkItemsLoader(new[]{id}, func);
+            IReadOnlyList<T> result = await JsonWorkItemsLoader(new[] {id}, func);
             return result[0];
         }
 
-        public async Task<IReadOnlyList<T>> WiqlQuery<T>(string wiql, bool fullyPopulate, Func<JToken, T> mapper) where T: JsonWorkItem 
+        internal async Task<IReadOnlyList<T>> GetWorkItemRevisions<T>(int id, Func<JToken, T> func)
+        {
+            string request = String.Format("/wit/workitems/{0}/revisions", id);
+            IReadOnlyList<T> result = await ProcessCollectionGetRequest(request, o => JsonParsers.ValuesToObjects(o, func));
+            return result;
+        }
+        internal async Task<IReadOnlyList<JsonWorkItemRevision>> GetWorkItemRevisions(int id)
+        {
+             return await GetWorkItemRevisions(id, JsonWorkItemRevision.FromToken);
+        }
+
+
+        public async Task<IReadOnlyList<T>> WiqlQuery<T>(string wiql, bool fullyPopulate, Func<JToken, T> mapper) where T : JsonWorkItem
         {
             const string request = "/wit/wiql";
             const string format = " \"query\": \"{0}\" ";
@@ -205,10 +237,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="wiql">The wiql.</param>
         /// <param name="fullyPopulate">if set to <c>true</c> [fully populate].</param>
         /// <returns>Task&lt;IList&lt;JsonWorkItem&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonWorkItem>> WiqlQuery(string wiql, bool fullyPopulate)
-        {
-            return await WiqlQuery(wiql, fullyPopulate, JsonWorkItem.FromToken);
-        }
+        public async Task<IReadOnlyList<JsonWorkItem>> WiqlQuery(string wiql, bool fullyPopulate) { return await WiqlQuery(wiql, fullyPopulate, JsonWorkItem.FromToken); }
 
         //public async Task<IReadOnlyList<JsonWorkItem>> WiqlQuery(string project, string wiql, bool fullyPopulate)
         //{
@@ -271,7 +300,7 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <param name="ids">The ids.</param>
         /// <param name="func"></param>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonWorkItem&gt;&gt;.</returns>
-        private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids,Func<JToken, T> func) where T : JsonWorkItem 
+        private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids, Func<JToken, T> func) where T : JsonWorkItem
         {
             string request = "/wit/workitems?ids=" + ToCommaList(ids);
 

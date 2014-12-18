@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace DynCon.OSI.Core.Helpers
 {
@@ -23,7 +24,38 @@ namespace DynCon.OSI.Core.Helpers
         /// Gets the value.
         /// </summary>
         /// <value>The value.</value>
-        public T Value { get { return m_Instance.Value; } }
+        public T Value
+        {
+            get
+            {
+
+                if (typeof (T).FullName == "System.Collections.Generic.IList<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonLink>")
+                {
+                    Console.WriteLine();
+                }
+                if (m_Active)
+                {
+                    var currentStackTrace = new StackTrace();
+                    throw new Exception();
+                }
+                m_LastStackTrace = new StackTrace();
+                m_Active = true;
+                T value;
+                try
+                {
+                    value = m_Instance.Value;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    m_Active = false;
+                }
+                return value;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LazyWithReset{T}"/> class.
@@ -35,6 +67,7 @@ namespace DynCon.OSI.Core.Helpers
             Reset();
         }
 
+        private bool m_Active;
         /// <summary>
         /// The m_ instance
         /// </summary>
@@ -43,5 +76,7 @@ namespace DynCon.OSI.Core.Helpers
         /// The r_ value factory
         /// </summary>
         private readonly Func<T> r_ValueFactory;
+
+        private StackTrace m_LastStackTrace;
     }
 }

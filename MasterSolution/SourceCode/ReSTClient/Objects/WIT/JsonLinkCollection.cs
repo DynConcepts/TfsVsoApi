@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
 
@@ -20,15 +21,24 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <param name="item">The item.</param>
         /// <returns>System.String.</returns>
         protected override string ExtractKey(JsonLink item) { return item.GetHashCode().ToString(CultureInfo.InvariantCulture); }
+
         /// <summary>
         /// Gets the item source.
         /// </summary>
         /// <value>The item source.</value>
-        protected override IReadOnlyList<JsonLink> ItemSource { get { return sr_Fields.Eval(this); } }
+        protected override IReadOnlyList<JsonLink> ItemSource
+        {
+            get
+            {
+                var result = sr_Links.Eval(this);
+                return result;
+            }
+        }
+
         /// <summary>
         /// The SR_ fields
         /// </summary>
-        private static readonly JsonBackedList<JsonLink> sr_Fields = new JsonBackedList<JsonLink>(token => JsonParsers.JArrayToObjects((JArray)token, JsonLink.FromToken));
+        private static readonly JsonBackedList<JsonLink> sr_Links = new JsonBackedList<JsonLink>(token => JsonParsers.JArrayToObjects((JArray)token, (o) => JsonLink.FromToken(o)));
 
         /// <summary>
         /// Froms the token.
@@ -149,44 +159,5 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <value><c>true</c> if this instance is fixed size; otherwise, <c>false</c>.</value>
         /// <exception cref="System.NotImplementedException"></exception>
         public bool IsFixedSize { get { throw new NotImplementedException(); } }
-    }
-
-    /// <summary>
-    /// Class JsonRelatedLink.
-    /// </summary>
-    public class JsonRelatedLink : JsonLink
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        public JsonRelatedLink(JToken json) : base(json) {
-        }
-    }
-
-    /// <summary>
-    /// Class JsonHyperlink.
-    /// </summary>
-    public class JsonHyperlink : JsonLink
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        public JsonHyperlink(JToken json) : base(json) {
-        }
-    }
-
-    /// <summary>
-    /// Class JsonExternalLink.
-    /// </summary>
-    public class JsonExternalLink :JsonLink
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        public JsonExternalLink(JToken json) : base(json) {
-        }
     }
 }

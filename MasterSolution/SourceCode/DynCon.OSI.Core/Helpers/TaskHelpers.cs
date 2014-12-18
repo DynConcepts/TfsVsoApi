@@ -136,15 +136,25 @@ namespace DynCon.OSI.Core.Helpers
         private static Timer CreateTimer()
         {
             var timer = new Timer();
-            sr_ActiveTimers.Add(timer);
+            lock (sr_SyncRoot)
+            {
+                sr_ActiveTimers.Add(timer);
+            }
             return timer;
         }
 
+        private static object sr_SyncRoot = new object();
         /// <summary>
         ///     Removes the timer.
         /// </summary>
         /// <param name="timer">The timer.</param>
-        private static void RemoveTimer(Timer timer) { sr_ActiveTimers.Remove(timer); }
+        private static void RemoveTimer(Timer timer)
+        {
+            lock (sr_SyncRoot)
+            {
+                sr_ActiveTimers.Remove(timer);
+            }
+        }
 
         /// <summary>
         ///     The SR_ active timers

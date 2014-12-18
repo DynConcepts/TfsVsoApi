@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using DynCon.OSI.Core.ObjectMapping;
+using DynCon.OSI.VSO.ObjectModelClient.Helpers;
 using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
@@ -19,6 +21,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         Int32 ILinkCollection.Add(ILink link)
         {
             int nativeCallResult = r_Instance.Add(LinkWrapper.GetInstance(link));
+            return nativeCallResult;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            IEnumerator nativeCallResult = new EnumeratorWrapper<ILink>(r_Instance.GetEnumerator(), o=>LinkWrapper.GetWrapper((Link)o));
             return nativeCallResult;
         }
 

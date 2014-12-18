@@ -51,7 +51,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        private JsonFieldCollection(JToken json) : base(json) { }
+        protected JsonFieldCollection(JToken json) : base(json) { }
 
         /// <summary>
         ///     Extracts the key.

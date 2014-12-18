@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -40,19 +39,44 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
             return elements;
         }
 
-        /// <summary>
-        /// Factory method to create instance from provided Json
-        /// </summary>
-        /// <param name="content">The content.</param>
-        /// <returns>JsonWorkItem.</returns>
-        public static JsonWorkItem FromToken(JToken content)
+        public class JsonWorkItemInitializer
         {
-            var workItem = new JsonWorkItem(content);
-            ////var fields = workItem.Fields;
-            ////foreach (var field in fields)
-            ////{
-            ////    Debug.WriteLine(field.ReferenceName);
-            ////}
+            public IParameterizedLazyWithReset<JsonWorkItem, JsonFieldCollection> FieldInitializer { get; set; }
+            public IParameterizedLazyWithReset<JsonWorkItem, JsonLinkCollection> LinkInitializer { get; set; }
+            public string FieldsMode { get; set; }
+            public string LinkMode { get; set; }
+        }
+        /// <summary>
+        /// Froms the token.
+        /// </summary>
+        /// <param name="json">The json.</param>
+        /// <returns>JsonWorkItem.</returns>
+        public static JsonWorkItem FromToken(JToken json)
+        {
+            var initializer = new JsonWorkItemInitializer();
+            JProperty fields = ((JObject)json).Properties().FirstOrDefault(p => p.Name == "fields");
+            if (fields == null)
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, JsonFieldCollection>(DeferredLoadFields);
+                initializer.FieldsMode = "DeferredLoadFields";
+            }
+            else
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, JsonFieldCollection>(ParseFields);
+                initializer.FieldsMode = "ParseFields";
+            }
+            JProperty links = ((JObject)json).Properties().FirstOrDefault(p => p.Name == "relations");
+            if (links == null)
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, JsonLinkCollection>(DeferredLoadLinks);
+                initializer.LinkMode = "DeferredLoadLinks";
+            }
+            else
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, JsonLinkCollection>(ParseLinks);
+                initializer.LinkMode = "ParseLinks";
+            }
+            var workItem = new JsonWorkItem(json, initializer);
             return workItem;
         }
 
@@ -62,7 +86,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <param name="workItemType">Type of the work item.</param>
         public void ChangeWorkItemType(string workItemType) { SetFieldValue("System.WorkItemType", workItemType); }
 
-        public JsonFieldCollection Fields { get { return r_Fields.Value; } }
+        public JsonFieldCollection Fields { get { return r_Fields.Value(this); } }
 
         /// <summary>
         /// Gets the field.
@@ -70,7 +94,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <typeparam name="T"></typeparam>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns>T.</returns>
-        public T GetField<T>(string fieldName) { return (T)r_Fields.Value[fieldName].Value; }
+        public T GetField<T>(string fieldName) { return (T)r_Fields.Value(this)[fieldName].Value; }
 
         /// <summary>
         /// Gets the type of the field.
@@ -92,7 +116,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="value">The value.</param>
-        public void SetFieldValue(string fieldName, object value) { r_Fields.Value[fieldName].Value = value; }
+        public void SetFieldValue(string fieldName, object value) { r_Fields.Value(this)[fieldName].Value = value; }
 
         /// <summary>
         /// Updates from.
@@ -116,9 +140,9 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool TryGetField(string fieldName, out JsonField fieldValue)
         {
-            if (r_Fields.Value.Contains(fieldName))
+            if (r_Fields.Value(this).Contains(fieldName))
             {
-                fieldValue = r_Fields.Value[fieldName];
+                fieldValue = r_Fields.Value(this)[fieldName];
                 return true;
             }
             fieldValue = null;
@@ -159,13 +183,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// Gets the links.
         /// </summary>
         /// <value>The links.</value>
-        public JsonLinkCollection Links { get { return r_Links.Value; } }
+        public virtual JsonLinkCollection Links { get { return r_Links.Value(this); } }
 
         /// <summary>
         /// Gets the name of the project.
         /// </summary>
         /// <value>The name of the project.</value>
-        public string ProjectName { get { return (string)r_Fields.Value["System.TeamProject"].Value; } }
+        public string ProjectName { get { return (string)r_Fields.Value(this)["System.TeamProject"].Value; } }
 
         /// <summary>
         /// Gets the URL.
@@ -177,46 +201,29 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// Gets the type of the work item.
         /// </summary>
         /// <value>The type of the work item.</value>
-        public string WorkItemTypeName { get { return (string)r_Fields.Value["System.WorkItemType"].Value; } }
+        public string WorkItemTypeName { get { return (string)r_Fields.Value(this)["System.WorkItemType"].Value; } }
 
         public int Rev { get { return sr_Rev.Eval(this); }  }
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
+        /// Initializes a new instance of the <see cref="JsonWorkItem"/> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        public JsonWorkItem(JToken json)
-            : base(json)
+        /// <param name="initializer">The initializer.</param>
+         protected JsonWorkItem(JToken json, JsonWorkItemInitializer initializer)
+           : base(json)
         {
-            JProperty fields = ((JObject)json).Properties().FirstOrDefault(p => p.Name == "fields");
-            if (fields == null)
-            {
-                r_Fields = new LazyWithReset<JsonFieldCollection>(DeferredLoadFields);
-                FieldsMode = "DeferredLoadFields";
-            }
-            else
-            {
-                r_Fields = new LazyWithReset<JsonFieldCollection>(() => ParseFields(json["fields"].Value<JObject>()));
-                FieldsMode = "ParseFields";
-            }
-            JProperty links = ((JObject)json).Properties().FirstOrDefault(p => p.Name == "relations");
-            if (links == null)
-            {
-                r_Links = new Lazy<JsonLinkCollection>(DeferredLoadLinks);
-                LinkMode = "DeferredLoadLinks";
-            }
-            else
-            {
-                r_Links = new Lazy<JsonLinkCollection>(() => ParseLinks(json["relations"].Value<JArray>()));
-                LinkMode = "ParseLinks";
-            }
+            r_Fields = initializer.FieldInitializer;
+            r_Links = initializer.LinkInitializer;
+             if (r_Links == null)
+                 throw new Exception();
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonWorkItem" /> class.
         /// </summary>
-        public JsonWorkItem() : this(DefaultJson()) { }
+        public JsonWorkItem() : this(DefaultJson(), null) { }
 
         /// <summary>
         /// Defaults the json.
@@ -237,22 +244,23 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <returns>JsonFieldCollection.</returns>
         /// <exception cref="NoReStAPIEquivilantException"></exception>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        private JsonFieldCollection DeferredLoadFields() { throw new NoReStAPIEquivilantException(); }
+        private static JsonFieldCollection DeferredLoadFields(JsonWorkItem jsonWorkItem) { throw new NoReStAPIEquivilantException(); }
 
         /// <summary>
         /// Deferreds the load links.
         /// </summary>
         /// <returns>JsonLinkCollection.</returns>
-        private JsonLinkCollection DeferredLoadLinks() { return APIFactory().GetLinksForWorkItem(this).Result; }
+        private static JsonLinkCollection DeferredLoadLinks(JsonWorkItem jsonWorkItem) { return APIFactory().GetLinksForWorkItem(jsonWorkItem).Result; }
 
 
         /// <summary>
         /// Parses the fields.
         /// </summary>
-        /// <param name="value">The value.</param>
+        /// <param name="jsonWorkItem">The json work item.</param>
         /// <returns>JsonFieldCollection.</returns>
-        private JsonFieldCollection ParseFields(JObject value)
+        private static JsonFieldCollection ParseFields(JsonWorkItem jsonWorkItem)
         {
+            JProperty value = ((JObject)jsonWorkItem.JsonValue).Properties().FirstOrDefault(p => p.Name == "fields");
             JsonFieldCollection fields = JsonFieldCollection.FromToken(value);
             return fields;
         }
@@ -260,10 +268,11 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <summary>
         /// Parses the links.
         /// </summary>
-        /// <param name="value">The value.</param>
+        /// <param name="jsonWorkItem">The json work item.</param>
         /// <returns>JsonLinkCollection.</returns>
-        private JsonLinkCollection ParseLinks(JArray value)
+        private static JsonLinkCollection ParseLinks(JsonWorkItem jsonWorkItem)
         {
+            JArray value = (JArray)((JObject)jsonWorkItem.JsonValue).Properties().FirstOrDefault(p => p.Name == "relations").Value<Object>();
             JsonLinkCollection links = JsonLinkCollection.FromToken(value);
             return links;
         }
@@ -278,7 +287,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         {
             try
             {
-                var jsonField = r_Fields.Value[fieldName];
+                var jsonField = r_Fields.Value(this)[fieldName];
                 return (T) jsonField.Value;
             }
             catch (KeyNotFoundException ex)
@@ -307,12 +316,12 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <summary>
         /// The r_ fields
         /// </summary>
-        private readonly LazyWithReset<JsonFieldCollection> r_Fields;
+        protected IParameterizedLazyWithReset<JsonWorkItem, JsonFieldCollection> r_Fields;
 
         /// <summary>
         /// The r_ links
         /// </summary>
-        private readonly Lazy<JsonLinkCollection> r_Links;
+        protected IParameterizedLazyWithReset<JsonWorkItem, JsonLinkCollection> r_Links;
 
     }
 }

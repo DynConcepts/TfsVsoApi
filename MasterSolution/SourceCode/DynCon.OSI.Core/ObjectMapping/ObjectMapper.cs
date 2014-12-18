@@ -26,7 +26,10 @@ namespace DynCon.OSI.Core.ObjectMapping
             }
             TInterface target;
             if (!result.TryGetTarget(out target))
+            {
+                r_Map.Remove(src);
                 target = CreateWrapper(src);
+            }
             return target;
         }
 

@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\WIT\JsonExternalLink.cs" />
+    <Compile Include="Objects\WIT\JsonHyperlink.cs" />
+    <Compile Include="Objects\WIT\JsonRelatedLink.cs" />
+    <Compile Include="Objects\WIT\JsonWorkItemRevision.cs" />
     <Compile Include="APIs\TeamRoomAPI.cs" />
     <Compile Include="APIs\VSOApi.cs" />
     <Compile Include="APIs\VSOClientManager.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="TFS\Client\TfsConfigurationServerImpl.cs" />
     <Compile Include="TFS\Client\TfsConnectionImpl.cs" />
     <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl.cs" />
+    <Compile Include="Objects\WIT\ILinkImpl.cs" />
     <Compile Include="ToBeImplementedException.cs" />
     <Compile Include="TFS\Client\WindowsCredentialImpl.cs" />
     <Compile Include="TFS\Framework\Client\AccessControlEntryImpl.cs" />

@@ -127,7 +127,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.UnitTests
         /// Queries the count_ unit test1.
         /// </summary>
         [TestMethod()]
-        [ExpectedException(typeof(NotSupportedException))]
+        [ExpectedException(typeof(ToBeImplementedException))]
         public void QueryCount_UnitTest1()
         {
             var instance = GetTestInstance();

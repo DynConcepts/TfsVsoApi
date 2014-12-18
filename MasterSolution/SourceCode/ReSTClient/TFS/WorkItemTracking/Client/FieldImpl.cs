@@ -26,10 +26,16 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         String IField.Name { get { throw new ToBeImplementedException(); } }
         Object IField.OriginalValue { get { throw new ToBeImplementedException(); } }
         IValuesCollection IField.ProhibitedValues { get { throw new ToBeImplementedException(); } }
-        String IField.ReferenceName { get { throw new ToBeImplementedException(); } }
+        String IField.ReferenceName { get { return base.ReferenceName; } }
         IFieldStatus IField.Status { get { throw new ToBeImplementedException(); } }
-        Object IField.Value { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }
+        Object IField.Value { get { return base.Value; } set { throw new ToBeImplementedException(); } }
         Object IField.ValueWithServerDefault { get { throw new ToBeImplementedException(); } }
         IWorkItem IField.WorkItem { get { throw new ToBeImplementedException(); } }
+
+        public static new IField FromToken(JToken token)
+        {
+            var instance = new FieldImpl(token);
+            return instance;
+        }
     }
 }

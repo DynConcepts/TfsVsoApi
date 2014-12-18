@@ -1,15 +1,28 @@
 using System;
 using System.Collections.Generic;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
+using System.Linq;
+using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class FieldCollectionImpl.
     /// </summary>
-    internal class FieldCollectionImpl : ReadOnlyListImpl<IField>, IFieldCollection
+//    internal class FieldCollectionImpl : ReadOnlyListImpl<IField>, IFieldCollection
+    internal class FieldCollectionImpl : JsonFieldCollection, IFieldCollection
     {
+        internal new static FieldCollectionImpl FromToken(JToken token)
+        {
+            var instance = new FieldCollectionImpl(token);
+            return instance;
+        }
+
+        protected FieldCollectionImpl(JToken json) : base(json) {
+        }
+
         /// <summary>
         ///     Determines whether [contains] [the specified field name].
         /// </summary>
@@ -31,7 +44,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Boolean.</returns>
-        Boolean IFieldCollection.Contains(IField value) { return Items.Contains(value); }
+        Boolean IFieldCollection.Contains(IField value) { return ItemList.Contains((FieldImpl)value); }
 
         /// <summary>
         ///     Drops the cached data.
@@ -52,14 +65,14 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Int32.</returns>
-        Int32 IFieldCollection.IndexOf(IField value) { return Items.IndexOf(value); }
+        Int32 IFieldCollection.IndexOf(IField value) { return ItemList.IndexOf((FieldImpl)value); }
 
         /// <summary>
         ///     Gets the <see cref="IField" /> at the specified index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>IField.</returns>
-        IField IFieldCollection.this[Int32 index] { get { return Items[index]; } }
+        IField IFieldCollection.this[Int32 index] { get { return (IField) ItemList[index]; } }
 
         /// <summary>
         ///     Gets the <see cref="IField" /> with the specified core field.
@@ -75,7 +88,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <param name="name">The name.</param>
         /// <returns>IField.</returns>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IField IFieldCollection.this[String name] { get { throw new ToBeImplementedException(); } }
+        IField IFieldCollection.this[String name] { get { return (IField) ItemDictionary[name]; } }
 
         /// <summary>
         ///     Tries the get by identifier.
@@ -85,11 +98,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
         IField IFieldCollection.TryGetById(Int32 id) { throw new ToBeImplementedException(); }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FieldCollectionImpl" /> class.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        protected FieldCollectionImpl(IReadOnlyList<IField> items)
-            : base(items) { }
+         private static readonly JsonBackedDictionary<IField> sr_Fields = new JsonBackedDictionary<IField>(String.Empty, FieldImpl.FromToken);
+        protected override IReadOnlyList<JsonField> ItemSource { get { return sr_Fields.Eval(this).Values.Cast<JsonField>().ToList(); } }
+
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -65,7 +66,12 @@ namespace DynCon.OSI.JasonBackedObjects
         ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        protected JsonBackedObjectBase(JToken json) { m_Json = json; }
+        protected JsonBackedObjectBase(JToken json)
+        {
+            if (json == null)
+                throw new Exception();
+            m_Json = json;
+        }
 
         /// <summary>
         ///     Sets the json.

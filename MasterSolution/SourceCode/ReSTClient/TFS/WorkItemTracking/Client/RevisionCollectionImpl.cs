@@ -35,7 +35,11 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         ///     Initializes a new instance of the <see cref="RevisionCollectionImpl" /> class.
         /// </summary>
         /// <param name="items">The items.</param>
-        protected RevisionCollectionImpl(IReadOnlyList<IRevision> items)
-            : base(items) { }
+        internal RevisionCollectionImpl(IReadOnlyList<IRevision> items)
+            : base(items)
+        {
+            for (int index = 0; index < Items.Count; ++index)
+                ((RevisionImpl)items[index]).SetIndex(index);
+        }
     }
 }

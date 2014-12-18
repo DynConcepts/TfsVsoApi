@@ -1,5 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -14,17 +17,55 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkItemImpl"/> class.
         /// </summary>
-        /// <param name="content">The content.</param>
-        private WorkItemImpl(JToken content) : base(content)
+        /// <param name="json">The content.</param>
+        /// <param name="initializer"></param>
+        private WorkItemImpl(JToken json, JsonWorkItemInitializer initializer)
+            : base(json, initializer)
         {
-            
+
+            r_RevisionCollection = new Lazy<RevisionCollectionImpl>(InitRevisionCollection);
+        }
+        private static FieldCollectionImpl ParseFields(JsonWorkItem workItem)
+        {
+            JProperty fieldsProperty = ((JObject)workItem.JsonValue).Properties().FirstOrDefault(p => p.Name == "fields");
+            JToken  fieldsValues =  fieldsProperty.Value;
+            FieldCollectionImpl fields = FieldCollectionImpl.FromToken(fieldsValues);
+            return fields;
         }
 
-        public new static WorkItemImpl FromToken(JToken content)
-        {
-            var workItem = new WorkItemImpl(content);
-           return workItem;
+        private static FieldCollectionImpl DeferredLoadFields(JsonWorkItem workItem) { throw new NotImplementedException(); }
+
+
+        public new static WorkItemImpl FromToken(JToken json)
+        { 
+
+            var initializer = new JsonWorkItemInitializer();
+            JProperty fields = ((JObject) json).Properties().FirstOrDefault(p => p.Name == "fields");
+            if (fields == null)
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(DeferredLoadFields);
+                initializer.FieldsMode = "DeferredLoadFields";
+            }
+            else
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(ParseFields);
+                initializer.FieldsMode = "ParseFields";
+            }
+            JProperty links = ((JObject)json).Properties().FirstOrDefault(p => p.Name == "relations");
+            if (links == null)
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(DeferredLoadLinks);
+                initializer.LinkMode = "DeferredLoadLinks";
+            }
+            else
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(ParseLinks);
+                initializer.LinkMode = "ParseLinks";
+            }
+            var workItem = new WorkItemImpl(json, initializer);
+            return workItem;
         }
+
 
         /// <summary>
         ///     Applies the rules.
@@ -182,8 +223,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <value>The fields.</value>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IFieldCollection IWorkItem.Fields { get { throw new ToBeImplementedException(); } }
-
+        IFieldCollection IWorkItem.Fields { get { return (FieldCollectionImpl) base.Fields; } }
         /// <summary>
         ///     Gets the action object.
         /// </summary>
@@ -363,7 +403,21 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <value>The links.</value>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        ILinkCollection IWorkItem.Links { get { throw new ToBeImplementedException(); } }
+        ILinkCollection IWorkItem.Links  { get { return (LinkCollectionImpl) base.Links; }}
+    
+ 
+        private static LinkCollectionImpl DeferredLoadLinks(JsonWorkItem workItem)
+        {
+            var result = APIFactory().GetLinksForWorkItem((WorkItemImpl)workItem).Result;
+            return result;
+        }
+
+        private static LinkCollectionImpl ParseLinks(JsonWorkItem workItem)
+        {
+            var value =(JArray) ((JObject)workItem.JsonValue).Properties().First(p => p.Name == "relations").Value;
+            var results  = LinkCollectionImpl.FromToken(value);
+            return results;
+        }
 
         /// <summary>
         ///     Gets the name of the node.
@@ -438,7 +492,15 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <value>The revisions.</value>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.ToBeImplementedException"></exception>
-        IRevisionCollection IWorkItem.Revisions { get { throw new ToBeImplementedException(); } }
+        IRevisionCollection IWorkItem.Revisions { get { return r_RevisionCollection.Value; } }
+
+        private readonly Lazy<RevisionCollectionImpl> r_RevisionCollection;
+
+        private RevisionCollectionImpl InitRevisionCollection()
+        {
+            IReadOnlyList<IRevision> items = APIFactory().GetWorkItemRevisions(Id,RevisionImpl.FromToken).Result;
+            return new RevisionCollectionImpl(items);
+        }
 
         /// <summary>
         ///     Saves this instance.

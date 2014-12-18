@@ -1,10 +1,15 @@
 using System;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
 {
-    internal class AttachmentImpl : IAttachment
+    internal class AttachmentImpl : LinkImpl, IAttachment, ILinkImpl
     {
+        public AttachmentImpl(JToken json) : base(json) {
+        }
+
         DateTime IAttachment.AttachedTime { get { throw new ToBeImplementedException(); } }
         DateTime IAttachment.AttachedTimeUtc { get { throw new ToBeImplementedException(); } }
         String IAttachment.Comment { get { throw new ToBeImplementedException(); } set { throw new ToBeImplementedException(); } }

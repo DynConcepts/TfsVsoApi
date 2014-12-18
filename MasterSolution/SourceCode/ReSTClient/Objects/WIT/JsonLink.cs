@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
-using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
@@ -11,7 +10,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
     /// <summary>
     ///     Class JsonLink.
     /// </summary>
-    public class JsonLink : JsonBackedObjectBase
+    public class JsonLink : JsonBackedObjectBase, ILinkImpl
     {
         /// <summary>
         ///     Froms the token.
@@ -20,14 +19,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <returns>JsonLink.</returns>
         public static JsonLink FromToken(JToken content)
         {
-            string rel = sr_Rel.Eval(content);
-            JsonRelationType relationType = sr_RelationTypes.Value[rel];
+            JsonRelationType relationType = GetRelationType(content);
             JsonLink instance;
             if (relationType.IsWorkItemLink)
             {
                 instance = new JsonWorkItemLink(content);
             }
-            else if (rel == "AttachedFile")
+            else if (relationType.Name == "AttachedFile")
             {
                 instance = new JsonAttachedFileLink(content);
             }
@@ -36,6 +34,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
                 instance = new JsonLink(content);
             }
             return instance;
+        }
+
+        protected static JsonRelationType GetRelationType(JToken content)
+        {
+            string rel = sr_Rel.Eval(content);
+            var relationType = sr_RelationTypes.Value[rel];
+            return relationType;
         }
 
         /// <summary>
@@ -64,7 +69,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <value>The comment.</value>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException">
         /// </exception>
-        public string Comment { get { throw new NoReStAPIEquivilantException(); } set { throw new NoReStAPIEquivilantException(); } }
+        public string Comment { get { throw new NoReStAPIEquivilantException("API Does not support Link Comment Property"); } set { throw new NoReStAPIEquivilantException(); } }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this instance is locked.

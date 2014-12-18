@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using DynCon.OSI.Core.AdvancedEvents;
@@ -81,6 +82,17 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         }
 
 
+        private static int s_CorrelationId;
+
+        class Timing
+        {
+            public TimeSpan NetworkTime { get; set; }
+
+            public TimeSpan TotalTime { get; set; }
+        }
+
+
+        public static bool ConsoleLogEnabled = false;
 #pragma warning disable 1998
         /// <summary>
         ///     Processes the request stream.
@@ -93,7 +105,14 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
 #pragma warning restore 1998
         {
             T result = default(T);
-            Console.WriteLine("Request [{0}: {1}", request.Method, request.RequestUri);
+            var correlationId = ++s_CorrelationId;
+            if (ConsoleLogEnabled)
+            {
+                Console.WriteLine("{0}, Request [{1}]: {2}", correlationId,request.Method, request.RequestUri);
+            }
+            var sw = new Stopwatch();
+            sw.Start();
+            Timing timing = new Timing();
             UseClient(async client =>
             {
                 try
@@ -102,7 +121,9 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                     {
                         response.EnsureSuccessStatusCode();
                         Stream responseBody = await response.Content.ReadAsStreamAsync();
+                        timing.NetworkTime = sw.Elapsed;
                         result = xform(responseBody);
+                        timing.TotalTime = sw.Elapsed;
                     }
                 }
                 catch (AggregateException ex)
@@ -117,6 +138,10 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                     throw;
                 }
             });
+            if (ConsoleLogEnabled)
+            {
+                Console.WriteLine("{0}, Net:{1}, Total:{2}  Process:{3}", correlationId, timing.NetworkTime.TotalSeconds, timing.TotalTime.TotalSeconds, (timing.TotalTime - timing.NetworkTime).TotalMilliseconds);
+            }
             return result;
         }
 

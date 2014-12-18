@@ -25,13 +25,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         ///     collection.
         /// </returns>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public IEnumerator<TItem> GetEnumerator() { return ItemDictionary.Values.GetEnumerator(); }
+        public IEnumerator<TItem> GetEnumerator() { return ItemList.GetEnumerator(); }
 
         /// <summary>
         ///     Gets the number of elements in the collection.
         /// </summary>
         /// <value>The count.</value>
-        public int Count { get { return ItemDictionary.Count; } }
+        public int Count { get { return ItemSource.Count; } }
 
         /// <summary>
         /// Gets the element at the specified index in the read-only list.
@@ -54,7 +54,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         {
             r_ItemsList = new LazyWithReset<IList<TItem>>(() =>
             {
-                var list = new List<TItem>(ItemSource);
+                var list = ItemSource != null ? new List<TItem>(ItemSource) : new List<TItem>();
                 return list;
             });
 
