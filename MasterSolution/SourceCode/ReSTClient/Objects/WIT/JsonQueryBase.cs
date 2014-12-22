@@ -44,7 +44,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
             {
                 foreach (var childToken in childTokens)
                 {
-                    var child = JsonQueryBase.FromToken(childToken);
+                    var child = FromToken(childToken);
                     r_Children.Add(child);
                 }
             }

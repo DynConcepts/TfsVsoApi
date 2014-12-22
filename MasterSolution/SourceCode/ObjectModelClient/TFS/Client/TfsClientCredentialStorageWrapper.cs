@@ -10,13 +10,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsClientCredentialStorageWrapper : TfsClientCredentialStorageWrapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>, ITfsClientCredentialStorage
     {
         protected TfsClientCredentialStorageWrapper(TfsClientCredentialStorage instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>(src => src==null ? null : ((TfsClientCredentialStorageWrapper) src).r_Instance, src => new TfsClientCredentialStorageWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsClientCredentialStorage, TfsClientCredentialStorage>(src => src == null ? null : ((TfsClientCredentialStorageWrapper) src).r_Instance, src => new TfsClientCredentialStorageWrapper(src)); }
     }
 
 
     internal class TfsClientCredentialStorageWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITfsClientCredentialStorage where TInterface : class where TWrapper : class
     {
-
         String[] ITfsClientCredentialStorage.GetTokenProperty(Uri[] serverUrls, String propertyName)
         {
             string[] nativeCallResult = r_Instance.GetTokenProperty(serverUrls, propertyName);
@@ -28,7 +27,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             string nativeCallResult = r_Instance.GetTokenProperty(serverUrl, propertyName);
             return nativeCallResult;
         }
-
 
 
         void ITfsClientCredentialStorage.RemoveToken(Uri serverUrl) { r_Instance.RemoveToken(serverUrl); }
@@ -52,7 +50,5 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         void ITfsClientCredentialStorage.StoreToken(Uri serverUrl, IIssuedToken token, Boolean matchUserInformation) { r_Instance.StoreToken(serverUrl, IssuedTokenWrapper.GetInstance(token), matchUserInformation); }
         protected TfsClientCredentialStorageWrapper(TfsClientCredentialStorage instance) { r_Instance = instance; }
         protected readonly TfsClientCredentialStorage r_Instance;
-
-
     }
 }

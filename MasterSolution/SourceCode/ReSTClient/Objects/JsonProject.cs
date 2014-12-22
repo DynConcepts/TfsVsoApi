@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects
 {
-    internal class JsonProject : JsonBackedObjectBase
+    public class JsonProject : JsonBackedObjectBase
     {
         public JsonProject(JToken json) : base(json) {
         }

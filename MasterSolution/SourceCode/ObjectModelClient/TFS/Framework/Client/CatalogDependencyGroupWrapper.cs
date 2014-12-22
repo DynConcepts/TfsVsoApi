@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class CatalogDependencyGroupWrapper : CatalogDependencyGroupWrapper<ICatalogDependencyGroup, CatalogDependencyGroup>, ICatalogDependencyGroup
     {
         protected CatalogDependencyGroupWrapper(CatalogDependencyGroup instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogDependencyGroup, CatalogDependencyGroup>(src => src==null ? null : ((CatalogDependencyGroupWrapper) src).r_Instance, src => new CatalogDependencyGroupWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogDependencyGroup, CatalogDependencyGroup>(src => src == null ? null : ((CatalogDependencyGroupWrapper) src).r_Instance, src => new CatalogDependencyGroupWrapper(src)); }
     }
 
 
     internal class CatalogDependencyGroupWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ICatalogDependencyGroup where TInterface : class where TWrapper : class
     {
-
         void ICatalogDependencyGroup.AddSetDependency(String key, ICatalogNode node) { r_Instance.AddSetDependency(key, CatalogNodeWrapper.GetInstance(node)); }
         void ICatalogDependencyGroup.ClearDependencySets() { r_Instance.ClearDependencySets(); }
         void ICatalogDependencyGroup.ClearSingletonDependencies() { r_Instance.ClearSingletonDependencies(); }
@@ -35,14 +34,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
         ICatalogNode ICatalogDependencyGroup.GetSingletonDependency(String key)
         {
             CatalogNode nativeCallResult = r_Instance.GetSingletonDependency(key);
             ICatalogNode wrappedCallResult = CatalogNodeWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
 
 
         void ICatalogDependencyGroup.RemoveSetDependency(String key) { r_Instance.RemoveSetDependency(key); }

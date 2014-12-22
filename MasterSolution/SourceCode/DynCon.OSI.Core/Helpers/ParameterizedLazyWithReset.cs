@@ -3,7 +3,7 @@
 namespace DynCon.OSI.Core.Helpers
 {
     /// <summary>
-    /// Interface IParameterizedLazyWithReset
+    ///     Interface IParameterizedLazyWithReset
     /// </summary>
     /// <typeparam name="TParam">The type of the t parameter.</typeparam>
     /// <typeparam name="TResult">The type of the t result.</typeparam>
@@ -27,7 +27,6 @@ namespace DynCon.OSI.Core.Helpers
         /// </summary>
         /// <value><c>true</c> if this instance is value created; otherwise, <c>false</c>.</value>
         bool IsValueCreated { get; }
-
     }
 
     /// <summary>

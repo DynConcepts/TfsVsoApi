@@ -1,118 +1,105 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class QueryHierarchyRefreshDataImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.QueryHierarchyRefreshDataImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.QueryHierarchyRefreshDataImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.QueryHierarchyRefreshDataImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class QueryHierarchyRefreshDataImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Hierarchy_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchyRefreshData) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.Hierarchy; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.QueryHierarchyRefreshDataImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.QueryHierarchyRefreshDataImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsLegacy_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchyRefreshData) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.IsLegacy; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-   partial void IsLegacy_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsLegacy_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void LegacyQueries_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchyRefreshData) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.LegacyQueries; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void QueriesDataSet_UnitTest()
         {
-            return instance.IsLegacy;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void Hierarchy_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Hierarchy_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchyRefreshData) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.QueriesDataSet; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        internal static IEnumerable<QueryHierarchyRefreshDataImpl> GetIEnumerableInstance() { return new List<QueryHierarchyRefreshDataImpl> {GetInstance()}; }
+
+        internal static QueryHierarchyRefreshDataImpl GetInstance([CallerMemberName] string callerName = "")
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.Hierarchy;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void QueriesDataSet_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void QueriesDataSet_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.QueriesDataSet;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void LegacyQueries_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData instance, ref System.Collections.ArrayList setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void LegacyQueries_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchyRefreshData) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.LegacyQueries;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            var instance = new QueryHierarchyRefreshDataImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void Hierarchy_SetCondition(ref IQueryHierarchyRefreshData instance, ref IQueryHierarchy setValue);
+        static partial void InstanceFactory(ref QueryHierarchyRefreshDataImpl instance, [CallerMemberName] string callerName = "");
+        partial void IsLegacy_SetCondition(ref IQueryHierarchyRefreshData instance, ref Boolean setValue);
+
+        partial void LegacyQueries_SetCondition(ref IQueryHierarchyRefreshData instance, ref ArrayList setValue);
+        partial void QueriesDataSet_SetCondition(ref IQueryHierarchyRefreshData instance, ref IRowSetCollection setValue);
+    }
 }

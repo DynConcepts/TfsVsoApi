@@ -51,23 +51,6 @@ namespace DynCon.OSI.Core_UnitTests
             Assert.IsTrue(mapper.Count < 2);
         }
 
-        private static void CreateData(ObjectMapper<A, B> mapper, out List<A> aList, out List<B> bList)
-        {
-            aList = new List<A>();
-            bList = new List<B>();
-            for (int count = 0; count < 1000; ++count)
-            {
-                var b = new B();
-                bList.Add(b);
-                aList.Add(mapper.Convert(b));
-            }
-            Assert.AreEqual(1000, aList.Count);
-            Assert.AreEqual(1000, bList.Count);
-            Assert.AreEqual(1000, mapper.Count);
-
-            RunGC();
-        }
-
 
         /// <summary>
         ///     Mapper_s the purge_ unit test.
@@ -98,8 +81,25 @@ namespace DynCon.OSI.Core_UnitTests
         [TestMethod]
         public void ObjectMapper_UnitTest()
         {
-            ObjectMapper<A, B> mapper = GetTestInstance(); 
+            ObjectMapper<A, B> mapper = GetTestInstance();
             Assert.IsNotNull(mapper);
+        }
+
+        private static void CreateData(ObjectMapper<A, B> mapper, out List<A> aList, out List<B> bList)
+        {
+            aList = new List<A>();
+            bList = new List<B>();
+            for (int count = 0; count < 1000; ++count)
+            {
+                var b = new B();
+                bList.Add(b);
+                aList.Add(mapper.Convert(b));
+            }
+            Assert.AreEqual(1000, aList.Count);
+            Assert.AreEqual(1000, bList.Count);
+            Assert.AreEqual(1000, mapper.Count);
+
+            RunGC();
         }
 
         /// <summary>

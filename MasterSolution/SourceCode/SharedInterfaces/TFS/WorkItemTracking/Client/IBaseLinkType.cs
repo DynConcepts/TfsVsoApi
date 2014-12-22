@@ -9,6 +9,5 @@ namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
         RelatedLink,
 
         WorkItemLink,
-
     }
 }

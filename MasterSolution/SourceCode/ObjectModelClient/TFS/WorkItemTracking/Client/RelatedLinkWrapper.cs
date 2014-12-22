@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class RelatedLinkWrapper : RelatedLinkWrapper<IRelatedLink, RelatedLink>, IRelatedLink
     {
         protected RelatedLinkWrapper(RelatedLink instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRelatedLink, RelatedLink>(src => src==null ? null : ((RelatedLinkWrapper) src).r_Instance, src => new RelatedLinkWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRelatedLink, RelatedLink>(src => src == null ? null : ((RelatedLinkWrapper) src).r_Instance, src => new RelatedLinkWrapper(src)); }
     }
 
 

@@ -1,87 +1,74 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class FieldFilterImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.FieldFilterImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.FieldFilterImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.FieldFilterImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class FieldFilterImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void FieldDefinition_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IFieldFilter) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.FieldDefinition; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.FieldFilterImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.FieldFilterImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Value_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IFieldFilter) GetInstance();
+                    return instance;
+                },
+                // Create Set Value
+                instance =>
+                {
+                    object setValue = default(Object);
+                    Value_SetCondition(ref instance, ref setValue);
+                    return setValue;
+                },
+                // Invoke Setter
+                (instance, setValue) => { instance.Value = setValue; },
+                // Validate Set Operation
+                (instance, setValue) => { },
+                // Invoke Getter
+                instance => { return instance.Value; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-   partial void FieldDefinition_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinition setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void FieldDefinition_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+        partial void FieldDefinition_SetCondition(ref IFieldFilter instance, ref IFieldDefinition setValue);
+        internal static IEnumerable<FieldFilterImpl> GetIEnumerableInstance() { return new List<FieldFilterImpl> {GetInstance()}; }
+
+        internal static FieldFilterImpl GetInstance([CallerMemberName] string callerName = "")
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.FieldDefinition;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void Value_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter instance, ref System.Object setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Value_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldFilter) GetInstance();
-           return instance;
-        },
-        // Create Set Value
-        (instance) =>
-        {
- var setValue = default(System.Object);
-          Value_SetCondition(ref instance, ref setValue);
-          return setValue;
-        },
-        // Invoke Setter
-       (instance, setValue) =>
-       {
-           instance.Value = setValue;
-       },
-       // Validate Set Operation
-       (instance, setValue) =>
-       {
-       },
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.Value;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            var instance = new FieldFilterImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref FieldFilterImpl instance, [CallerMemberName] string callerName = "");
+        partial void Value_SetCondition(ref IFieldFilter instance, ref Object setValue);
+    }
 }

@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemCollectionWrapper : WorkItemCollectionWrapper<IWorkItemCollection, WorkItemCollection>, IWorkItemCollection
     {
         protected WorkItemCollectionWrapper(WorkItemCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemCollection, WorkItemCollection>(src => src==null ? null : ((WorkItemCollectionWrapper) src).r_Instance, src => new WorkItemCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemCollection, WorkItemCollection>(src => src == null ? null : ((WorkItemCollectionWrapper) src).r_Instance, src => new WorkItemCollectionWrapper(src)); }
     }
 
 
@@ -17,7 +17,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         where TInterface : class
         where TWrapper : class
     {
-
         DateTime IWorkItemCollection.AsOf
         {
             get
@@ -83,7 +82,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             int nativeCallResult = r_Instance.IndexOf(WorkItemWrapper.GetInstance(value));
             return nativeCallResult;
         }
-
 
 
         IWorkItem IWorkItemCollection.this[Int32 index]

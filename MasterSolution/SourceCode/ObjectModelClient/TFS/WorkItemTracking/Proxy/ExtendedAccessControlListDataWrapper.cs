@@ -4,12 +4,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class ExtendedAccessControlListDataWrapper : ExtendedAccessControlListDataWrapper<IExtendedAccessControlListData, ExtendedAccessControlListData>, IExtendedAccessControlListData
     {
         protected ExtendedAccessControlListDataWrapper(ExtendedAccessControlListData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IExtendedAccessControlListData, ExtendedAccessControlListData>(src => src==null ? null : ((ExtendedAccessControlListDataWrapper) src).r_Instance, src => new ExtendedAccessControlListDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IExtendedAccessControlListData, ExtendedAccessControlListData>(src => src == null ? null : ((ExtendedAccessControlListDataWrapper) src).r_Instance, src => new ExtendedAccessControlListDataWrapper(src)); }
     }
 
 

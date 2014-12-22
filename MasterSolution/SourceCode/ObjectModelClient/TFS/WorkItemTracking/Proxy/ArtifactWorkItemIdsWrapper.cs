@@ -5,18 +5,17 @@ using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal partial class ArtifactWorkItemIdsWrapper : ArtifactWorkItemIdsWrapper<IArtifactWorkItemIds, ArtifactWorkItemIds>, IArtifactWorkItemIds, IITfsXmlSerializable
     {
         protected ArtifactWorkItemIdsWrapper(ArtifactWorkItemIds instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IArtifactWorkItemIds, ArtifactWorkItemIds>(src => src==null ? null : ((ArtifactWorkItemIdsWrapper) src).r_Instance, src => new ArtifactWorkItemIdsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IArtifactWorkItemIds, ArtifactWorkItemIds>(src => src == null ? null : ((ArtifactWorkItemIdsWrapper) src).r_Instance, src => new ArtifactWorkItemIdsWrapper(src)); }
     }
 
 
     internal class ArtifactWorkItemIdsWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IArtifactWorkItemIds where TInterface : class where TWrapper : class
     {
-
         Int32[] IArtifactWorkItemIds.GetWorkItemIds()
         {
             int[] nativeCallResult = r_Instance.GetWorkItemIds();

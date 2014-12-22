@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class BatchReadParameterWrapper : BatchReadParameterWrapper<IBatchReadParameter, BatchReadParameter>, IBatchReadParameter
     {
         protected BatchReadParameterWrapper(BatchReadParameter instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchReadParameter, BatchReadParameter>(src => src==null ? null : ((BatchReadParameterWrapper) src).r_Instance, src => new BatchReadParameterWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchReadParameter, BatchReadParameter>(src => src == null ? null : ((BatchReadParameterWrapper) src).r_Instance, src => new BatchReadParameterWrapper(src)); }
     }
 
 

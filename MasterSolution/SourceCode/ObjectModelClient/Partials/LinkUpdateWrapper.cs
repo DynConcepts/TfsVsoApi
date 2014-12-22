@@ -5,7 +5,7 @@ using Microsoft.TeamFoundation.WorkItemTracking.Internals;
 
 // ReSharper disable once CheckNamespace
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
 {
     internal partial class LinkUpdateWrapper
     {

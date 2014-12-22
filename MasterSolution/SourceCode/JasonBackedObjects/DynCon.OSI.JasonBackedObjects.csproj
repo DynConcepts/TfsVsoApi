@@ -50,11 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\CallSpec.cs" />
     <Compile Include="Communications\HttpClientLive.cs" />
     <Compile Include="Communications\HttpClientMock.cs" />
-    <Compile Include="Communications\RequestHelpers.cs" />
     <Compile Include="Communications\RestAPIBase.cs" />
     <Compile Include="Communications\RestClientManager.cs" />
+    <Compile Include="Communications\StructuredHttpExchange.cs" />
     <Compile Include="JsonBackedDataBase.cs">
       <SubType>Code</SubType>
     </Compile>

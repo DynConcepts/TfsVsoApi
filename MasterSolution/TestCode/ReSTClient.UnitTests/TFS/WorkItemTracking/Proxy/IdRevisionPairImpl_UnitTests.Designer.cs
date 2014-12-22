@@ -1,26 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Proxy
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class IdRevisionPairImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.IdRevisionPairImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.IdRevisionPairImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = default(DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.IdRevisionPairImpl);
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class IdRevisionPairImpl_UnitTests : DynTestClassBase
+    {
+        internal static IEnumerable<IdRevisionPairImpl> GetIEnumerableInstance() { return new List<IdRevisionPairImpl> {GetInstance()}; }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.IdRevisionPairImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.IdRevisionPairImpl>{ GetInstance() }; }
+        internal static IdRevisionPairImpl GetInstance([CallerMemberName] string callerName = "")
+        {
+            IdRevisionPairImpl instance = default(IdRevisionPairImpl);
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
 
-  }
+        static partial void InstanceFactory(ref IdRevisionPairImpl instance, [CallerMemberName] string callerName = "");
+    }
 }

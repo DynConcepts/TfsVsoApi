@@ -2,15 +2,15 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  public partial class WorkItemLinkCollectionImpl_UnitTests
-  {
-    static partial void JsonSource(ref JToken json)
+    /// <summary>Generated Test Template</summary>
+    public partial class WorkItemLinkCollectionImpl_UnitTests
     {
-        var result = new JArray();
-        result.Add(new JObject());
-        result.Add(new JObject());
-        json = result;
+        static partial void JsonSource(ref JToken json)
+        {
+            var result = new JArray();
+            result.Add(new JObject());
+            result.Add(new JObject());
+            json = result;
+        }
     }
-  }
 }

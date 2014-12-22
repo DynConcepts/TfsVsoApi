@@ -2,28 +2,42 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using DynCon.OSI.VSO.ObjectModelClient.Factories;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
 {
     /// <summary>
-    /// Class WorkItemWrapper_Model_UnitTests.
+    ///     Class WorkItemWrapper_Model_UnitTests.
     /// </summary>
     [TestClass]
     public class WorkItemWrapper_Model_UnitTests
     {
         /// <summary>
-        /// Objects the properties_ unit test.
+        ///     Links_s the unit test.
+        /// </summary>
+        [TestMethod]
+        public void Links_UnitTest()
+        {
+            IWorkItem workItem = GetTargetWorkItem(194);
+            ILinkCollection links = workItem.Links;
+            foreach (object link in links)
+            {
+                Debug.WriteLine("x");
+            }
+        }
+
+        /// <summary>
+        ///     Objects the properties_ unit test.
         /// </summary>
         [TestMethod]
         public void ObjectProperties_UnitTest()
         {
-            var workItem = GetTargetWorkItem(194);
-            var links1 = ((IWorkItem)workItem).Links;
-            var links2 = ((IWorkItem)workItem).Links;
+            WorkItemWrapper workItem = GetTargetWorkItem(194);
+            ILinkCollection links1 = ((IWorkItem) workItem).Links;
+            ILinkCollection links2 = ((IWorkItem) workItem).Links;
             Assert.AreEqual(links1.GetType(), links2.GetType());
         }
 
@@ -38,21 +52,5 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
             var workItem = (WorkItemWrapper) result[0];
             return workItem;
         }
-
-
-        /// <summary>
-        /// Links_s the unit test.
-        /// </summary>
-        [TestMethod]
-        public void Links_UnitTest()
-        {
-            IWorkItem workItem = GetTargetWorkItem(194);
-            ILinkCollection links = workItem.Links;
-            foreach (var link in links)
-            {
-                Debug.WriteLine("x");
-            }
-        }
-
     }
 }

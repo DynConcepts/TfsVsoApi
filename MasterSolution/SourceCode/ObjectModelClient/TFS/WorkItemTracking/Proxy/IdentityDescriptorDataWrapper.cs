@@ -4,12 +4,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class IdentityDescriptorDataWrapper : IdentityDescriptorDataWrapper<IIdentityDescriptorData, IdentityDescriptorData>, IIdentityDescriptorData
     {
         protected IdentityDescriptorDataWrapper(IdentityDescriptorData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentityDescriptorData, IdentityDescriptorData>(src => src==null ? null : ((IdentityDescriptorDataWrapper) src).r_Instance, src => new IdentityDescriptorDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentityDescriptorData, IdentityDescriptorData>(src => src == null ? null : ((IdentityDescriptorDataWrapper) src).r_Instance, src => new IdentityDescriptorDataWrapper(src)); }
     }
 
 

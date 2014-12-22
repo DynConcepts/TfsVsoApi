@@ -1,7 +1,7 @@
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.TeamFoundation.WorkItemTracking.Internals;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
 {
     internal static class LinkPropertiesWrapper
     {

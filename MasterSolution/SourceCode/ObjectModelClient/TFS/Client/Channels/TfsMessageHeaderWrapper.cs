@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class TfsMessageHeaderWrapper : TfsMessageHeaderWrapper<ITfsMessageHeader, TfsMessageHeader>, ITfsMessageHeader
     {
         protected TfsMessageHeaderWrapper(TfsMessageHeader instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsMessageHeader, TfsMessageHeader>(src => src==null ? null : ((TfsMessageHeaderWrapper) src).r_Instance, src => new TfsMessageHeaderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsMessageHeader, TfsMessageHeader>(src => src == null ? null : ((TfsMessageHeaderWrapper) src).r_Instance, src => new TfsMessageHeaderWrapper(src)); }
     }
 
 
     internal abstract class TfsMessageHeaderWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITfsMessageHeader where TInterface : class where TWrapper : class
     {
-
         XmlDictionaryReader ITfsMessageHeader.GetReader()
         {
             XmlDictionaryReader nativeCallResult = r_Instance.GetReader();

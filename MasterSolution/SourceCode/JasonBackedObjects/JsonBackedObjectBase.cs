@@ -12,6 +12,8 @@ namespace DynCon.OSI.JasonBackedObjects
     /// </summary>
     public abstract class JsonBackedObjectBase
     {
+        public virtual void CaptureJson(JToken token) { m_Json = token; }
+
         /// <summary>
         ///     Sets the value.
         /// </summary>
@@ -19,11 +21,6 @@ namespace DynCon.OSI.JasonBackedObjects
         /// <param name="jsonBackedField">The json backed field.</param>
         /// <param name="value">The value.</param>
         public void SetValue<T>(JsonBackedDataBase jsonBackedField, T value) { r_Cache[jsonBackedField] = value; }
-
-        /// <summary>
-        /// Clears the cache.
-        /// </summary>
-        protected void ClearCache() { r_Cache.Clear(); }
 
         /// <summary>
         ///     To the j son string.
@@ -79,6 +76,11 @@ namespace DynCon.OSI.JasonBackedObjects
         }
 
         /// <summary>
+        ///     Clears the cache.
+        /// </summary>
+        protected void ClearCache() { r_Cache.Clear(); }
+
+        /// <summary>
         ///     Sets the json.
         /// </summary>
         /// <param name="json">The json.</param>
@@ -93,7 +95,18 @@ namespace DynCon.OSI.JasonBackedObjects
         ///     The _json
         /// </summary>
         private JToken m_Json;
+    }
 
-        public virtual void CaptureJson(JToken token) { m_Json = token; }
+    public class JsonGeneralPurposeObject : JsonBackedObjectBase
+    {
+        public JsonGeneralPurposeObject(JToken json) : base(json)
+        {
+        }
+
+        public static JsonGeneralPurposeObject FromToken(JToken token)
+        {
+            var instance = new JsonGeneralPurposeObject(token);
+            return instance;
+        }
     }
 }

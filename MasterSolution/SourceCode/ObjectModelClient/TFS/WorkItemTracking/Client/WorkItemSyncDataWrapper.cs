@@ -1,6 +1,6 @@
 using System;
 using DynCon.OSI.Core.ObjectMapping;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
@@ -11,7 +11,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemSyncDataWrapper : WorkItemSyncDataWrapper<IWorkItemSyncData, WorkItemSyncData>, IWorkItemSyncData
     {
         protected WorkItemSyncDataWrapper(WorkItemSyncData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemSyncData, WorkItemSyncData>(src => src==null ? null : ((WorkItemSyncDataWrapper) src).r_Instance, src => new WorkItemSyncDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemSyncData, WorkItemSyncData>(src => src == null ? null : ((WorkItemSyncDataWrapper) src).r_Instance, src => new WorkItemSyncDataWrapper(src)); }
     }
 
 
@@ -41,7 +41,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             get
             {
                 IWorkItemRowSets nativeCallResult = r_Instance.RowSets;
-                var wrappedCallResult = IWorkItemRowSetsWrapper.GetWrapper(nativeCallResult);
+                IIWorkItemRowSets wrappedCallResult = IWorkItemRowSetsWrapper.GetWrapper(nativeCallResult);
                 return wrappedCallResult;
             }
         }

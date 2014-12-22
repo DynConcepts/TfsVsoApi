@@ -1,52 +1,43 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class ITfsTeamProjectCollectionObjectImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.Client.ITfsTeamProjectCollectionObjectImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.Client.ITfsTeamProjectCollectionObjectImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.Client.ITfsTeamProjectCollectionObjectImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
-
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.Client.ITfsTeamProjectCollectionObjectImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.Client.ITfsTeamProjectCollectionObjectImpl>{ GetInstance() }; }
-
-    partial void Initialize_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsTeamProjectCollectionObject instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsTeamProjectCollection projectCollection);
-    partial void Initialize_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsTeamProjectCollectionObject instance, DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsTeamProjectCollection projectCollection);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Initialize_UnitTest()
-  {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsTeamProjectCollection projectCollection = default(DynCon.OSI.VSO.SharedInterfaces.TFS.Client.ITfsTeamProjectCollection);
-      ExecuteMethod(
-        () =>
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class ITfsTeamProjectCollectionObjectImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Initialize_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsTeamProjectCollectionObject) GetInstance();
-        },
-        (instance) =>
+            ITfsTeamProjectCollection projectCollection = default(ITfsTeamProjectCollection);
+            ExecuteMethod(
+                () => { return (IITfsTeamProjectCollectionObject) GetInstance(); },
+                instance =>
+                {
+                    projectCollection = TfsTeamProjectCollectionImpl_UnitTests.GetInstance();
+                    Initialize_PreCondition(ref instance, ref projectCollection);
+                },
+                instance => { instance.Initialize(projectCollection); },
+                instance => { Initialize_PostValidate(instance, projectCollection); });
+        }
+
+        internal static IEnumerable<ITfsTeamProjectCollectionObjectImpl> GetIEnumerableInstance() { return new List<ITfsTeamProjectCollectionObjectImpl> {GetInstance()}; }
+
+        internal static ITfsTeamProjectCollectionObjectImpl GetInstance([CallerMemberName] string callerName = "")
         {
-          projectCollection = DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.Client.TfsTeamProjectCollectionImpl_UnitTests.GetInstance();
-          Initialize_PreCondition(ref instance, ref projectCollection);
-        },
-       (instance) =>
-       {
-             instance.Initialize(projectCollection);
-       },
-      (instance) =>
-      {
-              Initialize_PostValidate(instance, projectCollection);
-      });
-  }
-  }
+            var instance = new ITfsTeamProjectCollectionObjectImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void Initialize_PostValidate(IITfsTeamProjectCollectionObject instance, ITfsTeamProjectCollection projectCollection);
+        partial void Initialize_PreCondition(ref IITfsTeamProjectCollectionObject instance, ref ITfsTeamProjectCollection projectCollection);
+        static partial void InstanceFactory(ref ITfsTeamProjectCollectionObjectImpl instance, [CallerMemberName] string callerName = "");
+    }
 }

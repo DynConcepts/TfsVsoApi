@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class NodeCollectionWrapper : NodeCollectionWrapper<INodeCollection, NodeCollection>, INodeCollection
     {
         protected NodeCollectionWrapper(NodeCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<INodeCollection, NodeCollection>(src => src==null ? null : ((NodeCollectionWrapper) src).r_Instance, src => new NodeCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<INodeCollection, NodeCollection>(src => src == null ? null : ((NodeCollectionWrapper) src).r_Instance, src => new NodeCollectionWrapper(src)); }
     }
 
 
     internal class NodeCollectionWrapper<TWrapper, TInterface> : ReadOnlyListWrapper<TWrapper, TInterface, Node, INode>, INodeCollection where TInterface : class where TWrapper : class
     {
-
         Boolean INodeCollection.Contains(INode value)
         {
             bool nativeCallResult = r_Instance.Contains(NodeWrapper.GetInstance(value));

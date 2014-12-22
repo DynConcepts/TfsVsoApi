@@ -14,13 +14,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class IServerDataProviderWrapper : IServerDataProviderWrapper<IIServerDataProvider, IServerDataProvider>, IIServerDataProvider, IILocationService
     {
         protected IServerDataProviderWrapper(IServerDataProvider instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIServerDataProvider, IServerDataProvider>(src => src==null ? null : ((IServerDataProviderWrapper) src).r_Instance, src => new IServerDataProviderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIServerDataProvider, IServerDataProvider>(src => src == null ? null : ((IServerDataProviderWrapper) src).r_Instance, src => new IServerDataProviderWrapper(src)); }
     }
 
 
     internal abstract class IServerDataProviderWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IIServerDataProvider where TInterface : class where TWrapper : class
     {
-
         void IIServerDataProvider.Authenticate() { r_Instance.Authenticate(); }
 
         ITeamFoundationIdentity IIServerDataProvider.AuthenticatedIdentity
@@ -116,8 +115,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
-
         void IIServerDataProvider.Connect(IConnectOptions connectOptions) { r_Instance.Connect(ConnectOptionsWrapper.GetInstance(connectOptions)); }
 
         IAccessMapping IILocationService.DefaultAccessMapping
@@ -141,14 +138,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
         IServiceDefinition IILocationService.FindServiceDefinition(String serviceType, Guid serviceIdentifier)
         {
             ServiceDefinition nativeCallResult = r_Instance.FindServiceDefinition(serviceType, serviceIdentifier);
             IServiceDefinition wrappedCallResult = ServiceDefinitionWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
 
 
         IEnumerable<IServiceDefinition> IILocationService.FindServiceDefinitions(String serviceType)
@@ -219,8 +214,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
         void IIServerDataProvider.ReactToPossibleServerUpdate(Int32 serverLastChangeId) { r_Instance.ReactToPossibleServerUpdate(serverLastChangeId); }
-
-
 
 
         void IILocationService.RemoveAccessMapping(String moniker) { r_Instance.RemoveAccessMapping(moniker); }

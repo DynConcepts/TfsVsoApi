@@ -3,9 +3,9 @@ using System.Xml;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
-  public interface IITfsXmlSerializable
-  {
-    void WriteXml( XmlWriter writer, String xmlElement);
-    void ReadXml( XmlReader reader, String xmlElement);
-  }
+    public interface IITfsXmlSerializable
+    {
+        void ReadXml(XmlReader reader, String xmlElement);
+        void WriteXml(XmlWriter writer, String xmlElement);
+    }
 }

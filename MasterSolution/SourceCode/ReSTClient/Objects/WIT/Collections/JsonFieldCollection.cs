@@ -65,6 +65,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
                 throw new Exception("Could not Locate Key");
             return key;
         }
+        protected override bool HasKey { get { return true; } }
 
         /// <summary>
         ///     Gets the item source.
@@ -92,7 +93,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
                 if (list.TryGetValue(item.ReferenceName, out token))
                 {
                     Console.WriteLine("Updating {0}={1} to {2}", item.ReferenceName, item.Value, token);
-                    item.CaptureJson(token);
                     list.Remove(item.ReferenceName);
                 }
                 else

@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemLinkTypeEndCollectionWrapper : WorkItemLinkTypeEndCollectionWrapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>, IWorkItemLinkTypeEndCollection, IEnumerable
     {
         protected WorkItemLinkTypeEndCollectionWrapper(WorkItemLinkTypeEndCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>(src => src==null ? null : ((WorkItemLinkTypeEndCollectionWrapper) src).r_Instance, src => new WorkItemLinkTypeEndCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkTypeEndCollection, WorkItemLinkTypeEndCollection>(src => src == null ? null : ((WorkItemLinkTypeEndCollectionWrapper) src).r_Instance, src => new WorkItemLinkTypeEndCollectionWrapper(src)); }
     }
 
 
     internal class WorkItemLinkTypeEndCollectionWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemLinkTypeEndCollection where TInterface : class where TWrapper : class
     {
-
         Boolean IWorkItemLinkTypeEndCollection.Contains(Int32 id)
         {
             bool nativeCallResult = r_Instance.Contains(id);
@@ -45,8 +44,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             IWorkItemLinkTypeEnd wrappedCallResult = WorkItemLinkTypeEndWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
-
 
 
         IEnumerator IEnumerable.GetEnumerator()

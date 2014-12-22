@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class ProjectCollectionWrapper : ProjectCollectionWrapper<IProjectCollection, ProjectCollection>, IProjectCollection
     {
         protected ProjectCollectionWrapper(ProjectCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IProjectCollection, ProjectCollection>(src => src==null ? null : ((ProjectCollectionWrapper) src).r_Instance, src => new ProjectCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IProjectCollection, ProjectCollection>(src => src == null ? null : ((ProjectCollectionWrapper) src).r_Instance, src => new ProjectCollectionWrapper(src)); }
     }
 
 
     internal class ProjectCollectionWrapper<TWrapper, TInterface> : ReadOnlyListWrapper<TWrapper, TInterface, Project, IProject>, IProjectCollection where TInterface : class where TWrapper : class
     {
-
         Boolean IProjectCollection.Contains(String projectName)
         {
             bool nativeCallResult = r_Instance.Contains(projectName);
@@ -42,7 +41,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             int nativeCallResult = r_Instance.IndexOf(ProjectWrapper.GetInstance(value));
             return nativeCallResult;
         }
-
 
 
         IProject IProjectCollection.this[Int32 index]

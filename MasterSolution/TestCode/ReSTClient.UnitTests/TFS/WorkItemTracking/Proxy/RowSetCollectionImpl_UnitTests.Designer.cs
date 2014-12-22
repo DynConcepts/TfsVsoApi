@@ -1,54 +1,47 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Proxy
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class RowSetCollectionImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.RowSetCollectionImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.RowSetCollectionImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.RowSetCollectionImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
-
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.RowSetCollectionImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.RowSetCollectionImpl>{ GetInstance() }; }
-
-    partial void TryGetRowSet_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection instance, ref System.String name, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSet rowset);
-    partial void TryGetRowSet_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection instance, System.String name, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSet rowset);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void TryGetRowSet_UnitTest()
-  {
-    System.String name = default(System.String);
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSet rowset = default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSet);
-      ExecuteMethod(
-        () =>
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class RowSetCollectionImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void TryGetRowSet_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSetCollection) GetInstance();
-        },
-        (instance) =>
+            String name = default(String);
+            IRowSet rowset = default(IRowSet);
+            ExecuteMethod(
+                () => { return (IRowSetCollection) GetInstance(); },
+                instance =>
+                {
+                    name = default(String); //No Constructor
+                    rowset = RowSetImpl_UnitTests.GetInstance();
+                    TryGetRowSet_PreCondition(ref instance, ref name, ref rowset);
+                },
+                instance => { instance.TryGetRowSet(name, out rowset); },
+                instance => { TryGetRowSet_PostValidate(instance, name, rowset); });
+        }
+
+        internal static IEnumerable<RowSetCollectionImpl> GetIEnumerableInstance() { return new List<RowSetCollectionImpl> {GetInstance()}; }
+
+        internal static RowSetCollectionImpl GetInstance([CallerMemberName] string callerName = "")
         {
-          name = default(System.String); //No Constructor
-          rowset = DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Proxy.RowSetImpl_UnitTests.GetInstance();
-          TryGetRowSet_PreCondition(ref instance, ref name, ref rowset);
-        },
-       (instance) =>
-       {
-             instance.TryGetRowSet(name, out rowset);
-       },
-      (instance) =>
-      {
-              TryGetRowSet_PostValidate(instance, name, rowset);
-      });
-  }
-  }
+            var instance = new RowSetCollectionImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref RowSetCollectionImpl instance, [CallerMemberName] string callerName = "");
+
+        partial void TryGetRowSet_PostValidate(IRowSetCollection instance, String name, IRowSet rowset);
+        partial void TryGetRowSet_PreCondition(ref IRowSetCollection instance, ref String name, ref IRowSet rowset);
+    }
 }

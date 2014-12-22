@@ -1,174 +1,129 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.TeamFoundation.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class QueryHierarchyWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Client.QueryHierarchy);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class QueryHierarchyWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Find_UnitTest()
+        {
+            Guid id = default(Guid);
+            ExecuteMethod(
+                () => { return (IQueryHierarchy) GetInstance(); },
+                instance =>
+                {
+                    id = default(Guid); //No Constructor
+                    Find_PreCondition(ref instance, ref id);
+                },
+                instance => { instance.Find(id); },
+                instance => { Find_PostValidate(instance, id); });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Client.QueryHierarchy real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.QueryHierarchyWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetRefreshData_UnitTest()
+        {
+            ExecuteMethod(
+                () => { return (IQueryHierarchy) GetInstance(); },
+                instance => { GetRefreshData_PreCondition(ref instance); },
+                instance => { instance.GetRefreshData(); },
+                instance => { GetRefreshData_PostValidate(instance); });
+        }
 
-    partial void GetRefreshData_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-    partial void GetRefreshData_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetRefreshData_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Reset_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IQueryHierarchy) GetInstance(); },
+                instance => { Reset_PreCondition(ref instance); },
+                instance => { instance.Reset(); },
+                instance => { Reset_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Save_UnitTest()
         {
-          GetRefreshData_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetRefreshData();
-       },
-      (instance) =>
-      {
-              GetRefreshData_PostValidate(instance);
-      });
-  }
-    partial void Find_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance, ref System.Guid id);
-    partial void Find_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance, System.Guid id);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Find_UnitTest()
-  {
-    System.Guid id = default(System.Guid);
-      ExecuteMethod(
-        () =>
+            ExecuteMethod(
+                () => { return (IQueryHierarchy) GetInstance(); },
+                instance => { Save_PreCondition(ref instance); },
+                instance => { instance.Save(); },
+                instance => { Save_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void SupportsFolders_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-        },
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchy) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.SupportsFolders; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void SupportsPermissions_UnitTest()
         {
-          id = default(System.Guid); //No Constructor
-          Find_PreCondition(ref instance, ref id);
-        },
-       (instance) =>
-       {
-             instance.Find(id);
-       },
-      (instance) =>
-      {
-              Find_PostValidate(instance, id);
-      });
-  }
-    partial void Save_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-    partial void Save_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Save_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IQueryHierarchy) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.SupportsPermissions; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        partial void Find_PostValidate(IQueryHierarchy instance, Guid id);
+        partial void Find_PreCondition(ref IQueryHierarchy instance, ref Guid id);
+        internal static IEnumerable<QueryHierarchyWrapper> GetIEnumerableInstance() { return new List<QueryHierarchyWrapper> {GetInstance()}; }
+
+        internal static QueryHierarchyWrapper GetInstance()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-        },
-        (instance) =>
-        {
-          Save_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.Save();
-       },
-      (instance) =>
-      {
-              Save_PostValidate(instance);
-      });
-  }
-    partial void Reset_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-    partial void Reset_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Reset_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-        },
-        (instance) =>
-        {
-          Reset_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.Reset();
-       },
-      (instance) =>
-      {
-              Reset_PostValidate(instance);
-      });
-  }
-   partial void SupportsFolders_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void SupportsFolders_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.SupportsFolders;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void SupportsPermissions_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void SupportsPermissions_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryHierarchy) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.SupportsPermissions;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            QueryHierarchy real = default(QueryHierarchy);
+            RealInstanceFactory(ref real);
+            var instance = (QueryHierarchyWrapper) QueryHierarchyWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        partial void GetRefreshData_PostValidate(IQueryHierarchy instance);
+        partial void GetRefreshData_PreCondition(ref IQueryHierarchy instance);
+        static partial void InstanceFactory(ref QueryHierarchyWrapper instance, [CallerMemberName] string callerName = "");
+        static partial void RealInstanceFactory(ref QueryHierarchy real, [CallerMemberName] string callerName = "");
+
+        partial void Reset_PostValidate(IQueryHierarchy instance);
+        partial void Reset_PreCondition(ref IQueryHierarchy instance);
+        partial void Save_PostValidate(IQueryHierarchy instance);
+        partial void Save_PreCondition(ref IQueryHierarchy instance);
+
+        partial void SupportsFolders_SetCondition(ref IQueryHierarchy instance, ref Boolean setValue);
+
+        partial void SupportsPermissions_SetCondition(ref IQueryHierarchy instance, ref Boolean setValue);
+    }
 }

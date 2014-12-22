@@ -7,39 +7,39 @@ using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client
 {
-  public interface ITfsConnection : IServiceProvider ,IDisposable
-  {
-    void GetAuthenticatedIdentity(out ITeamFoundationIdentity identity);
-    void EnsureAuthenticated();
-    void Authenticate();
-    void Connect( IConnectOptions connectOptions);
-    void Disconnect();
-    T GetService<T>();
-    void FlushServices();
-    T GetClient<T>();
-    IITfsRequestChannelFactory ChannelFactory  { get;   }
-    ITfsClientCredentials ClientCredentials  { get; set;   }
-    Guid InstanceId  { get;   }
-    Guid CachedInstanceId  { get;   }
-    Uri Uri  { get;   }
-    TimeZone TimeZone  { get; set;   }
-    IServerCapabilities ServerCapabilities  { get;   }
-    Boolean IsHostedServer  { get;   }
-    ICatalogNode CatalogNode  { get;   }
-    String Name  { get;   }
-    IIdentityDescriptor IdentityToImpersonate  { get;   }
-    ICredentials Credentials  { get; set;   }
-    CultureInfo Culture  { get; set;   }
-    CultureInfo UICulture  { get; set;   }
-    Guid SessionId  { get;   }
-    String ClientCacheDirectoryForInstance  { get;   }
-    String ClientVolatileCacheDirectoryForInstance  { get;   }
-    String ClientCacheDirectoryForUser  { get;   }
-    ITeamFoundationIdentity AuthorizedIdentity  { get;   }
-    Boolean HasAuthenticated  { get;   }
-    ITFProxyServer ProxyServer  { get;   }
-    Boolean ConnectivityFailureOnLastWebServiceCall  { get;   }
-    Boolean Disposed  { get;   }
-    IIServerDataProvider ServerDataProvider  { get;   }
-  }
+    public interface ITfsConnection : IServiceProvider, IDisposable
+    {
+        void Authenticate();
+        void Connect(IConnectOptions connectOptions);
+        void Disconnect();
+        void EnsureAuthenticated();
+        void FlushServices();
+        void GetAuthenticatedIdentity(out ITeamFoundationIdentity identity);
+        T GetClient<T>();
+        T GetService<T>();
+        ITeamFoundationIdentity AuthorizedIdentity { get; }
+        Guid CachedInstanceId { get; }
+        ICatalogNode CatalogNode { get; }
+        IITfsRequestChannelFactory ChannelFactory { get; }
+        String ClientCacheDirectoryForInstance { get; }
+        String ClientCacheDirectoryForUser { get; }
+        ITfsClientCredentials ClientCredentials { get; set; }
+        String ClientVolatileCacheDirectoryForInstance { get; }
+        Boolean ConnectivityFailureOnLastWebServiceCall { get; }
+        ICredentials Credentials { get; set; }
+        CultureInfo Culture { get; set; }
+        Boolean Disposed { get; }
+        Boolean HasAuthenticated { get; }
+        IIdentityDescriptor IdentityToImpersonate { get; }
+        Guid InstanceId { get; }
+        Boolean IsHostedServer { get; }
+        String Name { get; }
+        ITFProxyServer ProxyServer { get; }
+        IServerCapabilities ServerCapabilities { get; }
+        IIServerDataProvider ServerDataProvider { get; }
+        Guid SessionId { get; }
+        TimeZone TimeZone { get; set; }
+        CultureInfo UICulture { get; set; }
+        Uri Uri { get; }
+    }
 }

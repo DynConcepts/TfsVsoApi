@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class ConnectivityFailureStatusChangedEventArgsWrapper : ConnectivityFailureStatusChangedEventArgsWrapper<IConnectivityFailureStatusChangedEventArgs, ConnectivityFailureStatusChangedEventArgs>, IConnectivityFailureStatusChangedEventArgs
     {
         protected ConnectivityFailureStatusChangedEventArgsWrapper(ConnectivityFailureStatusChangedEventArgs instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IConnectivityFailureStatusChangedEventArgs, ConnectivityFailureStatusChangedEventArgs>(src => src==null ? null : ((ConnectivityFailureStatusChangedEventArgsWrapper) src).r_Instance, src => new ConnectivityFailureStatusChangedEventArgsWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IConnectivityFailureStatusChangedEventArgs, ConnectivityFailureStatusChangedEventArgs>(src => src == null ? null : ((ConnectivityFailureStatusChangedEventArgsWrapper) src).r_Instance, src => new ConnectivityFailureStatusChangedEventArgsWrapper(src)); }
     }
 
 

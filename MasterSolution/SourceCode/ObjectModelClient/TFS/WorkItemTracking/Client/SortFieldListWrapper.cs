@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class SortFieldListWrapper : SortFieldListWrapper<ISortFieldList, SortFieldList>, ISortFieldList
     {
         protected SortFieldListWrapper(SortFieldList instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ISortFieldList, SortFieldList>(src => src==null ? null : ((SortFieldListWrapper) src).r_Instance, src => new SortFieldListWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ISortFieldList, SortFieldList>(src => src == null ? null : ((SortFieldListWrapper) src).r_Instance, src => new SortFieldListWrapper(src)); }
     }
 
 
     internal class SortFieldListWrapper<TWrapper, TInterface> : OrderedVariableSizeListWrapper<TWrapper, TInterface>, ISortFieldList where TInterface : class where TWrapper : class
     {
-
         Int32 ISortFieldList.Add(ISortField sortField)
         {
             int nativeCallResult = r_Instance.Add(SortFieldWrapper.GetInstance(sortField));
@@ -71,7 +70,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         void ISortFieldList.Remove(String fieldName) { r_Instance.Remove(fieldName); }
 
         void ISortFieldList.Remove(IFieldDefinition fd) { r_Instance.Remove(FieldDefinitionWrapper.GetInstance(fd)); }
-
 
 
         void ISortFieldList.Remove(ISortField value) { r_Instance.Remove(SortFieldWrapper.GetInstance(value)); }

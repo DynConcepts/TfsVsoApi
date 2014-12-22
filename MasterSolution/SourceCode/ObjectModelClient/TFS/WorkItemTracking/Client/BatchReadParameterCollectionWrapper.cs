@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class BatchReadParameterCollectionWrapper : BatchReadParameterCollectionWrapper<IBatchReadParameterCollection, BatchReadParameterCollection>, IBatchReadParameterCollection
     {
         protected BatchReadParameterCollectionWrapper(BatchReadParameterCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchReadParameterCollection, BatchReadParameterCollection>(src => src==null ? null : ((BatchReadParameterCollectionWrapper) src).r_Instance, src => new BatchReadParameterCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IBatchReadParameterCollection, BatchReadParameterCollection>(src => src == null ? null : ((BatchReadParameterCollectionWrapper) src).r_Instance, src => new BatchReadParameterCollectionWrapper(src)); }
     }
 
 
     internal class BatchReadParameterCollectionWrapper<TWrapper, TInterface> : VariableSizeListWrapper<TWrapper, TInterface>, IBatchReadParameterCollection where TInterface : class where TWrapper : class
     {
-
         Int32 IBatchReadParameterCollection.Add(IBatchReadParameter item)
         {
             int nativeCallResult = r_Instance.Add(BatchReadParameterWrapper.GetInstance(item));
@@ -30,8 +29,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
-
         Boolean IBatchReadParameterCollection.Contains(IBatchReadParameter item)
         {
             bool nativeCallResult = r_Instance.Contains(BatchReadParameterWrapper.GetInstance(item));
@@ -43,7 +40,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             int nativeCallResult = r_Instance.IndexOf(BatchReadParameterWrapper.GetInstance(item));
             return nativeCallResult;
         }
-
 
 
         IBatchReadParameter IBatchReadParameterCollection.this[Int32 index]

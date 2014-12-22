@@ -1,328 +1,214 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class WorkItemLinkDataImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.WorkItemLinkDataImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.WorkItemLinkDataImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.WorkItemLinkDataImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class WorkItemLinkDataImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void AddLinkInfo_UnitTest()
+        {
+            ILinkInfo linkInfo = default(ILinkInfo);
+            Object updatedItem = default(Object);
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance =>
+                {
+                    linkInfo = LinkInfoImpl_UnitTests.GetInstance();
+                    updatedItem = new Object();
+                    AddLinkInfo_PreCondition(ref instance, ref linkInfo, ref updatedItem);
+                },
+                instance => { instance.AddLinkInfo(linkInfo, updatedItem); },
+                instance => { AddLinkInfo_PostValidate(instance, linkInfo, updatedItem); });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.WorkItemLinkDataImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.WorkItemLinkDataImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Check_UnitTest()
+        {
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { Check_PreCondition(ref instance); },
+                instance => { instance.Check(); },
+                instance => { Check_PostValidate(instance); });
+        }
 
-    partial void GetLinkInfo_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, ref System.Int32 index);
-    partial void GetLinkInfo_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, System.Int32 index);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetLinkInfo_UnitTest()
-  {
-    System.Int32 index = default(System.Int32);
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetAddedLinksCount_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetAddedLinksCount_PreCondition(ref instance); },
+                instance => { instance.GetAddedLinksCount(); },
+                instance => { GetAddedLinksCount_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetAddedLinks_UnitTest()
         {
-          index = default(System.Int32); //No Constructor
-          GetLinkInfo_PreCondition(ref instance, ref index);
-        },
-       (instance) =>
-       {
-             instance.GetLinkInfo(index);
-       },
-      (instance) =>
-      {
-              GetLinkInfo_PostValidate(instance, index);
-      });
-  }
-    partial void GetLinkInfoCount_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetLinkInfoCount_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetLinkInfoCount_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetAddedLinks_PreCondition(ref instance); },
+                instance => { instance.GetAddedLinks(); },
+                instance => { GetAddedLinks_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetDeletedLinksCount_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetDeletedLinksCount_PreCondition(ref instance); },
+                instance => { instance.GetDeletedLinksCount(); },
+                instance => { GetDeletedLinksCount_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetDeletedLinks_UnitTest()
         {
-          GetLinkInfoCount_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetLinkInfoCount();
-       },
-      (instance) =>
-      {
-              GetLinkInfoCount_PostValidate(instance);
-      });
-  }
-    partial void AddLinkInfo_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, ref System.Object updatedItem);
-    partial void AddLinkInfo_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, System.Object updatedItem);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void AddLinkInfo_UnitTest()
-  {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo = default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo);
-    System.Object updatedItem = default(System.Object);
-      ExecuteMethod(
-        () =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetDeletedLinks_PreCondition(ref instance); },
+                instance => { instance.GetDeletedLinks(); },
+                instance => { GetDeletedLinks_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetLinkInfoCount_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetLinkInfoCount_PreCondition(ref instance); },
+                instance => { instance.GetLinkInfoCount(); },
+                instance => { GetLinkInfoCount_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetLinkInfo_UnitTest()
         {
-          linkInfo = DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Internals.LinkInfoImpl_UnitTests.GetInstance();
-          updatedItem = new System.Object();
-          AddLinkInfo_PreCondition(ref instance, ref linkInfo, ref updatedItem);
-        },
-       (instance) =>
-       {
-             instance.AddLinkInfo(linkInfo,updatedItem);
-       },
-      (instance) =>
-      {
-              AddLinkInfo_PostValidate(instance, linkInfo, updatedItem);
-      });
-  }
-    partial void MarkLinkToDelete_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, ref System.Object updatedItem);
-    partial void MarkLinkToDelete_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, System.Object updatedItem);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void MarkLinkToDelete_UnitTest()
-  {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo = default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo);
-    System.Object updatedItem = default(System.Object);
-      ExecuteMethod(
-        () =>
+            Int32 index = default(Int32);
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance =>
+                {
+                    index = default(Int32); //No Constructor
+                    GetLinkInfo_PreCondition(ref instance, ref index);
+                },
+                instance => { instance.GetLinkInfo(index); },
+                instance => { GetLinkInfo_PostValidate(instance, index); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetUpdatedLinksCount_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetUpdatedLinksCount_PreCondition(ref instance); },
+                instance => { instance.GetUpdatedLinksCount(); },
+                instance => { GetUpdatedLinksCount_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetUpdatedLinks_UnitTest()
         {
-          linkInfo = DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Internals.LinkInfoImpl_UnitTests.GetInstance();
-          updatedItem = new System.Object();
-          MarkLinkToDelete_PreCondition(ref instance, ref linkInfo, ref updatedItem);
-        },
-       (instance) =>
-       {
-             instance.MarkLinkToDelete(linkInfo,updatedItem);
-       },
-      (instance) =>
-      {
-              MarkLinkToDelete_PostValidate(instance, linkInfo, updatedItem);
-      });
-  }
-    partial void GetAddedLinks_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetAddedLinks_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetAddedLinks_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance => { GetUpdatedLinks_PreCondition(ref instance); },
+                instance => { instance.GetUpdatedLinks(); },
+                instance => { GetUpdatedLinks_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void MarkLinkToDelete_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
+            ILinkInfo linkInfo = default(ILinkInfo);
+            Object updatedItem = default(Object);
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance =>
+                {
+                    linkInfo = LinkInfoImpl_UnitTests.GetInstance();
+                    updatedItem = new Object();
+                    MarkLinkToDelete_PreCondition(ref instance, ref linkInfo, ref updatedItem);
+                },
+                instance => { instance.MarkLinkToDelete(linkInfo, updatedItem); },
+                instance => { MarkLinkToDelete_PostValidate(instance, linkInfo, updatedItem); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void SetLinkComment_UnitTest()
         {
-          GetAddedLinks_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetAddedLinks();
-       },
-      (instance) =>
-      {
-              GetAddedLinks_PostValidate(instance);
-      });
-  }
-    partial void GetDeletedLinks_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetDeletedLinks_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetDeletedLinks_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+            ILinkInfo linkInfo = default(ILinkInfo);
+            String value = default(String);
+            ExecuteMethod(
+                () => { return (IWorkItemLinkData) GetInstance(); },
+                instance =>
+                {
+                    linkInfo = LinkInfoImpl_UnitTests.GetInstance();
+                    value = default(String); //No Constructor
+                    SetLinkComment_PreCondition(ref instance, ref linkInfo, ref value);
+                },
+                instance => { instance.SetLinkComment(linkInfo, value); },
+                instance => { SetLinkComment_PostValidate(instance, linkInfo, value); });
+        }
+
+        partial void AddLinkInfo_PostValidate(IWorkItemLinkData instance, ILinkInfo linkInfo, Object updatedItem);
+        partial void AddLinkInfo_PreCondition(ref IWorkItemLinkData instance, ref ILinkInfo linkInfo, ref Object updatedItem);
+        partial void Check_PostValidate(IWorkItemLinkData instance);
+        partial void Check_PreCondition(ref IWorkItemLinkData instance);
+
+        partial void GetAddedLinksCount_PostValidate(IWorkItemLinkData instance);
+        partial void GetAddedLinksCount_PreCondition(ref IWorkItemLinkData instance);
+        partial void GetAddedLinks_PostValidate(IWorkItemLinkData instance);
+        partial void GetAddedLinks_PreCondition(ref IWorkItemLinkData instance);
+
+        partial void GetDeletedLinksCount_PostValidate(IWorkItemLinkData instance);
+        partial void GetDeletedLinksCount_PreCondition(ref IWorkItemLinkData instance);
+        partial void GetDeletedLinks_PostValidate(IWorkItemLinkData instance);
+        partial void GetDeletedLinks_PreCondition(ref IWorkItemLinkData instance);
+        internal static IEnumerable<WorkItemLinkDataImpl> GetIEnumerableInstance() { return new List<WorkItemLinkDataImpl> {GetInstance()}; }
+
+        internal static WorkItemLinkDataImpl GetInstance([CallerMemberName] string callerName = "")
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          GetDeletedLinks_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetDeletedLinks();
-       },
-      (instance) =>
-      {
-              GetDeletedLinks_PostValidate(instance);
-      });
-  }
-    partial void GetUpdatedLinks_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetUpdatedLinks_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetUpdatedLinks_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          GetUpdatedLinks_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetUpdatedLinks();
-       },
-      (instance) =>
-      {
-              GetUpdatedLinks_PostValidate(instance);
-      });
-  }
-    partial void GetAddedLinksCount_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetAddedLinksCount_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetAddedLinksCount_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          GetAddedLinksCount_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetAddedLinksCount();
-       },
-      (instance) =>
-      {
-              GetAddedLinksCount_PostValidate(instance);
-      });
-  }
-    partial void GetDeletedLinksCount_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetDeletedLinksCount_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetDeletedLinksCount_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          GetDeletedLinksCount_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetDeletedLinksCount();
-       },
-      (instance) =>
-      {
-              GetDeletedLinksCount_PostValidate(instance);
-      });
-  }
-    partial void GetUpdatedLinksCount_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void GetUpdatedLinksCount_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetUpdatedLinksCount_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          GetUpdatedLinksCount_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.GetUpdatedLinksCount();
-       },
-      (instance) =>
-      {
-              GetUpdatedLinksCount_PostValidate(instance);
-      });
-  }
-    partial void SetLinkComment_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, ref System.String value);
-    partial void SetLinkComment_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance, DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo, System.String value);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void SetLinkComment_UnitTest()
-  {
-    DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo linkInfo = default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkInfo);
-    System.String value = default(System.String);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          linkInfo = DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Internals.LinkInfoImpl_UnitTests.GetInstance();
-          value = default(System.String); //No Constructor
-          SetLinkComment_PreCondition(ref instance, ref linkInfo, ref value);
-        },
-       (instance) =>
-       {
-             instance.SetLinkComment(linkInfo,value);
-       },
-      (instance) =>
-      {
-              SetLinkComment_PostValidate(instance, linkInfo, value);
-      });
-  }
-    partial void Check_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-    partial void Check_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Check_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IWorkItemLinkData) GetInstance();
-        },
-        (instance) =>
-        {
-          Check_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.Check();
-       },
-      (instance) =>
-      {
-              Check_PostValidate(instance);
-      });
-  }
-  }
+            var instance = new WorkItemLinkDataImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void GetLinkInfoCount_PostValidate(IWorkItemLinkData instance);
+        partial void GetLinkInfoCount_PreCondition(ref IWorkItemLinkData instance);
+        partial void GetLinkInfo_PostValidate(IWorkItemLinkData instance, Int32 index);
+        partial void GetLinkInfo_PreCondition(ref IWorkItemLinkData instance, ref Int32 index);
+
+        partial void GetUpdatedLinksCount_PostValidate(IWorkItemLinkData instance);
+        partial void GetUpdatedLinksCount_PreCondition(ref IWorkItemLinkData instance);
+        partial void GetUpdatedLinks_PostValidate(IWorkItemLinkData instance);
+        partial void GetUpdatedLinks_PreCondition(ref IWorkItemLinkData instance);
+        static partial void InstanceFactory(ref WorkItemLinkDataImpl instance, [CallerMemberName] string callerName = "");
+        partial void MarkLinkToDelete_PostValidate(IWorkItemLinkData instance, ILinkInfo linkInfo, Object updatedItem);
+        partial void MarkLinkToDelete_PreCondition(ref IWorkItemLinkData instance, ref ILinkInfo linkInfo, ref Object updatedItem);
+
+        partial void SetLinkComment_PostValidate(IWorkItemLinkData instance, ILinkInfo linkInfo, String value);
+        partial void SetLinkComment_PreCondition(ref IWorkItemLinkData instance, ref ILinkInfo linkInfo, ref String value);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading;
+using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,8 +20,10 @@ namespace DynCon.OSI.JasonBackedObjects_UnitTests.Communications
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext context)
         {
-            RestClientManager.BasicAuthorizationUsername = "davidVSO";
-            RestClientManager.BasicAuthorizationPassword = "Alternate2014";
+            CredentialsStore credentials = CredentialsProvider.Read(@"..\..\..\RestCredentials.xml");
+
+            RestClientManager.BasicAuthorizationUsername = credentials.BasicAuthorizationUsername;
+            RestClientManager.BasicAuthorizationPassword = credentials.BasicAuthorizationPassword;
         }
 
         /// <summary>

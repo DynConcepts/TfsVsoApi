@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class StoredQueryCollectionWrapper : StoredQueryCollectionWrapper<IStoredQueryCollection, StoredQueryCollection>, IStoredQueryCollection
     {
         protected StoredQueryCollectionWrapper(StoredQueryCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQueryCollection, StoredQueryCollection>(src => src==null ? null : ((StoredQueryCollectionWrapper) src).r_Instance, src => new StoredQueryCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IStoredQueryCollection, StoredQueryCollection>(src => src == null ? null : ((StoredQueryCollectionWrapper) src).r_Instance, src => new StoredQueryCollectionWrapper(src)); }
     }
 
 
     internal class StoredQueryCollectionWrapper<TWrapper, TInterface> : VariableSizeListWrapper<TWrapper, TInterface>, IStoredQueryCollection where TInterface : class where TWrapper : class
     {
-
         Int32 IStoredQueryCollection.Add(IStoredQuery storedQuery)
         {
             int nativeCallResult = r_Instance.Add(StoredQueryWrapper.GetInstance(storedQuery));
@@ -28,7 +27,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             int nativeCallResult = r_Instance.IndexOf(StoredQueryWrapper.GetInstance(storedQuery));
             return nativeCallResult;
         }
-
 
 
         IStoredQuery IStoredQueryCollection.this[Guid guid]

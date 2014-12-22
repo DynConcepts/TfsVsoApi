@@ -1,54 +1,44 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.TeamFoundation.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class StoredQueryCollectionWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Client.StoredQueryCollection);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
-
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Client.StoredQueryCollection real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.StoredQueryCollectionWrapper>{ GetInstance() }; }
-
-    partial void Refresh_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQueryCollection instance);
-    partial void Refresh_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQueryCollection instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Refresh_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class StoredQueryCollectionWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Refresh_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IStoredQueryCollection) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IStoredQueryCollection) GetInstance(); },
+                instance => { Refresh_PreCondition(ref instance); },
+                instance => { instance.Refresh(); },
+                instance => { Refresh_PostValidate(instance); });
+        }
+
+        internal static IEnumerable<StoredQueryCollectionWrapper> GetIEnumerableInstance() { return new List<StoredQueryCollectionWrapper> {GetInstance()}; }
+
+        internal static StoredQueryCollectionWrapper GetInstance()
         {
-          Refresh_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.Refresh();
-       },
-      (instance) =>
-      {
-              Refresh_PostValidate(instance);
-      });
-  }
-  }
+            StoredQueryCollection real = default(StoredQueryCollection);
+            RealInstanceFactory(ref real);
+            var instance = (StoredQueryCollectionWrapper) StoredQueryCollectionWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref StoredQueryCollectionWrapper instance, [CallerMemberName] string callerName = "");
+
+        static partial void RealInstanceFactory(ref StoredQueryCollection real, [CallerMemberName] string callerName = "");
+        partial void Refresh_PostValidate(IStoredQueryCollection instance);
+        partial void Refresh_PreCondition(ref IStoredQueryCollection instance);
+    }
 }

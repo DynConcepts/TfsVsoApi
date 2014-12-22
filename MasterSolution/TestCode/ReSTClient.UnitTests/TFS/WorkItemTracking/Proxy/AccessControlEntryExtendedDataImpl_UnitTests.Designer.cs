@@ -1,26 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Proxy
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class AccessControlEntryExtendedDataImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.AccessControlEntryExtendedDataImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.AccessControlEntryExtendedDataImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.AccessControlEntryExtendedDataImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class AccessControlEntryExtendedDataImpl_UnitTests : DynTestClassBase
+    {
+        internal static IEnumerable<AccessControlEntryExtendedDataImpl> GetIEnumerableInstance() { return new List<AccessControlEntryExtendedDataImpl> {GetInstance()}; }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.AccessControlEntryExtendedDataImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Proxy.AccessControlEntryExtendedDataImpl>{ GetInstance() }; }
+        internal static AccessControlEntryExtendedDataImpl GetInstance([CallerMemberName] string callerName = "")
+        {
+            var instance = new AccessControlEntryExtendedDataImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
 
-  }
+        static partial void InstanceFactory(ref AccessControlEntryExtendedDataImpl instance, [CallerMemberName] string callerName = "");
+    }
 }

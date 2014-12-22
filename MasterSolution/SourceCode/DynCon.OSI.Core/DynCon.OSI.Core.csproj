@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -52,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers\CredentialsProvider.cs" />
     <Compile Include="Helpers\DerivedClassDiscovery.cs" />
     <Compile Include="AdvancedEvents\GenericEventArgs.cs" />
     <Compile Include="AdvancedEvents\GenericEventHolder.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Helpers\ParameterizedLazyWithReset.cs" />
     <Compile Include="Helpers\LazyWirhReset.cs" />
     <Compile Include="Helpers\ObjectMapper.cs" />
+    <Compile Include="Helpers\StringFormatter.cs" />
     <Compile Include="Helpers\ToBeImplementedException.cs" />
     <Compile Include="ObjectMapping\MappedObjectBase.cs" />
     <Compile Include="ObjectMapping\MappedObjectInitializer.cs" />

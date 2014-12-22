@@ -10,13 +10,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Server
     internal class IdentityWrapper : IdentityWrapper<IIdentity, Identity>, IIdentity, IComparable, IITfsXmlSerializable
     {
         protected IdentityWrapper(Identity instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentity, Identity>(src => src==null ? null : ((IdentityWrapper) src).r_Instance, src => new IdentityWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIdentity, Identity>(src => src == null ? null : ((IdentityWrapper) src).r_Instance, src => new IdentityWrapper(src)); }
     }
 
 
     internal class IdentityWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IIdentity where TInterface : class where TWrapper : class
     {
-
         String IIdentity.AccountName
         {
             get
@@ -42,7 +41,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Server
             }
             set { r_Instance.Deleted = value; }
         }
-
 
 
         String IIdentity.Description

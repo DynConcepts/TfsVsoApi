@@ -17,7 +17,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
     internal class WorkItemAPI : ClientObjectModelBasedAPI, IWorkItemAPI
     {
         /// <summary>
-        /// Builds the work item.
+        ///     Builds the work item.
         /// </summary>
         /// <param name="projectName">The project name.</param>
         /// <param name="workItemTypeName">Name of the work item type.</param>
@@ -25,7 +25,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.APIs
         /// <returns>IWorkItem.</returns>
         public IWorkItem BuildWorkItem(string projectName, string workItemTypeName, IReadOnlyList<KeyValuePair<string, object>> fieldValues)
         {
-            var dictionary = fieldValues.ToDictionary(field => field.Key, field => field.Value);
+            Dictionary<string, object> dictionary = fieldValues.ToDictionary(field => field.Key, field => field.Value);
 
             IWorkItemStore workItemStore = WorkItemStore();
             IProject project = workItemStore.Projects[projectName];

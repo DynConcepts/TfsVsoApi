@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common
     internal class ReadOnlyListWrapper<TNativeElement, TWrappedElement> : ReadOnlyListWrapper<IReadOnlyList, ReadOnlyList, TNativeElement, TWrappedElement>, IReadOnlyList, IEnumerable
     {
         protected ReadOnlyListWrapper(ReadOnlyList instance) : base(instance, o => default(TWrappedElement)) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IReadOnlyList, ReadOnlyList>(src => src==null ? null : ((ReadOnlyListWrapper<TNativeElement, TWrappedElement>) src).r_Instance, src => new ReadOnlyListWrapper<TNativeElement, TWrappedElement>(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IReadOnlyList, ReadOnlyList>(src => src == null ? null : ((ReadOnlyListWrapper<TNativeElement, TWrappedElement>) src).r_Instance, src => new ReadOnlyListWrapper<TNativeElement, TWrappedElement>(src)); }
     }
 
 
@@ -18,7 +18,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common
         where TInterface : class
         where TWrapper : class
     {
-
         void IReadOnlyList.CopyTo(Array array, Int32 index) { r_Instance.CopyTo(array, index); }
 
         Int32 IReadOnlyList.Count

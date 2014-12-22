@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemTypeCollectionWrapper : WorkItemTypeCollectionWrapper<IWorkItemTypeCollection, WorkItemTypeCollection>, IWorkItemTypeCollection
     {
         protected WorkItemTypeCollectionWrapper(WorkItemTypeCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemTypeCollection, WorkItemTypeCollection>(src => src==null ? null : ((WorkItemTypeCollectionWrapper) src).r_Instance, src => new WorkItemTypeCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemTypeCollection, WorkItemTypeCollection>(src => src == null ? null : ((WorkItemTypeCollectionWrapper) src).r_Instance, src => new WorkItemTypeCollectionWrapper(src)); }
     }
 
 
@@ -18,7 +18,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         where TInterface : class
         where TWrapper : class
     {
-
         Boolean IWorkItemTypeCollection.Contains(String typeName)
         {
             bool nativeCallResult = r_Instance.Contains(typeName);
@@ -40,13 +39,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         void IWorkItemTypeCollection.Import(XmlElement definitionElement, String methodologyName) { r_Instance.Import(definitionElement, methodologyName); }
 
 
-
         Int32 IWorkItemTypeCollection.IndexOf(IWorkItemType value)
         {
             int nativeCallResult = r_Instance.IndexOf(WorkItemTypeWrapper.GetInstance(value));
             return nativeCallResult;
         }
-
 
 
         IWorkItemType IWorkItemTypeCollection.this[Int32 index]

@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class FieldDefinitionCollectionWrapper : FieldDefinitionCollectionWrapper<IFieldDefinitionCollection, FieldDefinitionCollection>, IFieldDefinitionCollection
     {
         protected FieldDefinitionCollectionWrapper(FieldDefinitionCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldDefinitionCollection, FieldDefinitionCollection>(src => src==null ? null : ((FieldDefinitionCollectionWrapper) src).r_Instance, src => new FieldDefinitionCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldDefinitionCollection, FieldDefinitionCollection>(src => src == null ? null : ((FieldDefinitionCollectionWrapper) src).r_Instance, src => new FieldDefinitionCollectionWrapper(src)); }
     }
 
 
@@ -17,7 +17,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         where TInterface : class
         where TWrapper : class
     {
-
         Boolean IFieldDefinitionCollection.Contains(String name)
         {
             bool nativeCallResult = r_Instance.Contains(name);
@@ -25,15 +24,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
-
         Boolean IFieldDefinitionCollection.Contains(Int32 id)
         {
             bool nativeCallResult = r_Instance.Contains(id);
             return nativeCallResult;
         }
-
-
 
 
         Boolean IFieldDefinitionCollection.Contains(IFieldDefinition fieldDefinition)

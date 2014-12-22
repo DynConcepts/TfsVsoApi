@@ -1,6 +1,5 @@
 using System;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects
@@ -8,14 +7,14 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects
     /// <summary>
     ///     Implements Functionallity of a JSON Backed TFS/VSO TeamRoom.
     /// </summary>
-    internal class JsonTeamRoom : JsonBackedObjectBase, ITeamRoom
+    public class JsonTeamRoom : JsonBackedObjectBase
     {
         /// <summary>
         ///     Froms the token.
         /// </summary>
         /// <param name="arg">The argument.</param>
         /// <returns>ITeamRoom.</returns>
-        public static ITeamRoom FromToken(JToken arg)
+        public static JsonTeamRoom FromToken(JToken arg)
         {
             var teamRoom = new JsonTeamRoom(arg);
             return teamRoom;

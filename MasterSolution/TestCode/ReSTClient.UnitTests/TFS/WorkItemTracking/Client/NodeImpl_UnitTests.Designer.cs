@@ -1,271 +1,227 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class NodeImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.NodeImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.NodeImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.NodeImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class NodeImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void ChildNodes_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.ChildNodes; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.NodeImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.NodeImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void FindNodeInSubTree_UnitTest()
+        {
+            Int32 nodeId = default(Int32);
+            ExecuteMethod(
+                () => { return (INode) GetInstance(); },
+                instance =>
+                {
+                    nodeId = default(Int32); //No Constructor
+                    FindNodeInSubTree_PreCondition(ref instance, ref nodeId);
+                },
+                instance => { instance.FindNodeInSubTree(nodeId); },
+                instance => { FindNodeInSubTree_PostValidate(instance, nodeId); });
+        }
 
-    partial void FindNodeInSubTree_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Int32 nodeId);
-    partial void FindNodeInSubTree_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, System.Int32 nodeId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void FindNodeInSubTree_UnitTest()
-  {
-    System.Int32 nodeId = default(System.Int32);
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasChildNodes_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-        },
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.HasChildNodes; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasWorkItemReadRightsRecursive_UnitTest()
         {
-          nodeId = default(System.Int32); //No Constructor
-          FindNodeInSubTree_PreCondition(ref instance, ref nodeId);
-        },
-       (instance) =>
-       {
-             instance.FindNodeInSubTree(nodeId);
-       },
-      (instance) =>
-      {
-              FindNodeInSubTree_PostValidate(instance, nodeId);
-      });
-  }
-   partial void HasChildNodes_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasChildNodes_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.HasWorkItemReadRightsRecursive; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasWorkItemReadRights_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.HasWorkItemReadRights; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasWorkItemWriteRightsRecursive_UnitTest()
         {
-            return instance.HasChildNodes;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void ChildNodes_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INodeCollection setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void ChildNodes_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.HasWorkItemWriteRightsRecursive; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasWorkItemWriteRights_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.HasWorkItemWriteRights; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsAreaNode_UnitTest()
         {
-            return instance.ChildNodes;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void Path_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.String setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Path_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.IsAreaNode; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsIterationNode_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.IsIterationNode; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Path_UnitTest()
         {
-            return instance.Path;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void IsIterationNode_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsIterationNode_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (INode) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.Path; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        partial void ChildNodes_SetCondition(ref INode instance, ref INodeCollection setValue);
+        partial void FindNodeInSubTree_PostValidate(INode instance, Int32 nodeId);
+        partial void FindNodeInSubTree_PreCondition(ref INode instance, ref Int32 nodeId);
+        internal static IEnumerable<NodeImpl> GetIEnumerableInstance() { return new List<NodeImpl> {GetInstance()}; }
+
+        internal static NodeImpl GetInstance([CallerMemberName] string callerName = "")
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.IsIterationNode;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void IsAreaNode_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsAreaNode_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.IsAreaNode;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void HasWorkItemReadRights_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasWorkItemReadRights_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.HasWorkItemReadRights;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void HasWorkItemWriteRights_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasWorkItemWriteRights_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.HasWorkItemWriteRights;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void HasWorkItemReadRightsRecursive_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasWorkItemReadRightsRecursive_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.HasWorkItemReadRightsRecursive;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void HasWorkItemWriteRightsRecursive_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasWorkItemWriteRightsRecursive_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.HasWorkItemWriteRightsRecursive;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            var instance = new NodeImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void HasChildNodes_SetCondition(ref INode instance, ref Boolean setValue);
+
+        partial void HasWorkItemReadRightsRecursive_SetCondition(ref INode instance, ref Boolean setValue);
+        partial void HasWorkItemReadRights_SetCondition(ref INode instance, ref Boolean setValue);
+
+        partial void HasWorkItemWriteRightsRecursive_SetCondition(ref INode instance, ref Boolean setValue);
+        partial void HasWorkItemWriteRights_SetCondition(ref INode instance, ref Boolean setValue);
+        static partial void InstanceFactory(ref NodeImpl instance, [CallerMemberName] string callerName = "");
+        partial void IsAreaNode_SetCondition(ref INode instance, ref Boolean setValue);
+        partial void IsIterationNode_SetCondition(ref INode instance, ref Boolean setValue);
+        partial void Path_SetCondition(ref INode instance, ref String setValue);
+    }
 }
 
-
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class Node_TreeTypeImpl_UnitTests : DynTestClassBase 
-  {
-  internal static DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode_TreeType GetInstance() { return default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.INode_TreeType); }
-
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public class Node_TreeTypeImpl_UnitTests : DynTestClassBase
+    {
+        internal static INode_TreeType GetInstance() { return default(INode_TreeType); }
+    }
 }

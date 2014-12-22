@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Server;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.Server
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class IdentityTypeImpl_UnitTests : DynTestClassBase 
-  {
-  internal static DynCon.OSI.VSO.SharedInterfaces.TFS.Server.IIdentityType GetInstance() { return default(DynCon.OSI.VSO.SharedInterfaces.TFS.Server.IIdentityType); }
-
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class IdentityTypeImpl_UnitTests : DynTestClassBase
+    {
+        internal static IIdentityType GetInstance() { return default(IIdentityType); }
+    }
 }

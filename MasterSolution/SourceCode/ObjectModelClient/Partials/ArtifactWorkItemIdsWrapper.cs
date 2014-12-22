@@ -6,7 +6,7 @@ using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
 // ReSharper disable once CheckNamespace
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal partial class ArtifactWorkItemIdsWrapper : IArtifactWorkItemIds
     {

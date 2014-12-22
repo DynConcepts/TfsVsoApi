@@ -1,26 +1,24 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class SortFieldListImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.SortFieldListImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.SortFieldListImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.SortFieldListImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class SortFieldListImpl_UnitTests : DynTestClassBase
+    {
+        internal static IEnumerable<SortFieldListImpl> GetIEnumerableInstance() { return new List<SortFieldListImpl> {GetInstance()}; }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.SortFieldListImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.SortFieldListImpl>{ GetInstance() }; }
+        internal static SortFieldListImpl GetInstance([CallerMemberName] string callerName = "")
+        {
+            var instance = new SortFieldListImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
 
-  }
+        static partial void InstanceFactory(ref SortFieldListImpl instance, [CallerMemberName] string callerName = "");
+    }
 }

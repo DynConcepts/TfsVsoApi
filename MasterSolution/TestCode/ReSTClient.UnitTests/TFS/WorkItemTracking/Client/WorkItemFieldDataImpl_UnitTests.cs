@@ -1,7 +1,7 @@
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  public partial class WorkItemFieldDataImpl_UnitTests
-  {
-  }
+    /// <summary>Generated Test Template</summary>
+    public partial class WorkItemFieldDataImpl_UnitTests
+    {
+    }
 }

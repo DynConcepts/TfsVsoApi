@@ -11,13 +11,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.Metadata
     internal class SnapshotWrapper : SnapshotWrapper<ISnapshot, Snapshot>, ISnapshot
     {
         protected SnapshotWrapper(Snapshot instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ISnapshot, Snapshot>(src => src==null ? null : ((SnapshotWrapper) src).r_Instance, src => new SnapshotWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ISnapshot, Snapshot>(src => src == null ? null : ((SnapshotWrapper) src).r_Instance, src => new SnapshotWrapper(src)); }
     }
 
 
     internal class SnapshotWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ISnapshot where TInterface : class where TWrapper : class
     {
-
         Dictionary<Int32, Int32> ISnapshot.LoadFieldIdsByWorkItemType(Int32 typeId)
         {
             Dictionary<int, int> nativeCallResult = r_Instance.LoadFieldIdsByWorkItemType(typeId);

@@ -56,7 +56,10 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
-        public JsonWorkItemTypeCategory(JToken json) : base(json) { }
+        public JsonWorkItemTypeCategory(JToken json) : base(json)
+        {
+            
+        }
 
         /// <summary>
         ///     The _default work item type

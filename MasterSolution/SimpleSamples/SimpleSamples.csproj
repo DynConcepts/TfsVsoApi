@@ -55,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj">
+      <Project>{798bf552-9a39-48b8-9a4b-af057927062f}</Project>
+      <Name>DynCon.OSI.VSO.RestClient.ObjectModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>

@@ -7,11 +7,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
     {
         static partial void JsonSource(ref JToken json)
         {
-          JObject retVal = new JObject();
+            var retVal = new JObject();
             retVal.Add("source", "Testing..Revisions.Source");
             var fields = new JObject();
             retVal.Add("fields", fields);
-          json = retVal;
-        }  
+            json = retVal;
+        }
     }
 }

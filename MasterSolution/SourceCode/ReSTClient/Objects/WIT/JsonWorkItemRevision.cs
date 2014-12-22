@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 {
-    internal class JsonWorkItemRevision : JsonBackedObjectBase
+    public class JsonWorkItemRevision : JsonBackedObjectBase
     {
         private readonly JsonFieldCollection r_Fields;
 

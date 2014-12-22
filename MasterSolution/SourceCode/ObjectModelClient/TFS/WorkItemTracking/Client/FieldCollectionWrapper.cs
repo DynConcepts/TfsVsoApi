@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class FieldCollectionWrapper : FieldCollectionWrapper<IFieldCollection, FieldCollection>, IFieldCollection
     {
         protected FieldCollectionWrapper(FieldCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldCollection, FieldCollection>(src => src==null ? null : ((FieldCollectionWrapper) src).r_Instance, src => new FieldCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IFieldCollection, FieldCollection>(src => src == null ? null : ((FieldCollectionWrapper) src).r_Instance, src => new FieldCollectionWrapper(src)); }
     }
 
 
     internal class FieldCollectionWrapper<TWrapper, TInterface> : ReadOnlyListWrapper<TWrapper, TInterface, Field, IField>, IFieldCollection where TInterface : class where TWrapper : class
     {
-
         Boolean IFieldCollection.Contains(String fieldName)
         {
             bool nativeCallResult = r_Instance.Contains(fieldName);
@@ -51,7 +50,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             int nativeCallResult = r_Instance.IndexOf(FieldWrapper.GetInstance(value));
             return nativeCallResult;
         }
-
 
 
         IField IFieldCollection.this[Int32 index]

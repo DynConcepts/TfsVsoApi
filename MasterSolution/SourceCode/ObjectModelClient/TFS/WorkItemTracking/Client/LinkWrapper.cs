@@ -9,11 +9,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class LinkWrapper : LinkWrapper<ILink, Link>, ILink
     {
         protected LinkWrapper(Link instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ILink, Link>(src => src==null ? null : ((LinkWrapper)src).r_Instance, CreateProperDerivedWrapper); }
 
-        private static ILink CreateProperDerivedWrapper(Link src) {return  sr_DerivedWrappers[src.GetType()](src); }
+        private static ILink CreateProperDerivedWrapper(Link src) { return sr_DerivedWrappers[src.GetType()](src); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ILink, Link>(src => src == null ? null : ((LinkWrapper) src).r_Instance, CreateProperDerivedWrapper); }
 
-        private static readonly Dictionary<Type, Func<Link, ILink>> sr_DerivedWrappers = new Dictionary<Type, Func<Link, ILink>>()
+        private static readonly Dictionary<Type, Func<Link, ILink>> sr_DerivedWrappers = new Dictionary<Type, Func<Link, ILink>>
         {
             {typeof (RelatedLink), o => RelatedLinkWrapper.GetWrapper((RelatedLink) o)},
             {typeof (Hyperlink), o => HyperlinkWrapper.GetWrapper((Hyperlink) o)}

@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class HyperlinkWrapper : HyperlinkWrapper<IHyperlink, Hyperlink>, IHyperlink
     {
         protected HyperlinkWrapper(Hyperlink instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IHyperlink, Hyperlink>(src => src==null ? null : ((HyperlinkWrapper) src).r_Instance, src => new HyperlinkWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IHyperlink, Hyperlink>(src => src == null ? null : ((HyperlinkWrapper) src).r_Instance, src => new HyperlinkWrapper(src)); }
     }
 
 

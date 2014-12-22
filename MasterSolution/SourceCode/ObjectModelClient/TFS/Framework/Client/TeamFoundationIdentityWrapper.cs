@@ -12,13 +12,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class TeamFoundationIdentityWrapper : TeamFoundationIdentityWrapper<ITeamFoundationIdentity, TeamFoundationIdentity>, ITeamFoundationIdentity
     {
         protected TeamFoundationIdentityWrapper(TeamFoundationIdentity instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITeamFoundationIdentity, TeamFoundationIdentity>(src => src==null ? null : ((TeamFoundationIdentityWrapper) src).r_Instance, src => new TeamFoundationIdentityWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITeamFoundationIdentity, TeamFoundationIdentity>(src => src == null ? null : ((TeamFoundationIdentityWrapper) src).r_Instance, src => new TeamFoundationIdentityWrapper(src)); }
     }
 
 
     internal class TeamFoundationIdentityWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITeamFoundationIdentity where TInterface : class where TWrapper : class
     {
-
         IIdentityDescriptor ITeamFoundationIdentity.Descriptor
         {
             get
@@ -129,11 +128,9 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
         void ITeamFoundationIdentity.RemoveProperty(String name) { r_Instance.RemoveProperty(name); }
 
         void ITeamFoundationIdentity.RemoveProperty(IIdentityPropertyScope propertyScope, String name) { r_Instance.RemoveProperty(IdentityPropertyScopeWrapper.GetInstance(propertyScope), name); }
-
 
 
         void ITeamFoundationIdentity.SetAttribute(String name, String value) { r_Instance.SetAttribute(name, value); }

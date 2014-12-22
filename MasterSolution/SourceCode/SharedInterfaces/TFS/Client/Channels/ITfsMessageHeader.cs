@@ -3,11 +3,11 @@ using System.Xml;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels
 {
-  public interface ITfsMessageHeader
-  {
-    void Write( XmlDictionaryWriter writer);
-    XmlDictionaryReader GetReader();
-    String Name  { get;   }
-    String Namespace  { get;   }
-  }
+    public interface ITfsMessageHeader
+    {
+        XmlDictionaryReader GetReader();
+        void Write(XmlDictionaryWriter writer);
+        String Name { get; }
+        String Namespace { get; }
+    }
 }

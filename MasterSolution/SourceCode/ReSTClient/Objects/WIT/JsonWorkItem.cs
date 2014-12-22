@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Newtonsoft.Json.Linq;
@@ -92,6 +92,15 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         }
 
         /// <summary>
+        /// Deferreds the load fields.
+        /// </summary>
+        /// <returns>JsonFieldCollection.</returns>
+        /// <exception cref="NoReStAPIEquivilantException"></exception>
+        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
+        private static JsonFieldCollection DeferredLoadFields(JsonWorkItem jsonWorkItem) { throw new NoReStAPIEquivilantException(); }
+
+  
+        /// <summary>
         /// Changes the type of the work item.
         /// </summary>
         /// <param name="workItemType">Type of the work item.</param>
@@ -174,7 +183,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// Gets or sets the API factory.
         /// </summary>
         /// <value>The API factory.</value>
-        public static Func<JsonWorkItemAPI> APIFactory
+        public static Func<JsonWitAPI> APIFactory
         {
             get
             {
@@ -251,14 +260,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         }
 
         /// <summary>
-        /// Deferreds the load fields.
-        /// </summary>
-        /// <returns>JsonFieldCollection.</returns>
-        /// <exception cref="NoReStAPIEquivilantException"></exception>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        private static JsonFieldCollection DeferredLoadFields(JsonWorkItem jsonWorkItem) { throw new NoReStAPIEquivilantException(); }
-
-        /// <summary>
         /// Deferreds the load links.
         /// </summary>
         /// <returns>JsonLinkCollection.</returns>
@@ -325,7 +326,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         private static readonly JsonBackedField<String> sr_Url = new JsonBackedField<string>("url");
 
-        private static Func<JsonWorkItemAPI> s_APIFactory;
+        private static Func<JsonWitAPI> s_APIFactory;
 
         /// <summary>
         /// The r_ fields

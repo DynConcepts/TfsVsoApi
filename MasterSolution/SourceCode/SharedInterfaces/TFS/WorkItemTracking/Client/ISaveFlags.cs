@@ -1,6 +1,7 @@
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public enum ISaveFlags  {
-      None
-  }
+    public enum ISaveFlags
+    {
+        None
+    }
 }

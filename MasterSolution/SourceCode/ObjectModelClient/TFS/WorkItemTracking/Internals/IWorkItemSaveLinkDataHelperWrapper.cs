@@ -3,18 +3,17 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.TeamFoundation.WorkItemTracking.Internals;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
 {
     internal class IWorkItemSaveLinkDataHelperWrapper : IWorkItemSaveLinkDataHelperWrapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>, IIWorkItemSaveLinkDataHelper
     {
         protected IWorkItemSaveLinkDataHelperWrapper(IWorkItemSaveLinkDataHelper instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>(src => src==null ? null : ((IWorkItemSaveLinkDataHelperWrapper) src).r_Instance, src => new IWorkItemSaveLinkDataHelperWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemSaveLinkDataHelper, IWorkItemSaveLinkDataHelper>(src => src == null ? null : ((IWorkItemSaveLinkDataHelperWrapper) src).r_Instance, src => new IWorkItemSaveLinkDataHelperWrapper(src)); }
     }
 
 
     internal abstract class IWorkItemSaveLinkDataHelperWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IIWorkItemSaveLinkDataHelper where TInterface : class where TWrapper : class
     {
-
         void IIWorkItemSaveLinkDataHelper.AddWorkItemLinkInfo(IWorkItemLinkInfo link) { r_Instance.AddWorkItemLinkInfo(WorkItemLinkInfoWrapper.GetInstance(link)); }
 
         IEnumerable<ILinkInfo> IIWorkItemSaveLinkDataHelper.AddedLinks

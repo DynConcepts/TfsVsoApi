@@ -13,13 +13,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal partial class ServiceDefinitionWrapper : ServiceDefinitionWrapper<IServiceDefinition, ServiceDefinition>, IServiceDefinition
     {
         protected ServiceDefinitionWrapper(ServiceDefinition instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IServiceDefinition, ServiceDefinition>(src => src==null ? null : ((ServiceDefinitionWrapper) src).r_Instance, src => new ServiceDefinitionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IServiceDefinition, ServiceDefinition>(src => src == null ? null : ((ServiceDefinitionWrapper) src).r_Instance, src => new ServiceDefinitionWrapper(src)); }
     }
 
 
     internal class ServiceDefinitionWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IServiceDefinition where TInterface : class where TWrapper : class
     {
-
         void IServiceDefinition.AddLocationMapping(IAccessMapping accessMapping, String location) { r_Instance.AddLocationMapping(AccessMappingWrapper.GetInstance(accessMapping), location); }
 
         String IServiceDefinition.Description
@@ -43,15 +42,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
-
         ILocationMapping IServiceDefinition.GetLocationMapping(IAccessMapping accessMapping)
         {
             LocationMapping nativeCallResult = r_Instance.GetLocationMapping(AccessMappingWrapper.GetInstance(accessMapping));
             ILocationMapping wrappedCallResult = LocationMappingWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
 
 
         Guid IServiceDefinition.Identifier

@@ -1,53 +1,52 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
+using Microsoft.TeamFoundation.WorkItemTracking.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Common
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class IVersionTagWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Common.IVersionTag);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
-
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Common.IVersionTag real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.IVersionTagWrapper>{ GetInstance() }; }
-
-   partial void VersionTag_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IIVersionTag instance, ref System.Int32 setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void VersionTag_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class IVersionTagWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void VersionTag_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.IIVersionTag) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IIVersionTag) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.VersionTag; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        internal static IEnumerable<IVersionTagWrapper> GetIEnumerableInstance() { return new List<IVersionTagWrapper> {GetInstance()}; }
+
+        internal static IVersionTagWrapper GetInstance()
         {
-            return instance.VersionTag;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            IVersionTag real = default(IVersionTag);
+            RealInstanceFactory(ref real);
+            var instance = (IVersionTagWrapper) IVersionTagWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref IVersionTagWrapper instance, [CallerMemberName] string callerName = "");
+
+        static partial void RealInstanceFactory(ref IVersionTag real, [CallerMemberName] string callerName = "");
+
+        partial void VersionTag_SetCondition(ref IIVersionTag instance, ref Int32 setValue);
+    }
 }

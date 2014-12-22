@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.Framework.Common
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class CatalogTreeImpl_UnitTests : DynTestClassBase 
-  {
-  internal static DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogTree GetInstance() { return default(DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common.ICatalogTree); }
-
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class CatalogTreeImpl_UnitTests : DynTestClassBase
+    {
+        internal static ICatalogTree GetInstance() { return default(ICatalogTree); }
+    }
 }

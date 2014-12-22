@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ReSTClient
     ///     Helper methods for Parsing Json returned from ReST calls into the
     ///     underlying implementations.
     /// </summary>
-    internal static class JsonParsers
+    public static class JsonParsers
     {
         /// <summary>
         ///     Js the array to objects.
@@ -61,7 +61,7 @@ namespace DynCon.OSI.VSO.ReSTClient
         /// <param name="jObject">The j object.</param>
         /// <param name="creator">The creator.</param>
         /// <returns>IList&lt;T&gt;.</returns>
-        internal static IReadOnlyList<T> ValuesToObjects<T>(JObject jObject, Func<JToken, T> creator)
+        public static IReadOnlyList<T> ValuesToObjects<T>(JObject jObject, Func<JToken, T> creator)
         {
             List<T> list = new List<T>();
             foreach (KeyValuePair<string, JToken> item in jObject)

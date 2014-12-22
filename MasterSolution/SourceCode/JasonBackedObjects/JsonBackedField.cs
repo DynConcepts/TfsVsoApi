@@ -18,7 +18,7 @@ namespace DynCon.OSI.JasonBackedObjects
         {
             if (json == null)
             {
-                 return default(T);
+                return default(T);
             }
 
             T retVal = r_Func(json);
@@ -67,26 +67,22 @@ namespace DynCon.OSI.JasonBackedObjects
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
+        ///     Initializes a new instance of the <see cref="JsonBackedField{T}" /> class.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="defaultValue">The default value.</param>
         public JsonBackedField(string key, T defaultValue)
-            : this(token => ValueOrDefault(token, key, defaultValue), (token, value) => token.Replace(MakeToken(value)))
-        {
-         }
+            : this(token => ValueOrDefault(token, key, defaultValue), (token, value) => token.Replace(MakeToken(value))) { }
+
+
+        public JsonBackedField(string key)
+            : this(token => token[key].Value<T>(), (token, value) => token.Replace(MakeToken(value))) { }
 
         private static T ValueOrDefault(JToken token, string key, T defaultValue)
         {
             JToken tokenValue;
             if (!((JObject) token).TryGetValue(key, out tokenValue)) return defaultValue;
             return tokenValue.Value<T>();
-        }
-
-
-        public JsonBackedField(string key)
-            : this(token => token[key].Value<T>(), (token, value) => token.Replace(MakeToken(value)))
-        {
         }
 
         /// <summary>
@@ -98,6 +94,5 @@ namespace DynCon.OSI.JasonBackedObjects
         ///     The _func
         /// </summary>
         private readonly Func<JToken, T> r_Func;
-
     }
 }

@@ -9,19 +9,17 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class DisplayFieldListWrapper : DisplayFieldListWrapper<IDisplayFieldList, DisplayFieldList>, IDisplayFieldList
     {
         protected DisplayFieldListWrapper(DisplayFieldList instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IDisplayFieldList, DisplayFieldList>(src => src==null ? null : ((DisplayFieldListWrapper) src).r_Instance, src => new DisplayFieldListWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IDisplayFieldList, DisplayFieldList>(src => src == null ? null : ((DisplayFieldListWrapper) src).r_Instance, src => new DisplayFieldListWrapper(src)); }
     }
 
 
     internal class DisplayFieldListWrapper<TWrapper, TInterface> : OrderedVariableSizeListWrapper<TWrapper, TInterface>, IDisplayFieldList where TInterface : class where TWrapper : class
     {
-
         Int32 IDisplayFieldList.Add(IFieldDefinition value)
         {
             int nativeCallResult = r_Instance.Add(FieldDefinitionWrapper.GetInstance(value));
             return nativeCallResult;
         }
-
 
 
         Int32 IDisplayFieldList.Add(String fieldName)

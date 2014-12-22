@@ -4,18 +4,17 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.TeamFoundation.WorkItemTracking.Internals;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
 {
     internal class IWorkItemOpenFieldDataHelperWrapper : IWorkItemOpenFieldDataHelperWrapper<IIWorkItemOpenFieldDataHelper, IWorkItemOpenFieldDataHelper>, IIWorkItemOpenFieldDataHelper
     {
         protected IWorkItemOpenFieldDataHelperWrapper(IWorkItemOpenFieldDataHelper instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemOpenFieldDataHelper, IWorkItemOpenFieldDataHelper>(src => src==null ? null : ((IWorkItemOpenFieldDataHelperWrapper) src).r_Instance, src => new IWorkItemOpenFieldDataHelperWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIWorkItemOpenFieldDataHelper, IWorkItemOpenFieldDataHelper>(src => src == null ? null : ((IWorkItemOpenFieldDataHelperWrapper) src).r_Instance, src => new IWorkItemOpenFieldDataHelperWrapper(src)); }
     }
 
 
     internal abstract class IWorkItemOpenFieldDataHelperWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IIWorkItemOpenFieldDataHelper where TInterface : class where TWrapper : class
     {
-
         Int32 IIWorkItemOpenFieldDataHelper.GetFieldId(String fieldName)
         {
             int nativeCallResult = r_Instance.GetFieldId(fieldName);

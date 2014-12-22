@@ -12,13 +12,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     {
         public void Add(IArtifactWorkItemIds wrapped) { throw new NotImplementedException(); }
         public IResultCollectionWrapper(IResultCollection<T> instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIResultCollection<T>, IResultCollection<T>>(src => src==null ? null : ((IResultCollectionWrapper<T>) src).r_Instance, src => new IResultCollectionWrapper<T>(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIResultCollection<T>, IResultCollection<T>>(src => src == null ? null : ((IResultCollectionWrapper<T>) src).r_Instance, src => new IResultCollectionWrapper<T>(src)); }
     }
 
 
     internal abstract class IResultCollectionWrapper<TWrapper, TInterface, T> : MappedObjectBase<TWrapper, TInterface>, IIResultCollection<T> where TInterface : class where TWrapper : class
     {
-
         void IDisposable.Dispose() { r_Instance.Dispose(); }
 
         IEnumerator IEnumerable.GetEnumerator()

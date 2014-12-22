@@ -1,130 +1,98 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Internals
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class IWorkItemOpenFieldDataHelperImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelperImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelperImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelperImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class IWorkItemOpenFieldDataHelperImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetFieldId_UnitTest()
+        {
+            String fieldName = default(String);
+            ExecuteMethod(
+                () => { return (IIWorkItemOpenFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldName = default(String); //No Constructor
+                    GetFieldId_PreCondition(ref instance, ref fieldName);
+                },
+                instance => { instance.GetFieldId(fieldName); },
+                instance => { GetFieldId_PostValidate(instance, fieldName); });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelperImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelperImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void HasField_UnitTest()
+        {
+            Int32 fieldId = default(Int32);
+            ExecuteMethod(
+                () => { return (IIWorkItemOpenFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldId = default(Int32); //No Constructor
+                    HasField_PreCondition(ref instance, ref fieldId);
+                },
+                instance => { instance.HasField(fieldId); },
+                instance => { HasField_PostValidate(instance, fieldId); });
+        }
 
-    partial void SetLatestData_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, ref System.Collections.Generic.Dictionary<System.Int32,System.Object> latestData);
-    partial void SetLatestData_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, System.Collections.Generic.Dictionary<System.Int32,System.Object> latestData);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void SetLatestData_UnitTest()
-  {
-    System.Collections.Generic.Dictionary<System.Int32,System.Object> latestData = default(System.Collections.Generic.Dictionary<System.Int32,System.Object>);
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void SetLatestData_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper) GetInstance();
-        },
-        (instance) =>
+            Dictionary<Int32, Object> latestData = default(Dictionary<Int32, Object>);
+            ExecuteMethod(
+                () => { return (IIWorkItemOpenFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    latestData = default(Dictionary<Int32, Object>); //No Type
+                    SetLatestData_PreCondition(ref instance, ref latestData);
+                },
+                instance => { instance.SetLatestData(latestData); },
+                instance => { SetLatestData_PostValidate(instance, latestData); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void SetRevisionData_UnitTest()
         {
-          latestData = default(System.Collections.Generic.Dictionary<System.Int32,System.Object>); //No Type
-          SetLatestData_PreCondition(ref instance, ref latestData);
-        },
-       (instance) =>
-       {
-             instance.SetLatestData(latestData);
-       },
-      (instance) =>
-      {
-              SetLatestData_PostValidate(instance, latestData);
-      });
-  }
-    partial void SetRevisionData_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, ref System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>> revisionData);
-    partial void SetRevisionData_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>> revisionData);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void SetRevisionData_UnitTest()
-  {
-    System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>> revisionData = default(System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>>);
-      ExecuteMethod(
-        () =>
+            List<Dictionary<Int32, Object>> revisionData = default(List<Dictionary<Int32, Object>>);
+            ExecuteMethod(
+                () => { return (IIWorkItemOpenFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    revisionData = default(List<Dictionary<Int32, Object>>); //No Type
+                    SetRevisionData_PreCondition(ref instance, ref revisionData);
+                },
+                instance => { instance.SetRevisionData(revisionData); },
+                instance => { SetRevisionData_PostValidate(instance, revisionData); });
+        }
+
+        partial void GetFieldId_PostValidate(IIWorkItemOpenFieldDataHelper instance, String fieldName);
+        partial void GetFieldId_PreCondition(ref IIWorkItemOpenFieldDataHelper instance, ref String fieldName);
+        internal static IEnumerable<IWorkItemOpenFieldDataHelperImpl> GetIEnumerableInstance() { return new List<IWorkItemOpenFieldDataHelperImpl> {GetInstance()}; }
+
+        internal static IWorkItemOpenFieldDataHelperImpl GetInstance([CallerMemberName] string callerName = "")
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper) GetInstance();
-        },
-        (instance) =>
-        {
-          revisionData = default(System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.Int32,System.Object>>); //No Type
-          SetRevisionData_PreCondition(ref instance, ref revisionData);
-        },
-       (instance) =>
-       {
-             instance.SetRevisionData(revisionData);
-       },
-      (instance) =>
-      {
-              SetRevisionData_PostValidate(instance, revisionData);
-      });
-  }
-    partial void GetFieldId_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, ref System.String fieldName);
-    partial void GetFieldId_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, System.String fieldName);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetFieldId_UnitTest()
-  {
-    System.String fieldName = default(System.String);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper) GetInstance();
-        },
-        (instance) =>
-        {
-          fieldName = default(System.String); //No Constructor
-          GetFieldId_PreCondition(ref instance, ref fieldName);
-        },
-       (instance) =>
-       {
-             instance.GetFieldId(fieldName);
-       },
-      (instance) =>
-      {
-              GetFieldId_PostValidate(instance, fieldName);
-      });
-  }
-    partial void HasField_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, ref System.Int32 fieldId);
-    partial void HasField_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper instance, System.Int32 fieldId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void HasField_UnitTest()
-  {
-    System.Int32 fieldId = default(System.Int32);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemOpenFieldDataHelper) GetInstance();
-        },
-        (instance) =>
-        {
-          fieldId = default(System.Int32); //No Constructor
-          HasField_PreCondition(ref instance, ref fieldId);
-        },
-       (instance) =>
-       {
-             instance.HasField(fieldId);
-       },
-      (instance) =>
-      {
-              HasField_PostValidate(instance, fieldId);
-      });
-  }
-  }
+            var instance = new IWorkItemOpenFieldDataHelperImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void HasField_PostValidate(IIWorkItemOpenFieldDataHelper instance, Int32 fieldId);
+        partial void HasField_PreCondition(ref IIWorkItemOpenFieldDataHelper instance, ref Int32 fieldId);
+        static partial void InstanceFactory(ref IWorkItemOpenFieldDataHelperImpl instance, [CallerMemberName] string callerName = "");
+        partial void SetLatestData_PostValidate(IIWorkItemOpenFieldDataHelper instance, Dictionary<Int32, Object> latestData);
+        partial void SetLatestData_PreCondition(ref IIWorkItemOpenFieldDataHelper instance, ref Dictionary<Int32, Object> latestData);
+        partial void SetRevisionData_PostValidate(IIWorkItemOpenFieldDataHelper instance, List<Dictionary<Int32, Object>> revisionData);
+        partial void SetRevisionData_PreCondition(ref IIWorkItemOpenFieldDataHelper instance, ref List<Dictionary<Int32, Object>> revisionData);
+    }
 }

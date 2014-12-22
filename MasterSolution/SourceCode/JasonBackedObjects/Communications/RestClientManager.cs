@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using DynCon.OSI.Core.AdvancedEvents;
@@ -82,60 +81,43 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         }
 
 
-        private static int s_CorrelationId;
-
-        class Timing
-        {
-            public TimeSpan NetworkTime { get; set; }
-
-            public TimeSpan TotalTime { get; set; }
-        }
-
-
         public static bool ConsoleLogEnabled = true;
+
+
 #pragma warning disable 1998
-        /// <summary>
-        ///     Processes the request stream.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="request">The request.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        internal async Task<T> ProcessRequestStream<T>(HttpRequestMessage request, Func<Stream, T> xform)
+        internal async Task<T> ProcessRequestStream<T>(StructuredHttpExchange exchange, Func<Stream, T> xform)
 #pragma warning restore 1998
         {
-            T result = default(T);
-            var correlationId = ++s_CorrelationId;
-            if (ConsoleLogEnabled)
-            {
-                Console.WriteLine("{0}, Request [{1}]: {2}", correlationId,request.Method, request.RequestUri);
-            }
             var sw = new Stopwatch();
             sw.Start();
-            Timing timing = new Timing();
             Exception thrownException = null;
-            UseClient(async client =>
+            var task = UseClientFunc<T>(async client =>
             {
                 try
                 {
-                    using (HttpResponseMessage response = client.SendAsync(request).Result)
+                    HttpRequestMessage httpRequestMessage = exchange.RequestMessage;
+                    using (HttpResponseMessage response = client.SendAsync(httpRequestMessage).Result)
                     {
-                        CheckForSuccess<T>(request, response);
+                        CheckForSuccess<T>(httpRequestMessage, response);
                         Stream responseBody = await response.Content.ReadAsStreamAsync();
-                        timing.NetworkTime = sw.Elapsed;
-                        result = xform(responseBody);
-                        timing.TotalTime = sw.Elapsed;
+                        exchange.NetworkTime = sw.Elapsed;
+                        var retVal = xform(responseBody);
+                        exchange.TotalTime = sw.Elapsed;
+                        exchange.MarkAsComplete();
+                        return retVal;
                     }
                 }
                 catch (AggregateException ex)
                 {
+                    exchange.RecordException(ex);
                     thrownException = ex;
                     if (ex.InnerExceptions.Count == 1)
                         throw ex.InnerException;
-                    else throw;
+                    throw;
                 }
                 catch (Exception ex)
                 {
+                    exchange.RecordException(ex);
                     Debug.WriteLine(ex.Message);
                     thrownException = ex;
                     throw;
@@ -145,12 +127,67 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
             {
                 throw thrownException;
             }
-            if (ConsoleLogEnabled)
-            {
-                Console.WriteLine("{0}, Timing -  Net:{1}mS,     Total:{2}mS       Process:{3}mS", correlationId, timing.NetworkTime.TotalMilliseconds, timing.TotalTime.TotalMilliseconds, (timing.TotalTime - timing.NetworkTime).TotalMilliseconds);
-            }
-            return result;
+            return task.Result;
         }
+
+        ////#pragma warning disable 1998
+        ////        /// <summary>
+        ////        ///     Processes the request stream.
+        ////        /// </summary>
+        ////        /// <typeparam name="T"></typeparam>
+        ////        /// <param name="request">The request.</param>
+        ////        /// <param name="xform">The xform.</param>
+        ////        /// <returns>Task&lt;T&gt;.</returns>
+        ////        internal async Task<T> ProcessRequestStream<T>(HttpRequestMessage request, Func<Stream, T> xform)
+        ////#pragma warning restore 1998
+        ////        {
+        ////            T result = default(T);
+        ////            int correlationId = ++s_CorrelationId;
+        ////            if (ConsoleLogEnabled)
+        ////            {
+        ////                Console.WriteLine("{0}, Request [{1}]: {2}", correlationId, request.Method, request.RequestUri);
+        ////            }
+        ////            var sw = new Stopwatch();
+        ////            sw.Start();
+        ////            var timing = new Timing();
+        ////            Exception thrownException = null;
+        ////            UseClient(async client =>
+        ////            {
+        ////                try
+        ////                {
+        ////                    using (HttpResponseMessage response = client.SendAsync(request).Result)
+        ////                    {
+        ////                        CheckForSuccess<T>(request, response);
+        ////                        Stream responseBody = await response.Content.ReadAsStreamAsync();
+        ////                        timing.NetworkTime = sw.Elapsed;
+        ////                        result = xform(responseBody);
+        ////                        timing.TotalTime = sw.Elapsed;
+        ////                    }
+        ////                }
+        ////                catch (AggregateException ex)
+        ////                {
+        ////                    thrownException = ex;
+        ////                    if (ex.InnerExceptions.Count == 1)
+        ////                        throw ex.InnerException;
+        ////                    throw;
+        ////                }
+        ////                catch (Exception ex)
+        ////                {
+        ////                    Debug.WriteLine(ex.Message);
+        ////                    thrownException = ex;
+        ////                    throw;
+        ////                }
+        ////            });
+        ////            if (thrownException != null)
+        ////            {
+        ////                throw thrownException;
+        ////            }
+        ////            if (ConsoleLogEnabled)
+        ////            {
+        ////                Console.WriteLine("{0}, Timing -  Net:{1}mS,     Total:{2}mS       Process:{3}mS", correlationId, timing.NetworkTime.TotalMilliseconds, timing.TotalTime.TotalMilliseconds, (timing.TotalTime - timing.NetworkTime).TotalMilliseconds);
+        ////            }
+        ////            return result;
+        ////        }
 
         private static void CheckForSuccess<T>(HttpRequestMessage request, HttpResponseMessage response)
         {
@@ -161,27 +198,25 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
             }
         }
 
-        /// <summary>
-        ///     Processes the request j object.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="request">The request.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        internal async Task<T> ProcessRequestJObject<T>(HttpRequestMessage request, Func<JObject, T> xform)
+        internal async Task<T> ProcessRequestJObject<T>(StructuredHttpExchange exchange, Func<JObject, T> xform)
         {
-            T result = default(T);
-            await ProcessRequestStream(request, stream =>
+            T result = await ProcessRequestStream(exchange, stream =>
             {
-                //var x = new StreamReader(stream);
-                //var content = x.ReadToEnd();
-                //using (var w = new StreamWriter("Debug.xml"))
-                //{
-                //    w.Write(content);
-                //}
-                var reader = new JsonTextReader(new StreamReader(stream));
-                var tmp = request;
-                JObject jObject = JObject.Load(reader);
+                JObject jObject;
+                try
+                {
+                    var reader = new JsonTextReader(new StreamReader(stream));
+                    jObject = JObject.Load(reader);
+                    exchange.Response = jObject.ToString();
+                }
+                catch (Exception ex)
+                {
+                    stream.Seek(0, SeekOrigin.Begin);
+                    var reader = new StreamReader(stream);
+                    string content = reader.ReadToEnd();
+                    exchange.Response = content;
+                    throw new Exception(content, ex);
+                }
                 result = xform(jObject);
                 return result;
             });
@@ -206,6 +241,22 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                     m_Deadman.ReTrigger();
                 }
                 action(m_Client);
+            }
+        }
+
+        private Task<TResult> UseClientFunc<TResult>(Func<IHttpClient, Task<TResult>> action)
+        {
+            lock (r_SyncRoot)
+            {
+                if (m_Client == null)
+                {
+                    CreateClient();
+                }
+                else
+                {
+                    m_Deadman.ReTrigger();
+                }
+                return action(m_Client);
             }
         }
 

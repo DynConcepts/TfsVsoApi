@@ -14,11 +14,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.Factories
     /// </summary>
     public static class APIFactory
     {
-        static APIFactory()
-        {
-            MappedObjectInitializer.ForceInitialize(Assembly.GetExecutingAssembly());
-        }
-
         /// <summary>
         ///     Connects the specified URL.
         /// </summary>
@@ -41,5 +36,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.Factories
         /// </summary>
         /// <value>The work item API.</value>
         public static IWorkItemAPI WorkItemAPI { get { return new WorkItemAPI(); } }
+
+        static APIFactory() { MappedObjectInitializer.ForceInitialize(Assembly.GetExecutingAssembly()); }
     }
 }

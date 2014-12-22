@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -14,80 +13,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
     /// </summary>
     public class RestAPIBase
     {
-        //protected async Task<T> ProcessGetRequest<T>(string query, Func<Stream, T> xform)
-        //{
-        //    string requestString = MakeCollectionScopeRequestString(query);
-        //    HttpRequestMessage request = _requestHelper.CreateGetRequest(requestString);
-        //    return await _clientManager.ProcessRequestStream(request, xform);
-        //}
-
-        /// <summary>
-        ///     Processes the get request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="requestString">The request string.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        protected async Task<T> ProcessGetRequest<T>(string requestString, Func<JObject, T> xform)
-        {
-            HttpRequestMessage request = r_RequestHelper.CreateGetRequest(requestString);
-            return await r_ClientManager.ProcessRequestJObject(request, xform);
-        }
-
-        /// <summary>
-        /// Processes the get request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="uri">The URI.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        protected async Task<T> ProcessGetRequest<T>(Uri uri, Func<JObject, T> xform)
-        {
-            HttpRequestMessage request = r_RequestHelper.CreateGetRequest(uri);
-            return await r_ClientManager.ProcessRequestJObject(request, xform);
-        }
-
-        /// <summary>
-        ///     Processes the option request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="requestString">The request string.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        protected async Task<T> ProcessOptionRequest<T>(string requestString, Func<JObject, T> xform)
-        {
-            HttpRequestMessage request = r_RequestHelper.CreateOptionRequest(requestString);
-            return await r_ClientManager.ProcessRequestJObject(request, xform);
-        }
-
-
-        /// <summary>
-        ///     Processes the patch request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="requestString">The request string.</param>
-        /// <param name="content">The content.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        protected async Task<T> ProcessPatchRequest<T>(string requestString, string content, Func<JObject, T> xform)
-        {
-            HttpRequestMessage request = r_RequestHelper.CreatePatchRequest(requestString, content);
-            return await r_ClientManager.ProcessRequestJObject(request, xform);
-        }
-
-        /// <summary>
-        ///     Processes the post request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="requestString">The request string.</param>
-        /// <param name="content">The content.</param>
-        /// <param name="xform">The xform.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        protected async Task<T> ProcessPostRequest<T>(string requestString, string content, Func<JObject, T> xform)
-        {
-            HttpRequestMessage request = r_RequestHelper.CreatePostRequest(requestString, content);
-            return await r_ClientManager.ProcessRequestJObject(request, xform);
-        }
+        protected async Task<T> ProcessRequest<T>(StructuredHttpExchange exchange, Func<JObject, T> xform) { return await r_ClientManager.ProcessRequestJObject(exchange, xform); }
 
 
         /// <summary>
@@ -128,10 +54,5 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         ///     The _client manager
         /// </summary>
         private readonly RestClientManager r_ClientManager = new RestClientManager();
-
-        /// <summary>
-        ///     The _request helper
-        /// </summary>
-        private readonly RequestHelpers r_RequestHelper = new RequestHelpers();
     }
 }

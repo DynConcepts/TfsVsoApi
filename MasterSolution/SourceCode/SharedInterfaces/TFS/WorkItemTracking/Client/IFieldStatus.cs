@@ -1,5 +1,6 @@
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public enum IFieldStatus  {
-  }
+    public enum IFieldStatus
+    {
+    }
 }

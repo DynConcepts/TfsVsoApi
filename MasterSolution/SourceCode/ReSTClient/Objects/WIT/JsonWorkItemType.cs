@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Xml;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Newtonsoft.Json.Linq;
 
@@ -70,15 +68,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 
 
 
-        /// <summary>
-        /// Exports the specified flag.
-        /// </summary>
-        /// <param name="flag">if set to <c>true</c> [flag].</param>
-        /// <returns>XmlDocument.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public XmlDocument Export(bool flag) { throw new NoReStAPIEquivilantException(); }
-
-
+ 
 
         /// <summary>
         /// Gets the field definitions.

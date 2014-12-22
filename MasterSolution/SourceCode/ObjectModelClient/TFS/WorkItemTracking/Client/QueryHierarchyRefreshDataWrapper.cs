@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using DynCon.OSI.Core.ObjectMapping;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
@@ -12,7 +12,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryHierarchyRefreshDataWrapper : QueryHierarchyRefreshDataWrapper<IQueryHierarchyRefreshData, QueryHierarchyRefreshData>, IQueryHierarchyRefreshData
     {
         protected QueryHierarchyRefreshDataWrapper(QueryHierarchyRefreshData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyRefreshData, QueryHierarchyRefreshData>(src => src==null ? null : ((QueryHierarchyRefreshDataWrapper) src).r_Instance, src => new QueryHierarchyRefreshDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyRefreshData, QueryHierarchyRefreshData>(src => src == null ? null : ((QueryHierarchyRefreshDataWrapper) src).r_Instance, src => new QueryHierarchyRefreshDataWrapper(src)); }
     }
 
 
@@ -51,7 +51,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             get
             {
                 RowSetCollection nativeCallResult = r_Instance.QueriesDataSet;
-                var wrappedCallResult = RowSetCollectionWrapper.GetWrapper(nativeCallResult);
+                IRowSetCollection wrappedCallResult = RowSetCollectionWrapper.GetWrapper(nativeCallResult);
                 return wrappedCallResult;
             }
         }

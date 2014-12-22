@@ -11,13 +11,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemFieldDataWrapper : WorkItemFieldDataWrapper<IWorkItemFieldData, WorkItemFieldData>, IWorkItemFieldData, IIWorkItemOpenFieldDataHelper, IIWorkItemSaveFieldDataHelper
     {
         protected WorkItemFieldDataWrapper(WorkItemFieldData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemFieldData, WorkItemFieldData>(src => src==null ? null : ((WorkItemFieldDataWrapper) src).r_Instance, src => new WorkItemFieldDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemFieldData, WorkItemFieldData>(src => src == null ? null : ((WorkItemFieldDataWrapper) src).r_Instance, src => new WorkItemFieldDataWrapper(src)); }
     }
 
 
     internal class WorkItemFieldDataWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemFieldData where TInterface : class where TWrapper : class
     {
-
         public bool HasField(int fieldId) { throw new NotImplementedException(); }
 
         Dictionary<Int32, Object> IIWorkItemSaveFieldDataHelper.FieldUpdates
@@ -61,8 +60,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
-
         Boolean IWorkItemFieldData.GetUpdateFieldValue(Int32 id, out IWorkItemFieldData_FieldUpdate fu)
         {
             WorkItemFieldData.FieldUpdate tmp_fu;
@@ -70,8 +67,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             fu = WorkItemFieldData_FieldUpdateWrapper.GetWrapper(tmp_fu);
             return nativeCallResult;
         }
-
-
 
 
         Boolean IIWorkItemOpenFieldDataHelper.HasField(Int32 fieldId)
@@ -96,7 +91,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
         Boolean IIWorkItemSaveFieldDataHelper.IsLongTextField(Int32 fieldId)
         {
             bool nativeCallResult = ((IWorkItemSaveFieldDataHelper) r_Instance).IsLongTextField(fieldId);
@@ -112,7 +106,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             bool nativeCallResult = r_Instance.SetUpdateFieldValue(id, value, WorkItemFieldData_FieldFlagsWrapper.GetInstance(flags));
             return nativeCallResult;
         }
-
 
 
         String IIWorkItemSaveFieldDataHelper.UserDisplayName

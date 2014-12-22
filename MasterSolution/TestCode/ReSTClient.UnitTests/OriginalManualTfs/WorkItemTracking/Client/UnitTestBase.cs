@@ -7,12 +7,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.WorkItemTracking.Client
 {
     /// <summary>
-    /// Class UnitTestBase.
+    ///     Class UnitTestBase.
     /// </summary>
     public class UnitTestBase
     {
         /// <summary>
-        /// Reads all properties.
+        ///     Reads all properties.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="instance">The instance.</param>
@@ -20,15 +20,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.WorkItemTracking
         {
             PropertyInfo[] properties = type.GetProperties();
             Console.WriteLine("{0} Properties Found", properties.Length);
-            List<String> missingImplementations = new List<string>();
-            foreach (var property in properties)
+            var missingImplementations = new List<string>();
+            foreach (PropertyInfo property in properties)
             {
                 if (property.CanRead && !property.CanWrite && property.GetIndexParameters().Length == 0)
                 {
-                    var getter = property.GetGetMethod();
+                    MethodInfo getter = property.GetGetMethod();
                     try
                     {
-                        var value = getter.Invoke(instance, new object[] {});
+                        object value = getter.Invoke(instance, new object[] {});
                         Console.WriteLine("Invoked {0}", property.Name);
                     }
                     catch (TargetInvocationException ex)

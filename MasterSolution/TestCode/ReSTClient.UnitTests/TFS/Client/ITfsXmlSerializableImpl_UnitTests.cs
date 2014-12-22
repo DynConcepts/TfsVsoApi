@@ -1,7 +1,7 @@
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.Client
 {
-/// <summary>Generated Test Template</summary>
-  public partial class ITfsXmlSerializableImpl_UnitTests
-  {
-  }
+    /// <summary>Generated Test Template</summary>
+    public partial class ITfsXmlSerializableImpl_UnitTests
+    {
+    }
 }

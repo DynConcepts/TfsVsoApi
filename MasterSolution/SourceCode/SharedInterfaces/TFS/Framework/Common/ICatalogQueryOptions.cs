@@ -1,5 +1,6 @@
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Common
 {
-  public enum ICatalogQueryOptions  {
-  }
+    public enum ICatalogQueryOptions
+    {
+    }
 }

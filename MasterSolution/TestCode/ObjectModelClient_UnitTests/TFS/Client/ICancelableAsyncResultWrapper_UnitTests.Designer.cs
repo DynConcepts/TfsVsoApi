@@ -1,169 +1,141 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
+using System.Threading;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+using Microsoft.TeamFoundation.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class ICancelableAsyncResultWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.Client.ICancelableAsyncResult);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class ICancelableAsyncResultWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void AsyncState_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IICancelableAsyncResult) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.AsyncState; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.Client.ICancelableAsyncResult real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ICancelableAsyncResultWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void AsyncWaitHandle_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IICancelableAsyncResult) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.AsyncWaitHandle; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-    partial void Cancel_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance);
-    partial void Cancel_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Cancel_UnitTest()
-  {
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Cancel_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-        },
-        (instance) =>
+            ExecuteMethod(
+                () => { return (IICancelableAsyncResult) GetInstance(); },
+                instance => { Cancel_PreCondition(ref instance); },
+                instance => { instance.Cancel(); },
+                instance => { Cancel_PostValidate(instance); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void CompletedSynchronously_UnitTest()
         {
-          Cancel_PreCondition(ref instance);
-        },
-       (instance) =>
-       {
-             instance.Cancel();
-       },
-      (instance) =>
-      {
-              Cancel_PostValidate(instance);
-      });
-  }
-   partial void IsCanceled_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsCanceled_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IICancelableAsyncResult) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.CompletedSynchronously; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsCanceled_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IICancelableAsyncResult) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.IsCanceled; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsCompleted_UnitTest()
         {
-            return instance.IsCanceled;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void IsCompleted_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsCompleted_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IICancelableAsyncResult) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.IsCompleted; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        partial void AsyncState_SetCondition(ref IICancelableAsyncResult instance, ref Object setValue);
+        partial void AsyncWaitHandle_SetCondition(ref IICancelableAsyncResult instance, ref WaitHandle setValue);
+        partial void Cancel_PostValidate(IICancelableAsyncResult instance);
+        partial void Cancel_PreCondition(ref IICancelableAsyncResult instance);
+
+        partial void CompletedSynchronously_SetCondition(ref IICancelableAsyncResult instance, ref Boolean setValue);
+        internal static IEnumerable<ICancelableAsyncResultWrapper> GetIEnumerableInstance() { return new List<ICancelableAsyncResultWrapper> {GetInstance()}; }
+
+        internal static ICancelableAsyncResultWrapper GetInstance()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.IsCompleted;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void AsyncWaitHandle_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance, ref System.Threading.WaitHandle setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void AsyncWaitHandle_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.AsyncWaitHandle;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void AsyncState_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance, ref System.Object setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void AsyncState_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.AsyncState;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void CompletedSynchronously_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult instance, ref System.Boolean setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void CompletedSynchronously_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IICancelableAsyncResult) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.CompletedSynchronously;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            ICancelableAsyncResult real = default(ICancelableAsyncResult);
+            RealInstanceFactory(ref real);
+            var instance = (ICancelableAsyncResultWrapper) ICancelableAsyncResultWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref ICancelableAsyncResultWrapper instance, [CallerMemberName] string callerName = "");
+        partial void IsCanceled_SetCondition(ref IICancelableAsyncResult instance, ref Boolean setValue);
+        partial void IsCompleted_SetCondition(ref IICancelableAsyncResult instance, ref Boolean setValue);
+        static partial void RealInstanceFactory(ref ICancelableAsyncResult real, [CallerMemberName] string callerName = "");
+    }
 }

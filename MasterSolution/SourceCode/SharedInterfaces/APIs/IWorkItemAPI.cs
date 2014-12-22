@@ -11,13 +11,13 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
     public interface IWorkItemAPI
     {
         /// <summary>
-        /// Builds the work item.
+        ///     Builds the work item.
         /// </summary>
-        /// <param name="projectNanme">The project nanme.</param>
+        /// <param name="projectName">The project nanme.</param>
         /// <param name="workItemType">Type of the work item.</param>
         /// <param name="fieldValues">The field values.</param>
         /// <returns>IWorkItem.</returns>
-        IWorkItem BuildWorkItem(string projectNanme, string workItemType, IReadOnlyList<KeyValuePair<string, object>> fieldValues);
+        IWorkItem BuildWorkItem(string projectName, string workItemType, IReadOnlyList<KeyValuePair<string, object>> fieldValues);
 
         /// <summary>
         ///     Creates the work item.
@@ -35,13 +35,32 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         /// <returns>Task&lt;IList&lt;IArea&gt;&gt;.</returns>
         Task<IReadOnlyList<IArea>> GetAreas(string project, int depth);
 
-         /// <summary>
+        /// <summary>
+        ///     Gets the fields.
+        /// </summary>
+        /// <returns>Task&lt;IReadOnlyList&lt;IFieldDefinition&gt;&gt;.</returns>
+        Task<IReadOnlyList<IFieldDefinition>> GetFieldDefinitions();
+
+        /// <summary>
         ///     Gets the iterations.
         /// </summary>
         /// <param name="project">The project.</param>
         /// <param name="depth">The depth.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;IIteration&gt;&gt;.</returns>
         Task<IReadOnlyList<IIteration>> GetIterations(string project, int depth);
+
+        /// <summary>
+        ///     Gets the links for work item.
+        /// </summary>
+        /// <param name="workItem">The work item.</param>
+        /// <returns>Task&lt;ILinkCollection&gt;.</returns>
+        Task<ILinkCollection> GetLinksForWorkItem(IWorkItem workItem);
+
+        /// <summary>
+        ///     Gets the relation types.
+        /// </summary>
+        /// <returns>Task&lt;IReadOnlyList&lt;IRelationType&gt;&gt;.</returns>
+        Task<IReadOnlyList<IRelationType>> GetRelationTypes();
 
         /// <summary>
         ///     Gets the work item type categories.
@@ -71,25 +90,5 @@ namespace DynCon.OSI.VSO.SharedInterfaces.APIs
         /// <param name="fullyPopulate">if set to <c>true</c> [fully populate].</param>
         /// <returns>Task&lt;IReadOnlyList&lt;IWorkItem&gt;&gt;.</returns>
         Task<IReadOnlyList<IWorkItem>> WiqlQuery(string wiql, bool fullyPopulate);
-
-
-        /// <summary>
-        /// Gets the relation types.
-        /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;IRelationType&gt;&gt;.</returns>
-        Task<IReadOnlyList<IRelationType>> GetRelationTypes();
-
-        /// <summary>
-        /// Gets the links for work item.
-        /// </summary>
-        /// <param name="workItem">The work item.</param>
-        /// <returns>Task&lt;ILinkCollection&gt;.</returns>
-        Task<ILinkCollection> GetLinksForWorkItem(IWorkItem workItem);
-
-        /// <summary>
-        ///     Gets the fields.
-        /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;IFieldDefinition&gt;&gt;.</returns>
-        Task<IReadOnlyList<IFieldDefinition>> GetFieldDefinitions();
     }
 }

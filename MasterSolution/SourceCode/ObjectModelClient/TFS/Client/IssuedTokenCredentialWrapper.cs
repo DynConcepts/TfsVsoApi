@@ -7,7 +7,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class IssuedTokenCredentialWrapper : IssuedTokenCredentialWrapper<IIssuedTokenCredential, IssuedTokenCredential>, IIssuedTokenCredential
     {
         protected IssuedTokenCredentialWrapper(IssuedTokenCredential instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIssuedTokenCredential, IssuedTokenCredential>(src => src==null ? null : ((IssuedTokenCredentialWrapper) src).r_Instance, src => new IssuedTokenCredentialWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIssuedTokenCredential, IssuedTokenCredential>(src => src == null ? null : ((IssuedTokenCredentialWrapper) src).r_Instance, src => new IssuedTokenCredentialWrapper(src)); }
     }
 
 

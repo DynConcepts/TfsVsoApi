@@ -12,6 +12,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
     /// </summary>
     public class JsonLinkCollection : JsonListBase<JsonLink>
     {
+        protected override bool HasKey { get { return false; } }
 
         /// <summary>
         /// Extracts the key.
@@ -36,7 +37,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         /// <summary>
         /// The SR_ fields
         /// </summary>
-        private static readonly JsonBackedList<JsonLink> sr_Links = new JsonBackedList<JsonLink>(token => JsonParsers.JArrayToObjects((JArray)token, o => JsonLink.FromToken(o)));
+        private static readonly JsonBackedList<JsonLink> sr_Links = new JsonBackedList<JsonLink>(token => JsonParsers.JArrayToObjects((JArray)token, JsonLink.FromToken));
 
         /// <summary>
         /// Froms the token.
@@ -56,14 +57,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         /// <param name="json">The json.</param>
         public JsonLinkCollection(JToken json) : base(json) { }
 
-        /// <summary>
-        /// Gets the work item.
-        /// </summary>
-        /// <value>The work item.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public JsonWorkItem WorkItem { get { throw new NoReStAPIEquivilantException(); } }
-
-        /// <summary>
+         /// <summary>
         /// Adds the specified link.
         /// </summary>
         /// <param name="link">The link.</param>
@@ -111,7 +105,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         {
             {
                 var link = (JsonLink) value;
-                base.Add(link);
+                Add(link);
                 return IndexOf(link);
             }
         }
@@ -123,13 +117,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         /// <returns>System.Object.</returns>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
         public object GetItem(int index) { return base[index]; }
-
-        /// <summary>
-        /// Refreshes this instance.
-        /// </summary>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public void Refresh() { throw new NoReStAPIEquivilantException(); }
-
         /// <summary>
         /// Gets the version tag.
         /// </summary>

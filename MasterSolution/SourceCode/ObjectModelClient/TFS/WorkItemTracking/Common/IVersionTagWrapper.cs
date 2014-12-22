@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common
     internal class IVersionTagWrapper : IVersionTagWrapper<IIVersionTag, IVersionTag>, IIVersionTag
     {
         protected IVersionTagWrapper(IVersionTag instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIVersionTag, IVersionTag>(src => src==null ? null : ((IVersionTagWrapper) src).r_Instance, src => new IVersionTagWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIVersionTag, IVersionTag>(src => src == null ? null : ((IVersionTagWrapper) src).r_Instance, src => new IVersionTagWrapper(src)); }
     }
 
 

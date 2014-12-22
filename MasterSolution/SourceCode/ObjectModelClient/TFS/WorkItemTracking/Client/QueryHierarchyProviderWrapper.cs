@@ -11,17 +11,16 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryHierarchyProviderWrapper : QueryHierarchyProviderWrapper<IQueryHierarchyProvider, QueryHierarchyProvider>, IQueryHierarchyProvider
     {
         protected QueryHierarchyProviderWrapper(QueryHierarchyProvider instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyProvider, QueryHierarchyProvider>(src => src==null ? null : ((QueryHierarchyProviderWrapper) src).r_Instance, src => new QueryHierarchyProviderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchyProvider, QueryHierarchyProvider>(src => src == null ? null : ((QueryHierarchyProviderWrapper) src).r_Instance, src => new QueryHierarchyProviderWrapper(src)); }
     }
 
 
     internal class QueryHierarchyProviderWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IQueryHierarchyProvider where TInterface : class where TWrapper : class
     {
-
         IAccessControlListMetadata IQueryHierarchyProvider.GetAccessControlListMetadata(String objectClassId)
         {
             AccessControlListMetadata nativeCallResult = r_Instance.GetAccessControlListMetadata(objectClassId);
-            var wrappedCallResult = AccessControlListMetadataWrapper.GetWrapper(nativeCallResult);
+            IAccessControlListMetadata wrappedCallResult = AccessControlListMetadataWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
 

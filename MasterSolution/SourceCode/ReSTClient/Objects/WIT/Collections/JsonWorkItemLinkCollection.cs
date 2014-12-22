@@ -9,8 +9,14 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
     /// <summary>
     /// Class JsonWorkItemLinkCollection.
     /// </summary>
-    internal class JsonWorkItemLinkCollection : JsonListBase<JsonWorkItemLink>
+    public class JsonWorkItemLinkCollection : JsonListBase<JsonWorkItemLink>
     {
+        /// <summary>
+        /// Gets a value indicating whether this instance has key.
+        /// </summary>
+        /// <value><c>true</c> if this instance has key; otherwise, <c>false</c>.</value>
+        protected override bool HasKey { get { return false; }}
+
 
         /// <summary>
         /// Extracts the key.

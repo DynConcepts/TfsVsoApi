@@ -11,22 +11,15 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class LinkCollectionWrapper : LinkCollectionWrapper<ILinkCollection, LinkCollection>, ILinkCollection
     {
         protected LinkCollectionWrapper(LinkCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ILinkCollection, LinkCollection>(src => src==null ? null : ((LinkCollectionWrapper) src).r_Instance, src => new LinkCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ILinkCollection, LinkCollection>(src => src == null ? null : ((LinkCollectionWrapper) src).r_Instance, src => new LinkCollectionWrapper(src)); }
     }
 
 
     internal class LinkCollectionWrapper<TWrapper, TInterface> : VariableSizeListWrapper<TWrapper, TInterface>, ILinkCollection where TInterface : class where TWrapper : class
     {
-
         Int32 ILinkCollection.Add(ILink link)
         {
             int nativeCallResult = r_Instance.Add(LinkWrapper.GetInstance(link));
-            return nativeCallResult;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            IEnumerator nativeCallResult = new EnumeratorWrapper<ILink>(r_Instance.GetEnumerator(), o=>LinkWrapper.GetWrapper((Link)o));
             return nativeCallResult;
         }
 
@@ -54,6 +47,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         Boolean ILinkCollection.Contains(ILink link)
         {
             bool nativeCallResult = r_Instance.Contains(LinkWrapper.GetInstance(link));
+            return nativeCallResult;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            IEnumerator nativeCallResult = new EnumeratorWrapper<ILink>(r_Instance.GetEnumerator(), o => LinkWrapper.GetWrapper((Link) o));
             return nativeCallResult;
         }
 

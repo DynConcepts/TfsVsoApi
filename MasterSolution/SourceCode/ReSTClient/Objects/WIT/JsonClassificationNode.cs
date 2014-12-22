@@ -1,5 +1,4 @@
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
@@ -19,12 +18,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <value><c>true</c> if this instance has children; otherwise, <c>false</c>.</value>
         public bool HasChildren { get; protected set; }
 
-        /// <summary>
-        ///     Gets the links.
-        /// </summary>
-        /// <value>The links.</value>
-        public string Links { get { throw new NoReStAPIEquivilantException(); } }
-
+   
         /// <summary>
         ///     Gets or sets the name.
         /// </summary>

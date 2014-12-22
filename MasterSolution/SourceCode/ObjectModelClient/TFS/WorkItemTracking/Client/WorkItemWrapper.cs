@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemWrapper : WorkItemWrapper<IWorkItem, WorkItem>, IWorkItem
     {
         protected WorkItemWrapper(WorkItem instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItem, WorkItem>(src => src==null ? null : ((WorkItemWrapper) src).r_Instance, src => new WorkItemWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItem, WorkItem>(src => src == null ? null : ((WorkItemWrapper) src).r_Instance, src => new WorkItemWrapper(src)); }
     }
 
 
     internal class WorkItemWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItem where TInterface : class where TWrapper : class
     {
-
         void IWorkItem.ApplyRules(Boolean copyChangedByFromLatest) { r_Instance.ApplyRules(copyChangedByFromLatest); }
         void IWorkItem.ApplyRules() { r_Instance.ApplyRules(); }
 
@@ -88,7 +87,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
         void IWorkItem.Close() { r_Instance.Close(); }
 
         IWorkItemCollection IWorkItem.Collection
@@ -100,7 +98,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
                 return wrappedCallResult;
             }
         }
-
 
 
         IWorkItem IWorkItem.Copy(IWorkItemType targetType, IWorkItemCopyFlags flags)
@@ -206,7 +203,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
         Object IWorkItem.GetFieldValue(Int32 id, Int32 revision)
         {
             object nativeCallResult = r_Instance.GetFieldValue(id, revision);
@@ -218,7 +214,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             object nativeCallResult = r_Instance.GetFieldValueExternal(FieldDefinitionWrapper.GetInstance(fd), revision);
             return nativeCallResult;
         }
-
 
 
         IWorkItemSyncData IWorkItem.GetLatestSyncData()
@@ -233,7 +228,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             string nativeCallResult = r_Instance.GetNextState(action);
             return nativeCallResult;
         }
-
 
 
         String IWorkItem.History

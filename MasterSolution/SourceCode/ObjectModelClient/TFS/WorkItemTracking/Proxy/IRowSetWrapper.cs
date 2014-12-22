@@ -3,12 +3,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using IRowSet = Microsoft.TeamFoundation.WorkItemTracking.Proxy.IRowSet;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class IRowSetWrapper : IRowSetWrapper<IIRowSet, IRowSet>, IIRowSet
     {
         protected IRowSetWrapper(IRowSet instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIRowSet, IRowSet>(src => src==null ? null : ((IRowSetWrapper) src).r_Instance, src => new IRowSetWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIRowSet, IRowSet>(src => src == null ? null : ((IRowSetWrapper) src).r_Instance, src => new IRowSetWrapper(src)); }
     }
 
 

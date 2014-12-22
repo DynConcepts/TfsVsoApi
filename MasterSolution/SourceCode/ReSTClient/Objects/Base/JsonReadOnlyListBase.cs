@@ -1,22 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
 {
     /// <summary>
-    ///     Class JsonReadOnlyListBase.
+    /// Class JsonReadOnlyListBase.
     /// </summary>
     /// <typeparam name="TItem">The type of the t item.</typeparam>
-    public abstract class JsonReadOnlyListBase<TItem> : JsonBackedObjectBase, IReadOnlyList<TItem>, IReadOnlyList
+    public abstract class JsonReadOnlyListBase<TItem> : JsonBackedObjectBase, IReadOnlyList<TItem>
     {
+        protected abstract bool HasKey { get; }
+
         /// <summary>
         ///     Returns an enumerator that iterates through the collection.
         /// </summary>
@@ -31,14 +29,14 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         ///     Gets the number of elements in the collection.
         /// </summary>
         /// <value>The count.</value>
-        public int Count { get { return ItemSource.Count; } }
+        public virtual int Count { get { return ItemSource.Count; } }
 
         /// <summary>
         /// Gets the element at the specified index in the read-only list.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>TItem.</returns>
-        public TItem this[int index] { get { return ItemDictionary.Values.ToList()[index]; } }
+        public TItem this[int index] { get { return ItemList[index]; } }
 
         /// <summary>
         ///     Returns an enumerator that iterates through a collection.
@@ -61,10 +59,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
             r_ItemsDictionary = new LazyWithReset<Dictionary<string, TItem>>(() =>
             {
                 var dictionary = new Dictionary<string, TItem>();
-                foreach (var item in r_ItemsList.Value)
+                if (HasKey)
                 {
-                    var key = ExtractKey(item);
-                    dictionary.Add(key, item);
+                    foreach (var item in r_ItemsList.Value)
+                    {
+                        var key = ExtractKey(item);
+                        dictionary.Add(key, item);
+                    }
                 }
                 return dictionary;
             });
@@ -87,7 +88,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         ///     Gets the items.
         /// </summary>
         /// <value>The items.</value>
-        protected IDictionary<string, TItem> ItemDictionary { get { return r_ItemsDictionary.Value; } }
+        protected IDictionary<string, TItem> ItemDictionary {
+            get
+            {
+                if (!HasKey)
+                    throw new Exception("Collection does not have a Key Membewr!!!");
+                return r_ItemsDictionary.Value;
+            } }
 
         /// <summary>
         /// Gets the item list.
@@ -95,17 +102,9 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         /// <value>The item list.</value>
         protected IList<TItem> ItemList { get { return r_ItemsList.Value; } }
 
-        object IReadOnlyList.SyncRoot { get { throw new NotImplementedException(); } }
-        bool IReadOnlyList.IsFixedSize { get { throw new NotImplementedException(); } }
+           public virtual bool IsReadOnly { get { return true; } }
 
-        /// <summary>
-        ///     Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1" /> is read-only.
-        /// </summary>
-        /// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public bool IsReadOnly { get { throw new NoReStAPIEquivilantException(); } }
 
-        bool IReadOnlyList.IsSynchronized { get { throw new NotImplementedException(); } }
 
         /// <summary>
         /// The r_ items dictionary
@@ -117,31 +116,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         /// </summary>
         private readonly LazyWithReset<IList<TItem>> r_ItemsList;
 
-        /// <summary>
-        ///     Determines whether [contains] [the specified identifier].
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns><c>true</c> if [contains] [the specified identifier]; otherwise, <c>false</c>.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public bool Contains(int id) { throw new NoReStAPIEquivilantException(); }
-
-        /// <summary>
-        ///     Gets the by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>JsonField.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public JsonField GetById(int id) { throw new NoReStAPIEquivilantException(); }
-
-        /// <summary>
-        ///     Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1" />.
-        /// </summary>
-        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1" />.</param>
-        /// <returns>The index of <paramref name="item" /> if found in the list; otherwise, -1.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public int IndexOf(TItem item) { throw new NoReStAPIEquivilantException(); }
-
-        public void CopyTo(Array array, int index) { throw new NotImplementedException(); }
+ 
+          public void CopyTo(Array array, int index) {ItemList.CopyTo(((TItem[]) array), index) ; }
 
         public override void CaptureJson(JToken newFields) { base.CaptureJson(newFields); }
 

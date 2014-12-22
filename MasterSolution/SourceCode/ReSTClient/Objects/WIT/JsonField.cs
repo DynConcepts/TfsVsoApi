@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Text;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.ReSTClient.Objects.Base;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Newtonsoft.Json.Linq;
 
@@ -66,12 +64,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         /// <param name="json">The json.</param>
         protected JsonField(JToken json) : base(json) { }
-
-        /// <summary>
-        /// Captures the json.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        public override void CaptureJson(JToken token) { base.CaptureJson(token); }
     }
 
 }

@@ -1,108 +1,87 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.TeamFoundation.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class FieldDefinitionCollectionWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class FieldDefinitionCollectionWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetById_UnitTest()
+        {
+            Int32 id = default(Int32);
+            ExecuteMethod(
+                () => { return (IFieldDefinitionCollection) GetInstance(); },
+                instance =>
+                {
+                    id = default(Int32); //No Constructor
+                    GetById_PreCondition(ref instance, ref id);
+                },
+                instance => { instance.GetById(id); },
+                instance => { GetById_PostValidate(instance, id); });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Client.FieldDefinitionCollection real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.FieldDefinitionCollectionWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void TryGetById_UnitTest()
+        {
+            Int32 id = default(Int32);
+            ExecuteMethod(
+                () => { return (IFieldDefinitionCollection) GetInstance(); },
+                instance =>
+                {
+                    id = default(Int32); //No Constructor
+                    TryGetById_PreCondition(ref instance, ref id);
+                },
+                instance => { instance.TryGetById(id); },
+                instance => { TryGetById_PostValidate(instance, id); });
+        }
 
-    partial void GetById_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, ref System.Int32 id);
-    partial void GetById_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, System.Int32 id);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetById_UnitTest()
-  {
-    System.Int32 id = default(System.Int32);
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void TryGetByName_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection) GetInstance();
-        },
-        (instance) =>
+            String name = default(String);
+            ExecuteMethod(
+                () => { return (IFieldDefinitionCollection) GetInstance(); },
+                instance =>
+                {
+                    name = default(String); //No Constructor
+                    TryGetByName_PreCondition(ref instance, ref name);
+                },
+                instance => { instance.TryGetByName(name); },
+                instance => { TryGetByName_PostValidate(instance, name); });
+        }
+
+        partial void GetById_PostValidate(IFieldDefinitionCollection instance, Int32 id);
+        partial void GetById_PreCondition(ref IFieldDefinitionCollection instance, ref Int32 id);
+        internal static IEnumerable<FieldDefinitionCollectionWrapper> GetIEnumerableInstance() { return new List<FieldDefinitionCollectionWrapper> {GetInstance()}; }
+
+        internal static FieldDefinitionCollectionWrapper GetInstance()
         {
-          id = default(System.Int32); //No Constructor
-          GetById_PreCondition(ref instance, ref id);
-        },
-       (instance) =>
-       {
-             instance.GetById(id);
-       },
-      (instance) =>
-      {
-              GetById_PostValidate(instance, id);
-      });
-  }
-    partial void TryGetById_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, ref System.Int32 id);
-    partial void TryGetById_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, System.Int32 id);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void TryGetById_UnitTest()
-  {
-    System.Int32 id = default(System.Int32);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection) GetInstance();
-        },
-        (instance) =>
-        {
-          id = default(System.Int32); //No Constructor
-          TryGetById_PreCondition(ref instance, ref id);
-        },
-       (instance) =>
-       {
-             instance.TryGetById(id);
-       },
-      (instance) =>
-      {
-              TryGetById_PostValidate(instance, id);
-      });
-  }
-    partial void TryGetByName_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, ref System.String name);
-    partial void TryGetByName_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection instance, System.String name);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void TryGetByName_UnitTest()
-  {
-    System.String name = default(System.String);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IFieldDefinitionCollection) GetInstance();
-        },
-        (instance) =>
-        {
-          name = default(System.String); //No Constructor
-          TryGetByName_PreCondition(ref instance, ref name);
-        },
-       (instance) =>
-       {
-             instance.TryGetByName(name);
-       },
-      (instance) =>
-      {
-              TryGetByName_PostValidate(instance, name);
-      });
-  }
-  }
+            FieldDefinitionCollection real = default(FieldDefinitionCollection);
+            RealInstanceFactory(ref real);
+            var instance = (FieldDefinitionCollectionWrapper) FieldDefinitionCollectionWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref FieldDefinitionCollectionWrapper instance, [CallerMemberName] string callerName = "");
+
+        static partial void RealInstanceFactory(ref FieldDefinitionCollection real, [CallerMemberName] string callerName = "");
+        partial void TryGetById_PostValidate(IFieldDefinitionCollection instance, Int32 id);
+        partial void TryGetById_PreCondition(ref IFieldDefinitionCollection instance, ref Int32 id);
+
+        partial void TryGetByName_PostValidate(IFieldDefinitionCollection instance, String name);
+        partial void TryGetByName_PreCondition(ref IFieldDefinitionCollection instance, ref String name);
+    }
 }

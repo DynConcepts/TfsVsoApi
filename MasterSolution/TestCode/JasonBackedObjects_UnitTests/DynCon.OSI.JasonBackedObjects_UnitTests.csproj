@@ -69,6 +69,10 @@
     <Compile Include="TestJsonBackedObject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
+      <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
+      <Name>DynCon.OSI.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>

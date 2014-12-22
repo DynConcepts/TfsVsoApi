@@ -27,7 +27,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests
                 new KeyValuePair<string, object>("System.Title", "Sample Title")
                 //new KeyValuePair<string, object>("System.Project", "RestPlaypen"),
                 //new KeyValuePair<string, object>("System.WorkItemType", "Task")
-
             };
             IWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", fieldValues);
             Assert.IsNotNull(workItem);

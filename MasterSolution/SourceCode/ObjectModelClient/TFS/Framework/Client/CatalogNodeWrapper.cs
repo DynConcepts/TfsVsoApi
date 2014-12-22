@@ -14,13 +14,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal partial class CatalogNodeWrapper : CatalogNodeWrapper<ICatalogNode, CatalogNode>, ICatalogNode
     {
         protected CatalogNodeWrapper(CatalogNode instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogNode, CatalogNode>(src => src==null ? null : ((CatalogNodeWrapper) src).r_Instance, src => new CatalogNodeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ICatalogNode, CatalogNode>(src => src == null ? null : ((CatalogNodeWrapper) src).r_Instance, src => new CatalogNodeWrapper(src)); }
     }
 
 
     internal class CatalogNodeWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ICatalogNode where TInterface : class where TWrapper : class
     {
-
         ICatalogTree ICatalogNode.CatalogTree
         {
             get
@@ -57,8 +56,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         }
 
 
-
-
         void ICatalogNode.ExpandDependencies() { r_Instance.ExpandDependencies(); }
 
         String ICatalogNode.FullPath
@@ -79,7 +76,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
             }
             set { r_Instance.IsDefault = value; }
         }
-
 
 
         ICatalogNode ICatalogNode.ParentNode

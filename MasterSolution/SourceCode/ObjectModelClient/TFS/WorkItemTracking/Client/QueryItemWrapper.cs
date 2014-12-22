@@ -14,7 +14,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryItemWrapper : QueryItemWrapper<IQueryItem, QueryItem>, IQueryItem
     {
         protected QueryItemWrapper(QueryItem instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryItem, QueryItem>(src => src==null ? null : ((QueryItemWrapper) src).r_Instance, src => new QueryItemWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryItem, QueryItem>(src => src == null ? null : ((QueryItemWrapper) src).r_Instance, src => new QueryItemWrapper(src)); }
     }
 
 
@@ -35,7 +35,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             get
             {
                 AccessControlListMetadata nativeCallResult = r_Instance.AccessControlListMetadata;
-                var wrappedCallResult = AccessControlListMetadataWrapper.GetWrapper(nativeCallResult);
+                IAccessControlListMetadata wrappedCallResult = AccessControlListMetadataWrapper.GetWrapper(nativeCallResult);
                 return wrappedCallResult;
             }
         }

@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
     internal class AccessControlListMetadataWrapper : AccessControlListMetadataWrapper<IAccessControlListMetadata, AccessControlListMetadata>, IAccessControlListMetadata
     {
         protected AccessControlListMetadataWrapper(AccessControlListMetadata instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlListMetadata, AccessControlListMetadata>(src => src==null ? null : ((AccessControlListMetadataWrapper) src).r_Instance, src => new AccessControlListMetadataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlListMetadata, AccessControlListMetadata>(src => src == null ? null : ((AccessControlListMetadataWrapper) src).r_Instance, src => new AccessControlListMetadataWrapper(src)); }
     }
 
 

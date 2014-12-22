@@ -8,13 +8,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class IssuedTokenProviderWrapper : IssuedTokenProviderWrapper<IIssuedTokenProvider, IssuedTokenProvider>, IIssuedTokenProvider
     {
         protected IssuedTokenProviderWrapper(IssuedTokenProvider instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IIssuedTokenProvider, IssuedTokenProvider>(src => src==null ? null : ((IssuedTokenProviderWrapper) src).r_Instance, src => new IssuedTokenProviderWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IIssuedTokenProvider, IssuedTokenProvider>(src => src == null ? null : ((IssuedTokenProviderWrapper) src).r_Instance, src => new IssuedTokenProviderWrapper(src)); }
     }
 
 
     internal abstract class IssuedTokenProviderWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IIssuedTokenProvider where TInterface : class where TWrapper : class
     {
-
         IAsyncResult IIssuedTokenProvider.BeginGetToken(TimeSpan timeout, AsyncCallback callback, Object state)
         {
             IAsyncResult nativeCallResult = r_Instance.BeginGetToken(timeout, callback, state);
@@ -34,7 +33,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             IAsyncResult nativeCallResult = r_Instance.BeginGetToken(IssuedTokenWrapper.GetInstance(failedToken), timeout, canRefresh, callback, state);
             return nativeCallResult;
         }
-
 
 
         IIssuedToken IIssuedTokenProvider.CurrentToken

@@ -22,13 +22,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TfsConnectionWrapper : TfsConnectionWrapper<ITfsConnection, TfsConnection>, ITfsConnection, IServiceProvider, IDisposable
     {
         protected TfsConnectionWrapper(TfsConnection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConnection, TfsConnection>(src => src==null ? null : ((TfsConnectionWrapper) src).r_Instance, src => new TfsConnectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConnection, TfsConnection>(src => src == null ? null : ((TfsConnectionWrapper) src).r_Instance, src => new TfsConnectionWrapper(src)); }
     }
 
 
     internal abstract class TfsConnectionWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITfsConnection where TInterface : class where TWrapper : class
     {
-
         void ITfsConnection.Authenticate() { r_Instance.Authenticate(); }
 
         ITeamFoundationIdentity ITfsConnection.AuthorizedIdentity
@@ -161,8 +160,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         void ITfsConnection.EnsureAuthenticated() { r_Instance.EnsureAuthenticated(); }
 
 
-
-
         void ITfsConnection.FlushServices() { r_Instance.FlushServices(); }
 
         void ITfsConnection.GetAuthenticatedIdentity(out ITeamFoundationIdentity identity)
@@ -181,24 +178,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
 
         T ITfsConnection.GetService<T>() { return (T) FindService(typeof (T)); }
 
-        private object FindService(Type type)
-        {
-            Func<TfsConnection, Object> creator;
-            if (sr_ServiceMap.TryGetValue(type, out creator))
-                return creator(r_Instance);
-            return null;
-        }
 
-        private static readonly Dictionary<Type, Func<TfsConnection,Object>> sr_ServiceMap = new Dictionary<Type, Func<TfsConnection, object>>()
-        {
-            {typeof (IWorkItemStore), tfs => WorkItemStoreWrapper.GetWrapper(tfs.GetService<WorkItemStore>())}
-        };
-
-
-        Object IServiceProvider.GetService(Type serviceType)
-        {
-            return FindService(serviceType);
-        }
+        Object IServiceProvider.GetService(Type serviceType) { return FindService(serviceType); }
 
         Boolean ITfsConnection.HasAuthenticated
         {
@@ -218,7 +199,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
                 return wrappedCallResult;
             }
         }
-
 
 
         Guid ITfsConnection.InstanceId
@@ -317,6 +297,20 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         }
 
         protected TfsConnectionWrapper(TfsConnection instance) { r_Instance = instance; }
+
+        private object FindService(Type type)
+        {
+            Func<TfsConnection, Object> creator;
+            if (sr_ServiceMap.TryGetValue(type, out creator))
+                return creator(r_Instance);
+            return null;
+        }
+
+        private static readonly Dictionary<Type, Func<TfsConnection, Object>> sr_ServiceMap = new Dictionary<Type, Func<TfsConnection, object>>
+        {
+            {typeof (IWorkItemStore), tfs => WorkItemStoreWrapper.GetWrapper(tfs.GetService<WorkItemStore>())}
+        };
+
         protected readonly TfsConnection r_Instance;
     }
 }

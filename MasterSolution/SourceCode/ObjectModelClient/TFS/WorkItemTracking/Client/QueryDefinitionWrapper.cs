@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryDefinitionWrapper : QueryDefinitionWrapper<IQueryDefinition, QueryDefinition>, IQueryDefinition
     {
         protected QueryDefinitionWrapper(QueryDefinition instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryDefinition, QueryDefinition>(src => src==null ? null : ((QueryDefinitionWrapper) src).r_Instance, src => new QueryDefinitionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryDefinition, QueryDefinition>(src => src == null ? null : ((QueryDefinitionWrapper) src).r_Instance, src => new QueryDefinitionWrapper(src)); }
     }
 
 

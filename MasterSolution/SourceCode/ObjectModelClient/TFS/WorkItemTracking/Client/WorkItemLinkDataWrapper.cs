@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.ObjectMapping;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
@@ -13,13 +13,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemLinkDataWrapper : WorkItemLinkDataWrapper<IWorkItemLinkData, WorkItemLinkData>, IWorkItemLinkData, IIWorkItemSaveLinkDataHelper
     {
         protected WorkItemLinkDataWrapper(WorkItemLinkData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkData, WorkItemLinkData>(src => src==null ? null : ((WorkItemLinkDataWrapper) src).r_Instance, src => new WorkItemLinkDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkData, WorkItemLinkData>(src => src == null ? null : ((WorkItemLinkDataWrapper) src).r_Instance, src => new WorkItemLinkDataWrapper(src)); }
     }
 
 
     internal class WorkItemLinkDataWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemLinkData where TInterface : class where TWrapper : class
     {
-
         void IWorkItemLinkData.AddLinkInfo(ILinkInfo linkInfo, Object updatedItem) { r_Instance.AddLinkInfo(LinkInfoWrapper.GetInstance(linkInfo), updatedItem); }
         void IIWorkItemSaveLinkDataHelper.AddWorkItemLinkInfo(IWorkItemLinkInfo link) { ((IWorkItemSaveLinkDataHelper) r_Instance).AddWorkItemLinkInfo(Internals.WorkItemLinkInfoWrapper.GetInstance(link)); }
 
@@ -46,15 +45,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
         HashSet<ILinkInfo> IWorkItemLinkData.GetAddedLinks()
         {
             HashSet<LinkInfo> nativeCallResult = r_Instance.GetAddedLinks();
             HashSet<ILinkInfo> wrappedCallResult = LinkInfoWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
-
 
 
         Int32 IWorkItemLinkData.GetAddedLinksCount()
@@ -111,7 +107,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
         void IWorkItemLinkData.MarkLinkToDelete(ILinkInfo linkInfo, Object updatedItem) { r_Instance.MarkLinkToDelete(LinkInfoWrapper.GetInstance(linkInfo), updatedItem); }
-
 
 
         void IWorkItemLinkData.Reset() { r_Instance.Reset(); }

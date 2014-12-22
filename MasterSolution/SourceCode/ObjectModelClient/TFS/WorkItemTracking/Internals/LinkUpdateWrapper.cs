@@ -4,12 +4,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.TeamFoundation.WorkItemTracking.Internals;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals
 {
     internal partial class LinkUpdateWrapper : LinkUpdateWrapper<ILinkUpdate, LinkUpdate>, ILinkUpdate
     {
         protected LinkUpdateWrapper(LinkUpdate instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ILinkUpdate, LinkUpdate>(src => src==null ? null : ((LinkUpdateWrapper) src).r_Instance, src => new LinkUpdateWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ILinkUpdate, LinkUpdate>(src => src == null ? null : ((LinkUpdateWrapper) src).r_Instance, src => new LinkUpdateWrapper(src)); }
     }
 
 

@@ -2,15 +2,15 @@ using System;
 
 namespace DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client
 {
-  public interface IQueryHierarchy : IQueryFolder
-  {
-    void Refresh( IQueryHierarchyRefreshData refreshData);
-    IQueryHierarchyRefreshData GetRefreshData();
-    IQueryItem Find( Guid id);
-    void Save();
-    void Reset();
-    void Refresh();
-    Boolean SupportsFolders  { get;   }
-    Boolean SupportsPermissions  { get;   }
-  }
+    public interface IQueryHierarchy : IQueryFolder
+    {
+        IQueryItem Find(Guid id);
+        IQueryHierarchyRefreshData GetRefreshData();
+        void Refresh(IQueryHierarchyRefreshData refreshData);
+        void Refresh();
+        void Reset();
+        void Save();
+        Boolean SupportsFolders { get; }
+        Boolean SupportsPermissions { get; }
+    }
 }

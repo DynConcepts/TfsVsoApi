@@ -8,13 +8,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryHierarchyWrapper : QueryHierarchyWrapper<IQueryHierarchy, QueryHierarchy>, IQueryHierarchy
     {
         protected QueryHierarchyWrapper(QueryHierarchy instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchy, QueryHierarchy>(src => src==null ? null : ((QueryHierarchyWrapper) src).r_Instance, src => new QueryHierarchyWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQueryHierarchy, QueryHierarchy>(src => src == null ? null : ((QueryHierarchyWrapper) src).r_Instance, src => new QueryHierarchyWrapper(src)); }
     }
 
 
     internal class QueryHierarchyWrapper<TWrapper, TInterface> : QueryFolderWrapper<TWrapper, TInterface>, IQueryHierarchy where TInterface : class where TWrapper : class
     {
-
         IQueryItem IQueryHierarchy.Find(Guid id)
         {
             QueryItem nativeCallResult = r_Instance.Find(id);
@@ -30,7 +29,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
         void IQueryHierarchy.Refresh(IQueryHierarchyRefreshData refreshData) { r_Instance.Refresh(QueryHierarchyRefreshDataWrapper.GetInstance(refreshData)); }
-
 
 
         void IQueryHierarchy.Refresh() { r_Instance.Refresh(); }

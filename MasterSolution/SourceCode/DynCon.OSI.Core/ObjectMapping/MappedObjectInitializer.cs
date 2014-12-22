@@ -10,25 +10,21 @@ namespace DynCon.OSI.Core.ObjectMapping
     public static class MappedObjectInitializer
     {
         /// <summary>
-        ///     Initializes static members of the <see cref="MappedObjectInitializer" /> class.
-        /// </summary>
-        static MappedObjectInitializer() { ScanTypes(Assembly.GetExecutingAssembly()); }
-
-        /// <summary>
         ///     Forces the initialize.
         /// </summary>
         public static void ForceInitialize() { }
 
 
-        private static List<String> _loaded = new List<string>();
-
         /// <summary>
-        /// Forces the initialize.
+        ///     Forces the initialize.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         public static void ForceInitialize(Assembly assembly) { ScanTypes(assembly); }
 
-        private static readonly object sr_Syncroot = new object();
+        /// <summary>
+        ///     Initializes static members of the <see cref="MappedObjectInitializer" /> class.
+        /// </summary>
+        static MappedObjectInitializer() { ScanTypes(Assembly.GetExecutingAssembly()); }
 
         private static void ScanTypes(Assembly assembly)
         {
@@ -49,5 +45,8 @@ namespace DynCon.OSI.Core.ObjectMapping
                 _loaded.Add(assembly.FullName);
             }
         }
-}
+
+        private static readonly List<String> _loaded = new List<string>();
+        private static readonly object sr_Syncroot = new object();
+    }
 }

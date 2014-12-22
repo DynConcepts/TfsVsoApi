@@ -8,13 +8,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
     internal class TFProxyServerWrapper : TFProxyServerWrapper<ITFProxyServer, TFProxyServer>, ITFProxyServer
     {
         protected TFProxyServerWrapper(TFProxyServer instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<ITFProxyServer, TFProxyServer>(src => src==null ? null : ((TFProxyServerWrapper) src).r_Instance, src => new TFProxyServerWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<ITFProxyServer, TFProxyServer>(src => src == null ? null : ((TFProxyServerWrapper) src).r_Instance, src => new TFProxyServerWrapper(src)); }
     }
 
 
     internal class TFProxyServerWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITFProxyServer where TInterface : class where TWrapper : class
     {
-
         Boolean ITFProxyServer.IsAvailable
         {
             get

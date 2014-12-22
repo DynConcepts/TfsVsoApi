@@ -11,13 +11,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client.Channels
     internal class ITfsRequestChannelWrapper : ITfsRequestChannelWrapper<IITfsRequestChannel, ITfsRequestChannel>, IITfsRequestChannel
     {
         protected ITfsRequestChannelWrapper(ITfsRequestChannel instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestChannel, ITfsRequestChannel>(src => src==null ? null : ((ITfsRequestChannelWrapper) src).r_Instance, src => new ITfsRequestChannelWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IITfsRequestChannel, ITfsRequestChannel>(src => src == null ? null : ((ITfsRequestChannelWrapper) src).r_Instance, src => new ITfsRequestChannelWrapper(src)); }
     }
 
 
     internal abstract class ITfsRequestChannelWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IITfsRequestChannel where TInterface : class where TWrapper : class
     {
-
         void IITfsRequestChannel.Abort() { r_Instance.Abort(); }
 
         IAsyncResult IITfsRequestChannel.BeginRequest(ITfsMessage message, AsyncCallback callback, Object state)

@@ -1,157 +1,122 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+using Microsoft.TeamFoundation.WorkItemTracking.Internals;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Internals
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class IWorkItemSaveFieldDataHelperWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelper);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class IWorkItemSaveFieldDataHelperWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void FieldUpdates_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IIWorkItemSaveFieldDataHelper) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.FieldUpdates; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelper real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.IWorkItemSaveFieldDataHelperWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetFieldName_UnitTest()
+        {
+            Int32 fieldId = default(Int32);
+            ExecuteMethod(
+                () => { return (IIWorkItemSaveFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldId = default(Int32); //No Constructor
+                    GetFieldName_PreCondition(ref instance, ref fieldId);
+                },
+                instance => { instance.GetFieldName(fieldId); },
+                instance => { GetFieldName_PostValidate(instance, fieldId); });
+        }
 
-    partial void IsLongTextField_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, ref System.Int32 fieldId);
-    partial void IsLongTextField_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, System.Int32 fieldId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void IsLongTextField_UnitTest()
-  {
-    System.Int32 fieldId = default(System.Int32);
-      ExecuteMethod(
-        () =>
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetFieldReferenceName_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper) GetInstance();
-        },
-        (instance) =>
+            Int32 fieldId = default(Int32);
+            ExecuteMethod(
+                () => { return (IIWorkItemSaveFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldId = default(Int32); //No Constructor
+                    GetFieldReferenceName_PreCondition(ref instance, ref fieldId);
+                },
+                instance => { instance.GetFieldReferenceName(fieldId); },
+                instance => { GetFieldReferenceName_PostValidate(instance, fieldId); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void GetFieldSystemType_UnitTest()
         {
-          fieldId = default(System.Int32); //No Constructor
-          IsLongTextField_PreCondition(ref instance, ref fieldId);
-        },
-       (instance) =>
-       {
-             instance.IsLongTextField(fieldId);
-       },
-      (instance) =>
-      {
-              IsLongTextField_PostValidate(instance, fieldId);
-      });
-  }
-    partial void GetFieldReferenceName_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, ref System.Int32 fieldId);
-    partial void GetFieldReferenceName_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, System.Int32 fieldId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetFieldReferenceName_UnitTest()
-  {
-    System.Int32 fieldId = default(System.Int32);
-      ExecuteMethod(
-        () =>
+            Int32 fieldId = default(Int32);
+            ExecuteMethod(
+                () => { return (IIWorkItemSaveFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldId = default(Int32); //No Constructor
+                    GetFieldSystemType_PreCondition(ref instance, ref fieldId);
+                },
+                instance => { instance.GetFieldSystemType(fieldId); },
+                instance => { GetFieldSystemType_PostValidate(instance, fieldId); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void IsLongTextField_UnitTest()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper) GetInstance();
-        },
-        (instance) =>
+            Int32 fieldId = default(Int32);
+            ExecuteMethod(
+                () => { return (IIWorkItemSaveFieldDataHelper) GetInstance(); },
+                instance =>
+                {
+                    fieldId = default(Int32); //No Constructor
+                    IsLongTextField_PreCondition(ref instance, ref fieldId);
+                },
+                instance => { instance.IsLongTextField(fieldId); },
+                instance => { IsLongTextField_PostValidate(instance, fieldId); });
+        }
+
+        partial void FieldUpdates_SetCondition(ref IIWorkItemSaveFieldDataHelper instance, ref Dictionary<Int32, Object> setValue);
+        partial void GetFieldName_PostValidate(IIWorkItemSaveFieldDataHelper instance, Int32 fieldId);
+        partial void GetFieldName_PreCondition(ref IIWorkItemSaveFieldDataHelper instance, ref Int32 fieldId);
+        partial void GetFieldReferenceName_PostValidate(IIWorkItemSaveFieldDataHelper instance, Int32 fieldId);
+        partial void GetFieldReferenceName_PreCondition(ref IIWorkItemSaveFieldDataHelper instance, ref Int32 fieldId);
+        partial void GetFieldSystemType_PostValidate(IIWorkItemSaveFieldDataHelper instance, Int32 fieldId);
+        partial void GetFieldSystemType_PreCondition(ref IIWorkItemSaveFieldDataHelper instance, ref Int32 fieldId);
+        internal static IEnumerable<IWorkItemSaveFieldDataHelperWrapper> GetIEnumerableInstance() { return new List<IWorkItemSaveFieldDataHelperWrapper> {GetInstance()}; }
+
+        internal static IWorkItemSaveFieldDataHelperWrapper GetInstance()
         {
-          fieldId = default(System.Int32); //No Constructor
-          GetFieldReferenceName_PreCondition(ref instance, ref fieldId);
-        },
-       (instance) =>
-       {
-             instance.GetFieldReferenceName(fieldId);
-       },
-      (instance) =>
-      {
-              GetFieldReferenceName_PostValidate(instance, fieldId);
-      });
-  }
-    partial void GetFieldName_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, ref System.Int32 fieldId);
-    partial void GetFieldName_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, System.Int32 fieldId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetFieldName_UnitTest()
-  {
-    System.Int32 fieldId = default(System.Int32);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper) GetInstance();
-        },
-        (instance) =>
-        {
-          fieldId = default(System.Int32); //No Constructor
-          GetFieldName_PreCondition(ref instance, ref fieldId);
-        },
-       (instance) =>
-       {
-             instance.GetFieldName(fieldId);
-       },
-      (instance) =>
-      {
-              GetFieldName_PostValidate(instance, fieldId);
-      });
-  }
-    partial void GetFieldSystemType_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, ref System.Int32 fieldId);
-    partial void GetFieldSystemType_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, System.Int32 fieldId);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void GetFieldSystemType_UnitTest()
-  {
-    System.Int32 fieldId = default(System.Int32);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper) GetInstance();
-        },
-        (instance) =>
-        {
-          fieldId = default(System.Int32); //No Constructor
-          GetFieldSystemType_PreCondition(ref instance, ref fieldId);
-        },
-       (instance) =>
-       {
-             instance.GetFieldSystemType(fieldId);
-       },
-      (instance) =>
-      {
-              GetFieldSystemType_PostValidate(instance, fieldId);
-      });
-  }
-   partial void FieldUpdates_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper instance, ref System.Collections.Generic.Dictionary<System.Int32,System.Object> setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void FieldUpdates_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.IIWorkItemSaveFieldDataHelper) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.FieldUpdates;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            IWorkItemSaveFieldDataHelper real = default(IWorkItemSaveFieldDataHelper);
+            RealInstanceFactory(ref real);
+            var instance = (IWorkItemSaveFieldDataHelperWrapper) IWorkItemSaveFieldDataHelperWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref IWorkItemSaveFieldDataHelperWrapper instance, [CallerMemberName] string callerName = "");
+        partial void IsLongTextField_PostValidate(IIWorkItemSaveFieldDataHelper instance, Int32 fieldId);
+        partial void IsLongTextField_PreCondition(ref IIWorkItemSaveFieldDataHelper instance, ref Int32 fieldId);
+        static partial void RealInstanceFactory(ref IWorkItemSaveFieldDataHelper real, [CallerMemberName] string callerName = "");
+    }
 }

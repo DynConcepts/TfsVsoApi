@@ -4,12 +4,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class WorkItemLinkChangeWrapper : WorkItemLinkChangeWrapper<IWorkItemLinkChange, WorkItemLinkChange>, IWorkItemLinkChange
     {
         protected WorkItemLinkChangeWrapper(WorkItemLinkChange instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkChange, WorkItemLinkChange>(src => src==null ? null : ((WorkItemLinkChangeWrapper) src).r_Instance, src => new WorkItemLinkChangeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkChange, WorkItemLinkChange>(src => src == null ? null : ((WorkItemLinkChangeWrapper) src).r_Instance, src => new WorkItemLinkChangeWrapper(src)); }
     }
 
 

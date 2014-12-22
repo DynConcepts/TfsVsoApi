@@ -2,20 +2,17 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  public partial class FieldCollectionWrapper_UnitTests
-  {
-      static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Client.FieldCollection real, string callerName)
-      {
-        real = GetRealInstance();
-    }
-
-    internal static FieldCollection GetRealInstance()
+    /// <summary>Generated Test Template</summary>
+    public partial class FieldCollectionWrapper_UnitTests
     {
-        FieldCollection real;
-        var workItem = WorkItemWrapper_UnitTests.GetRealInstance();
-        real = workItem.Fields;
-        return real;
+        internal static FieldCollection GetRealInstance()
+        {
+            FieldCollection real;
+            WorkItem workItem = WorkItemWrapper_UnitTests.GetRealInstance();
+            real = workItem.Fields;
+            return real;
+        }
+
+        static partial void RealInstanceFactory(ref FieldCollection real, string callerName) { real = GetRealInstance(); }
     }
-  }
 }

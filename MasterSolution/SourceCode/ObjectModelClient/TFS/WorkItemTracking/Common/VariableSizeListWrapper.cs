@@ -9,15 +9,13 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common
     internal class VariableSizeListWrapper : VariableSizeListWrapper<IVariableSizeList, VariableSizeList>, IVariableSizeList, IEnumerable, IIVersionTag
     {
         protected VariableSizeListWrapper(VariableSizeList instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IVariableSizeList, VariableSizeList>(src => src==null ? null : ((VariableSizeListWrapper) src).r_Instance, src => new VariableSizeListWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IVariableSizeList, VariableSizeList>(src => src == null ? null : ((VariableSizeListWrapper) src).r_Instance, src => new VariableSizeListWrapper(src)); }
     }
 
 
     internal abstract class VariableSizeListWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IVariableSizeList where TInterface : class where TWrapper : class
     {
-
         void IVariableSizeList.Clear() { r_Instance.Clear(); }
-
 
 
         void IVariableSizeList.CopyTo(Array array, Int32 index) { r_Instance.CopyTo(array, index); }

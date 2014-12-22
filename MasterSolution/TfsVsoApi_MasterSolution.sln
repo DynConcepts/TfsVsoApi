@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest", "TestC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPerformanceAnalysis", "TestCode\TestPErformanceAnalysis\TestPerformanceAnalysis.csproj", "{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.JasonBackedObjects.AdvancedLogging", "SourceCode\DynCon.OSI.JasonBackedObjects.AdvancedLogging\DynCon.OSI.JasonBackedObjects.AdvancedLogging.csproj", "{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.RestClient.ObjectModel", "SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj", "{798BF552-9A39-48B8-9A4B-AF057927062F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +93,14 @@ Global
 		{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{798BF552-9A39-48B8-9A4B-AF057927062F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798BF552-9A39-48B8-9A4B-AF057927062F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798BF552-9A39-48B8-9A4B-AF057927062F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798BF552-9A39-48B8-9A4B-AF057927062F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +116,7 @@ Global
 		{668E159D-1992-4C66-A4CC-095DE4E0CEF0} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{1A98A4EF-62E4-437F-9E2B-E633267E86B8} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{4253B165-E851-4F14-B3B4-13FB6131DEEA} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
+		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D} = {7E54FB76-54BE-431C-BA8D-EF52BFC0CB44}
+		{798BF552-9A39-48B8-9A4B-AF057927062F} = {7E54FB76-54BE-431C-BA8D-EF52BFC0CB44}
 	EndGlobalSection
 EndGlobal

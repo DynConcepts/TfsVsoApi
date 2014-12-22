@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class RegisteredLinkTypeCollectionWrapper : RegisteredLinkTypeCollectionWrapper<IRegisteredLinkTypeCollection, RegisteredLinkTypeCollection>, IRegisteredLinkTypeCollection
     {
         protected RegisteredLinkTypeCollectionWrapper(RegisteredLinkTypeCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRegisteredLinkTypeCollection, RegisteredLinkTypeCollection>(src => src==null ? null : ((RegisteredLinkTypeCollectionWrapper) src).r_Instance, src => new RegisteredLinkTypeCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRegisteredLinkTypeCollection, RegisteredLinkTypeCollection>(src => src == null ? null : ((RegisteredLinkTypeCollectionWrapper) src).r_Instance, src => new RegisteredLinkTypeCollectionWrapper(src)); }
     }
 
 
     internal class RegisteredLinkTypeCollectionWrapper<TWrapper, TInterface> : ReadOnlyListWrapper<TWrapper, TInterface, RegisteredLinkType, IRegisteredLinkType>, IRegisteredLinkTypeCollection where TInterface : class where TWrapper : class
     {
-
         Boolean IRegisteredLinkTypeCollection.Contains(IRegisteredLinkType value)
         {
             bool nativeCallResult = r_Instance.Contains(RegisteredLinkTypeWrapper.GetInstance(value));

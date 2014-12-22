@@ -1,6 +1,5 @@
 ﻿using System;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects
@@ -8,14 +7,14 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects
     /// <summary>
     ///     Class JsonAvailableRestCall.
     /// </summary>
-    public class JsonAvailableRestCall : JsonBackedObjectBase, IAvailableRestCalls
+    public class JsonAvailableRestCall : JsonBackedObjectBase
     {
         /// <summary>
         ///     Froms the token.
         /// </summary>
         /// <param name="token">The token.</param>
         /// <returns>IAvailableRestCalls.</returns>
-        public static IAvailableRestCalls FromToken(JToken token)
+        public static JsonAvailableRestCall FromToken(JToken token)
         {
             var instance = new JsonAvailableRestCall(token);
             return instance;

@@ -39,7 +39,7 @@ namespace DynCon.OSI.JasonBackedObjects
             Tuple<JProperty, T> existing;
             if (dictionary.TryGetValue(fieldName, out existing))
             {
-                var originalToken = existing.Item1;
+                JProperty originalToken = existing.Item1;
                 originalToken.Value = MakeToken(value);
             }
             else
@@ -47,7 +47,7 @@ namespace DynCon.OSI.JasonBackedObjects
                 if (instance.JsonValue != null)
                 {
                     var property = new JProperty(fieldName, MakeToken(value));
-                    var owner = (JObject)instance.JsonValue[r_Key];
+                    var owner = (JObject) instance.JsonValue[r_Key];
                     owner.Add(property);
                     dictionary.Add(fieldName, new Tuple<JProperty, T>(property, value));
                 }
@@ -59,7 +59,7 @@ namespace DynCon.OSI.JasonBackedObjects
         }
 
         /// <summary>
-        /// Sets the value.
+        ///     Sets the value.
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <param name="fieldName">Name of the field.</param>
@@ -72,7 +72,7 @@ namespace DynCon.OSI.JasonBackedObjects
             Tuple<JProperty, T> existing;
             if (dictionary.TryGetValue(fieldName, out existing))
             {
-                var originalToken = existing.Item1;
+                JProperty originalToken = existing.Item1;
                 originalToken.Value = json;
             }
             else
@@ -80,7 +80,7 @@ namespace DynCon.OSI.JasonBackedObjects
                 if (instance.JsonValue != null)
                 {
                     var property = new JProperty(fieldName, json);
-                    var owner = (JObject)instance.JsonValue[r_Key];
+                    var owner = (JObject) instance.JsonValue[r_Key];
                     owner.Add(property);
                     dictionary.Add(fieldName, new Tuple<JProperty, T>(property, value));
                 }
@@ -106,7 +106,7 @@ namespace DynCon.OSI.JasonBackedObjects
         }
 
         /// <summary>
-        /// Creates the dictionary.
+        ///     Creates the dictionary.
         /// </summary>
         /// <param name="json">The json.</param>
         /// <returns>Dictionary&lt;System.String, Tuple&lt;JProperty, T&gt;&gt;.</returns>

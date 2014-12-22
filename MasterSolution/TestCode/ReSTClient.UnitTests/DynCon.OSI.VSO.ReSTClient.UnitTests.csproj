@@ -38,12 +38,20 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -60,11 +68,278 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="APIs\IterationImpl_UnitTests.cs" />
+    <Compile Include="APIs\IterationImpl_UnitTests.Designer.cs">
+      <DependentUpon>IterationImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\JsonWorkItemAPI_UnitTests.cs" />
+    <Compile Include="APIs\JsonWorkItemAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\ProjectsAPI_UnitTests.cs" />
+    <Compile Include="APIs\ProjectsAPI_UnitTests.Designer.cs">
+      <DependentUpon>ProjectsAPI_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIs\TeamRoomAPI_UnitTests.cs" />
+    <Compile Include="APIs\TeamRoomAPI_UnitTests.Designer.cs">
+      <DependentUpon>TeamRoomAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.cs" />
+    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.Designer.cs">
+      <DependentUpon>TFSVersionControlAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\VSOApi_UnitTests.cs" />
+    <Compile Include="APIs\VSOApi_UnitTests.Designer.cs">
+      <DependentUpon>VSOApi_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\VSOClientManager_UnitTests.cs" />
+    <Compile Include="APIs\VSOClientManager_UnitTests.Designer.cs">
+      <DependentUpon>VSOClientManager_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\VsoRestAPIBase_UnitTests.cs" />
+    <Compile Include="APIs\VsoRestAPIBase_UnitTests.Designer.cs">
+      <DependentUpon>VsoRestAPIBase_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
-    <Compile Include="Objects\JsonAvailableRestCalls_UnitTests.cs" />
-    <Compile Include="Objects\JsonWorkItem_UnitTests.cs" />
-    <Compile Include="Objects\WorkItem_Advanced_UnitTests.cs" />
+    <Compile Include="APIs\WorkItemAPI_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\JsonSource\CannedMessages.cs" />
+    <Compile Include="LowLevelAPIs\JsonAgileAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonAgileAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonAgileAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonBuildAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonBuildAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonBuildAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonChatAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonChatAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonChatAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonCodeLensAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonCodeLensAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonCodeLensAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonCoreAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonCoreAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonCoreAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonTfvcAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonTfvcAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonTfvcAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LowLevelAPIs\JsonWitAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonWitAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonWitAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OriginalManualTfs\APIs\TeamRoomAPI_UnitTests.cs" />
+    <Compile Include="OriginalManualTfs\APIs\WorkItemAPI_UnitTests.cs" />
+    <Compile Include="Helpers\CredentialsProvider_UnitTests.cs" />
+    <Compile Include="Objects\Base\NoReStAPIEquivilantException_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\Base\NoReStAPIEquivilantException_UnitTests.Designer.cs">
+      <DependentUpon>NoReStAPIEquivilantException_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\JsonAvailableRestCall_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\JsonAvailableRestCall_UnitTests.Designer.cs">
+      <DependentUpon>JsonAvailableRestCall_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\JsonProject_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\JsonProject_UnitTests.Designer.cs">
+      <DependentUpon>JsonProject_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\JsonTeamRoom_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\JsonTeamRoom_UnitTests.Designer.cs">
+      <DependentUpon>JsonTeamRoom_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\APIFactoryNotSetException_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\APIFactoryNotSetException_UnitTests.Designer.cs">
+      <DependentUpon>APIFactoryNotSetException_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\BaseLinkType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\BaseLinkType_UnitTests.Designer.cs">
+      <DependentUpon>BaseLinkType_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\CoreField_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\CoreField_UnitTests.Designer.cs">
+      <DependentUpon>CoreField_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonFieldCollection_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonFieldCollection_UnitTests.Designer.cs">
+      <DependentUpon>JsonFieldCollection_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonFieldDefinitionCollection_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonFieldDefinitionCollection_UnitTests.Designer.cs">
+      <DependentUpon>JsonFieldDefinitionCollection_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonLinkCollection_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonLinkCollection_UnitTests.Designer.cs">
+      <DependentUpon>JsonLinkCollection_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonWorkItemLinkCollection_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\Collections\JsonWorkItemLinkCollection_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemLinkCollection_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonArea_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonArea_UnitTests.Designer.cs">
+      <DependentUpon>JsonArea_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonAttachedFileLink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonAttachedFileLink_UnitTests.Designer.cs">
+      <DependentUpon>JsonAttachedFileLink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonBaseLinkType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonBaseLinkType_UnitTests.Designer.cs">
+      <DependentUpon>JsonBaseLinkType_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonExternalLink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonExternalLink_UnitTests.Designer.cs">
+      <DependentUpon>JsonExternalLink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonFieldDefinition_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonFieldDefinition_UnitTests.Designer.cs">
+      <DependentUpon>JsonFieldDefinition_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonField_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonField_UnitTests.Designer.cs">
+      <DependentUpon>JsonField_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonHyperlink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonHyperlink_UnitTests.Designer.cs">
+      <DependentUpon>JsonHyperlink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonIteration_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonIteration_UnitTests.Designer.cs">
+      <DependentUpon>JsonIteration_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonLinkTypeEnd_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonLinkTypeEnd_UnitTests.Designer.cs">
+      <DependentUpon>JsonLinkTypeEnd_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonLink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonLink_UnitTests.Designer.cs">
+      <DependentUpon>JsonLink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonQueryDefinition_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonQueryDefinition_UnitTests.Designer.cs">
+      <DependentUpon>JsonQueryDefinition_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonQueryFolder_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonQueryFolder_UnitTests.Designer.cs">
+      <DependentUpon>JsonQueryFolder_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRegisteredLinkType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRegisteredLinkType_UnitTests.Designer.cs">
+      <DependentUpon>JsonRegisteredLinkType_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRelatedLink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRelatedLink_UnitTests.Designer.cs">
+      <DependentUpon>JsonRelatedLink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRelationType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonRelationType_UnitTests.Designer.cs">
+      <DependentUpon>JsonRelationType_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemInitializer_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemInitializer_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemInitializer_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemLink_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemLink_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemLink_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemRevision_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemRevision_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemRevision_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemTypeCategory_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemTypeCategory_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemTypeCategory_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItemType_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItemType_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItem_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\JsonWorkItem_UnitTests.Designer.cs">
+      <DependentUpon>JsonWorkItem_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\PsFieldDefinitionTypeEnum_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\PsFieldDefinitionTypeEnum_UnitTests.Designer.cs">
+      <DependentUpon>PsFieldDefinitionTypeEnum_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\WIT\RegisteredLinkType_UnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Objects\WIT\RegisteredLinkType_UnitTests.Designer.cs">
+      <DependentUpon>RegisteredLinkType_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OriginalManualTfs\WorkItemTracking\Client\ProjectImpl_UnitTests.cs" />
     <Compile Include="OriginalManualTfs\WorkItemTracking\Client\UnitTestBase.cs" />
@@ -1158,6 +1433,14 @@
       <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
       <Name>DynCon.OSI.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.JasonBackedObjects.AdvancedLogging\DynCon.OSI.JasonBackedObjects.AdvancedLogging.csproj">
+      <Project>{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}</Project>
+      <Name>DynCon.OSI.JasonBackedObjects.AdvancedLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj">
+      <Project>{798BF552-9A39-48B8-9A4B-AF057927062F}</Project>
+      <Name>DynCon.OSI.VSO.RestClient.ObjectModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
       <Name>DynCon.OSI.JasonBackedObjects</Name>
@@ -1176,11 +1459,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Objects\WIT\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

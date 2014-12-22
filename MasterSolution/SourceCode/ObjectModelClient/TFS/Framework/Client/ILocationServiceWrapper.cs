@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
     internal class ILocationServiceWrapper : ILocationServiceWrapper<IILocationService, ILocationService>, IILocationService
     {
         protected ILocationServiceWrapper(ILocationService instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IILocationService, ILocationService>(src => src==null ? null : ((ILocationServiceWrapper) src).r_Instance, src => new ILocationServiceWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IILocationService, ILocationService>(src => src == null ? null : ((ILocationServiceWrapper) src).r_Instance, src => new ILocationServiceWrapper(src)); }
     }
 
 
     internal abstract class ILocationServiceWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IILocationService where TInterface : class where TWrapper : class
     {
-
         IAccessMapping IILocationService.ClientAccessMapping
         {
             get
@@ -112,7 +111,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         void IILocationService.RemoveAccessMapping(String moniker) { r_Instance.RemoveAccessMapping(moniker); }
 
 
-
         void IILocationService.RemoveServiceDefinition(String serviceType, Guid serviceIdentifier) { r_Instance.RemoveServiceDefinition(serviceType, serviceIdentifier); }
 
         void IILocationService.RemoveServiceDefinition(IServiceDefinition serviceDefinition) { r_Instance.RemoveServiceDefinition(ServiceDefinitionWrapper.GetInstance(serviceDefinition)); }
@@ -123,10 +121,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         void IILocationService.SaveServiceDefinitions(IEnumerable<IServiceDefinition> serviceDefinitions) { r_Instance.SaveServiceDefinitions(ServiceDefinitionWrapper.GetInstance(serviceDefinitions)); }
 
 
-
         void IILocationService.SetDefaultAccessMapping(IAccessMapping accessMapping) { r_Instance.SetDefaultAccessMapping(AccessMappingWrapper.GetInstance(accessMapping)); }
         protected ILocationServiceWrapper(ILocationService instance) { r_Instance = instance; }
         protected readonly ILocationService r_Instance;
-
     }
 }

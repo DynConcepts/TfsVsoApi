@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class NodeWrapper : NodeWrapper<INode, Node>, INode, IEnumerable
     {
         protected NodeWrapper(Node instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<INode, Node>(src => src==null ? null : ((NodeWrapper) src).r_Instance, src => new NodeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<INode, Node>(src => src == null ? null : ((NodeWrapper) src).r_Instance, src => new NodeWrapper(src)); }
     }
 
 
     internal class NodeWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, INode where TInterface : class where TWrapper : class
     {
-
         INodeCollection INode.ChildNodes
         {
             get

@@ -1,86 +1,73 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
+using System.Xml;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
+using Microsoft.TeamFoundation.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class ITfsXmlSerializableWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.Client.ITfsXmlSerializable);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class ITfsXmlSerializableWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void ReadXml_UnitTest()
+        {
+            XmlReader reader = default(XmlReader);
+            String xmlElement = default(String);
+            ExecuteMethod(
+                () => { return (IITfsXmlSerializable) GetInstance(); },
+                instance =>
+                {
+                    reader = default(XmlReader); //No Type
+                    xmlElement = default(String); //No Constructor
+                    ReadXml_PreCondition(ref instance, ref reader, ref xmlElement);
+                },
+                instance => { instance.ReadXml(reader, xmlElement); },
+                instance => { ReadXml_PostValidate(instance, reader, xmlElement); });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.Client.ITfsXmlSerializable real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.Client.ITfsXmlSerializableWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void WriteXml_UnitTest()
+        {
+            XmlWriter writer = default(XmlWriter);
+            String xmlElement = default(String);
+            ExecuteMethod(
+                () => { return (IITfsXmlSerializable) GetInstance(); },
+                instance =>
+                {
+                    writer = default(XmlWriter); //No Type
+                    xmlElement = default(String); //No Constructor
+                    WriteXml_PreCondition(ref instance, ref writer, ref xmlElement);
+                },
+                instance => { instance.WriteXml(writer, xmlElement); },
+                instance => { WriteXml_PostValidate(instance, writer, xmlElement); });
+        }
 
-    partial void WriteXml_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable instance, ref System.Xml.XmlWriter writer, ref System.String xmlElement);
-    partial void WriteXml_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable instance, System.Xml.XmlWriter writer, System.String xmlElement);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void WriteXml_UnitTest()
-  {
-    System.Xml.XmlWriter writer = default(System.Xml.XmlWriter);
-    System.String xmlElement = default(System.String);
-      ExecuteMethod(
-        () =>
+        internal static IEnumerable<ITfsXmlSerializableWrapper> GetIEnumerableInstance() { return new List<ITfsXmlSerializableWrapper> {GetInstance()}; }
+
+        internal static ITfsXmlSerializableWrapper GetInstance()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable) GetInstance();
-        },
-        (instance) =>
-        {
-          writer = default(System.Xml.XmlWriter); //No Type
-          xmlElement = default(System.String); //No Constructor
-          WriteXml_PreCondition(ref instance, ref writer, ref xmlElement);
-        },
-       (instance) =>
-       {
-             instance.WriteXml(writer,xmlElement);
-       },
-      (instance) =>
-      {
-              WriteXml_PostValidate(instance, writer, xmlElement);
-      });
-  }
-    partial void ReadXml_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable instance, ref System.Xml.XmlReader reader, ref System.String xmlElement);
-    partial void ReadXml_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable instance, System.Xml.XmlReader reader, System.String xmlElement);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void ReadXml_UnitTest()
-  {
-    System.Xml.XmlReader reader = default(System.Xml.XmlReader);
-    System.String xmlElement = default(System.String);
-      ExecuteMethod(
-        () =>
-        {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.Client.IITfsXmlSerializable) GetInstance();
-        },
-        (instance) =>
-        {
-          reader = default(System.Xml.XmlReader); //No Type
-          xmlElement = default(System.String); //No Constructor
-          ReadXml_PreCondition(ref instance, ref reader, ref xmlElement);
-        },
-       (instance) =>
-       {
-             instance.ReadXml(reader,xmlElement);
-       },
-      (instance) =>
-      {
-              ReadXml_PostValidate(instance, reader, xmlElement);
-      });
-  }
-  }
+            ITfsXmlSerializable real = default(ITfsXmlSerializable);
+            RealInstanceFactory(ref real);
+            var instance = (ITfsXmlSerializableWrapper) ITfsXmlSerializableWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref ITfsXmlSerializableWrapper instance, [CallerMemberName] string callerName = "");
+        partial void ReadXml_PostValidate(IITfsXmlSerializable instance, XmlReader reader, String xmlElement);
+        partial void ReadXml_PreCondition(ref IITfsXmlSerializable instance, ref XmlReader reader, ref String xmlElement);
+
+        static partial void RealInstanceFactory(ref ITfsXmlSerializable real, [CallerMemberName] string callerName = "");
+        partial void WriteXml_PostValidate(IITfsXmlSerializable instance, XmlWriter writer, String xmlElement);
+        partial void WriteXml_PreCondition(ref IITfsXmlSerializable instance, ref XmlWriter writer, ref String xmlElement);
+    }
 }

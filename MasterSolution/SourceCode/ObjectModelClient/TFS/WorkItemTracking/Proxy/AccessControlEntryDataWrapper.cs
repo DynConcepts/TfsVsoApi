@@ -4,12 +4,12 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class AccessControlEntryDataWrapper : AccessControlEntryDataWrapper<IAccessControlEntryData, AccessControlEntryData>, IAccessControlEntryData
     {
         protected AccessControlEntryDataWrapper(AccessControlEntryData instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlEntryData, AccessControlEntryData>(src => src==null ? null : ((AccessControlEntryDataWrapper) src).r_Instance, src => new AccessControlEntryDataWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IAccessControlEntryData, AccessControlEntryData>(src => src == null ? null : ((AccessControlEntryDataWrapper) src).r_Instance, src => new AccessControlEntryDataWrapper(src)); }
     }
 
 

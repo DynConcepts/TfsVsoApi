@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects;
-using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT

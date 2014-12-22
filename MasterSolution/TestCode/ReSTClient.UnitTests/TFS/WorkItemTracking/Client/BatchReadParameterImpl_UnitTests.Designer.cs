@@ -1,110 +1,94 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class BatchReadParameterImpl_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.BatchReadParameterImpl instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.BatchReadParameterImpl GetInstance([CallerMemberName]string callerName = "") 
-  { 
-    var instance = new DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.BatchReadParameterImpl();
-    InstanceFactory(ref instance, callerName);
-    return  instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class BatchReadParameterImpl_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Id_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IBatchReadParameter) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.Id; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  internal static IEnumerable<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.BatchReadParameterImpl> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client.BatchReadParameterImpl>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void ProjectHint_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IBatchReadParameter) GetInstance();
+                    return instance;
+                },
+                // Create Set Value
+                instance =>
+                {
+                    int setValue = default(Int32);
+                    ProjectHint_SetCondition(ref instance, ref setValue);
+                    return setValue;
+                },
+                // Invoke Setter
+                (instance, setValue) => { instance.ProjectHint = setValue; },
+                // Validate Set Operation
+                (instance, setValue) => { },
+                // Invoke Getter
+                instance => { return instance.ProjectHint; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-   partial void Id_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter instance, ref System.Int32 setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Id_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Revision_UnitTest()
         {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (IBatchReadParameter) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.Revision; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
+
+        internal static IEnumerable<BatchReadParameterImpl> GetIEnumerableInstance() { return new List<BatchReadParameterImpl> {GetInstance()}; }
+
+        internal static BatchReadParameterImpl GetInstance([CallerMemberName] string callerName = "")
         {
-            return instance.Id;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void Revision_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter instance, ref System.Int32 setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Revision_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.Revision;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-   partial void ProjectHint_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter instance, ref System.Int32 setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void ProjectHint_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IBatchReadParameter) GetInstance();
-           return instance;
-        },
-        // Create Set Value
-        (instance) =>
-        {
- var setValue = default(System.Int32);
-          ProjectHint_SetCondition(ref instance, ref setValue);
-          return setValue;
-        },
-        // Invoke Setter
-       (instance, setValue) =>
-       {
-           instance.ProjectHint = setValue;
-       },
-       // Validate Set Operation
-       (instance, setValue) =>
-       {
-       },
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.ProjectHint;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            var instance = new BatchReadParameterImpl();
+            InstanceFactory(ref instance, callerName);
+            return instance;
+        }
+
+        partial void Id_SetCondition(ref IBatchReadParameter instance, ref Int32 setValue);
+        static partial void InstanceFactory(ref BatchReadParameterImpl instance, [CallerMemberName] string callerName = "");
+
+        partial void ProjectHint_SetCondition(ref IBatchReadParameter instance, ref Int32 setValue);
+        partial void Revision_SetCondition(ref IBatchReadParameter instance, ref Int32 setValue);
+    }
 }

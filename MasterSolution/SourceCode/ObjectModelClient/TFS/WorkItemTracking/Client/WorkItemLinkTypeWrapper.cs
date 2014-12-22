@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemLinkTypeWrapper : WorkItemLinkTypeWrapper<IWorkItemLinkType, WorkItemLinkType>, IWorkItemLinkType
     {
         protected WorkItemLinkTypeWrapper(WorkItemLinkType instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkType, WorkItemLinkType>(src => src==null ? null : ((WorkItemLinkTypeWrapper) src).r_Instance, src => new WorkItemLinkTypeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemLinkType, WorkItemLinkType>(src => src == null ? null : ((WorkItemLinkTypeWrapper) src).r_Instance, src => new WorkItemLinkTypeWrapper(src)); }
     }
 
 
     internal class WorkItemLinkTypeWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemLinkType where TInterface : class where TWrapper : class
     {
-
         void IWorkItemLinkType.Activate() { r_Instance.Activate(); }
 
         Boolean IWorkItemLinkType.CanDelete

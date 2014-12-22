@@ -1,7 +1,7 @@
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  public partial class StoredQueriesEventHandlerWrapper_UnitTests
-  {
-  }
+    /// <summary>Generated Test Template</summary>
+    public class StoredQueriesEventHandlerWrapper_UnitTests
+    {
+    }
 }

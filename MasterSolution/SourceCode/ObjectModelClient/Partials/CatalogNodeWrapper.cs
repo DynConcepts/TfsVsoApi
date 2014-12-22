@@ -15,10 +15,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Framework.Client
         public static IEnumerable<KeyValuePair<string, IList<ICatalogNode>>> GetWrapper(IEnumerable<KeyValuePair<string, IList<CatalogNode>>> src)
         {
             var retVal = new List<KeyValuePair<string, IList<ICatalogNode>>>();
-            foreach (var pair in src)
+            foreach (KeyValuePair<string, IList<CatalogNode>> pair in src)
             {
                 IList<ICatalogNode> list = new List<ICatalogNode>();
-                foreach (var entry in pair.Value)
+                foreach (CatalogNode entry in pair.Value)
                     list.Add(GetWrapper(entry));
                 var item = new KeyValuePair<string, IList<ICatalogNode>>(pair.Key, list);
                 retVal.Add(item);

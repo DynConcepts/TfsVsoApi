@@ -7,7 +7,7 @@ using DynCon.OSI.Core.ObjectMapping;
 using DynCon.OSI.VSO.ObjectModelClient.TFS.Client;
 using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client.Metadata;
 using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Common.DataStore;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.Metadata;
@@ -24,13 +24,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemStoreWrapper : WorkItemStoreWrapper<IWorkItemStore, WorkItemStore>, IWorkItemStore, IITfsTeamProjectCollectionObject
     {
         protected WorkItemStoreWrapper(WorkItemStore instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemStore, WorkItemStore>(src => src==null ? null : ((WorkItemStoreWrapper) src).r_Instance, src => new WorkItemStoreWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemStore, WorkItemStore>(src => src == null ? null : ((WorkItemStoreWrapper) src).r_Instance, src => new WorkItemStoreWrapper(src)); }
     }
 
 
     internal class WorkItemStoreWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemStore where TInterface : class where TWrapper : class
     {
-
         IBatchSaveError[] IWorkItemStore.BatchSave(IWorkItem[] workitems)
         {
             BatchSaveError[] nativeCallResult = r_Instance.BatchSave(WorkItemWrapper.GetInstance(workitems));
@@ -72,7 +71,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             get
             {
                 WorkItemServer nativeCallResult = r_Instance.ClientService;
-                var wrappedCallResult = WorkItemServerWrapper.GetWrapper(nativeCallResult);
+                IWorkItemServer wrappedCallResult = WorkItemServerWrapper.GetWrapper(nativeCallResult);
                 return wrappedCallResult;
             }
         }
@@ -327,8 +326,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
-
         void IWorkItemStore.RefreshCache(Boolean forceRefresh) { r_Instance.RefreshCache(forceRefresh); }
 
         void IWorkItemStore.RefreshCache() { r_Instance.RefreshCache(); }
@@ -342,8 +339,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
                 return wrappedCallResult;
             }
         }
-
-
 
 
         void IWorkItemStore.ResetCachedData() { r_Instance.ResetCachedData(); }
@@ -367,7 +362,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
                 return wrappedCallResult;
             }
         }
-
 
 
         StringComparer IWorkItemStore.ServerStringComparer

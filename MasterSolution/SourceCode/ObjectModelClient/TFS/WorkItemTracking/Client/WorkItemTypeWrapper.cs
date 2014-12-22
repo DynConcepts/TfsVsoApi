@@ -9,13 +9,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class WorkItemTypeWrapper : WorkItemTypeWrapper<IWorkItemType, WorkItemType>, IWorkItemType
     {
         protected WorkItemTypeWrapper(WorkItemType instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemType, WorkItemType>(src => src==null ? null : ((WorkItemTypeWrapper) src).r_Instance, src => new WorkItemTypeWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemType, WorkItemType>(src => src == null ? null : ((WorkItemTypeWrapper) src).r_Instance, src => new WorkItemTypeWrapper(src)); }
     }
 
 
     internal class WorkItemTypeWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemType where TInterface : class where TWrapper : class
     {
-
         String IWorkItemType.Description
         {
             get
@@ -56,7 +55,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             string nativeCallResult = r_Instance.GetNextState(currentState, action);
             return nativeCallResult;
         }
-
 
 
         String IWorkItemType.Name

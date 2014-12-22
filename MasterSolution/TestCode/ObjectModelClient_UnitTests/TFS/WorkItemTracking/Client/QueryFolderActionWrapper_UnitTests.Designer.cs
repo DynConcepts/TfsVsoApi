@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Client
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class QueryFolderActionWrapper_UnitTests : DynTestClassBase 
-  {
-  internal static DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryFolderAction GetInstance() { return default(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.IQueryFolderAction); }
-
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class QueryFolderActionWrapper_UnitTests : DynTestClassBase
+    {
+        internal static IQueryFolderAction GetInstance() { return default(IQueryFolderAction); }
+    }
 }

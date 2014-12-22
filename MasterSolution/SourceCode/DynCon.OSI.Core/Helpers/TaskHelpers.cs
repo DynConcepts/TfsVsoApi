@@ -143,7 +143,6 @@ namespace DynCon.OSI.Core.Helpers
             return timer;
         }
 
-        private static object sr_SyncRoot = new object();
         /// <summary>
         ///     Removes the timer.
         /// </summary>
@@ -160,6 +159,8 @@ namespace DynCon.OSI.Core.Helpers
         ///     The SR_ active timers
         /// </summary>
         private static readonly List<Timer> sr_ActiveTimers = new List<Timer>();
+
+        private static readonly object sr_SyncRoot = new object();
 
         /// <summary>
         ///     Class DeadmanHandle.

@@ -14,18 +14,17 @@ using Microsoft.TeamFoundation.Client.Channels;
 using Microsoft.TeamFoundation.WorkItemTracking.Common;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class WorkItemServerWrapper : WorkItemServerWrapper<IWorkItemServer, WorkItemServer>, IWorkItemServer, IITfsTeamProjectCollectionObject, IITfsRequestListener
     {
         protected WorkItemServerWrapper(WorkItemServer instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemServer, WorkItemServer>(src => src==null ? null : ((WorkItemServerWrapper) src).r_Instance, src => new WorkItemServerWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IWorkItemServer, WorkItemServer>(src => src == null ? null : ((WorkItemServerWrapper) src).r_Instance, src => new WorkItemServerWrapper(src)); }
     }
 
 
     internal class WorkItemServerWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IWorkItemServer where TInterface : class where TWrapper : class
     {
-
         void IITfsRequestListener.AfterReceiveReply(Int64 requestId, String methodName, HttpWebResponse response) { ((ITfsRequestListener) r_Instance).AfterReceiveReply(requestId, methodName, response); }
 
         void IITfsRequestListener.BeforeSendRequest(Int64 requestId, String methodName, HttpWebRequest request) { ((ITfsRequestListener) r_Instance).BeforeSendRequest(requestId, methodName, request); }
@@ -128,8 +127,6 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
         }
 
 
-
-
         void IWorkItemServer.GetStoredQueries(String requestId, Boolean useMaster, Int64 rowVersion, Int32 projectId, out IRowSetCollection queriesDataSet)
         {
             RowSetCollection tmp_queriesDataSet;
@@ -176,8 +173,6 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
             IIResultCollection<IArtifactWorkItemIds> wrappedCallResult = ArtifactWorkItemIdsWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
-
 
 
         IEnumerable<IWorkItemLinkChange> IWorkItemServer.GetWorkItemLinkChanges(String requestId, Int64 rowVersion)
@@ -274,8 +269,6 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
             dbStamp = tmp_dbStamp;
             metadata = IMetadataRowSetsWrapper.GetWrapper(tmp_metadata);
         }
-
-
 
 
         void IWorkItemServer.RequestCancel(String requestId, String cancelRequestId) { r_Instance.RequestCancel(requestId, cancelRequestId); }

@@ -12,13 +12,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
     internal class QueryWrapper : QueryWrapper<IQuery, Query>, IQuery
     {
         protected QueryWrapper(Query instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IQuery, Query>(src => src==null ? null : ((QueryWrapper) src).r_Instance, src => new QueryWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IQuery, Query>(src => src == null ? null : ((QueryWrapper) src).r_Instance, src => new QueryWrapper(src)); }
     }
 
 
     internal class QueryWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IQuery where TInterface : class where TWrapper : class
     {
-
         DateTime IQuery.AsOf
         {
             get
@@ -122,8 +121,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
-
-
         IWorkItemCollection IQuery.EndQuery(IICancelableAsyncResult car)
         {
             WorkItemCollection nativeCallResult = r_Instance.EndQuery(ICancelableAsyncResultWrapper.GetInstance(car));
@@ -144,7 +141,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             IWorkItemLinkTypeEnd[] wrappedCallResult = WorkItemLinkTypeEndWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }
-
 
 
         Boolean IQuery.IsBatchReadMode

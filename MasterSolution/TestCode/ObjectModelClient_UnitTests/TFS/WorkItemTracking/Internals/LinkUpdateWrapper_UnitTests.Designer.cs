@@ -1,79 +1,69 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DynCon.OSI.Core.Helpers;
+using System.Xml;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
+using Microsoft.TeamFoundation.WorkItemTracking.Internals;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.TFS.WorkItemTracking.Internals
 {
-/// <summary>Generated Test Template</summary>
-  [TestClass]
-  public partial class LinkUpdateWrapper_UnitTests : DynTestClassBase 
-  {
-  static partial void InstanceFactory(ref DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper instance, [CallerMemberName]string callerName = "");
-  internal static DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper GetInstance() 
-  { 
-    var real = default(Microsoft.TeamFoundation.WorkItemTracking.Internals.LinkUpdate);
-    RealInstanceFactory(ref real);
-    var instance = (DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper) DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper.GetWrapper(real);
-    InstanceFactory(ref instance);
-    if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
-    return instance;
-  }
+    /// <summary>Generated Test Template</summary>
+    [TestClass]
+    public partial class LinkUpdateWrapper_UnitTests : DynTestClassBase
+    {
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Mask_UnitTest()
+        {
+            ExecuteProperty(
+                () =>
+                    // Create Test Instance
+                {
+                    var instance = (ILinkUpdate) GetInstance();
+                    return instance;
+                },
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                instance => { return instance.Mask; },
+                // Validate Get Operation
+                (instance, setValue, getValue) => { });
+        }
 
-  static partial void RealInstanceFactory(ref Microsoft.TeamFoundation.WorkItemTracking.Internals.LinkUpdate real, [CallerMemberName]string callerName = "");
-  internal static IEnumerable<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper> GetIEnumerableInstance() { 
-return new List<DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Internals.LinkUpdateWrapper>{ GetInstance() }; }
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void Submit_UnitTest()
+        {
+            XmlElement element = default(XmlElement);
+            ExecuteMethod(
+                () => { return (ILinkUpdate) GetInstance(); },
+                instance =>
+                {
+                    element = default(XmlElement); //No Type
+                    Submit_PreCondition(ref instance, ref element);
+                },
+                instance => { instance.Submit(element); },
+                instance => { Submit_PostValidate(instance, element); });
+        }
 
-    partial void Submit_PreCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkUpdate instance, ref System.Xml.XmlElement element);
-    partial void Submit_PostValidate(DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkUpdate instance, System.Xml.XmlElement element);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Submit_UnitTest()
-  {
-    System.Xml.XmlElement element = default(System.Xml.XmlElement);
-      ExecuteMethod(
-        () =>
+        internal static IEnumerable<LinkUpdateWrapper> GetIEnumerableInstance() { return new List<LinkUpdateWrapper> {GetInstance()}; }
+
+        internal static LinkUpdateWrapper GetInstance()
         {
-           return (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkUpdate) GetInstance();
-        },
-        (instance) =>
-        {
-          element = default(System.Xml.XmlElement); //No Type
-          Submit_PreCondition(ref instance, ref element);
-        },
-       (instance) =>
-       {
-             instance.Submit(element);
-       },
-      (instance) =>
-      {
-              Submit_PostValidate(instance, element);
-      });
-  }
-   partial void Mask_SetCondition(ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkUpdate instance, ref DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkProperties setValue);
-/// <summary>Generated Test Template</summary>
-  [TestMethod]
-  public void Mask_UnitTest()
-  {
-      ExecuteProperty(
-        () =>
-        // Create Test Instance
-        {
-           var instance = (DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals.ILinkUpdate) GetInstance();
-           return instance;
-        },
-        null, null,null,  // No Set Accessor
-        // Invoke Getter
-        (instance) =>
-        {
-            return instance.Mask;
-        },
-        // Validate Get Operation
-       (instance, setValue, getValue) =>
-       {
-       });
-  }
-  }
+            LinkUpdate real = default(LinkUpdate);
+            RealInstanceFactory(ref real);
+            var instance = (LinkUpdateWrapper) LinkUpdateWrapper.GetWrapper(real);
+            InstanceFactory(ref instance);
+            if (instance == null) Assert.Inconclusive("Could not Create Test Instance");
+            return instance;
+        }
+
+        static partial void InstanceFactory(ref LinkUpdateWrapper instance, [CallerMemberName] string callerName = "");
+        partial void Mask_SetCondition(ref ILinkUpdate instance, ref ILinkProperties setValue);
+
+        static partial void RealInstanceFactory(ref LinkUpdate real, [CallerMemberName] string callerName = "");
+        partial void Submit_PostValidate(ILinkUpdate instance, XmlElement element);
+        partial void Submit_PreCondition(ref ILinkUpdate instance, ref XmlElement element);
+    }
 }

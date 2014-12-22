@@ -1,6 +1,6 @@
 ﻿using System.Collections;
+using DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
-using  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -118,7 +118,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
             instance.GetActionsHistory();
         }
 
-   
+
         /// <summary>
         ///     Gets the field value external_ unit test.
         /// </summary>
@@ -254,7 +254,7 @@ namespace DynCon.OSI.VSO.ObjectModelClient_UnitTests.WrapperImplementations
             instance.SyncWorkItem(workItemSyncData);
         }
 
-  
+
         /// <summary>
         ///     Validate_s the unit test.
         /// </summary>

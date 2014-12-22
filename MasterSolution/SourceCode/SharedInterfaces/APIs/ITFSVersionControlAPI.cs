@@ -1,7 +1,7 @@
 ﻿namespace DynCon.OSI.VSO.SharedInterfaces.APIs
 {
     /// <summary>
-    /// Interface ITFSVersionControlAPI
+    ///     Interface ITFSVersionControlAPI
     /// </summary>
     public interface ITFSVersionControlAPI
     {

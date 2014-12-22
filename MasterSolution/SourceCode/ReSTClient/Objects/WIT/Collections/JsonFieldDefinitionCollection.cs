@@ -28,6 +28,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         public JsonFieldDefinitionCollection(JToken json)
             : base(json) { }
 
+        protected override bool HasKey { get { return true; }}
+
         /// <summary>
         /// Extracts the key.
         /// </summary>

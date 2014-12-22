@@ -7,18 +7,17 @@ using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 using IRowSet = DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy.IRowSet;
 
-namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
+namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
 {
     internal class RowSetCollectionWrapper : RowSetCollectionWrapper<IRowSetCollection, RowSetCollection>, IRowSetCollection, IXmlSerializable
     {
         protected RowSetCollectionWrapper(RowSetCollection instance) : base(instance) { }
-        internal static void SetMapper() { Mapper = new ObjectMapper<IRowSetCollection, RowSetCollection>(src => src==null ? null : ((RowSetCollectionWrapper) src).r_Instance, src => new RowSetCollectionWrapper(src)); }
+        internal static void SetMapper() { Mapper = new ObjectMapper<IRowSetCollection, RowSetCollection>(src => src == null ? null : ((RowSetCollectionWrapper) src).r_Instance, src => new RowSetCollectionWrapper(src)); }
     }
 
 
     internal class RowSetCollectionWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IRowSetCollection where TInterface : class where TWrapper : class
     {
-
         Int32 IRowSetCollection.Count
         {
             get
@@ -33,7 +32,6 @@ namespace  DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Proxy
             XmlSchema nativeCallResult = ((IXmlSerializable) r_Instance).GetSchema();
             return nativeCallResult;
         }
-
 
 
         IRowSet IRowSetCollection.this[Int32 index]
