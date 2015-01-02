@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.ReSTClient.RestCalls;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
@@ -10,7 +11,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
     {
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetBacklogs()
         {
-            var exchange = StructuredHttpExchange.Get(agileRestCalls.backlogs);
+            var exchange = StructuredHttpExchange.Get(AgileRestCalls.Backlogs);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }

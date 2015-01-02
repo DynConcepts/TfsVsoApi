@@ -58,7 +58,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         private JsonArea m_Parent;
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonArea"/> class.
+        /// Initializes a new instance of the <see cref="JsonArea" /> class.
         /// </summary>
         /// <param name="content">The content.</param>
         protected JsonArea(JToken content) : base(content) {  }

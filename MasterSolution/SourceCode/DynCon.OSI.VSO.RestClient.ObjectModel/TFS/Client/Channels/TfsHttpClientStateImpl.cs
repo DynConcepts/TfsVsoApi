@@ -1,4 +1,4 @@
-namespace DynCon.OSI.VSO.ReSTClient.TFS.Client.Channels
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Client.Channels
 {
     internal static class TfsHttpClientStateImpl
     {

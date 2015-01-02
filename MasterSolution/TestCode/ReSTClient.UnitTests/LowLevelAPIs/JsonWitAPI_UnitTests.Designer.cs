@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
-using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs

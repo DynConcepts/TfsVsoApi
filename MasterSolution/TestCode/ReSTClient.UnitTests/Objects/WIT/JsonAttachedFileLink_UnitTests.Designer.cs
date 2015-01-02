@@ -173,7 +173,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         internal static JsonAttachedFileLink GetInstance([CallerMemberName] string callerName = "")
         {
-            JsonAttachedFileLink instance = default(JsonAttachedFileLink);
+            JToken json = new JObject();
+            JsonSource(ref json);
+            JsonAttachedFileLink instance = JsonAttachedFileLink.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }
@@ -181,6 +183,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void GetType_PostValidate(JsonAttachedFileLink instance);
         partial void GetType_PreCondition(ref JsonAttachedFileLink instance);
         static partial void InstanceFactory(ref JsonAttachedFileLink instance, [CallerMemberName] string callerName = "");
+        static partial void JsonSource(ref JToken json);
         partial void JsonValue_SetCondition(ref JsonAttachedFileLink instance, ref JToken setValue);
 
         partial void Rel_SetCondition(ref JsonAttachedFileLink instance, ref String setValue);

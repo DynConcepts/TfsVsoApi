@@ -1,6 +1,6 @@
 ﻿using DynCon.OSI.VSO.SharedInterfaces.APIs;
 
-namespace DynCon.OSI.VSO.ReSTClient.APIs
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
 {
     /// <summary>
     /// Class TFSVersionControlAPI.

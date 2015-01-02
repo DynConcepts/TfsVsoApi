@@ -1,3 +1,4 @@
+using DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
@@ -7,6 +8,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
     {
         static partial void JsonSource(ref JToken json)
         {
+            JsonRelationType_UnitTests.PopulateLinkTypes();
             var retVal = new JObject();
             retVal.Add("rel", "ExternalLinkImpl.Rel");
             json = retVal;

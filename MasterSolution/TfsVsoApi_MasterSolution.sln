@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.JasonBackedObjec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.RestClient.ObjectModel", "SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj", "{798BF552-9A39-48B8-9A4B-AF057927062F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest_UnitTests", "DynCon.OSI.DynTest_UnitTests\DynCon.OSI.DynTest_UnitTests.csproj", "{80281429-6C07-42EE-9DAE-D7C49347DFD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{798BF552-9A39-48B8-9A4B-AF057927062F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{798BF552-9A39-48B8-9A4B-AF057927062F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{798BF552-9A39-48B8-9A4B-AF057927062F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

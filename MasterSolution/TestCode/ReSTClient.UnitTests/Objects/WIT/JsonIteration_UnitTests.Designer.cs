@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
-using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 
@@ -217,7 +216,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         partial void CaptureJson_PostValidate(JsonIteration instance, JToken token);
         partial void CaptureJson_PreCondition(ref JsonIteration instance, ref JToken token);
-        partial void Children_SetCondition(ref JsonIteration instance, ref IList<IIteration> setValue);
+        partial void Children_SetCondition(ref JsonIteration instance, ref IList<JsonIteration> setValue);
 
         partial void Equals_PostValidate(JsonIteration instance, Object obj);
         partial void Equals_PreCondition(ref JsonIteration instance, ref Object obj);
@@ -245,7 +244,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void Links_SetCondition(ref JsonIteration instance, ref String setValue);
 
         partial void Name_SetCondition(ref JsonIteration instance, ref String setValue);
-        partial void Parent_SetCondition(ref JsonIteration instance, ref IIteration setValue);
+        partial void Parent_SetCondition(ref JsonIteration instance, ref JsonIteration setValue);
         partial void ToJSonString_PostValidate(JsonIteration instance);
         partial void ToJSonString_PreCondition(ref JsonIteration instance);
         partial void ToString_PostValidate(JsonIteration instance);

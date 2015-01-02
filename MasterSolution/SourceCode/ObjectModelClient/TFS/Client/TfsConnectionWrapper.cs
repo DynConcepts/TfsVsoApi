@@ -19,17 +19,39 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
 {
+    /// <summary>
+    /// Class TfsConnectionWrapper.
+    /// </summary>
     internal class TfsConnectionWrapper : TfsConnectionWrapper<ITfsConnection, TfsConnection>, ITfsConnection, IServiceProvider, IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TfsConnectionWrapper"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected TfsConnectionWrapper(TfsConnection instance) : base(instance) { }
+        /// <summary>
+        /// Sets the mapper.
+        /// </summary>
         internal static void SetMapper() { Mapper = new ObjectMapper<ITfsConnection, TfsConnection>(src => src == null ? null : ((TfsConnectionWrapper) src).r_Instance, src => new TfsConnectionWrapper(src)); }
     }
 
 
+    /// <summary>
+    /// Class TfsConnectionWrapper.
+    /// </summary>
+    /// <typeparam name="TWrapper">The type of the t wrapper.</typeparam>
+    /// <typeparam name="TInterface">The type of the t interface.</typeparam>
     internal abstract class TfsConnectionWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, ITfsConnection where TInterface : class where TWrapper : class
     {
+        /// <summary>
+        /// Authenticates this instance.
+        /// </summary>
         void ITfsConnection.Authenticate() { r_Instance.Authenticate(); }
 
+        /// <summary>
+        /// Gets the authorized identity.
+        /// </summary>
+        /// <value>The authorized identity.</value>
         ITeamFoundationIdentity ITfsConnection.AuthorizedIdentity
         {
             get
@@ -40,6 +62,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the cached instance identifier.
+        /// </summary>
+        /// <value>The cached instance identifier.</value>
         Guid ITfsConnection.CachedInstanceId
         {
             get
@@ -49,6 +75,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the catalog node.
+        /// </summary>
+        /// <value>The catalog node.</value>
         ICatalogNode ITfsConnection.CatalogNode
         {
             get
@@ -59,6 +89,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the channel factory.
+        /// </summary>
+        /// <value>The channel factory.</value>
         IITfsRequestChannelFactory ITfsConnection.ChannelFactory
         {
             get
@@ -69,6 +103,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the client cache directory for instance.
+        /// </summary>
+        /// <value>The client cache directory for instance.</value>
         String ITfsConnection.ClientCacheDirectoryForInstance
         {
             get
@@ -78,6 +116,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the client cache directory for user.
+        /// </summary>
+        /// <value>The client cache directory for user.</value>
         String ITfsConnection.ClientCacheDirectoryForUser
         {
             get
@@ -87,6 +129,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the client credentials.
+        /// </summary>
+        /// <value>The client credentials.</value>
         ITfsClientCredentials ITfsConnection.ClientCredentials
         {
             get
@@ -103,6 +149,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the client volatile cache directory for instance.
+        /// </summary>
+        /// <value>The client volatile cache directory for instance.</value>
         String ITfsConnection.ClientVolatileCacheDirectoryForInstance
         {
             get
@@ -113,8 +163,16 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         }
 
 
+        /// <summary>
+        /// Connects the specified connect options.
+        /// </summary>
+        /// <param name="connectOptions">The connect options.</param>
         void ITfsConnection.Connect(IConnectOptions connectOptions) { r_Instance.Connect(ConnectOptionsWrapper.GetInstance(connectOptions)); }
 
+        /// <summary>
+        /// Gets the connectivity failure on last web service call.
+        /// </summary>
+        /// <value>The connectivity failure on last web service call.</value>
         Boolean ITfsConnection.ConnectivityFailureOnLastWebServiceCall
         {
             get
@@ -124,6 +182,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the credentials.
+        /// </summary>
+        /// <value>The credentials.</value>
         ICredentials ITfsConnection.Credentials
         {
             get
@@ -134,6 +196,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             set { r_Instance.Credentials = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
         CultureInfo ITfsConnection.Culture
         {
             get
@@ -145,9 +211,19 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         }
 
 
+        /// <summary>
+        /// Disconnects this instance.
+        /// </summary>
         void ITfsConnection.Disconnect() { r_Instance.Disconnect(); }
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         void IDisposable.Dispose() { r_Instance.Dispose(); }
 
+        /// <summary>
+        /// Gets the disposed.
+        /// </summary>
+        /// <value>The disposed.</value>
         Boolean ITfsConnection.Disposed
         {
             get
@@ -157,11 +233,21 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Ensures the authenticated.
+        /// </summary>
         void ITfsConnection.EnsureAuthenticated() { r_Instance.EnsureAuthenticated(); }
 
 
+        /// <summary>
+        /// Flushes the services.
+        /// </summary>
         void ITfsConnection.FlushServices() { r_Instance.FlushServices(); }
 
+        /// <summary>
+        /// Gets the authenticated identity.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
         void ITfsConnection.GetAuthenticatedIdentity(out ITeamFoundationIdentity identity)
         {
             TeamFoundationIdentity tmp_identity;
@@ -170,17 +256,36 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         }
 
 
+        /// <summary>
+        /// Gets the client.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         T ITfsConnection.GetClient<T>()
         {
             var nativeCallResult = r_Instance.GetClient<T>();
             return nativeCallResult;
         }
 
+        /// <summary>
+        /// Gets the service.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         T ITfsConnection.GetService<T>() { return (T) FindService(typeof (T)); }
 
 
+        /// <summary>
+        /// Gets the service object of the specified type.
+        /// </summary>
+        /// <param name="serviceType">An object that specifies the type of service object to get.</param>
+        /// <returns>A service object of type <paramref name="serviceType" />.-or- null if there is no service object of type <paramref name="serviceType" />.</returns>
         Object IServiceProvider.GetService(Type serviceType) { return FindService(serviceType); }
 
+        /// <summary>
+        /// Gets the has authenticated.
+        /// </summary>
+        /// <value>The has authenticated.</value>
         Boolean ITfsConnection.HasAuthenticated
         {
             get
@@ -190,6 +295,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the identity to impersonate.
+        /// </summary>
+        /// <value>The identity to impersonate.</value>
         IIdentityDescriptor ITfsConnection.IdentityToImpersonate
         {
             get
@@ -201,6 +310,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
         }
 
 
+        /// <summary>
+        /// Gets the instance identifier.
+        /// </summary>
+        /// <value>The instance identifier.</value>
         Guid ITfsConnection.InstanceId
         {
             get
@@ -210,6 +323,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is hosted server.
+        /// </summary>
+        /// <value>The is hosted server.</value>
         Boolean ITfsConnection.IsHostedServer
         {
             get
@@ -219,6 +336,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
         String ITfsConnection.Name
         {
             get
@@ -228,6 +349,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the proxy server.
+        /// </summary>
+        /// <value>The proxy server.</value>
         ITFProxyServer ITfsConnection.ProxyServer
         {
             get
@@ -238,6 +363,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the server capabilities.
+        /// </summary>
+        /// <value>The server capabilities.</value>
         IServerCapabilities ITfsConnection.ServerCapabilities
         {
             get
@@ -248,6 +377,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the server data provider.
+        /// </summary>
+        /// <value>The server data provider.</value>
         IIServerDataProvider ITfsConnection.ServerDataProvider
         {
             get
@@ -258,6 +391,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets the session identifier.
+        /// </summary>
+        /// <value>The session identifier.</value>
         Guid ITfsConnection.SessionId
         {
             get
@@ -267,6 +404,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the time zone.
+        /// </summary>
+        /// <value>The time zone.</value>
         TimeZone ITfsConnection.TimeZone
         {
             get
@@ -277,6 +418,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             set { r_Instance.TimeZone = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the UI culture.
+        /// </summary>
+        /// <value>The UI culture.</value>
         CultureInfo ITfsConnection.UICulture
         {
             get
@@ -287,6 +432,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             set { r_Instance.UICulture = value; }
         }
 
+        /// <summary>
+        /// Gets the URI.
+        /// </summary>
+        /// <value>The URI.</value>
         Uri ITfsConnection.Uri
         {
             get
@@ -296,8 +445,17 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TfsConnectionWrapper{TWrapper, TInterface}"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected TfsConnectionWrapper(TfsConnection instance) { r_Instance = instance; }
 
+        /// <summary>
+        /// Finds the service.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         private object FindService(Type type)
         {
             Func<TfsConnection, Object> creator;
@@ -306,11 +464,17 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.Client
             return null;
         }
 
+        /// <summary>
+        /// The SR_ service map
+        /// </summary>
         private static readonly Dictionary<Type, Func<TfsConnection, Object>> sr_ServiceMap = new Dictionary<Type, Func<TfsConnection, object>>
         {
             {typeof (IWorkItemStore), tfs => WorkItemStoreWrapper.GetWrapper(tfs.GetService<WorkItemStore>())}
         };
 
+        /// <summary>
+        /// The r_ instance
+        /// </summary>
         protected readonly TfsConnection r_Instance;
     }
 }

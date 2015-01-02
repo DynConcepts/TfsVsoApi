@@ -14,5 +14,11 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <param name="json">The json.</param>
         public JsonAttachedFileLink(JToken json)
             : base(json) { }
+        /// <summary>
+        /// Froms the token.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>JsonAttachedFileLink.</returns>
+        public new static JsonAttachedFileLink FromToken(JToken token) { return (JsonAttachedFileLink)JsonLink.FromToken(token); }
     }
 }

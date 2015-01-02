@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.TFS.Client.Channels;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Client.Channels;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client.Channels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

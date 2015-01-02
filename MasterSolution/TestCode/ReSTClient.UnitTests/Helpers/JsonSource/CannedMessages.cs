@@ -1,7 +1,32 @@
-﻿namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers.JsonSource
+﻿using System.IO;
+using System.Reflection;
+using Newtonsoft.Json.Linq;
+
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers.JsonSource
 {
     internal class CannedMessages
     {
+        public static JObject SampleWorkItemsWithRelations { get { return GetJsonResponseBody("wit.workItems.GET__wit_workitems_ids-_ids___expand-all.json"); } }
+
+        private static JObject GetJson(string resourceName)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string name = "DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers.JsonSource.wit." + resourceName;
+            using (Stream stream = assembly.GetManifestResourceStream(name))
+            {
+                var reader = new StreamReader(stream);
+                string content = reader.ReadToEnd();
+                JObject jObject = JObject.Parse(content);
+                return jObject;
+            }
+        }
+
+        private static JObject GetJsonResponseBody(string resourceName)
+        {
+            JObject root = GetJson(resourceName);
+            return root["responseBody"].Value<JObject>();
+        }
+
         public const string AvailableRestCalls =
             @"{
 ""count"": 184,
@@ -2152,5 +2177,400 @@
   },
   ""url"": ""https://davidvcorbin.visualstudio.com/DefaultCollection/_apis/wit/workItems/324/revisions/1""
 }";
+
+
+        public const string SampleQueries = @"
+
+{
+  ""count"": 2,
+  ""value"": [
+    {
+      ""id"": ""3c65fbc1-d427-48ce-9091-633dde9e27e2"",
+      ""name"": ""My Queries"",
+      ""path"": ""My Queries"",
+      ""isFolder"": true,
+      ""hasChildren"": true,
+      ""children"": [
+        {
+          ""id"": ""0ea88f4d-5585-41a1-be58-5f1c6b9c2853"",
+          ""name"": ""All Work"",
+          ""path"": ""My Queries/All Work"",
+          ""isPublic"": false,
+          ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/0ea88f4d-5585-41a1-be58-5f1c6b9c2853""
+        }
+      ],
+      ""isPublic"": false,
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3c65fbc1-d427-48ce-9091-633dde9e27e2""
+    },
+    {
+      ""id"": ""eb5c1e25-9b3e-4416-a833-e500122882c7"",
+      ""name"": ""Shared Queries"",
+      ""path"": ""Shared Queries"",
+      ""isFolder"": true,
+      ""hasChildren"": true,
+      ""children"": [
+        {
+          ""id"": ""7662ea76-d42d-43db-abb0-19e6f1d0be9b"",
+          ""name"": ""Feedback"",
+          ""path"": ""Shared Queries/Feedback"",
+          ""isPublic"": true,
+          ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7662ea76-d42d-43db-abb0-19e6f1d0be9b""
+        },
+        {
+          ""id"": ""139a3503-6ac6-4fa0-9a91-f76f180e7b65"",
+          ""name"": ""Current Sprint"",
+          ""path"": ""Shared Queries/Current Sprint"",
+          ""isFolder"": true,
+          ""hasChildren"": true,
+          ""isPublic"": true,
+          ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/139a3503-6ac6-4fa0-9a91-f76f180e7b65""
+        }
+      ],
+      ""isPublic"": true,
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/eb5c1e25-9b3e-4416-a833-e500122882c7""
+    }
+  ]
+}
+";
+
+
+        public const string SampleQueryDefinition = @"
+{
+  ""id"": ""df60fdf6-3b5f-4928-aae8-29ee63df6e31"",
+  ""name"": ""All Bugs"",
+  ""path"": ""Shared Queries/Website team/All Bugs"",
+  ""isPublic"": true,
+  ""_links"": {
+    ""self"": {
+      ""href"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/df60fdf6-3b5f-4928-aae8-29ee63df6e31""
+    },
+    ""html"": {
+      ""href"": ""https://fabrikam.visualstudio.com/web/qr.aspx?pguid=6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c&amp;qid=df60fdf6-3b5f-4928-aae8-29ee63df6e31""
+    },
+    ""parent"": {
+      ""href"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/addcb8b3-12d0-4f2c-b6ca-52bb584ae286""
+    },
+    ""wiql"": {
+      ""href"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/wiql/df60fdf6-3b5f-4928-aae8-29ee63df6e31""
+    }
+  },
+  ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/df60fdf6-3b5f-4928-aae8-29ee63df6e31""
+}
+";
+        public const string SampleWorkItemType = @"
+
+{
+  ""name"": ""Bug"",
+  ""description"": ""Describes a divergence between required and actual behavior, and tracks the work done to correct the defect and verify the correction."",
+  ""xmlForm"": ""<FORM><Layout HideReadOnlyEmptyFields=\""true\"" HideControlBorders=\""true\""><Group Margin=\""(4,0,0,0)\""><Column PercentWidth=\""100\""><Control FieldName=\""System.Title\"" Type=\""FieldControl\"" ControlFontSize=\""large\"" EmptyText=\""&amp;lt;Enter title here&amp;gt;\"" /></Column></Group><Group Margin=\""(10,0,0,0)\""><Column PercentWidth=\""100\""><Control FieldName=\""System.IterationPath\"" Type=\""WorkItemClassificationControl\"" Label=\""Ite&amp;amp;ration\"" LabelPosition=\""Left\"" /></Column></Group><Group Margin=\""(10,0,0,0)\""><Column PercentWidth=\""50\""><Group Label=\""Status\""><Column PercentWidth=\""100\""><Control FieldName=\""System.AssignedTo\"" Type=\""FieldControl\"" Label=\""Assi&amp;amp;gned To\"" LabelPosition=\""Left\"" /><Control FieldName=\""System.State\"" Type=\""FieldControl\"" Label=\""Stat&amp;amp;e\"" LabelPosition=\""Left\"" /><Control FieldName=\""System.Reason\"" Type=\""FieldControl\"" Label=\""Reason\"" LabelPosition=\""Left\"" /></Column></Group></Column><Column PercentWidth=\""50\""><Group Label=\""Details\""><Column PercentWidth=\""100\""><Control FieldName=\""Microsoft.VSTS.Scheduling.Effort\"" Type=\""FieldControl\"" Label=\""Effort\"" LabelPosition=\""Left\"" /><Control FieldName=\""Microsoft.VSTS.Common.Severity\"" Type=\""FieldControl\"" Label=\""Severity\"" LabelPosition=\""Left\"" /><Control FieldName=\""System.AreaPath\"" Type=\""WorkItemClassificationControl\"" Label=\""&amp;amp;Area\"" LabelPosition=\""Left\"" /></Column></Group></Column></Group><Group><Column PercentWidth=\""50\""><TabGroup><Tab Label=\""Steps to Reproduce\""><Control FieldName=\""Microsoft.VSTS.TCM.ReproSteps\"" Type=\""HtmlFieldControl\"" Label=\""\"" LabelPosition=\""Top\"" MinimumSize=\""(100,200)\"" Dock=\""Fill\"" /></Tab><Tab Label=\""System\""><Group Label=\""Build\""><Column PercentWidth=\""100\""><Control FieldName=\""Microsoft.VSTS.Build.FoundIn\"" Type=\""FieldControl\"" Label=\""Found in Build\"" LabelPosition=\""Left\"" /><Control FieldName=\""Microsoft.VSTS.Build.IntegrationBuild\"" Type=\""FieldControl\"" Label=\""Integrated in Build\"" LabelPosition=\""Left\"" /></Column></Group><Control FieldName=\""Microsoft.VSTS.TCM.SystemInfo\"" Type=\""HtmlFieldControl\"" Label=\""System Info\"" LabelPosition=\""Top\"" Dock=\""Fill\"" /></Tab><Tab Label=\""Test Cases\""><Control Type=\""LinksControl\"" Name=\""TestedBy\"" Label=\""\"" LabelPosition=\""Top\""><LinksControlOptions><LinkColumns><LinkColumn RefName=\""System.Id\"" /><LinkColumn RefName=\""System.WorkItemType\"" /><LinkColumn RefName=\""System.Title\"" /><LinkColumn RefName=\""System.AssignedTo\"" /><LinkColumn RefName=\""System.State\"" /></LinkColumns><WorkItemLinkFilters FilterType=\""include\""><Filter LinkType=\""Microsoft.VSTS.Common.TestedBy\"" FilterOn=\""forwardname\"" /></WorkItemLinkFilters><ExternalLinkFilters FilterType=\""excludeAll\"" /><WorkItemTypeFilters FilterType=\""include\""><Filter WorkItemType=\""Test Case\"" /></WorkItemTypeFilters></LinksControlOptions></Control></Tab><Tab Label=\""Tasks\""><Control Type=\""LinksControl\"" Label=\""\"" LabelPosition=\""Top\"" Name=\""TaskLinks\""><LinksControlOptions><LinkColumns><LinkColumn RefName=\""System.Id\"" /><LinkColumn RefName=\""System.WorkItemType\"" /><LinkColumn RefName=\""System.Title\"" /><LinkColumn RefName=\""System.AssignedTo\"" /><LinkColumn RefName=\""System.State\"" /></LinkColumns><WorkItemLinkFilters FilterType=\""include\""><Filter LinkType=\""System.LinkTypes.Hierarchy\"" FilterOn=\""forwardname\"" /></WorkItemLinkFilters><ExternalLinkFilters FilterType=\""excludeAll\"" /><WorkItemTypeFilters FilterType=\""include\""><Filter WorkItemType=\""Task\"" /></WorkItemTypeFilters></LinksControlOptions></Control></Tab></TabGroup></Column><Column PercentWidth=\""50\""><TabGroup Margin=\""(5,0,0,0)\""><Tab Label=\""Acceptance Criteria\""><Control FieldName=\""Microsoft.VSTS.Common.AcceptanceCriteria\"" Type=\""HtmlFieldControl\"" Label=\""\"" LabelPosition=\""Top\"" Dock=\""Fill\"" MinimumSize=\""(100,200)\"" /></Tab><Tab Label=\""History\""><Control FieldName=\""System.History\"" Type=\""WorkItemLogControl\"" Label=\""\"" LabelPosition=\""Top\"" Dock=\""Fill\"" /></Tab><Tab Label=\""Links\""><Control Type=\""LinksControl\"" Name=\""GeneralLinks\"" LabelPosition=\""Top\""><LinksControlOptions><LinkColumns><LinkColumn RefName=\""System.Id\"" /><LinkColumn RefName=\""System.WorkItemType\"" /><LinkColumn RefName=\""System.Title\"" /><LinkColumn RefName=\""System.AssignedTo\"" /><LinkColumn RefName=\""System.State\"" /><LinkColumn LinkAttribute=\""System.Links.Comment\"" /></LinkColumns><WorkItemLinkFilters FilterType=\""includeAll\"" /><ExternalLinkFilters FilterType=\""includeAll\"" /><WorkItemTypeFilters FilterType=\""includeAll\"" /></LinksControlOptions></Control></Tab><Tab Label=\""Attachments\""><Control Type=\""AttachmentsControl\"" LabelPosition=\""Top\"" /></Tab></TabGroup></Column></Group></Layout></FORM>"",
+  ""fieldInstances"": [
+    {
+      ""referenceName"": ""System.IterationPath"",
+      ""name"": ""Iteration Path"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.IterationPath""
+    },
+    {
+      ""referenceName"": ""System.IterationId"",
+      ""name"": ""Iteration ID"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.IterationId""
+    },
+    {
+      ""referenceName"": ""System.ExternalLinkCount"",
+      ""name"": ""External Link Count"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.ExternalLinkCount""
+    },
+    {
+      ""referenceName"": ""System.TeamProject"",
+      ""name"": ""Team Project"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.TeamProject""
+    },
+    {
+      ""referenceName"": ""System.HyperLinkCount"",
+      ""name"": ""Hyperlink Count"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.HyperLinkCount""
+    },
+    {
+      ""referenceName"": ""System.AttachedFileCount"",
+      ""name"": ""Attached File Count"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AttachedFileCount""
+    },
+    {
+      ""referenceName"": ""System.NodeName"",
+      ""name"": ""Node Name"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.NodeName""
+    },
+    {
+      ""referenceName"": ""System.AreaPath"",
+      ""name"": ""Area Path"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AreaPath""
+    },
+    {
+      ""referenceName"": ""System.RevisedDate"",
+      ""name"": ""Revised Date"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.RevisedDate""
+    },
+    {
+      ""referenceName"": ""System.ChangedDate"",
+      ""name"": ""Changed Date"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.ChangedDate""
+    },
+    {
+      ""referenceName"": ""System.Id"",
+      ""name"": ""ID"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Id""
+    },
+    {
+      ""referenceName"": ""System.AreaId"",
+      ""name"": ""Area ID"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AreaId""
+    },
+    {
+      ""referenceName"": ""System.AuthorizedAs"",
+      ""name"": ""Authorized As"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AuthorizedAs""
+    },
+    {
+      ""referenceName"": ""System.Title"",
+      ""name"": ""Title"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Title""
+    },
+    {
+      ""referenceName"": ""System.State"",
+      ""name"": ""State"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.State""
+    },
+    {
+      ""referenceName"": ""System.AuthorizedDate"",
+      ""name"": ""Authorized Date"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AuthorizedDate""
+    },
+    {
+      ""referenceName"": ""System.Watermark"",
+      ""name"": ""Watermark"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Watermark""
+    },
+    {
+      ""referenceName"": ""System.Rev"",
+      ""name"": ""Rev"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Rev""
+    },
+    {
+      ""referenceName"": ""System.ChangedBy"",
+      ""name"": ""Changed By"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.ChangedBy""
+    },
+    {
+      ""referenceName"": ""System.Reason"",
+      ""name"": ""Reason"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Reason""
+    },
+    {
+      ""referenceName"": ""System.AssignedTo"",
+      ""name"": ""Assigned To"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AssignedTo""
+    },
+    {
+      ""referenceName"": ""System.WorkItemType"",
+      ""name"": ""Work Item Type"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.WorkItemType""
+    },
+    {
+      ""referenceName"": ""System.CreatedDate"",
+      ""name"": ""Created Date"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.CreatedDate""
+    },
+    {
+      ""referenceName"": ""System.CreatedBy"",
+      ""name"": ""Created By"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.CreatedBy""
+    },
+    {
+      ""referenceName"": ""System.Description"",
+      ""name"": ""Description"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Description""
+    },
+    {
+      ""referenceName"": ""System.History"",
+      ""name"": ""History"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.History""
+    },
+    {
+      ""referenceName"": ""System.BISLinks"",
+      ""name"": ""BIS Links"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.BISLinks""
+    },
+    {
+      ""referenceName"": ""System.RelatedLinkCount"",
+      ""name"": ""Related Link Count"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.RelatedLinkCount""
+    },
+    {
+      ""referenceName"": ""System.Tags"",
+      ""name"": ""Tags"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Tags""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.TCM.SystemInfo"",
+      ""name"": ""System Info"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.TCM.SystemInfo""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Common.ClosedDate"",
+      ""name"": ""Closed Date"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Common.ClosedDate""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.TCM.ReproSteps"",
+      ""name"": ""Repro Steps"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.TCM.ReproSteps""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Common.BacklogPriority"",
+      ""name"": ""Backlog Priority"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Common.BacklogPriority""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Scheduling.Effort"",
+      ""name"": ""Effort"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Scheduling.Effort""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Common.AcceptanceCriteria"",
+      ""name"": ""Acceptance Criteria"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Common.AcceptanceCriteria""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Common.Severity"",
+      ""name"": ""Severity"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Common.Severity""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Build.IntegrationBuild"",
+      ""name"": ""Integration Build"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Build.IntegrationBuild""
+    },
+    {
+      ""referenceName"": ""Microsoft.VSTS.Build.FoundIn"",
+      ""name"": ""Found In"",
+      ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Build.FoundIn""
+    }
+  ],
+  ""transitions"": {
+    ""Approved"": [
+      {
+        ""to"": ""Approved""
+      },
+      {
+        ""to"": ""Committed""
+      },
+      {
+        ""to"": ""New""
+      },
+      {
+        ""to"": ""Removed""
+      },
+      {
+        ""to"": ""Done""
+      }
+    ],
+    ""New"": [
+      {
+        ""to"": ""New""
+      },
+      {
+        ""to"": ""Committed""
+      },
+      {
+        ""to"": ""Approved""
+      },
+      {
+        ""to"": ""Removed""
+      },
+      {
+        ""to"": ""Done""
+      }
+    ],
+    ""Done"": [
+      {
+        ""to"": ""Done""
+      },
+      {
+        ""to"": ""Committed""
+      },
+      {
+        ""to"": ""Approved""
+      },
+      {
+        ""to"": ""New""
+      }
+    ],
+    ""Committed"": [
+      {
+        ""to"": ""Committed""
+      },
+      {
+        ""to"": ""Approved""
+      },
+      {
+        ""to"": ""New""
+      },
+      {
+        ""to"": ""Done""
+      }
+    ],
+    ""Removed"": [
+      {
+        ""to"": ""Removed""
+      },
+      {
+        ""to"": ""New""
+      }
+    ],
+    """": [
+      {
+        ""to"": ""New""
+      }
+    ]
+  },
+  ""_links"": {
+    ""self"": {
+      ""href"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/workItemTypes/Bug""
+    }
+  },
+  ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/workItemTypes/Bug""
+}";
+        public const string SampleWorkItemsFieldDefinition = @"
+
+{
+  ""name"": ""Iteration Path"",
+  ""referenceName"": ""System.IterationPath"",
+  ""type"": ""treePath"",
+  ""readOnly"": true,
+  ""supportedOperations"": [
+    {
+      ""referenceName"": ""SupportedOperations.Under"",
+      ""name"": ""Under""
+    },
+    {
+      ""referenceName"": ""SupportedOperations.NotUnder"",
+      ""name"": ""Not Under""
+    },
+    {
+      ""referenceName"": ""SupportedOperations.Equals"",
+      ""name"": ""=""
+    },
+    {
+      ""referenceName"": ""SupportedOperations.NotEquals"",
+      ""name"": ""<>""
+    },
+    {
+      ""referenceName"": ""SupportedOperations.In"",
+      ""name"": ""In""
+    }
+  ],
+  ""url"": ""https://fabrikam.visualstudio.com/DefaultCollection/_apis/wit/fields/System.IterationPath""
+}
+
+";
     }
 }

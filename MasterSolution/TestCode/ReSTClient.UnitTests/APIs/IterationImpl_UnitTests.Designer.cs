@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel;
 using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;

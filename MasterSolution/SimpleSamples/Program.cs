@@ -5,16 +5,23 @@ using System.Linq;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ObjectModelClient.Factories;
 using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
-using DynCon.OSI.VSO.ReSTClient.TFS.Client;
 
 namespace SimpleSamples
 {
+    /// <summary>
+    /// Class Program.
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Classics the object model.
+        /// </summary>
+        /// <param name="tfs">The TFS.</param>
         private static void ClassicObjectModel(TfsTeamProjectCollection tfs)
         {
             tfs.EnsureAuthenticated();
@@ -46,6 +53,10 @@ namespace SimpleSamples
             }
         }
 
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         private static void Main(string[] args)
         {
             var t = new Test();
@@ -77,6 +88,11 @@ namespace SimpleSamples
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Measures the specified action.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <returns>TimeSpan.</returns>
         private static TimeSpan Measure(Action action)
         {
             var sw = new Stopwatch();
@@ -86,6 +102,11 @@ namespace SimpleSamples
             return elapsed;
         }
 
+        /// <summary>
+        /// Safes the write comment.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string SafeWriteComment(ILink link)
         {
             try
@@ -98,6 +119,11 @@ namespace SimpleSamples
             }
         }
 
+        /// <summary>
+        /// Safes the write comment.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string SafeWriteComment(Link link)
         {
             try
@@ -110,6 +136,11 @@ namespace SimpleSamples
             }
         }
 
+        /// <summary>
+        /// Safes the write identifier.
+        /// </summary>
+        /// <param name="workItemLinkTypeEnd">The work item link type end.</param>
+        /// <returns>String.</returns>
         private static String SafeWriteId(IWorkItemLinkTypeEnd workItemLinkTypeEnd)
         {
             try
@@ -122,6 +153,10 @@ namespace SimpleSamples
             }
         }
 
+        /// <summary>
+        /// TFSs the vso API.
+        /// </summary>
+        /// <param name="tfs">The TFS.</param>
         private static void TfsVSOApi(ITfsTeamProjectCollection tfs)
         {
             tfs.EnsureAuthenticated();
@@ -175,19 +210,54 @@ namespace SimpleSamples
             }
         }
 
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(IRelatedLink link)
         {
             return String.Format(" (RelatedLink) Id:{0} BaseeType:{1} LinkTypeEnd.Name:{2} LinkTypeEnd.ImmutableName:{3}  LinkTypeEnd.Id:{4}, LinmkTypeEnd.IsForward:{5}",
                 link.RelatedWorkItemId, link.BaseType, link.LinkTypeEnd.Name, link.LinkTypeEnd.ImmutableName, SafeWriteId(link.LinkTypeEnd), link.LinkTypeEnd.IsForwardLink);
         }
 
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(IWorkItemLink link) { return String.Format("(WorkItemLink) Target Id:{0} Type:{1} ", link.TargetId, link.LinkTypeEnd.Name); }
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(IHyperlink link) { return String.Format("(Hyperlink) Location:{0}", link.Location); }
 
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(RelatedLink link) { return String.Format(" (RelatedLink) Id:{0} Type:{1}", link.RelatedWorkItemId, link.LinkTypeEnd.Name); }
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(WorkItemLink link) { return String.Format("(WorkItemLink) Target Id:{0} Type:{1} ", link.TargetId, link.LinkTypeEnd.Name); }
+        /// <summary>
+        /// Writes the specified link.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string Write(Hyperlink link) { return String.Format("(Hyperlink) Location:{0}", link.Location); }
 
+        /// <summary>
+        /// Writes the specific.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string WriteSpecific(ILink link)
         {
             var asRelated = link as IRelatedLink;
@@ -199,6 +269,11 @@ namespace SimpleSamples
             return link.GetType().Name;
         }
 
+        /// <summary>
+        /// Writes the specific.
+        /// </summary>
+        /// <param name="link">The link.</param>
+        /// <returns>System.String.</returns>
         private static string WriteSpecific(Link link)
         {
             var asRelated = link as RelatedLink;

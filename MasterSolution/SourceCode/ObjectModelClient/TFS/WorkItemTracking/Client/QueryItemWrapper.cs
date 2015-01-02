@@ -11,15 +11,34 @@ using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
 namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
 {
+    /// <summary>
+    /// Class QueryItemWrapper.
+    /// </summary>
     internal class QueryItemWrapper : QueryItemWrapper<IQueryItem, QueryItem>, IQueryItem
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryItemWrapper"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected QueryItemWrapper(QueryItem instance) : base(instance) { }
+        /// <summary>
+        /// Sets the mapper.
+        /// </summary>
         internal static void SetMapper() { Mapper = new ObjectMapper<IQueryItem, QueryItem>(src => src == null ? null : ((QueryItemWrapper) src).r_Instance, src => new QueryItemWrapper(src)); }
     }
 
 
+    /// <summary>
+    /// Class QueryItemWrapper.
+    /// </summary>
+    /// <typeparam name="TWrapper">The type of the t wrapper.</typeparam>
+    /// <typeparam name="TInterface">The type of the t interface.</typeparam>
     internal abstract class QueryItemWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IQueryItem where TInterface : class where TWrapper : class
     {
+        /// <summary>
+        /// Gets the access control list.
+        /// </summary>
+        /// <value>The access control list.</value>
         IAccessControlList IQueryItem.AccessControlList
         {
             get
@@ -30,6 +49,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the access control list metadata.
+        /// </summary>
+        /// <value>The access control list metadata.</value>
         IAccessControlListMetadata IQueryItem.AccessControlListMetadata
         {
             get
@@ -40,6 +63,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the can manage permissions.
+        /// </summary>
+        /// <value>The can manage permissions.</value>
         Boolean IQueryItem.CanManagePermissions
         {
             get
@@ -50,8 +77,15 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             set { r_Instance.CanManagePermissions = value; }
         }
 
+        /// <summary>
+        /// Deletes this instance.
+        /// </summary>
         void IQueryItem.Delete() { r_Instance.Delete(); }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         Guid IQueryItem.Id
         {
             get
@@ -61,6 +95,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is deleted.
+        /// </summary>
+        /// <value>The is deleted.</value>
         Boolean IQueryItem.IsDeleted
         {
             get
@@ -70,6 +108,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is dirty.
+        /// </summary>
+        /// <value>The is dirty.</value>
         Boolean IQueryItem.IsDirty
         {
             get
@@ -79,6 +121,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is new.
+        /// </summary>
+        /// <value>The is new.</value>
         Boolean IQueryItem.IsNew
         {
             get
@@ -88,6 +134,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is personal.
+        /// </summary>
+        /// <value>The is personal.</value>
         Boolean IQueryItem.IsPersonal
         {
             get
@@ -97,6 +147,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         String IQueryItem.Name
         {
             get
@@ -107,6 +161,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             set { r_Instance.Name = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the owner descriptor.
+        /// </summary>
+        /// <value>The owner descriptor.</value>
         IIdentityDescriptor IQueryItem.OwnerDescriptor
         {
             get
@@ -123,6 +181,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the parent.
+        /// </summary>
+        /// <value>The parent.</value>
         IQueryFolder IQueryItem.Parent
         {
             get
@@ -133,6 +195,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <value>The path.</value>
         String IQueryItem.Path
         {
             get
@@ -142,6 +208,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the project.
+        /// </summary>
+        /// <value>The project.</value>
         IProject IQueryItem.Project
         {
             get
@@ -152,9 +222,22 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Resets the dirty.
+        /// </summary>
         void IQueryItem.ResetDirty() { r_Instance.ResetDirty(); }
+        /// <summary>
+        /// Resets the internal.
+        /// </summary>
         void IQueryItem.ResetInternal() { r_Instance.ResetInternal(); }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryItemWrapper{TWrapper, TInterface}"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected QueryItemWrapper(QueryItem instance) { r_Instance = instance; }
+        /// <summary>
+        /// The r_ instance
+        /// </summary>
         protected readonly QueryItem r_Instance;
     }
 }

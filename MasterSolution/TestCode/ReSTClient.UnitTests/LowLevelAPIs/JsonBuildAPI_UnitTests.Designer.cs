@@ -4,9 +4,11 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
+using DynCon.OSI.VSO.ReSTClient.Objects.Build;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     [TestClass]
@@ -57,7 +59,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetDefinitions_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonBuildDefinition>> _retVal = default(Task<IReadOnlyList<JsonBuildDefinition>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetRevisions_PreCondition(ref instance); },
@@ -179,7 +181,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         partial void GetArtifacts_PreCondition(ref JsonBuildAPI instance);
         partial void GetCommits_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetCommits_PreCondition(ref JsonBuildAPI instance);
-        partial void GetDefinitions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetDefinitions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonBuildDefinition>> _retVal);
         partial void GetDefinitions_PreCondition(ref JsonBuildAPI instance);
 
         partial void GetHashCode_PostValidate(JsonBuildAPI instance, Int32 _retVal);

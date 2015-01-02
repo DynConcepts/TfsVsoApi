@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.Helpers;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class ProjectCollectionImpl.
     /// </summary>
     internal class ProjectCollectionImpl : ReadOnlyListImpl<IProject>, IProjectCollection
     {
-
         /// <summary>
         ///     Determines whether [contains] [the specified project name].
         /// </summary>
@@ -55,7 +54,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <param name="projectName">Name of the project.</param>
         /// <returns>IProject.</returns>
         /// <exception cref="ToBeImplementedException"></exception>
-        IProject IProjectCollection.this[String projectName] {
+        IProject IProjectCollection.this[String projectName]
+        {
             get
             {
                 foreach (IProject item in Items)
@@ -64,7 +64,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
                         return item;
                 }
                 throw new KeyNotFoundException();
-            } }
+            }
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProjectCollectionImpl" /> class.

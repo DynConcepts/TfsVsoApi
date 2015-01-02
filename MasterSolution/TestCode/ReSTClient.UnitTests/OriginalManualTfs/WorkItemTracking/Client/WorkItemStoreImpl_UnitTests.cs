@@ -4,7 +4,7 @@ using System.Xml;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.DataStore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

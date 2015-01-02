@@ -1,0 +1,32 @@
+{
+   "method": "DELETE",
+   "resourceFormat": "/wit/queries/{folderId}",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/Fabrikam-Fiber-Git/_apis/wit/queries/addcb8b3-12d0-4f2c-b6ca-52bb584ae286?api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Content-Length": 4
+   },
+   "requestBody": null,
+   "statusCode": 204,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "ff77edfc-0a6c-4196-aea9-783f613949dc",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=530d5d2a-08d3-0006-6c62-0f53d308d001; path=/; secure",
+         "Tfs-SessionActive=2014-11-26T22:38:54; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "514366d0-08d3-0000-891f-4c51d308d001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Wed, 26 Nov 2014 22:38:54 GMT"
+   }
+}

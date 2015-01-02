@@ -4,9 +4,10 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     [TestClass]

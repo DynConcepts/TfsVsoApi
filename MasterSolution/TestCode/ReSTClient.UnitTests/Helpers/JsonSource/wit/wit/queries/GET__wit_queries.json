@@ -1,0 +1,54 @@
+{
+   "method": "GET",
+   "resourceFormat": "/wit/queries",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/Fabrikam-Fiber-Git/_apis/wit/queries?api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json"
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "dc964fb9-2fad-40b0-a6e1-81a50a0eff3c",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=530d5d2a-08d3-0006-6c62-0f53d308d001; path=/; secure",
+         "Tfs-SessionActive=2014-11-26T22:38:46; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "530d5d2a-08d3-0006-6c62-0f53d308d001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Wed, 26 Nov 2014 22:38:45 GMT",
+      "content-length": "628"
+   },
+   "responseBody": {
+      "count": 2,
+      "value": [
+         {
+            "id": "3c65fbc1-d427-48ce-9091-633dde9e27e2",
+            "name": "My Queries",
+            "path": "My Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "isPublic": false,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3c65fbc1-d427-48ce-9091-633dde9e27e2"
+         },
+         {
+            "id": "eb5c1e25-9b3e-4416-a833-e500122882c7",
+            "name": "Shared Queries",
+            "path": "Shared Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "isPublic": true,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/eb5c1e25-9b3e-4416-a833-e500122882c7"
+         }
+      ]
+   }
+}

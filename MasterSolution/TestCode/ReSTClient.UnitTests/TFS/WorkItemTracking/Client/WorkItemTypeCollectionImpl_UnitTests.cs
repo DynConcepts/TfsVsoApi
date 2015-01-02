@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client

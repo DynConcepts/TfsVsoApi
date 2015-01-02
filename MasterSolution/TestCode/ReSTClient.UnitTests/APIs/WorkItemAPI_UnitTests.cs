@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel.APIs;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
 {

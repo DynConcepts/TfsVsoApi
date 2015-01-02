@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Internals;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Internals;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Internals;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

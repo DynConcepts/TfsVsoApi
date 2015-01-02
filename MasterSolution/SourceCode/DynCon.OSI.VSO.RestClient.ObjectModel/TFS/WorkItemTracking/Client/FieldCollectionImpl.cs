@@ -8,21 +8,18 @@ using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class FieldCollectionImpl.
     /// </summary>
     internal class FieldCollectionImpl : JsonFieldCollection, IFieldCollection
     {
-        internal static FieldCollectionImpl FromToken(JToken token)
-        {
-            var instance = new FieldCollectionImpl(token);
-            return instance;
-        }
+        public bool IsFixedSize { get { throw new NotImplementedException(); } }
 
-        protected FieldCollectionImpl(JToken json) : base(json) {
-        }
+        public bool IsSynchronized { get { throw new NotImplementedException(); } }
+
+        public object SyncRoot { get { throw new NotImplementedException(); } }
 
         /// <summary>
         ///     Determines whether [contains] [the specified field name].
@@ -45,7 +42,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Boolean.</returns>
-        Boolean IFieldCollection.Contains(IField value) { return ItemList.Contains((FieldImpl)value); }
+        Boolean IFieldCollection.Contains(IField value) { return ItemList.Contains((FieldImpl) value); }
 
         /// <summary>
         ///     Drops the cached data.
@@ -66,7 +63,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>Int32.</returns>
-        Int32 IFieldCollection.IndexOf(IField value) { return ItemList.IndexOf((FieldImpl)value); }
+        Int32 IFieldCollection.IndexOf(IField value) { return ItemList.IndexOf((FieldImpl) value); }
 
         /// <summary>
         ///     Gets the <see cref="IField" /> at the specified index.
@@ -99,13 +96,15 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="ToBeImplementedException"></exception>
         IField IFieldCollection.TryGetById(Int32 id) { throw new ToBeImplementedException(); }
 
-         private static readonly JsonBackedDictionary<IField> sr_Fields = new JsonBackedDictionary<IField>(String.Empty, FieldImpl.FromToken);
+        protected FieldCollectionImpl(JToken json) : base(json) { }
+
+        internal static FieldCollectionImpl FromToken(JToken token)
+        {
+            var instance = new FieldCollectionImpl(token);
+            return instance;
+        }
+
         protected override IReadOnlyList<JsonField> ItemSource { get { return sr_Fields.Eval(this).Values.Cast<JsonField>().ToList(); } }
-
-        public bool IsFixedSize { get { throw new NotImplementedException(); } }
-
-        public bool IsSynchronized { get { throw new NotImplementedException(); } }
-
-        public object SyncRoot { get { throw new NotImplementedException(); } }
+        private static readonly JsonBackedDictionary<IField> sr_Fields = new JsonBackedDictionary<IField>(String.Empty, FieldImpl.FromToken);
     }
 }

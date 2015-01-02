@@ -68,7 +68,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 
 
 
- 
+
 
         /// <summary>
         /// Gets the field definitions.

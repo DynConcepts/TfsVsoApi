@@ -1,34 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DynCon.OSI.Core.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace DynCon.OSI.Core.Helpers.UnitTests
+
+namespace DynCon.OSI.Core_UnitTests.Helpers
 {
     /// <summary>
-    /// Class StringFormatter_UnitTests.
+    ///     Class StringFormatter_UnitTests.
     /// </summary>
-    [TestClass()]
-    public class StringFormatter_UnitTests
+    public partial class StringFormatter_UnitTests
     {
-        /// <summary>
-        /// Build_s the unit test.
-        /// </summary>
-        [TestMethod()]
-        public void Build_UnitTest()
+        partial void Build_PreCondition(ref StringFormatter instance, ref String template, ref Dictionary<String, String> values)
         {
-            var template = "{project}/_apis/{area}/workitemtypes/{type}/fields/{field}";
-            var values = new Dictionary<string, string>
+            template = "{project}/_apis/{area}/workitemtypes/{type}/fields/{field}";
+            values = new Dictionary<string, string>
             {
                 {"{project}", "MyProject"},
                 {"{area}", "MyArea"},
                 {"{type}", "MyType"},
                 {"{field}", "MyField"},
             };
-            var actual = StringFormatter.Build(template, values);
-            Console.WriteLine(actual);
         }
+
+
+        partial void Parse_PreCondition(ref StringFormatter instance, ref String template) { template = "{project}/_apis/{area}/workitemtypes/{type}/fields/{field}"; }
     }
 }

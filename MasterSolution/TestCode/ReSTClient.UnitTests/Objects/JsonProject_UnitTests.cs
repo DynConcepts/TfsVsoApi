@@ -7,11 +7,17 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
     /// <summary>Generated Test Template</summary>
     public partial class JsonProject_UnitTests : DynTestClassBase
     {
-        static partial void JsonSource(ref JToken json)
+        /// <summary>
+        ///     Gets the project json.
+        /// </summary>
+        /// <returns>JToken.</returns>
+        public static JToken GetProjectJson()
         {
             JObject jobject = JObject.Parse(CannedMessages.JsonProjects);
             var array = jobject["value"].Value<JArray>();
-            json = array[0];
+            return array[0];
         }
+
+        static partial void JsonSource(ref JToken json) { json = GetProjectJson(); }
     }
 }

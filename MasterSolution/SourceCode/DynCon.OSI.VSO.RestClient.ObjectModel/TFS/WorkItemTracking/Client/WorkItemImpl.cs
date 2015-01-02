@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using DynCon.OSI.Core.Helpers;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
@@ -17,67 +18,11 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
     [DebuggerDisplay("id:{Id} rev:{Rev} title:{Title}")]
     internal class WorkItemImpl : JsonWorkItem, IWorkItem
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkItemImpl"/> class.
-        /// </summary>
-        /// <param name="json">The content.</param>
-        /// <param name="initializer"></param>
-        private WorkItemImpl(JToken json, JsonWorkItemInitializer initializer)
-            : base(json, initializer)
-        {
-
-            r_RevisionCollection = new Lazy<RevisionCollectionImpl>(InitRevisionCollection);
-        }
-        private static FieldCollectionImpl ParseFields(JsonWorkItem workItem)
-        {
-            JProperty fieldsProperty = ((JObject)workItem.JsonValue).Properties().First(p => p.Name == "fields");
-            JToken  fieldsValues =  fieldsProperty.Value;
-            FieldCollectionImpl fields = FieldCollectionImpl.FromToken(fieldsValues);
-            return fields;
-        }
-
-        private static FieldCollectionImpl DeferredLoadFields(JsonWorkItem workItem) { throw new NotImplementedException(); }
-
-
         public new static WorkItemImpl FromToken(JToken json)
         {
-
-            var initializer = DefaultInitializer(json);
+            JsonWorkItemInitializer initializer = DefaultInitializer(json);
             var workItem = new WorkItemImpl(json, initializer);
             return workItem;
-        }
-
-        /// <summary>
-        /// Jsons the work item initializer.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <returns>JsonWorkItemInitializer.</returns>
-        private static JsonWorkItemInitializer DefaultInitializer(JToken json)
-        {
-            var initializer = new JsonWorkItemInitializer();
-            JProperty fields = ((JObject) json).Properties().FirstOrDefault(p => p.Name == "fields");
-            if (fields == null)
-            {
-                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(DeferredLoadFields);
-                initializer.FieldsMode = "DeferredLoadFields";
-            }
-            else
-            {
-                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(ParseFields);
-                initializer.FieldsMode = "ParseFields";
-            }
-            JProperty links = ((JObject) json).Properties().FirstOrDefault(p => p.Name == "relations");
-            if (links == null)
-            {
-                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(DeferredLoadLinks);
-                initializer.LinkMode = "DeferredLoadLinks";
-            }
-            else
-            {
-                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(ParseLinks);
-                initializer.LinkMode = "ParseLinks";
-            }
-            return initializer;
         }
 
 
@@ -238,6 +183,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <value>The fields.</value>
         /// <exception cref="ToBeImplementedException"></exception>
         IFieldCollection IWorkItem.Fields { get { return (FieldCollectionImpl) Fields; } }
+
         /// <summary>
         ///     Gets the action object.
         /// </summary>
@@ -417,21 +363,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <value>The links.</value>
         /// <exception cref="ToBeImplementedException"></exception>
-        ILinkCollection IWorkItem.Links  { get { return (LinkCollectionImpl) base.Links; }}
-    
- 
-        private static LinkCollectionImpl DeferredLoadLinks(JsonWorkItem workItem)
-        {
-            var result = APIFactory().GetLinksForWorkItem((WorkItemImpl)workItem, LinkCollectionImpl.FromToken).Result;
-            return result;
-        }
+        ILinkCollection IWorkItem.Links { get { return (LinkCollectionImpl) base.Links; } }
 
-        private static LinkCollectionImpl ParseLinks(JsonWorkItem workItem)
-        {
-            var value =(JArray) ((JObject)workItem.JsonValue).Properties().First(p => p.Name == "relations").Value;
-            var results  = LinkCollectionImpl.FromToken(value);
-            return results;
-        }
 
         /// <summary>
         ///     Gets the name of the node.
@@ -507,14 +440,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <value>The revisions.</value>
         /// <exception cref="ToBeImplementedException"></exception>
         IRevisionCollection IWorkItem.Revisions { get { return r_RevisionCollection.Value; } }
-
-        private readonly Lazy<RevisionCollectionImpl> r_RevisionCollection;
-
-        private RevisionCollectionImpl InitRevisionCollection()
-        {
-            IReadOnlyList<IRevision> items = APIFactory().GetWorkItemRevisions(Id,RevisionImpl.FromToken).Result;
-            return new RevisionCollectionImpl(items);
-        }
 
         /// <summary>
         ///     Saves this instance.
@@ -599,7 +524,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </exception>
         String IWorkItem.Title { get { return Title; } set { throw new ToBeImplementedException(); } }
 
-        private String Title { get { return ReadField<String>("System.Title"); }  }
         /// <summary>
         ///     Gets the type.
         /// </summary>
@@ -642,7 +566,79 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="ToBeImplementedException"></exception>
         IWorkItemLinkCollection IWorkItem.WorkItemLinks { get { throw new ToBeImplementedException(); } }
 
-       }
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WorkItemImpl" /> class.
+        /// </summary>
+        /// <param name="json">The content.</param>
+        /// <param name="initializer"></param>
+        private WorkItemImpl(JToken json, JsonWorkItemInitializer initializer)
+            : base(json, initializer) { r_RevisionCollection = new Lazy<RevisionCollectionImpl>(InitRevisionCollection); }
+
+        /// <summary>
+        ///     Jsons the work item initializer.
+        /// </summary>
+        /// <param name="json">The json.</param>
+        /// <returns>JsonWorkItemInitializer.</returns>
+        private static JsonWorkItemInitializer DefaultInitializer(JToken json)
+        {
+            var initializer = new JsonWorkItemInitializer();
+            JProperty fields = ((JObject) json).Properties().FirstOrDefault(p => p.Name == "fields");
+            if (fields == null)
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(DeferredLoadFields);
+                initializer.FieldsMode = "DeferredLoadFields";
+            }
+            else
+            {
+                initializer.FieldInitializer = new ParameterizedLazyWithReset<JsonWorkItem, FieldCollectionImpl>(ParseFields);
+                initializer.FieldsMode = "ParseFields";
+            }
+            JProperty links = ((JObject) json).Properties().FirstOrDefault(p => p.Name == "relations");
+            if (links == null)
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(DeferredLoadLinks);
+                initializer.LinkMode = "DeferredLoadLinks";
+            }
+            else
+            {
+                initializer.LinkInitializer = new ParameterizedLazyWithReset<JsonWorkItem, LinkCollectionImpl>(ParseLinks);
+                initializer.LinkMode = "ParseLinks";
+            }
+            return initializer;
+        }
+
+        private static FieldCollectionImpl DeferredLoadFields(JsonWorkItem workItem) { throw new NotImplementedException(); }
+
+        private static LinkCollectionImpl DeferredLoadLinks(JsonWorkItem workItem)
+        {
+            LinkCollectionImpl result = APIFactory().GetLinksForWorkItem(workItem, LinkCollectionImpl.FromToken).Result;
+            return result;
+        }
+
+        private RevisionCollectionImpl InitRevisionCollection()
+        {
+            IReadOnlyList<IRevision> items = APIFactory().GetWorkItemRevisions(Id, RevisionImpl.FromToken).Result;
+            return new RevisionCollectionImpl(items);
+        }
+
+        private static FieldCollectionImpl ParseFields(JsonWorkItem workItem)
+        {
+            JProperty fieldsProperty = ((JObject) workItem.JsonValue).Properties().First(p => p.Name == "fields");
+            JToken fieldsValues = fieldsProperty.Value;
+            FieldCollectionImpl fields = FieldCollectionImpl.FromToken(fieldsValues);
+            return fields;
+        }
+
+        private static LinkCollectionImpl ParseLinks(JsonWorkItem workItem)
+        {
+            var value = (JArray) ((JObject) workItem.JsonValue).Properties().First(p => p.Name == "relations").Value;
+            LinkCollectionImpl results = LinkCollectionImpl.FromToken(value);
+            return results;
+        }
+
+        private String Title { get { return ReadField<String>("System.Title"); } }
+        private readonly Lazy<RevisionCollectionImpl> r_RevisionCollection;
+    }
 }
 
 namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client

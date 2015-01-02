@@ -58,11 +58,16 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         private JsonIteration m_Parent;
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonIteration"/> class.
+        /// Initializes a new instance of the <see cref="JsonIteration" /> class.
         /// </summary>
         /// <param name="content">The content.</param>
         protected JsonIteration(JToken content) : base(content) { }
 
+        /// <summary>
+        /// Gets the links.
+        /// </summary>
+        /// <value>The links.</value>
+        /// <exception cref="System.NotImplementedException"></exception>
         public string Links { get { throw new System.NotImplementedException(); } }
     }
 }

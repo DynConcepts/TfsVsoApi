@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects.Communications;
+using DynCon.OSI.VSO.ReSTClient;
+using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.RestClient.ObjectModel.TFSExtra;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 
-namespace DynCon.OSI.VSO.ReSTClient.APIs
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
 {
     /// <summary>
     ///     Class TeamRoomAPI.

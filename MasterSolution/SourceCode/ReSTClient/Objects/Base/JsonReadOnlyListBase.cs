@@ -13,20 +13,22 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
     /// <typeparam name="TItem">The type of the t item.</typeparam>
     public abstract class JsonReadOnlyListBase<TItem> : JsonBackedObjectBase, IReadOnlyList<TItem>
     {
+        /// <summary>
+        /// Gets a value indicating whether this instance has key.
+        /// </summary>
+        /// <value><c>true</c> if this instance has key; otherwise, <c>false</c>.</value>
         protected abstract bool HasKey { get; }
 
         /// <summary>
-        ///     Returns an enumerator that iterates through the collection.
+        /// Returns an enumerator that iterates through the collection.
         /// </summary>
-        /// <returns>
-        ///     A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the
-        ///     collection.
-        /// </returns>
+        /// <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the
+        /// collection.</returns>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
         public IEnumerator<TItem> GetEnumerator() { return ItemList.GetEnumerator(); }
 
         /// <summary>
-        ///     Gets the number of elements in the collection.
+        /// Gets the number of elements in the collection.
         /// </summary>
         /// <value>The count.</value>
         public virtual int Count { get { return ItemSource.Count; } }
@@ -39,13 +41,13 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         public TItem this[int index] { get { return ItemList[index]; } }
 
         /// <summary>
-        ///     Returns an enumerator that iterates through a collection.
+        /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
+        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
         protected JsonReadOnlyListBase(JToken json) : base(json)
@@ -72,22 +74,23 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         }
 
         /// <summary>
-        ///     Extracts the key.
+        /// Extracts the key.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>System.String.</returns>
         protected abstract string ExtractKey(TItem item);
 
         /// <summary>
-        ///     Gets the item source.
+        /// Gets the item source.
         /// </summary>
         /// <value>The item source.</value>
         protected abstract IReadOnlyList<TItem> ItemSource { get; }
 
         /// <summary>
-        ///     Gets the items.
+        /// Gets the items.
         /// </summary>
         /// <value>The items.</value>
+        /// <exception cref="System.Exception">Collection does not have a Key Membewr!!!</exception>
         protected IDictionary<string, TItem> ItemDictionary {
             get
             {
@@ -102,13 +105,17 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         /// <value>The item list.</value>
         protected IList<TItem> ItemList { get { return r_ItemsList.Value; } }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is read only.
+        /// </summary>
+        /// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
            public virtual bool IsReadOnly { get { return true; } }
 
 
 
-        /// <summary>
-        /// The r_ items dictionary
-        /// </summary>
+           /// <summary>
+           /// The r_ items dictionary
+           /// </summary>
         private readonly LazyWithReset<Dictionary<string, TItem>> r_ItemsDictionary;
 
         /// <summary>
@@ -116,9 +123,18 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         /// </summary>
         private readonly LazyWithReset<IList<TItem>> r_ItemsList;
 
- 
+
+        /// <summary>
+        /// Copies to.
+        /// </summary>
+        /// <param name="array">The array.</param>
+        /// <param name="index">The index.</param>
           public void CopyTo(Array array, int index) {ItemList.CopyTo(((TItem[]) array), index) ; }
 
+          /// <summary>
+          /// Captures the json.
+          /// </summary>
+          /// <param name="newFields">The new fields.</param>
         public override void CaptureJson(JToken newFields) { base.CaptureJson(newFields); }
 
     }

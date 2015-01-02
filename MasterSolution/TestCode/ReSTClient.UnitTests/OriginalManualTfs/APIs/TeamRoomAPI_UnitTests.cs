@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

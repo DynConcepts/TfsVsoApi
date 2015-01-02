@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class RevisionCollectionImpl.
@@ -39,7 +39,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
             : base(items)
         {
             for (int index = 0; index < Items.Count; ++index)
-                ((RevisionImpl)items[index]).SetIndex(index);
+                ((RevisionImpl) items[index]).SetIndex(index);
         }
     }
 }

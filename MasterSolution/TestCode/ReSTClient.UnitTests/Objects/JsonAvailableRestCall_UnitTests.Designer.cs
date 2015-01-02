@@ -265,7 +265,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         {
             JToken json = new JObject();
             JsonSource(ref json);
-            var instance = (JsonAvailableRestCall) JsonAvailableRestCall.FromToken(json);
+            JsonAvailableRestCall instance = JsonAvailableRestCall.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }

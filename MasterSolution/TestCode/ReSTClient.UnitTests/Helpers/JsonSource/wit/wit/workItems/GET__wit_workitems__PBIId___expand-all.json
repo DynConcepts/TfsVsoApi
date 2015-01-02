@@ -1,0 +1,118 @@
+{
+   "method": "GET",
+   "resourceFormat": "/wit/workitems/{PBIId}?$expand=all",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workitems/297?$expand=all&api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json"
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "4870e331-ec0a-41bd-93b8-79edbee21aa4",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=7066e0f8-1bcc-0004-e520-db70cc1bd001; path=/; secure",
+         "Tfs-SessionActive=2014-12-29T20:49:22; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "4fb481b4-1bcc-0005-a454-f14fcc1bd001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Mon, 29 Dec 2014 20:49:22 GMT",
+      "content-length": "3075"
+   },
+   "responseBody": {
+      "id": 297,
+      "rev": 1,
+      "fields": {
+         "System.Id": 297,
+         "System.AreaId": 3570,
+         "System.AreaPath": "Fabrikam-Fiber-Git",
+         "System.NodeName": "Fabrikam-Fiber-Git",
+         "System.TeamProject": "Fabrikam-Fiber-Git",
+         "System.AreaLevel1": "Fabrikam-Fiber-Git",
+         "System.Rev": 1,
+         "System.AuthorizedDate": "2014-12-29T20:49:20.77Z",
+         "System.RevisedDate": "9999-01-01T00:00:00Z",
+         "System.IterationId": 3570,
+         "System.IterationPath": "Fabrikam-Fiber-Git",
+         "System.IterationLevel1": "Fabrikam-Fiber-Git",
+         "System.WorkItemType": "Product Backlog Item",
+         "System.State": "New",
+         "System.Reason": "New backlog item",
+         "System.CreatedDate": "2014-12-29T20:49:20.77Z",
+         "System.CreatedBy": "Jamal Hartnett <fabrikamfiber4@hotmail.com>",
+         "System.ChangedDate": "2014-12-29T20:49:20.77Z",
+         "System.ChangedBy": "Jamal Hartnett <fabrikamfiber4@hotmail.com>",
+         "System.AuthorizedAs": "Jamal Hartnett <fabrikamfiber4@hotmail.com>",
+         "System.PersonId": 77331,
+         "System.Watermark": 607,
+         "System.Title": "Customer can sign in using their Microsoft Account",
+         "Microsoft.VSTS.Scheduling.Effort": 8,
+         "WEF_6CB513B6E70E43499D9FC94E5BBFB784_System.ExtensionMarker": true,
+         "WEF_6CB513B6E70E43499D9FC94E5BBFB784_Kanban.Column": "New",
+         "System.Description": "Our authorization logic needs to allow for users with Microsoft accounts (formerly Live Ids) - http://msdn.microsoft.com/en-us/library/live/hh826547.aspx"
+      },
+      "relations": [
+         {
+            "rel": "System.LinkTypes.Hierarchy-Forward",
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/299",
+            "attributes": {
+               "isLocked": false,
+               "comment": "decomposition of work"
+            }
+         },
+         {
+            "rel": "System.LinkTypes.Hierarchy-Forward",
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/300",
+            "attributes": {
+               "isLocked": false
+            }
+         },
+         {
+            "rel": "AttachedFile",
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/attachments/098a279a-60b9-40a8-868b-b7fd00c0a439",
+            "attributes": {
+               "authorizedDate": "2014-12-29T20:49:20.77Z",
+               "id": 65273,
+               "resourceCreatedDate": "2014-12-29T20:49:20.77Z",
+               "resourceModifiedDate": "2014-12-29T20:49:20.77Z",
+               "revisedDate": "9999-01-01T00:00:00Z",
+               "comment": "Spec for the work",
+               "name": "Spec.txt"
+            }
+         }
+      ],
+      "_links": {
+         "self": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/297"
+         },
+         "workItemUpdates": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/297/updates"
+         },
+         "workItemRevisions": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/297/revisions"
+         },
+         "workItemHistory": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/297/history"
+         },
+         "html": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/web/wi.aspx?pcguid=d81542e4-cdfa-4333-b082-1ae2d6c3ad16&id=297"
+         },
+         "workItemType": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/workItemTypes/Product%20Backlog%20Item"
+         },
+         "fields": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields"
+         }
+      },
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/workItems/297"
+   }
+}

@@ -136,7 +136,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         internal static JsonLinkTypeEnd GetInstance([CallerMemberName] string callerName = "")
         {
-            JsonLinkTypeEnd instance = default(JsonLinkTypeEnd);
+            var json = new JObject();
+            JsonSource(ref json);
+            JsonLinkTypeEnd instance = JsonLinkTypeEnd.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }
@@ -146,6 +148,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         partial void ImmutableName_SetCondition(ref JsonLinkTypeEnd instance, ref String setValue);
         static partial void InstanceFactory(ref JsonLinkTypeEnd instance, [CallerMemberName] string callerName = "");
+        static partial void JsonSource(ref JObject json);
 
         partial void JsonValue_SetCondition(ref JsonLinkTypeEnd instance, ref JToken setValue);
         partial void ToJSonString_PostValidate(JsonLinkTypeEnd instance);

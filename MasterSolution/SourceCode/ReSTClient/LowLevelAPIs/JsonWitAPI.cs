@@ -6,6 +6,7 @@ using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
+using DynCon.OSI.VSO.ReSTClient.RestCalls;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
@@ -75,7 +76,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         {
             JArray elements = JsonWorkItem.FieldsToJArray(workItem);
             var body = ToJsonString(elements);
-            var exchange = StructuredHttpExchange.Patch(witRestCalls.workItems_1, body);
+            var exchange = StructuredHttpExchange.Patch(WitRestCalls.WorkItems1, body);
             exchange.SetRoute("{type}", workItemType.Replace(" ", "%20"));
             JsonWorkItem result = await ProcessProjectRequest(project, exchange, jObject =>
             {
@@ -100,7 +101,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         public async Task<IReadOnlyList<TArea>> GetAreas<TArea>(string project, int depth, Func<JObject, TArea> fromToken) where TArea : JsonArea
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.areas);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Areas);
             exchange.SetQuery("$depth", depth);
             TArea result = await ProcessProjectRequest(project, exchange, o => JsonParsers.JObjectToInstance(o, fromToken));
             var retVal = new List<TArea> {result};
@@ -114,7 +115,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IList&lt;JsonFieldDefinition&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonFieldDefinition>> GetFieldDefinitions()
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.fields);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Fields);
             IReadOnlyList<JsonFieldDefinition> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonFieldDefinition.FromToken));
             return result;
         }
@@ -129,7 +130,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         public async Task<IReadOnlyList<TIteration>> GetIterations<TIteration>(string project, int depth, Func<JObject, TIteration> fromToken) where TIteration : JsonIteration
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.iterations);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Iterations);
            exchange.SetQuery("$depth", depth);
             TIteration result = await ProcessProjectRequest(project, exchange, o => JsonParsers.JObjectToInstance(o, fromToken));
             var retVal = new List<TIteration> {result};
@@ -148,7 +149,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         public async Task<TLinkCollection> GetLinksForWorkItem<TLinkCollection>(int id, int rev, Func<JArray, TLinkCollection> fromToken)
             where TLinkCollection : JsonLinkCollection
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.revisions);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Revisions);
             exchange.SetRoute("{id}" , id);
             exchange.SetRoute("{revisionNumber}", rev);
             exchange.SetQuery("$expand","relations");
@@ -187,7 +188,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;IRelationType&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonRelationType>> GetRelationTypes()
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.workItemRelationTypes);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItemRelationTypes);
             IReadOnlyList<JsonRelationType> result = await ProcessCollectionRequest<IReadOnlyList<JsonRelationType>>(exchange, o => JsonParsers.ValuesToObjects(o, JsonRelationType.FromToken));
             return result;
         }
@@ -216,7 +217,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IList&lt;JsonCategory&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonWorkItemTypeCategory>> GetWorkItemTypeCategories(string project)
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.workItemTypeCategories);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItemTypeCategories);
             IReadOnlyList<JsonWorkItemTypeCategory> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonWorkItemTypeCategory.FromToken));
             return result;
         }
@@ -237,7 +238,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyDictionary&lt;System.String, TWorkItemType&gt;&gt;.</returns>
         public async Task<IReadOnlyDictionary<string, TWorkItemType>> GetWorkItemTypes<TWorkItemType>(string project, Func<JToken, TWorkItemType> fromToken) where TWorkItemType : JsonWorkItemType
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.workItemTypes);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItemTypes);
             IReadOnlyList<TWorkItemType> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, fromToken));
             return (IReadOnlyDictionary<string, TWorkItemType>) result.ToDictionary(entry => entry.Name);
         }
@@ -324,7 +325,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         public async Task<IReadOnlyList<T>> GetWorkItemRevisions<T>(int id, Func<JToken, T> func)
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.revisions);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Revisions);
             exchange.SetRoute("{id}", id);
             IReadOnlyList<T> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, func));
             return result;
@@ -340,7 +341,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids, DateTime timeStamp, Func<JToken, T> func) where T : JsonWorkItem
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.workItems_0);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItems0);
             exchange.SetQuery("ids", ToCommaList(ids));
             exchange.SetQuery("fields", "System.Title");
             exchange.SetQuery("asOf", timeStamp.ToString("o"));
@@ -357,7 +358,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonWorkItem&gt;&gt;.</returns>
         private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids, Func<JToken, T> func) where T : JsonWorkItem
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.workItems_0);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItems0);
             exchange.SetQuery("ids", ToCommaList(ids));
 
             IReadOnlyList<T> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, func));
@@ -369,7 +370,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
     
             JArray elements = JsonWorkItem.FieldsToJArray(workItem);
             string body = ToJsonString(elements);
-            var exchange = StructuredHttpExchange.Patch(witRestCalls.workItems_0, body);
+            var exchange = StructuredHttpExchange.Patch(WitRestCalls.WorkItems0, body);
             exchange.SetParameter(0, workItem.Id);
             JsonWorkItem result = await ProcessProjectRequest(project, exchange, jObject =>
             {
@@ -381,7 +382,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         public async Task<IReadOnlyList<JsonQueryBase>> GetQueries(string project)
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.queries_1);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Queries1);
             exchange.SetQuery("$depth",1);
             IReadOnlyList<JsonQueryBase> results = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonQueryBase.FromToken));
             foreach (var item in results)
@@ -401,7 +402,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         public async Task<IReadOnlyList<JsonQueryBase>> GetChildQueries(string project, JsonQueryFolder parent)
         {
-            var exchange = StructuredHttpExchange.Get(witRestCalls.queries_1);
+            var exchange = StructuredHttpExchange.Get(WitRestCalls.Queries1);
             exchange.SetRoute("{*query}", parent.Path);
             exchange.SetQuery("$depth", 1);
             var result = (JsonQueryFolder)await ProcessProjectRequest(project, exchange, JsonQueryBase.FromToken);

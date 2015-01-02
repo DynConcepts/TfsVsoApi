@@ -50,6 +50,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ChangeTracking\AddedGraphChange.cs" />
+    <Compile Include="ChangeTracking\CaptureContext.cs" />
+    <Compile Include="ChangeTracking\CaptureResults.cs" />
+    <Compile Include="ChangeTracking\ChangeList.cs" />
+    <Compile Include="ChangeTracking\MiscGraphChange.cs" />
+    <Compile Include="Comparisions\CompareContext.cs" />
+    <Compile Include="Comparisions\CompareResults.cs" />
+    <Compile Include="Comparisions\CompoundComparer.cs" />
+    <Compile Include="Comparisions\GraphChangeBase.cs" />
+    <Compile Include="ChangeTracking\GraphCompare.cs" />
+    <Compile Include="Comparisions\IDeepCapturer.cs" />
+    <Compile Include="Comparisions\IDeepComparer.cs" />
+    <Compile Include="ChangeTracking\MissingGraphChange.cs" />
+    <Compile Include="ChangeTracking\ObjectGraphCapture.cs" />
+    <Compile Include="Comparisions\DeepCompare.cs" />
+    <Compile Include="ChangeTracking\ReferenceGraphChange.cs" />
+    <Compile Include="Comparisions\SimpleComparer.cs" />
+    <Compile Include="ChangeTracking\ValueGraphChange.cs" />
     <Compile Include="DynTestClassBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

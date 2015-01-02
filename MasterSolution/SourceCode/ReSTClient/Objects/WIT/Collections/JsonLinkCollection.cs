@@ -56,19 +56,6 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         /// </summary>
         /// <param name="json">The json.</param>
         public JsonLinkCollection(JToken json) : base(json) { }
-
-         /// <summary>
-        /// Adds the specified link.
-        /// </summary>
-        /// <param name="link">The link.</param>
-        /// <returns>System.Int32.</returns>
-        /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
-        public int Add(JsonExternalLink link) 
-        { 
-            base.Add(link);
-            return IndexOf(link);
-        }
-
     
         /// <summary>
         /// Adds the specified link.
@@ -117,32 +104,31 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections
         /// <returns>System.Object.</returns>
         /// <exception cref="DynCon.OSI.VSO.ReSTClient.Objects.Base.NoReStAPIEquivilantException"></exception>
         public object GetItem(int index) { return base[index]; }
-        /// <summary>
-        /// Gets the version tag.
-        /// </summary>
-        /// <value>The version tag.</value>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public int VersionTag { get { throw new NotImplementedException(); } }
-
+      
         /// <summary>
         /// Gets a value indicating whether this instance is synchronized.
         /// </summary>
         /// <value><c>true</c> if this instance is synchronized; otherwise, <c>false</c>.</value>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool IsSynchronized { get { throw new NotImplementedException(); } }
+        public bool IsSynchronized { get { return false; } }
 
         /// <summary>
         /// Gets the synchronize root.
         /// </summary>
         /// <value>The synchronize root.</value>
         /// <exception cref="System.NotImplementedException"></exception>
-        public object SyncRoot { get { throw new NotImplementedException(); } }
+        public object SyncRoot
+        {
+            get { return m_SyncRoot ?? (m_SyncRoot = new object()); }
+        }
+
+        private object m_SyncRoot;
 
         /// <summary>
         /// Gets a value indicating whether this instance is fixed size.
         /// </summary>
         /// <value><c>true</c> if this instance is fixed size; otherwise, <c>false</c>.</value>
         /// <exception cref="System.NotImplementedException"></exception>
-        public bool IsFixedSize { get { throw new NotImplementedException(); } }
+        public bool IsFixedSize { get { return false; } }
     }
 }

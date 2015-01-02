@@ -1,5 +1,8 @@
-namespace DynCon.OSI.VSO.ReSTClient.TFS.Server
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Server
 {
+    /// <summary>
+    ///     Class ApplicationGroupSpecialTypeImpl.
+    /// </summary>
     internal static class ApplicationGroupSpecialTypeImpl
     {
     }

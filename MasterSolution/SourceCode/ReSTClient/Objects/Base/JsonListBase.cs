@@ -9,8 +9,9 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
     /// <typeparam name="TItem">The type of the t item.</typeparam>
     public abstract class JsonListBase<TItem> : JsonReadOnlyListBase<TItem>, IList<TItem>
     {
+        private int m_VersionTag;
 
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="JsonListBase{TItem}" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
@@ -23,6 +24,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         public void Add(TItem item)
         {
             ItemList.Add(item);
+            ++m_VersionTag;
+
             if (HasKey)
                 ItemDictionary.Add(ExtractKey(item), item);
         }
@@ -39,12 +42,16 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         /// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
         public override bool IsReadOnly { get { return false; } }
 
+        public int VersionTag { get { return m_VersionTag; } }
+
         /// <summary>
         /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1" />.
         /// </summary>
         public void Clear()
         {
             ItemList.Clear();
+            ++m_VersionTag;
+
             if (HasKey)
                 ItemDictionary.Clear();
         }
@@ -73,6 +80,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         {
             if (HasKey)
                 ItemDictionary.Remove(ExtractKey(item));
+            ++m_VersionTag;
             return ItemList.Remove(item);
         }
 
@@ -92,6 +100,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         public void Insert(int index, TItem item)
         {
             ItemList.Insert(index, item);
+            ++m_VersionTag;
+
             if (HasKey)
                 ItemDictionary.Add(ExtractKey(item), item);
         }
@@ -103,6 +113,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
         public void RemoveAt(int index)
         {
             var item = ItemList[index];
+            ++m_VersionTag;
+
             if (HasKey)
                 ItemDictionary.Remove(ExtractKey(item));
             ItemList.RemoveAt(index);
@@ -120,6 +132,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.Base
             {
                 var existing = ItemList[index];
                 ItemList[index] = value;
+                ++m_VersionTag;
+
                 if (HasKey)
                 {
                     ItemDictionary.Remove(ExtractKey(existing));

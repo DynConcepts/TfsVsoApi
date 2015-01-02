@@ -173,7 +173,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         internal static JsonHyperlink GetInstance([CallerMemberName] string callerName = "")
         {
-            JsonHyperlink instance = default(JsonHyperlink);
+            JToken json = new JObject();
+            JsonSource(ref json);
+            JsonHyperlink instance = JsonHyperlink.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }
@@ -181,6 +183,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void GetType_PostValidate(JsonHyperlink instance);
         partial void GetType_PreCondition(ref JsonHyperlink instance);
         static partial void InstanceFactory(ref JsonHyperlink instance, [CallerMemberName] string callerName = "");
+        static partial void JsonSource(ref JToken json);
         partial void JsonValue_SetCondition(ref JsonHyperlink instance, ref JToken setValue);
 
         partial void Rel_SetCondition(ref JsonHyperlink instance, ref String setValue);

@@ -188,7 +188,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         internal static JsonQueryDefinition GetInstance([CallerMemberName] string callerName = "")
         {
-            JsonQueryDefinition instance = default(JsonQueryDefinition);
+            JToken json = new JObject();
+            JsonSource(ref json);
+            JsonQueryDefinition instance = JsonQueryDefinition.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }
@@ -199,6 +201,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         static partial void InstanceFactory(ref JsonQueryDefinition instance, [CallerMemberName] string callerName = "");
 
         partial void IsFolder_SetCondition(ref JsonQueryDefinition instance, ref Boolean setValue);
+        static partial void JsonSource(ref JToken json);
 
         partial void JsonValue_SetCondition(ref JsonQueryDefinition instance, ref JToken setValue);
         partial void Name_SetCondition(ref JsonQueryDefinition instance, ref String setValue);

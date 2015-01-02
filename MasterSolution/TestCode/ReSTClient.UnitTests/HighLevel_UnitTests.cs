@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DynCon.OSI.VSO.ReSTClient.APIs;
-using DynCon.OSI.VSO.ReSTClient.Factories;
-using DynCon.OSI.VSO.ReSTClient.TFS.Client;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,6 +19,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests
         ///     Scan_s the work items_ unit test.
         /// </summary>
         [TestMethod]
+        [Ignore]
         public void Scan_WorkItems_UnitTest()
         {
             ITfsTeamProjectCollection tfs = new TfsTeamProjectCollectionImpl(new Uri(VSOClientManager.VsoCollection));

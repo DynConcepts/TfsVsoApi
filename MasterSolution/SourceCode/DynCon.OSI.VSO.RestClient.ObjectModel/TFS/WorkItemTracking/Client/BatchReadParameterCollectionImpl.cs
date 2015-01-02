@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.Helpers;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class BatchReadParameterCollectionImpl.
@@ -27,7 +27,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>System.Boolean.</returns>
-        Boolean IBatchReadParameterCollection.Contains(Int32 id) { throw new ToBeImplementedException();  }
+        Boolean IBatchReadParameterCollection.Contains(Int32 id) { throw new ToBeImplementedException(); }
 
         /// <summary>
         ///     Containses.

@@ -33,12 +33,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         [TestMethod]
         public void Add_UnitTest()
         {
-            JsonExternalLink link = default(JsonExternalLink);
+            JsonHyperlink link = default(JsonHyperlink);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    link = default(JsonExternalLink); //No Type
+                    link = default(JsonHyperlink); //No Type
                     Add_PreCondition(ref instance, ref link);
                 },
                 instance => { instance.Add(link); },
@@ -371,24 +371,30 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         [TestMethod]
         public void VersionTag_UnitTest()
         {
+            int originalTagValue = int.MaxValue;
             ExecuteProperty(
                 () =>
                     // Create Test Instance
                 {
                     JsonLinkCollection instance = GetInstance();
+                    originalTagValue = instance.VersionTag;
                     return instance;
                 },
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                instance => { return instance.VersionTag; },
+                instance =>
+                {
+                    instance.Clear();
+                    return instance.VersionTag;
+                },
                 // Validate Get Operation
-                (instance, setValue, getValue) => { });
+                (instance, setValue, getValue) => Assert.IsTrue(getValue > originalTagValue, "VersionTag did not increment on Clear()"));
         }
 
         partial void AddItem_PostValidate(JsonLinkCollection instance, Object value);
         partial void AddItem_PreCondition(ref JsonLinkCollection instance, ref Object value);
-        partial void Add_PostValidate(JsonLinkCollection instance, JsonExternalLink link);
-        partial void Add_PreCondition(ref JsonLinkCollection instance, ref JsonExternalLink link);
+        partial void Add_PostValidate(JsonLinkCollection instance, JsonHyperlink link);
+        partial void Add_PreCondition(ref JsonLinkCollection instance, ref JsonHyperlink link);
         partial void CaptureJson_PostValidate(JsonLinkCollection instance, JToken newFields);
         partial void CaptureJson_PreCondition(ref JsonLinkCollection instance, ref JToken newFields);
         partial void Clear_PostValidate(JsonLinkCollection instance);

@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.TFVC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
@@ -45,7 +47,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetChangesetChanges_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonChangeSetChanges>> _retVal = default(Task<IReadOnlyList<JsonChangeSetChanges>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetChangesetChanges_PreCondition(ref instance); },
@@ -81,7 +83,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetChangesets_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonChangeSet>> _retVal = default(Task<IReadOnlyList<JsonChangeSet>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetChangesets_PreCondition(ref instance); },
@@ -117,7 +119,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetItems_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonVersionControlItem>> _retVal = default(Task<IReadOnlyList<JsonVersionControlItem>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetItems_PreCondition(ref instance); },
@@ -141,7 +143,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetProjectInfo_0_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonProjectInfo>> _retVal = default(Task<IReadOnlyList<JsonProjectInfo>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetProjectInfo_0_PreCondition(ref instance); },
@@ -153,7 +155,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetProjectInfo_1_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonProjectInfo>> _retVal = default(Task<IReadOnlyList<JsonProjectInfo>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetProjectInfo_1_PreCondition(ref instance); },
@@ -213,7 +215,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetShelvesets_0_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonShelveSet>> _retVal = default(Task<IReadOnlyList<JsonShelveSet>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetShelvesets_0_PreCondition(ref instance); },
@@ -225,7 +227,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetShelvesets_1_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonShelveSet>> _retVal = default(Task<IReadOnlyList<JsonShelveSet>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetShelvesets_1_PreCondition(ref instance); },
@@ -261,13 +263,13 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         partial void Equals_PreCondition(ref JsonTfvcAPI instance, ref Object obj);
         partial void GetBranches_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetBranches_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetChangesetChanges_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetChangesetChanges_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonChangeSetChanges>> _retVal);
         partial void GetChangesetChanges_PreCondition(ref JsonTfvcAPI instance);
         partial void GetChangesetWorkItems_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetChangesetWorkItems_PreCondition(ref JsonTfvcAPI instance);
         partial void GetChangesetsBatch_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetChangesetsBatch_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetChangesets_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetChangesets_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonChangeSet>> _retVal);
         partial void GetChangesets_PreCondition(ref JsonTfvcAPI instance);
 
         partial void GetHashCode_PostValidate(JsonTfvcAPI instance, Int32 _retVal);
@@ -283,13 +285,13 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         partial void GetItemBatch_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetItemBatch_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetItems_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetItems_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonVersionControlItem>> _retVal);
         partial void GetItems_PreCondition(ref JsonTfvcAPI instance);
         partial void GetLabelItems_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetLabelItems_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetProjectInfo_0_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetProjectInfo_0_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonProjectInfo>> _retVal);
         partial void GetProjectInfo_0_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetProjectInfo_1_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetProjectInfo_1_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonProjectInfo>> _retVal);
         partial void GetProjectInfo_1_PreCondition(ref JsonTfvcAPI instance);
         partial void GetShelvesetChanges_0_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetShelvesetChanges_0_PreCondition(ref JsonTfvcAPI instance);
@@ -299,9 +301,9 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         partial void GetShelvesetWorkItems_0_PreCondition(ref JsonTfvcAPI instance);
         partial void GetShelvesetWorkItems_1_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetShelvesetWorkItems_1_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetShelvesets_0_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetShelvesets_0_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonShelveSet>> _retVal);
         partial void GetShelvesets_0_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetShelvesets_1_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetShelvesets_1_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonShelveSet>> _retVal);
         partial void GetShelvesets_1_PreCondition(ref JsonTfvcAPI instance);
 
         partial void GetType_PostValidate(JsonTfvcAPI instance, Type _retVal);

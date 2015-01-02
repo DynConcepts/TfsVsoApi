@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
@@ -93,7 +94,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetProjects_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonProject>> _retVal = default(Task<IReadOnlyList<JsonProject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetProjects_PreCondition(ref instance); },
@@ -105,7 +106,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetProxies_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonProxy>> _retVal = default(Task<IReadOnlyList<JsonProxy>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetProxies_PreCondition(ref instance); },
@@ -171,9 +172,9 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         partial void GetMembers_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetMembers_PreCondition(ref JsonCoreAPI instance);
-        partial void GetProjects_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetProjects_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonProject>> _retVal);
         partial void GetProjects_PreCondition(ref JsonCoreAPI instance);
-        partial void GetProxies_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetProxies_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonProxy>> _retVal);
         partial void GetProxies_PreCondition(ref JsonCoreAPI instance);
         partial void GetTeams_PostValidate(JsonCoreAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetTeams_PreCondition(ref JsonCoreAPI instance);

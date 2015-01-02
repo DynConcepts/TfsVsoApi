@@ -1,15 +1,76 @@
-class coreRestCalls
+using DynCon.OSI.JasonBackedObjects.Communications;
+
+namespace DynCon.OSI.VSO.ReSTClient.RestCalls
 {
- internal static CallSpec identityMru { get { return sr_identityMru; } }
- private static readonly CallSpec sr_identityMru= new CallSpec("_apis/core/identityMru/{mruName}");
- internal static CallSpec members { get { return sr_members; } }
- private static readonly CallSpec sr_members= new CallSpec("_apis/projects/{projectId}/teams/{teamId}/members");
- internal static CallSpec teams { get { return sr_teams; } }
- private static readonly CallSpec sr_teams= new CallSpec("_apis/projects/{projectId}/teams/{*teamId}");
- internal static CallSpec connectedServices { get { return sr_connectedServices; } }
- private static readonly CallSpec sr_connectedServices= new CallSpec("_apis/projects/{projectId}/connectedServices/{name}");
- internal static CallSpec proxies { get { return sr_proxies; } }
- private static readonly CallSpec sr_proxies= new CallSpec("_apis/proxies");
- internal static CallSpec projects { get { return sr_projects; } }
- private static readonly CallSpec sr_projects= new CallSpec("_apis/projects/{*projectId}");
+    /// <summary>
+    ///     Class CoreRestCalls.
+    /// </summary>
+    internal class CoreRestCalls
+    {
+        /// <summary>
+        ///     Gets the connected services.
+        /// </summary>
+        /// <value>The connected services.</value>
+        internal static CallSpec ConnectedServices { get { return sr_ConnectedServices; } }
+
+        /// <summary>
+        ///     Gets the identity MRU.
+        /// </summary>
+        /// <value>The identity MRU.</value>
+        internal static CallSpec IdentityMru { get { return sr_IdentityMru; } }
+
+        /// <summary>
+        ///     Gets the members.
+        /// </summary>
+        /// <value>The members.</value>
+        internal static CallSpec Members { get { return sr_Members; } }
+
+        /// <summary>
+        ///     Gets the projects.
+        /// </summary>
+        /// <value>The projects.</value>
+        internal static CallSpec Projects { get { return sr_Projects; } }
+
+        /// <summary>
+        ///     Gets the proxies.
+        /// </summary>
+        /// <value>The proxies.</value>
+        internal static CallSpec Proxies { get { return sr_Proxies; } }
+
+        /// <summary>
+        ///     Gets the teams.
+        /// </summary>
+        /// <value>The teams.</value>
+        internal static CallSpec Teams { get { return sr_Teams; } }
+
+        /// <summary>
+        ///     The SR_ connected services
+        /// </summary>
+        private static readonly CallSpec sr_ConnectedServices = new CallSpec("_apis/projects/{projectId}/connectedServices/{name}");
+
+        /// <summary>
+        ///     The SR_ identity MRU
+        /// </summary>
+        private static readonly CallSpec sr_IdentityMru = new CallSpec("_apis/core/identityMru/{mruName}");
+
+        /// <summary>
+        ///     The SR_ members
+        /// </summary>
+        private static readonly CallSpec sr_Members = new CallSpec("_apis/projects/{projectId}/teams/{teamId}/members");
+
+        /// <summary>
+        ///     The SR_ projects
+        /// </summary>
+        private static readonly CallSpec sr_Projects = new CallSpec("_apis/projects/{*projectId}");
+
+        /// <summary>
+        ///     The SR_ proxies
+        /// </summary>
+        private static readonly CallSpec sr_Proxies = new CallSpec("_apis/proxies");
+
+        /// <summary>
+        ///     The SR_ teams
+        /// </summary>
+        private static readonly CallSpec sr_Teams = new CallSpec("_apis/projects/{projectId}/teams/{*teamId}");
+    }
 }

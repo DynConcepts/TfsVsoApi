@@ -35,7 +35,8 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
-        /// <value>The value.</value>s
+        /// <value>The value.</value>
+        /// s
         public object Value
         {
             get

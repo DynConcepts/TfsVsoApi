@@ -14,5 +14,11 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// <param name="json">The json.</param>
         public JsonHyperlink(JToken json) : base(json) {
         }
+        /// <summary>
+        /// Froms the token.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>JsonHyperlink.</returns>
+        public new static JsonHyperlink FromToken(JToken token) { return (JsonHyperlink)JsonLink.FromToken(token); }
     }
 }

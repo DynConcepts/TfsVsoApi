@@ -1,4 +1,4 @@
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
 // Delegate Does not need Implementation - YET
 }

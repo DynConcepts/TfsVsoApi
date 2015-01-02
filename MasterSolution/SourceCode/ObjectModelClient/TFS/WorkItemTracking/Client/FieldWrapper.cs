@@ -5,15 +5,34 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
 {
+    /// <summary>
+    /// Class FieldWrapper.
+    /// </summary>
     internal class FieldWrapper : FieldWrapper<IField, Field>, IField
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldWrapper"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected FieldWrapper(Field instance) : base(instance) { }
+        /// <summary>
+        /// Sets the mapper.
+        /// </summary>
         internal static void SetMapper() { Mapper = new ObjectMapper<IField, Field>(src => src == null ? null : ((FieldWrapper) src).r_Instance, src => new FieldWrapper(src)); }
     }
 
 
+    /// <summary>
+    /// Class FieldWrapper.
+    /// </summary>
+    /// <typeparam name="TWrapper">The type of the t wrapper.</typeparam>
+    /// <typeparam name="TInterface">The type of the t interface.</typeparam>
     internal class FieldWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IField where TInterface : class where TWrapper : class
     {
+        /// <summary>
+        /// Gets the allowed values.
+        /// </summary>
+        /// <value>The allowed values.</value>
         IAllowedValuesCollection IField.AllowedValues
         {
             get
@@ -24,6 +43,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the field definition.
+        /// </summary>
+        /// <value>The field definition.</value>
         IFieldDefinition IField.FieldDefinition
         {
             get
@@ -34,6 +57,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has allowed values list.
+        /// </summary>
+        /// <value>The has allowed values list.</value>
         Boolean IField.HasAllowedValuesList
         {
             get
@@ -43,6 +70,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has pattern match.
+        /// </summary>
+        /// <value>The has pattern match.</value>
         Boolean IField.HasPatternMatch
         {
             get
@@ -52,6 +83,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         Int32 IField.Id
         {
             get
@@ -61,6 +96,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is changed by user.
+        /// </summary>
+        /// <value>The is changed by user.</value>
         Boolean IField.IsChangedByUser
         {
             get
@@ -70,6 +109,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is changed in revision.
+        /// </summary>
+        /// <value>The is changed in revision.</value>
         Boolean IField.IsChangedInRevision
         {
             get
@@ -79,6 +122,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is computed.
+        /// </summary>
+        /// <value>The is computed.</value>
         Boolean IField.IsComputed
         {
             get
@@ -88,6 +135,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is dirty.
+        /// </summary>
+        /// <value>The is dirty.</value>
         Boolean IField.IsDirty
         {
             get
@@ -97,6 +148,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is editable.
+        /// </summary>
+        /// <value>The is editable.</value>
         Boolean IField.IsEditable
         {
             get
@@ -106,6 +161,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is limited to allowed values.
+        /// </summary>
+        /// <value>The is limited to allowed values.</value>
         Boolean IField.IsLimitedToAllowedValues
         {
             get
@@ -115,6 +174,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is required.
+        /// </summary>
+        /// <value>The is required.</value>
         Boolean IField.IsRequired
         {
             get
@@ -124,6 +187,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is valid.
+        /// </summary>
+        /// <value>The is valid.</value>
         Boolean IField.IsValid
         {
             get
@@ -133,6 +200,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
         String IField.Name
         {
             get
@@ -142,6 +213,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the original value.
+        /// </summary>
+        /// <value>The original value.</value>
         Object IField.OriginalValue
         {
             get
@@ -151,6 +226,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the prohibited values.
+        /// </summary>
+        /// <value>The prohibited values.</value>
         IValuesCollection IField.ProhibitedValues
         {
             get
@@ -161,6 +240,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the name of the reference.
+        /// </summary>
+        /// <value>The name of the reference.</value>
         String IField.ReferenceName
         {
             get
@@ -170,6 +253,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the status.
+        /// </summary>
+        /// <value>The status.</value>
         IFieldStatus IField.Status
         {
             get
@@ -180,6 +267,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         Object IField.Value
         {
             get
@@ -190,6 +281,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             set { r_Instance.Value = value; }
         }
 
+        /// <summary>
+        /// Gets the value with server default.
+        /// </summary>
+        /// <value>The value with server default.</value>
         Object IField.ValueWithServerDefault
         {
             get
@@ -199,6 +294,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the work item.
+        /// </summary>
+        /// <value>The work item.</value>
         IWorkItem IField.WorkItem
         {
             get
@@ -209,7 +308,14 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FieldWrapper{TWrapper, TInterface}"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected FieldWrapper(Field instance) { r_Instance = instance; }
+        /// <summary>
+        /// The r_ instance
+        /// </summary>
         protected readonly Field r_Instance;
     }
 }

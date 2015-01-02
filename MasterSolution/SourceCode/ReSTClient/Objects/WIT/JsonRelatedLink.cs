@@ -6,9 +6,20 @@ using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 {
+    /// <summary>
+    /// Class JsonWorkItemInitializer.
+    /// </summary>
     public class JsonWorkItemInitializer
     {
+        /// <summary>
+        /// Gets or sets the other item initializer.
+        /// </summary>
+        /// <value>The other item initializer.</value>
         public IParameterizedLazyWithReset<JsonRelatedLink, JsonWorkItem> OtherItemInitializer { get; set; }
+        /// <summary>
+        /// Gets or sets the link type end initializer.
+        /// </summary>
+        /// <value>The link type end initializer.</value>
         public IParameterizedLazyWithReset<JsonRelatedLink, JsonLinkTypeEnd> LinkTypeEndInitializer { get; set; }
      }
 
@@ -68,5 +79,10 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         }
 
         public string ImmutableName { get { return JsonValue.ToString(); } }
+
+        public static JsonLinkTypeEnd FromToken(JObject token)
+        {
+            return new JsonLinkTypeEnd(token);
+        }
     }
 }

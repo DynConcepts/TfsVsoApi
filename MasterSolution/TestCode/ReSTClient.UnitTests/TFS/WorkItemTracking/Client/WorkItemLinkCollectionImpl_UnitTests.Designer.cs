@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;

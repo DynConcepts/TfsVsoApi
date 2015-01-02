@@ -138,6 +138,8 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         IWorkItemLinkTypeEnd[] IQuery.GetLinkTypes()
         {
             WorkItemLinkTypeEnd[] nativeCallResult = r_Instance.GetLinkTypes();
+            if (nativeCallResult == null)
+                return null;
             IWorkItemLinkTypeEnd[] wrappedCallResult = WorkItemLinkTypeEndWrapper.GetWrapper(nativeCallResult);
             return wrappedCallResult;
         }

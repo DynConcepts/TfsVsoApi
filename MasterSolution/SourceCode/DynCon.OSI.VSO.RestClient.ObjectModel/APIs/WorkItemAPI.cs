@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
-namespace DynCon.OSI.VSO.ReSTClient.APIs
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
 {
     /// <summary>
     /// Class WorkItemAPI.

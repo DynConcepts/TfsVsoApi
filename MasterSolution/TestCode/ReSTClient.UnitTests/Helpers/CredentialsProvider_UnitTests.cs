@@ -1,7 +1,7 @@
 ﻿using DynCon.OSI.Core.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.Helpers.UnitTests
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers
 {
     /// <summary>
     ///     Class CredentialsProvider_UnitTests.

@@ -20,13 +20,17 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
             var instance = new JsonRelationType(arg);
             return instance;
         }
+        /// <summary>
+        /// Gets a value indicating whether this instance is work item link.
+        /// </summary>
+        /// <value><c>true</c> if this instance is work item link; otherwise, <c>false</c>.</value>
                 public bool IsWorkItemLink { get { return ((string)Attributes["usage"]) == "workItemLink"; } }
 
 
-        /// <summary>
-        /// Gets the attributes.
-        /// </summary>
-        /// <value>The attributes.</value>
+                /// <summary>
+                /// Gets the attributes.
+                /// </summary>
+                /// <value>The attributes.</value>
         public IReadOnlyDictionary<string, object> Attributes { get { return sr_Attributes.Eval(this); } }
 
         /// <summary>

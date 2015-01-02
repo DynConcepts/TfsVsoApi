@@ -14,6 +14,13 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
 
     internal class WorkItemLinkWrapper<TWrapper, TInterface> : LinkWrapper<TWrapper, TInterface>, IWorkItemLink where TInterface : class where TWrapper : class
     {
+
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
+        protected override Link Instance { get { return r_Instance; } }
+   
         String IWorkItemLink.AddedBy
         {
             get
@@ -109,6 +116,6 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
         protected WorkItemLinkWrapper(WorkItemLink instance) : base(instance) { r_Instance = instance; }
-        protected new readonly WorkItemLink r_Instance;
+        protected readonly WorkItemLink r_Instance;
     }
 }

@@ -4,9 +4,11 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
+using DynCon.OSI.VSO.ReSTClient.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     [TestClass]
@@ -57,7 +59,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetRooms_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonRoom>> _retVal = default(Task<IReadOnlyList<JsonRoom>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetRooms_PreCondition(ref instance); },
@@ -117,7 +119,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 
         partial void GetMessages_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetMessages_PreCondition(ref JsonChatAPI instance);
-        partial void GetRooms_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetRooms_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonRoom>> _retVal);
         partial void GetRooms_PreCondition(ref JsonChatAPI instance);
 
         partial void GetType_PostValidate(JsonChatAPI instance, Type _retVal);

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.ReSTClient.RestCalls;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
@@ -17,7 +18,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetDetails()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(codelensRestCalls.filedetails);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(CodelensRestCalls.Filedetails);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -28,7 +29,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetSummaries()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(codelensRestCalls.filesummaries);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(CodelensRestCalls.Filesummaries);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }

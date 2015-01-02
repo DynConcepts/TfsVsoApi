@@ -2,48 +2,31 @@ using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class FieldDefinitionCollectionImpl.
     /// </summary>
     internal class FieldDefinitionCollectionImpl : JsonFieldDefinitionCollection, IFieldDefinitionCollection
     {
-
         public new static FieldDefinitionCollectionImpl FromToken(JToken token)
         {
             var instance = new FieldDefinitionCollectionImpl(token);
             return instance;
         }
 
-        private readonly ReadOnlyListImpl<IFieldDefinition> Items;
+        public bool IsFixedSize { get { throw new NotImplementedException(); } }
 
-        public FieldDefinitionCollectionImpl(JToken json) : base(json)
-        {
-            var list = new List<IFieldDefinition>();
-            foreach (JsonFieldDefinition  item in ItemList)
-            {
-                list.Add((FieldDefinitionImpl)item);
-            }
-            Items = new ReadOnlyListImpl<IFieldDefinition>(list);
-        }
+        public bool IsSynchronized { get { throw new NotImplementedException(); } }
 
-
-        protected override IReadOnlyList<JsonFieldDefinition> ItemSource { get
-        {
-            return sr_Fields.Eval(this);
-        }
-        }
-        /// <summary>
-        /// The SR_ fields
-        /// </summary>
-        private static readonly JsonBackedList<FieldDefinitionImpl> sr_Fields = new JsonBackedList<FieldDefinitionImpl>(token => JsonParsers.JArrayToObjects((JArray)token, FieldDefinitionImpl.FromToken));
+        public object SyncRoot { get { throw new NotImplementedException(); } }
 
         /// <summary>
         ///     Determines whether [contains] [the specified name].
@@ -122,10 +105,24 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="ToBeImplementedException"></exception>
         IFieldDefinition IFieldDefinitionCollection.TryGetByName(String name) { throw new ToBeImplementedException(); }
 
-        public bool IsFixedSize { get { throw new NotImplementedException(); } }
+        public FieldDefinitionCollectionImpl(JToken json) : base(json)
+        {
+            var list = new List<IFieldDefinition>();
+            foreach (JsonFieldDefinition  item in ItemList)
+            {
+                list.Add((FieldDefinitionImpl) item);
+            }
+            Items = new ReadOnlyListImpl<IFieldDefinition>(list);
+        }
 
-        public bool IsSynchronized { get { throw new NotImplementedException(); } }
 
-        public object SyncRoot { get { throw new NotImplementedException(); } }
+        protected override IReadOnlyList<JsonFieldDefinition> ItemSource { get { return sr_Fields.Eval(this); } }
+
+        /// <summary>
+        ///     The SR_ fields
+        /// </summary>
+        private static readonly JsonBackedList<FieldDefinitionImpl> sr_Fields = new JsonBackedList<FieldDefinitionImpl>(token => JsonParsers.JArrayToObjects((JArray) token, FieldDefinitionImpl.FromToken));
+
+        private readonly ReadOnlyListImpl<IFieldDefinition> Items;
     }
 }

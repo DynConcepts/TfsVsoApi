@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.Helpers;
-using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class AttachmentCollectionImpl.

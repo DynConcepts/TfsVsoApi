@@ -1,5 +1,8 @@
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Common.DataStore
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Common.DataStore
 {
+    /// <summary>
+    ///     Class PsUserRightsMaskImpl.
+    /// </summary>
     internal static class PsUserRightsMaskImpl
     {
     }

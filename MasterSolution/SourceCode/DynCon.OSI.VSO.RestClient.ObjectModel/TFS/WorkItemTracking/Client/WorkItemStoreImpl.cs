@@ -6,13 +6,14 @@ using System.Xml;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client.Metadata;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Common.DataStore;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Proxy;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class WorkItemStoreImpl.
@@ -28,7 +29,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         IBatchSaveError[] IWorkItemStore.BatchSave(IWorkItem[] workitems)
         {
             var errors = new List<IBatchSaveError>();
-            foreach (var workItem in workitems)
+            foreach (IWorkItem workItem in workitems)
             {
                 try
                 {
@@ -52,8 +53,8 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="ToBeImplementedException"></exception>
         IBatchSaveError[] IWorkItemStore.BatchSave(IWorkItem[] workitems, ISaveFlags saveFlags)
         {
-         var errors = new List<IBatchSaveError>();
-            foreach (var workItem in workitems)
+            var errors = new List<IBatchSaveError>();
+            foreach (IWorkItem workItem in workitems)
             {
                 try
                 {
@@ -67,7 +68,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
             }
             return errors.ToArray();
         }
-            
+
 
         /// <summary>
         ///     Gets the bypass rules.
@@ -198,7 +199,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <exception cref="ToBeImplementedException"></exception>
         IWorkItem IWorkItemStore.GetWorkItem(Int32 id)
         {
-            WorkItemImpl result= JsonWorkItem.APIFactory().GetWorkItem(id, WorkItemImpl.FromToken).Result;
+            WorkItemImpl result = JsonWorkItem.APIFactory().GetWorkItem(id, WorkItemImpl.FromToken).Result;
             return result;
         }
 
@@ -306,7 +307,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
             get
             {
                 var api = new ProjectsAPI();
-                var result = api.GetProjects(ProjectImpl.FromToken).Result;
+                IReadOnlyList<ProjectImpl> result = api.GetProjects(ProjectImpl.FromToken).Result;
                 return new ProjectCollectionImpl(result);
             }
         }

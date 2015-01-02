@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.RestClient.ObjectModel.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.RestCalls;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
@@ -26,10 +28,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the rooms.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetRooms()
+        public async Task<IReadOnlyList<JsonRoom>> GetRooms()
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(ChatRestCalls.Rooms);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            IReadOnlyList<JsonRoom> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonRoom.FromToken));
             return result;
         }
 

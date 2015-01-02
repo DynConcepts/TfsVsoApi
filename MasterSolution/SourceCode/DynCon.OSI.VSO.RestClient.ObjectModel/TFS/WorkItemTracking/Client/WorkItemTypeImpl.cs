@@ -5,7 +5,7 @@ using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class WorkItemTypeImpl.
@@ -13,11 +13,11 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
     internal class WorkItemTypeImpl : JsonWorkItemType, IWorkItemType
     {
         /// <summary>
-        /// Froms the token.
+        ///     Froms the token.
         /// </summary>
         /// <param name="token">The token.</param>
         /// <returns>WorkItemTypeImpl.</returns>
-        public static new WorkItemTypeImpl FromToken(JToken token)
+        public new static WorkItemTypeImpl FromToken(JToken token)
         {
             var instance = new WorkItemTypeImpl(token);
             return instance;

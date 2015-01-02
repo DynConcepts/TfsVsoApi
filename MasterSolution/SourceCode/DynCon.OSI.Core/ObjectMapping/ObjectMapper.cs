@@ -19,18 +19,21 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <returns>TInterface.</returns>
         public TInterface Convert(TObjectMode src)
         {
-            WeakReference<TInterface> result;
-            if (!r_Map.TryGetValue(src, out result))
+            lock (r_SyncRoot)
             {
-                return CreateWrapper(src);
+                WeakReference<TInterface> result;
+                if (!r_Map.TryGetValue(src, out result))
+                {
+                    return CreateWrapper(src);
+                }
+                TInterface target;
+                if (!result.TryGetTarget(out target))
+                {
+                    r_Map.Remove(src);
+                    target = CreateWrapper(src);
+                }
+                return target;
             }
-            TInterface target;
-            if (!result.TryGetTarget(out target))
-            {
-                r_Map.Remove(src);
-                target = CreateWrapper(src);
-            }
-            return target;
         }
 
         /// <summary>
@@ -46,21 +49,32 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// </summary>
         public void Purge()
         {
-            var list = new List<TObjectMode>();
-            foreach (KeyValuePair<TObjectMode, WeakReference<TInterface>> pair in r_Map)
+            lock (r_SyncRoot)
             {
-                TInterface instance;
-                if (!pair.Value.TryGetTarget(out instance))
+                var list = new List<TObjectMode>();
+
+                foreach (KeyValuePair<TObjectMode, WeakReference<TInterface>> pair in r_Map)
                 {
-                    list.Add(pair.Key);
+                    TInterface instance;
+                    if (!pair.Value.TryGetTarget(out instance))
+                    {
+                        list.Add(pair.Key);
+                    }
                 }
-            }
-            foreach (TObjectMode item in list)
-            {
-                r_Map.Remove(item);
+                foreach (TObjectMode item in list)
+                {
+                    try  // TODO: Hack because of occasional throws...probably need ConcurrentDictionary
+                    {
+                        r_Map.Remove(item);
+                    }
+                    catch (NullReferenceException)
+                    {
+                    }
+                }
             }
         }
 
+        private object r_SyncRoot = new Object();
         /// <summary>
         ///     Gets the count.
         /// </summary>
@@ -113,7 +127,10 @@ namespace DynCon.OSI.Core.ObjectMapping
             {
                 CreatePurgeTask();
             }
-            r_Map.Add(src, result);
+            lock (r_SyncRoot)
+            {
+                r_Map.Add(src, result);
+            }
             return wrapper;
         }
 

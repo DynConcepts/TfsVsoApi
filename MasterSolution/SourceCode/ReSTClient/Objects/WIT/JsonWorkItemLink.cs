@@ -5,12 +5,12 @@ using Newtonsoft.Json.Linq;
 namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 {
     /// <summary>
-    ///     Class JsonWorkItemLink.
+    /// Class JsonWorkItemLink.
     /// </summary>
     public class JsonWorkItemLink : JsonLink
     {
         /// <summary>
-        ///     Froms the token.
+        /// Froms the token.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <returns>JsonWorkItemLink.</returns>
@@ -22,36 +22,36 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
 
 
 
-         /// <summary>
-        ///     Gets or sets the changed date.
+        /// <summary>
+        /// Gets or sets the changed date.
         /// </summary>
         /// <value>The changed date.</value>
         public DateTime? ChangedDate { get; set; }
 
- 
+
         /// <summary>
-        ///     Gets the other work item.
+        /// Gets the other work item.
         /// </summary>
         /// <value>The other work item.</value>
         public JsonWorkItem OtherWorkItem { get { return r_OtherItem.Value; } }
 
- 
- 
-  
+
+
+
         /// <summary>
-        ///     Gets or sets the source identifier.
+        /// Gets or sets the source identifier.
         /// </summary>
         /// <value>The source identifier.</value>
         public int SourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets the target identifier.
+        /// Gets or sets the target identifier.
         /// </summary>
         /// <value>The target identifier.</value>
         public int TargetId { get; set; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
+        /// Initializes a new instance of the <see cref="JsonBackedObjectBase" /> class.
         /// </summary>
         /// <param name="json">The json.</param>
         public JsonWorkItemLink(JToken json)
@@ -65,7 +65,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         }
 
         /// <summary>
-        ///     The r_ other item
+        /// The r_ other item
         /// </summary>
         private readonly Lazy<JsonWorkItem> r_OtherItem;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
-using DynCon.OSI.VSO.ReSTClient.TFS.Framework.Client;
+using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.Framework.Client;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.Framework.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

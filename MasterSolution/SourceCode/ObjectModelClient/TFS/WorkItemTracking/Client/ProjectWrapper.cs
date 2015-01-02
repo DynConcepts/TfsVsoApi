@@ -5,15 +5,34 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
 {
+    /// <summary>
+    /// Class ProjectWrapper.
+    /// </summary>
     internal class ProjectWrapper : ProjectWrapper<IProject, Project>, IProject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProjectWrapper"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected ProjectWrapper(Project instance) : base(instance) { }
+        /// <summary>
+        /// Sets the mapper.
+        /// </summary>
         internal static void SetMapper() { Mapper = new ObjectMapper<IProject, Project>(src => src == null ? null : ((ProjectWrapper) src).r_Instance, src => new ProjectWrapper(src)); }
     }
 
 
+    /// <summary>
+    /// Class ProjectWrapper.
+    /// </summary>
+    /// <typeparam name="TWrapper">The type of the t wrapper.</typeparam>
+    /// <typeparam name="TInterface">The type of the t interface.</typeparam>
     internal class ProjectWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, IProject where TInterface : class where TWrapper : class
     {
+        /// <summary>
+        /// Gets the area root node URI.
+        /// </summary>
+        /// <value>The area root node URI.</value>
         Uri IProject.AreaRootNodeUri
         {
             get
@@ -23,6 +42,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the area root nodes.
+        /// </summary>
+        /// <value>The area root nodes.</value>
         INodeCollection IProject.AreaRootNodes
         {
             get
@@ -33,6 +56,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the categories.
+        /// </summary>
+        /// <value>The categories.</value>
         ICategoryCollection IProject.Categories
         {
             get
@@ -43,6 +70,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Finds the node in sub tree.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>INode.</returns>
         INode IProject.FindNodeInSubTree(Int32 nodeId)
         {
             Node nativeCallResult = r_Instance.FindNodeInSubTree(nodeId);
@@ -51,6 +83,12 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
+        /// <summary>
+        /// Finds the node in sub tree.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="treeType">Type of the tree.</param>
+        /// <returns>INode.</returns>
         INode IProject.FindNodeInSubTree(String path, INode_TreeType treeType)
         {
             Node nativeCallResult = r_Instance.FindNodeInSubTree(path, Node_TreeTypeWrapper.GetInstance(treeType));
@@ -58,6 +96,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             return wrappedCallResult;
         }
 
+        /// <summary>
+        /// Gets the unique identifier.
+        /// </summary>
+        /// <value>The unique identifier.</value>
         String IProject.Guid
         {
             get
@@ -67,6 +109,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item read rights.
+        /// </summary>
+        /// <value>The has work item read rights.</value>
         Boolean IProject.HasWorkItemReadRights
         {
             get
@@ -76,6 +122,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item read rights recursive.
+        /// </summary>
+        /// <value>The has work item read rights recursive.</value>
         Boolean IProject.HasWorkItemReadRightsRecursive
         {
             get
@@ -85,6 +135,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item write rights.
+        /// </summary>
+        /// <value>The has work item write rights.</value>
         Boolean IProject.HasWorkItemWriteRights
         {
             get
@@ -94,6 +148,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item write rights recursive.
+        /// </summary>
+        /// <value>The has work item write rights recursive.</value>
         Boolean IProject.HasWorkItemWriteRightsRecursive
         {
             get
@@ -103,6 +161,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         Int32 IProject.Id
         {
             get
@@ -112,6 +174,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the iteration root nodes.
+        /// </summary>
+        /// <value>The iteration root nodes.</value>
         INodeCollection IProject.IterationRootNodes
         {
             get
@@ -122,6 +188,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
         String IProject.Name
         {
             get
@@ -131,6 +201,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the query hierarchy.
+        /// </summary>
+        /// <value>The query hierarchy.</value>
         IQueryHierarchy IProject.QueryHierarchy
         {
             get
@@ -141,6 +215,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the store.
+        /// </summary>
+        /// <value>The store.</value>
         IWorkItemStore IProject.Store
         {
             get
@@ -151,6 +229,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the stored queries.
+        /// </summary>
+        /// <value>The stored queries.</value>
         IStoredQueryCollection IProject.StoredQueries
         {
             get
@@ -161,6 +243,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the URI.
+        /// </summary>
+        /// <value>The URI.</value>
         Uri IProject.Uri
         {
             get
@@ -170,6 +256,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the work item types.
+        /// </summary>
+        /// <value>The work item types.</value>
         IWorkItemTypeCollection IProject.WorkItemTypes
         {
             get
@@ -180,7 +270,14 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProjectWrapper{TWrapper, TInterface}"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected ProjectWrapper(Project instance) { r_Instance = instance; }
+        /// <summary>
+        /// The r_ instance
+        /// </summary>
         protected readonly Project r_Instance;
     }
 }

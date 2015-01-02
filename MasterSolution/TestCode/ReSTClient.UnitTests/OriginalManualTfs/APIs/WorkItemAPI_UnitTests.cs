@@ -8,7 +8,6 @@ using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Factories;
 using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
-using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.APIs

@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
+using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.TFVC;
+using DynCon.OSI.VSO.ReSTClient.RestCalls;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
@@ -17,7 +20,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetBranches()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.branches);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.Branches);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -27,11 +30,11 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// </summary>
         /// <param name="changeSetId">The change set identifier.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetChangesetChanges(int changeSetId)
+        public async Task<IReadOnlyList<JsonChangeSetChanges>> GetChangesetChanges(int changeSetId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.changesetChanges);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ChangesetChanges);
             exchange.SetRoute("{id}", changeSetId);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            IReadOnlyList<JsonChangeSetChanges> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonChangeSetChanges.FromToken));
             return result;
         }
 
@@ -42,7 +45,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetChangesetWorkItems(int changeSetId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.changesetWorkItems);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ChangesetWorkItems);
             exchange.SetRoute("{id}", changeSetId);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
@@ -52,10 +55,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the changesets.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetChangesets()
+        public async Task<IReadOnlyList<JsonChangeSet>> GetChangesets()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.changesets);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.Changesets);
+            IReadOnlyList<JsonChangeSet> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonChangeSet.FromToken));
             return result;
         }
 
@@ -65,7 +68,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetChangesetsBatch()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.changesetsBatch);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ChangesetsBatch);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -76,7 +79,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetItemBatch()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.itemBatch);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ItemBatch);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -85,10 +88,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the items.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetItems()
+        public async Task<IReadOnlyList<JsonVersionControlItem>> GetItems()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.items);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.Items);
+            IReadOnlyList<JsonVersionControlItem> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonVersionControlItem.FromToken));
             return result;
         }
 
@@ -98,7 +101,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetLabelItems()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.labelItems);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.LabelItems);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -107,10 +110,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the project info_0.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetProjectInfo_0()
+        public async Task<IReadOnlyList<JsonProjectInfo>> GetProjectInfo_0()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.projectInfo_0);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ProjectInfo0);
+            IReadOnlyList<JsonProjectInfo> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonProjectInfo.FromToken));
             return result;
         }
 
@@ -118,10 +121,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the project info_1.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetProjectInfo_1()
+        public async Task<IReadOnlyList<JsonProjectInfo>> GetProjectInfo_1()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.projectInfo_1);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ProjectInfo1);
+            IReadOnlyList<JsonProjectInfo> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonProjectInfo.FromToken));
             return result;
         }
 
@@ -131,7 +134,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesetChanges_0()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesetChanges_0);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ShelvesetChanges0);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -142,7 +145,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesetChanges_1()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesetChanges_1);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ShelvesetChanges1);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -153,7 +156,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesetWorkItems_0()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesetWorkItems_0);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ShelvesetWorkItems0);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -164,7 +167,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesetWorkItems_1()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesetWorkItems_1);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.ShelvesetWorkItems1);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
@@ -173,10 +176,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the shelvesets_0.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesets_0()
+        public async Task<IReadOnlyList<JsonShelveSet>> GetShelvesets_0()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesets_0);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.Shelvesets0);
+            IReadOnlyList<JsonShelveSet> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonShelveSet.FromToken));
             return result;
         }
 
@@ -184,10 +187,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         ///     Gets the shelvesets_1.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetShelvesets_1()
+        public async Task<IReadOnlyList<JsonShelveSet>> GetShelvesets_1()
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(tfvcRestCalls.shelvesets_1);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(TfvcRestCalls.Shelvesets1);
+            IReadOnlyList<JsonShelveSet> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonShelveSet.FromToken));
             return result;
         }
     }

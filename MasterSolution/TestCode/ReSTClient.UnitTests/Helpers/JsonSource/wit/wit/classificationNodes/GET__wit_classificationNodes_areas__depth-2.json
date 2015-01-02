@@ -1,0 +1,96 @@
+{
+   "method": "GET",
+   "resourceFormat": "/wit/classificationNodes/areas?$depth=2",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/Fabrikam-Fiber-Git/_apis/wit/classificationNodes/areas?$depth=2&api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json"
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "e6f30287-9191-4066-93c3-66c75fe2fbb4",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=514366d0-08d3-0004-7a78-4b51d308d001; path=/; secure",
+         "Tfs-SessionActive=2014-11-26T21:43:07; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "4fffb807-08d3-0000-b442-0850d308d001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Wed, 26 Nov 2014 21:43:07 GMT",
+      "content-length": "2181"
+   },
+   "responseBody": {
+      "name": "Fabrikam-Fiber-Git",
+      "structureType": "area",
+      "hasChildren": true,
+      "children": [
+         {
+            "name": "Devices",
+            "structureType": "area",
+            "hasChildren": true,
+            "children": [
+               {
+                  "name": "Windows Phone",
+                  "structureType": "area",
+                  "hasChildren": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Devices/Windows%20Phone"
+               },
+               {
+                  "name": "Surface",
+                  "structureType": "area",
+                  "hasChildren": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Devices/Surface"
+               },
+               {
+                  "name": "iPhone",
+                  "structureType": "area",
+                  "hasChildren": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Devices/iPhone"
+               }
+            ],
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Devices"
+         },
+         {
+            "name": "Website",
+            "structureType": "area",
+            "hasChildren": false,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Website"
+         },
+         {
+            "name": "Backend",
+            "structureType": "area",
+            "hasChildren": true,
+            "children": [
+               {
+                  "name": "Database",
+                  "structureType": "area",
+                  "hasChildren": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Backend/Database"
+               },
+               {
+                  "name": "Middle-tier",
+                  "structureType": "area",
+                  "hasChildren": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Backend/Middle-tier"
+               }
+            ],
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas/Backend"
+         }
+      ],
+      "_links": {
+         "self": {
+            "href": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas"
+         }
+      },
+      "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/classificationNodes/areas"
+   }
+}

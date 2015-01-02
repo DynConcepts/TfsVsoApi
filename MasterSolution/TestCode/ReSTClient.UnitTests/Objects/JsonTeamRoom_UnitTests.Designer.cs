@@ -193,7 +193,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         {
             JToken json = new JObject();
             JsonSource(ref json);
-            var instance = (JsonTeamRoom) JsonTeamRoom.FromToken(json);
+            JsonTeamRoom instance = JsonTeamRoom.FromToken(json);
             InstanceFactory(ref instance, callerName);
             return instance;
         }

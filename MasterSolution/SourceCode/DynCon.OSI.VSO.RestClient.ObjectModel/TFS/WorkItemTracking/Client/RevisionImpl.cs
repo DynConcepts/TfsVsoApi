@@ -4,15 +4,13 @@ using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;
 
-namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
+namespace DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client
 {
     /// <summary>
     ///     Class RevisionImpl.
     /// </summary>
     internal class RevisionImpl : JsonWorkItemRevision, IRevision
     {
-        private int m_Index;
-
         /// <summary>
         ///     Froms the token.
         /// </summary>
@@ -37,12 +35,6 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <value>The fields.</value>
         /// <exception cref="ToBeImplementedException"></exception>
         IFieldCollection IRevision.Fields { get { return r_FieldCollectionCreator.Value; } }
-        private readonly Lazy<IFieldCollection > r_FieldCollectionCreator;
-
-        private IFieldCollection CreateFieldCollection()
-        {
-            return FieldCollectionImpl.FromToken(JsonValue["fields"].Value<JObject>());
-        }
 
         /// <summary>
         ///     Gets the tag line.
@@ -86,6 +78,10 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
         /// <param name="json">The json.</param>
         protected RevisionImpl(JToken json) : base(json) { r_FieldCollectionCreator = new Lazy<IFieldCollection>(CreateFieldCollection); }
 
+        private IFieldCollection CreateFieldCollection() { return FieldCollectionImpl.FromToken(JsonValue["fields"].Value<JObject>()); }
+
         internal void SetIndex(int index) { m_Index = index; }
+        private readonly Lazy<IFieldCollection> r_FieldCollectionCreator;
+        private int m_Index;
     }
 }

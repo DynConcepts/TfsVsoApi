@@ -6,15 +6,34 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 
 namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
 {
+    /// <summary>
+    /// Class NodeWrapper.
+    /// </summary>
     internal class NodeWrapper : NodeWrapper<INode, Node>, INode, IEnumerable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeWrapper"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected NodeWrapper(Node instance) : base(instance) { }
+        /// <summary>
+        /// Sets the mapper.
+        /// </summary>
         internal static void SetMapper() { Mapper = new ObjectMapper<INode, Node>(src => src == null ? null : ((NodeWrapper) src).r_Instance, src => new NodeWrapper(src)); }
     }
 
 
+    /// <summary>
+    /// Class NodeWrapper.
+    /// </summary>
+    /// <typeparam name="TWrapper">The type of the t wrapper.</typeparam>
+    /// <typeparam name="TInterface">The type of the t interface.</typeparam>
     internal class NodeWrapper<TWrapper, TInterface> : MappedObjectBase<TWrapper, TInterface>, INode where TInterface : class where TWrapper : class
     {
+        /// <summary>
+        /// Gets the child nodes.
+        /// </summary>
+        /// <value>The child nodes.</value>
         INodeCollection INode.ChildNodes
         {
             get
@@ -25,6 +44,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Finds the node in sub tree.
+        /// </summary>
+        /// <param name="nodeId">The node identifier.</param>
+        /// <returns>INode.</returns>
         INode INode.FindNodeInSubTree(Int32 nodeId)
         {
             Node nativeCallResult = r_Instance.FindNodeInSubTree(nodeId);
@@ -33,6 +57,11 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
+        /// <summary>
+        /// Finds the node in sub tree.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>INode.</returns>
         INode INode.FindNodeInSubTree(String path)
         {
             Node nativeCallResult = r_Instance.FindNodeInSubTree(path);
@@ -41,12 +70,20 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
         }
 
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             IEnumerator nativeCallResult = ((IEnumerable) r_Instance).GetEnumerator();
             return nativeCallResult;
         }
 
+        /// <summary>
+        /// Gets the has child nodes.
+        /// </summary>
+        /// <value>The has child nodes.</value>
         Boolean INode.HasChildNodes
         {
             get
@@ -56,6 +93,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item read rights.
+        /// </summary>
+        /// <value>The has work item read rights.</value>
         Boolean INode.HasWorkItemReadRights
         {
             get
@@ -65,6 +106,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item read rights recursive.
+        /// </summary>
+        /// <value>The has work item read rights recursive.</value>
         Boolean INode.HasWorkItemReadRightsRecursive
         {
             get
@@ -74,6 +119,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item write rights.
+        /// </summary>
+        /// <value>The has work item write rights.</value>
         Boolean INode.HasWorkItemWriteRights
         {
             get
@@ -83,6 +132,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the has work item write rights recursive.
+        /// </summary>
+        /// <value>The has work item write rights recursive.</value>
         Boolean INode.HasWorkItemWriteRightsRecursive
         {
             get
@@ -92,6 +145,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         Int32 INode.Id
         {
             get
@@ -101,6 +158,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is area node.
+        /// </summary>
+        /// <value>The is area node.</value>
         Boolean INode.IsAreaNode
         {
             get
@@ -110,6 +171,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the is iteration node.
+        /// </summary>
+        /// <value>The is iteration node.</value>
         Boolean INode.IsIterationNode
         {
             get
@@ -119,6 +184,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
         String INode.Name
         {
             get
@@ -128,6 +197,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the parent node.
+        /// </summary>
+        /// <value>The parent node.</value>
         INode INode.ParentNode
         {
             get
@@ -138,6 +211,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <value>The path.</value>
         String INode.Path
         {
             get
@@ -147,6 +224,10 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Gets the URI.
+        /// </summary>
+        /// <value>The URI.</value>
         Uri INode.Uri
         {
             get
@@ -156,7 +237,14 @@ namespace DynCon.OSI.VSO.ObjectModelClient.TFS.WorkItemTracking.Client
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeWrapper{TWrapper, TInterface}"/> class.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
         protected NodeWrapper(Node instance) { r_Instance = instance; }
+        /// <summary>
+        /// The r_ instance
+        /// </summary>
         protected readonly Node r_Instance;
     }
 }

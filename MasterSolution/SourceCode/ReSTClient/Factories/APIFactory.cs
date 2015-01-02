@@ -1,6 +1,4 @@
-﻿using System;
-using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
-using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
+﻿using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 
 namespace DynCon.OSI.VSO.ReSTClient.Factories
 {

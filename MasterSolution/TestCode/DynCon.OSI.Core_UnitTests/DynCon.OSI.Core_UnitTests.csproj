@@ -51,8 +51,39 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers\CredentialsProvider_UnitTests.cs" />
+    <Compile Include="Helpers\CredentialsProvider_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsProvider_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CredentialsStore_UnitTests.cs" />
+    <Compile Include="Helpers\CredentialsStore_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsStore_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DerivedClassDiscovery_UnitTests.cs" />
+    <Compile Include="Helpers\DerivedClassDiscovery_UnitTests.Designer.cs">
+      <DependentUpon>DerivedClassDiscovery_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\StringFormatter_UnitTests.cs" />
+    <Compile Include="Helpers\StringFormatter_UnitTests.Designer.cs">
+      <DependentUpon>StringFormatter_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\TaskHelpers_UnitTests.cs" />
+    <Compile Include="Helpers\TaskHelpers_UnitTests.Designer.cs">
+      <DependentUpon>TaskHelpers_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ToBeImplementedException_UnitTests.cs" />
+    <Compile Include="Helpers\ToBeImplementedException_UnitTests.Designer.cs">
+      <DependentUpon>ToBeImplementedException_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjectMapper_UnitTests.cs" />
+    <Compile Include="ObjectMapping\MappedObjectBase_UnitTests.cs" />
+    <Compile Include="ObjectMapping\MappedObjectBase_UnitTests.Designer.cs">
+      <DependentUpon>MappedObjectBase_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectMapping\MappedObjectInitializer_UnitTests.cs" />
+    <Compile Include="ObjectMapping\MappedObjectInitializer_UnitTests.Designer.cs">
+      <DependentUpon>MappedObjectInitializer_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +91,15 @@
       <Project>{FE661B0F-9647-4D83-8C6F-2776E8614988}</Project>
       <Name>DynCon.OSI.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DynCon.OSI.DynTest\DynCon.OSI.DynTest.csproj">
+      <Project>{4253b165-e851-4f14-b3b4-13fb6131deea}</Project>
+      <Name>DynCon.OSI.DynTest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestingCredentials.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
