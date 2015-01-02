@@ -21,6 +21,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Assert.IsNotNull(api);
         }
 
+        partial void FromToken_PreCondition(ref JsonField instance, ref JToken json) { json = new JProperty("System.Title", "WorkItem Created by Unit Testing"); }
+
         static partial void InstanceFactory(ref JsonField instance, string callerName)
         {
             var json = new JProperty("System.Title", "WorkItem Created by Unit Testing");

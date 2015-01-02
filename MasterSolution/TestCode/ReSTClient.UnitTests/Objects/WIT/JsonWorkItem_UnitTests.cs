@@ -12,6 +12,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     {
 //        partial void GetField_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonWorkItem instance, ref System.String fieldName) { fieldName = "System.Title"; }
 
+        partial void FromToken_PreCondition(ref JsonWorkItem instance, ref JToken json) { json = JObject.Parse(CannedMessages.JsonWorkItem324); }
         partial void GetFieldType_PreCondition(ref JsonWorkItem instance, ref String fieldName) { fieldName = "System.Title"; }
 
         static partial void JsonSource(ref JToken json) { json = JObject.Parse(CannedMessages.JsonWorkItem324); }
@@ -28,7 +29,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             "SetFieldValue_UnitTest",
             "SetJsonContent_UnitTest",
             "CaptureJson_UnitTest",
-            "TryGetField_UnitTest"
+            "TryGetField_UnitTest",
+            "APIFactory_UnitTest",
+            "FieldsToJArray_UnitTest",
         };
     }
 }

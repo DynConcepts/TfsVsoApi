@@ -88,6 +88,8 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         internal async Task<T> ProcessRequestStream<T>(StructuredHttpExchange exchange, Func<Stream, T> xform)
 #pragma warning restore 1998
         {
+            if (!exchange.RequestMessage.RequestUri.IsAbsoluteUri)
+                throw new ArgumentException("Relative URI: in Client Request!");
             var sw = new Stopwatch();
             sw.Start();
             Exception thrownException = null;

@@ -4,11 +4,12 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.ReSTClient.Objects;
 using DynCon.OSI.VSO.ReSTClient.Objects.TFVC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     [TestClass]
@@ -47,24 +48,34 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         [TestMethod]
         public void GetChangesetChanges_UnitTest()
         {
+            Int32 changeSetId = default(Int32);
             Task<IReadOnlyList<JsonChangeSetChanges>> _retVal = default(Task<IReadOnlyList<JsonChangeSetChanges>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetChangesetChanges_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetChangesetChanges(8); },
-                instance => { GetChangesetChanges_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    changeSetId = default(Int32); //No Constructor
+                    GetChangesetChanges_PreCondition(ref instance, ref changeSetId);
+                },
+                instance => { _retVal = instance.GetChangesetChanges(changeSetId); },
+                instance => { GetChangesetChanges_PostValidate(instance, changeSetId, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetChangesetWorkItems_UnitTest()
         {
+            Int32 changeSetId = default(Int32);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetChangesetWorkItems_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetChangesetWorkItems(8); },
-                instance => { GetChangesetWorkItems_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    changeSetId = default(Int32); //No Constructor
+                    GetChangesetWorkItems_PreCondition(ref instance, ref changeSetId);
+                },
+                instance => { _retVal = instance.GetChangesetWorkItems(changeSetId); },
+                instance => { GetChangesetWorkItems_PostValidate(instance, changeSetId, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -263,10 +274,10 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         partial void Equals_PreCondition(ref JsonTfvcAPI instance, ref Object obj);
         partial void GetBranches_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetBranches_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetChangesetChanges_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonChangeSetChanges>> _retVal);
-        partial void GetChangesetChanges_PreCondition(ref JsonTfvcAPI instance);
-        partial void GetChangesetWorkItems_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetChangesetWorkItems_PreCondition(ref JsonTfvcAPI instance);
+        partial void GetChangesetChanges_PostValidate(JsonTfvcAPI instance, Int32 changeSetId, Task<IReadOnlyList<JsonChangeSetChanges>> _retVal);
+        partial void GetChangesetChanges_PreCondition(ref JsonTfvcAPI instance, ref Int32 changeSetId);
+        partial void GetChangesetWorkItems_PostValidate(JsonTfvcAPI instance, Int32 changeSetId, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetChangesetWorkItems_PreCondition(ref JsonTfvcAPI instance, ref Int32 changeSetId);
         partial void GetChangesetsBatch_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetChangesetsBatch_PreCondition(ref JsonTfvcAPI instance);
         partial void GetChangesets_PostValidate(JsonTfvcAPI instance, Task<IReadOnlyList<JsonChangeSet>> _retVal);

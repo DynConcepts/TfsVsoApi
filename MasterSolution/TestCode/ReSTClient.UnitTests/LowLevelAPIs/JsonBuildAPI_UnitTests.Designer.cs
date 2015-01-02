@@ -47,24 +47,36 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         [TestMethod]
         public void GetCommits_UnitTest()
         {
+            String project = default(String);
+            Int32 buildId = default(Int32);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetCommits_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetCommits("RestPlaypen", 2); },
-                instance => { GetCommits_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    buildId = default(Int32); //No Constructor
+                    GetCommits_PreCondition(ref instance, ref project, ref buildId);
+                },
+                instance => { _retVal = instance.GetCommits(project, buildId); },
+                instance => { GetCommits_PostValidate(instance, project, buildId, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetDefinitions_UnitTest()
         {
+            String project = default(String);
             Task<IReadOnlyList<JsonBuildDefinition>> _retVal = default(Task<IReadOnlyList<JsonBuildDefinition>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetRevisions_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetDefinitions("RestPlaypen"); },
-                instance => { GetDefinitions_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    GetDefinitions_PreCondition(ref instance, ref project);
+                },
+                instance => { _retVal = instance.GetDefinitions(project); },
+                instance => { GetDefinitions_PostValidate(instance, project, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -83,12 +95,19 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         [TestMethod]
         public void GetLogs_UnitTest()
         {
+            String project = default(String);
+            Int32 buildId = default(Int32);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetLogs_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetLogs("RestPlaypen", 2); },
-                instance => { GetLogs_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    buildId = default(Int32); //No Constructor
+                    GetLogs_PreCondition(ref instance, ref project, ref buildId);
+                },
+                instance => { _retVal = instance.GetLogs(project, buildId); },
+                instance => { GetLogs_PostValidate(instance, project, buildId, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -119,36 +138,51 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         [TestMethod]
         public void GetTags_0_UnitTest()
         {
+            String project = default(String);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetTags_0_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetTags_0("RestPlaypen"); },
-                instance => { GetTags_0_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    GetTags_0_PreCondition(ref instance, ref project);
+                },
+                instance => { _retVal = instance.GetTags_0(project); },
+                instance => { GetTags_0_PostValidate(instance, project, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetTags_1_UnitTest()
         {
+            String project = default(String);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetTags_1_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetTags_1("RestPlaypen"); },
-                instance => { GetTags_1_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    GetTags_1_PreCondition(ref instance, ref project);
+                },
+                instance => { _retVal = instance.GetTags_1(project); },
+                instance => { GetTags_1_PostValidate(instance, project, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetTemplates_UnitTest()
         {
+            String project = default(String);
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetTemplates_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetTemplates("RestPlaypen"); },
-                instance => { GetTemplates_PostValidate(instance, _retVal); });
+                instance =>
+                {
+                    project = default(String); //No Constructor
+                    GetTemplates_PreCondition(ref instance, ref project);
+                },
+                instance => { _retVal = instance.GetTemplates(project); },
+                instance => { GetTemplates_PostValidate(instance, project, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -179,10 +213,10 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         partial void Equals_PreCondition(ref JsonBuildAPI instance, ref Object obj);
         partial void GetArtifacts_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetArtifacts_PreCondition(ref JsonBuildAPI instance);
-        partial void GetCommits_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetCommits_PreCondition(ref JsonBuildAPI instance);
-        partial void GetDefinitions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonBuildDefinition>> _retVal);
-        partial void GetDefinitions_PreCondition(ref JsonBuildAPI instance);
+        partial void GetCommits_PostValidate(JsonBuildAPI instance, String project, Int32 buildId, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetCommits_PreCondition(ref JsonBuildAPI instance, ref String project, ref Int32 buildId);
+        partial void GetDefinitions_PostValidate(JsonBuildAPI instance, String project, Task<IReadOnlyList<JsonBuildDefinition>> _retVal);
+        partial void GetDefinitions_PreCondition(ref JsonBuildAPI instance, ref String project);
 
         partial void GetHashCode_PostValidate(JsonBuildAPI instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref JsonBuildAPI instance);
@@ -195,18 +229,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             return instance;
         }
 
-        partial void GetLogs_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetLogs_PreCondition(ref JsonBuildAPI instance);
+        partial void GetLogs_PostValidate(JsonBuildAPI instance, String project, Int32 buildId, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetLogs_PreCondition(ref JsonBuildAPI instance, ref String project, ref Int32 buildId);
         partial void GetOptions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetOptions_PreCondition(ref JsonBuildAPI instance);
         partial void GetRevisions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
         partial void GetRevisions_PreCondition(ref JsonBuildAPI instance);
-        partial void GetTags_0_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetTags_0_PreCondition(ref JsonBuildAPI instance);
-        partial void GetTags_1_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetTags_1_PreCondition(ref JsonBuildAPI instance);
-        partial void GetTemplates_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetTemplates_PreCondition(ref JsonBuildAPI instance);
+        partial void GetTags_0_PostValidate(JsonBuildAPI instance, String project, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetTags_0_PreCondition(ref JsonBuildAPI instance, ref String project);
+        partial void GetTags_1_PostValidate(JsonBuildAPI instance, String project, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetTags_1_PreCondition(ref JsonBuildAPI instance, ref String project);
+        partial void GetTemplates_PostValidate(JsonBuildAPI instance, String project, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
+        partial void GetTemplates_PreCondition(ref JsonBuildAPI instance, ref String project);
 
         partial void GetType_PostValidate(JsonBuildAPI instance, Type _retVal);
         partial void GetType_PreCondition(ref JsonBuildAPI instance);

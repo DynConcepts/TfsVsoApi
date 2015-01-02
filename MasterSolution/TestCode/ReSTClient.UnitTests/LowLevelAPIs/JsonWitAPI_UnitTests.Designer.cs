@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     [TestClass]

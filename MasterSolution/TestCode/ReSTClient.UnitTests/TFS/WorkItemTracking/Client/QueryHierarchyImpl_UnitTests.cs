@@ -15,7 +15,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.TFS.WorkItemTracking.Client
         static partial void InstanceFactory(ref QueryHierarchyImpl instance, string callerName)
         {
             var jsonMockQuery = new JObject();
-            jsonMockQuery.Add("Id", s_MockJsonQueryId.ToString());
+            jsonMockQuery.Add("id", s_MockJsonQueryId.ToString());
             JsonQueryBase item = JsonQueryBase.FromToken(jsonMockQuery);
             var list = new List<JsonQueryBase>();
             list.Add(item);

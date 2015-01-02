@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
-using DynCon.OSI.VSO.ReSTClient.Objects.Build;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
@@ -13,14 +12,14 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
     {
         partial void Equals_PostValidate(JsonBuildAPI instance, Object obj, Boolean _retVal) { }
         partial void GetArtifacts_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
-        partial void GetCommits_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
-        partial void GetDefinitions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonBuildDefinition>> _retVal) { _retVal.Wait(); }
+        //partial void GetCommits_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        //partial void GetDefinitions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonBuildDefinition>> _retVal) { _retVal.Wait(); }
         partial void GetHashCode_PostValidate(JsonBuildAPI instance, Int32 _retVal) { }
-        partial void GetLogs_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        //partial void GetLogs_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
         partial void GetOptions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
         partial void GetRevisions_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
-        partial void GetTags_0_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
-        partial void GetTags_1_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        //partial void GetTags_0_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        //partial void GetTags_1_PostValidate(JsonBuildAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
         partial void GetType_PostValidate(JsonBuildAPI instance, Type _retVal) { }
         partial void ToString_PostValidate(JsonBuildAPI instance, String _retVal) { }
 

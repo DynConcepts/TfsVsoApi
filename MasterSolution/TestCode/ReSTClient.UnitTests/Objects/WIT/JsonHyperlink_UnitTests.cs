@@ -8,15 +8,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonHyperlink_UnitTests : DynTestClassBase
     {
-        static partial void InstanceFactory(ref JsonHyperlink instance, string callerName)
+        partial void FromToken_PreCondition(ref JsonHyperlink instance, ref JToken json)
         {
             JsonRelationType_UnitTests.PopulateLinkTypes();
 
             JObject jObject = CannedMessages.SampleWorkItemsWithRelations;
             JToken workItem = jObject["value"].Value<JArray>()[1];
             var relations = workItem["relations"].Value<JArray>();
-            JToken token = relations[2];
-            instance = JsonHyperlink.FromToken(token);
+            json = relations[2];
+        }
+
+        static partial void JsonSource(ref JToken json)
+        {
+            JsonRelationType_UnitTests.PopulateLinkTypes();
+
+            JObject jObject = CannedMessages.SampleWorkItemsWithRelations;
+            JToken workItem = jObject["value"].Value<JArray>()[1];
+            var relations = workItem["relations"].Value<JArray>();
+            json = relations[2];
         }
     }
 }

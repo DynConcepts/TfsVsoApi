@@ -26,6 +26,8 @@ namespace DynCon.OSI.JasonBackedObjects.AdvancedLogging
         private void StructuredHttpExchangeOnOnExchangeComplete(object sender, EventArgs eventArgs)
         {
             var exchange = (StructuredHttpExchange) sender;
+            if (!exchange.RequestMessage.RequestUri.IsAbsoluteUri)
+                throw new ArgumentException("Relative URI: in Client Request!");
             var entry = new ExchangeEntry
             {
                 RelativeRoute = exchange.RelativeRoute,

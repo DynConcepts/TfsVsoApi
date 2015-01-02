@@ -36,7 +36,7 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
         (instance) =>
         {
-          token = default(Newtonsoft.Json.Linq.JToken); //No Type
+          token = default(Newtonsoft.Json.Linq.JToken); //No Constructor
           CaptureJson_PreCondition(ref instance, ref token);
         },
        (instance) =>
@@ -49,11 +49,12 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
       });
   }
     partial void ToJSonString_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
-    partial void ToJSonString_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
+    partial void ToJSonString_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.String _retVal);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void ToJSonString_UnitTest()
   {
+    System.String _retVal = default(System.String);
       ExecuteMethod(
         () =>
         {
@@ -65,19 +66,20 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
        (instance) =>
        {
-             instance.ToJSonString();
+             _retVal =instance.ToJSonString();
        },
       (instance) =>
       {
-              ToJSonString_PostValidate(instance);
+              ToJSonString_PostValidate(instance, _retVal);
       });
   }
     partial void ToString_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
-    partial void ToString_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
+    partial void ToString_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.String _retVal);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void ToString_UnitTest()
   {
+    System.String _retVal = default(System.String);
       ExecuteMethod(
         () =>
         {
@@ -89,20 +91,21 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
        (instance) =>
        {
-             instance.ToString();
+             _retVal =instance.ToString();
        },
       (instance) =>
       {
-              ToString_PostValidate(instance);
+              ToString_PostValidate(instance, _retVal);
       });
   }
     partial void Equals_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, ref System.Object obj);
-    partial void Equals_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.Object obj);
+    partial void Equals_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.Object obj, System.Boolean _retVal);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void Equals_UnitTest()
   {
     System.Object obj = default(System.Object);
+    System.Boolean _retVal = default(System.Boolean);
       ExecuteMethod(
         () =>
         {
@@ -115,19 +118,20 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
        (instance) =>
        {
-             instance.Equals(obj);
+             _retVal =instance.Equals(obj);
        },
       (instance) =>
       {
-              Equals_PostValidate(instance, obj);
+              Equals_PostValidate(instance, obj, _retVal);
       });
   }
     partial void GetHashCode_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
-    partial void GetHashCode_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
+    partial void GetHashCode_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.Int32 _retVal);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void GetHashCode_UnitTest()
   {
+    System.Int32 _retVal = default(System.Int32);
       ExecuteMethod(
         () =>
         {
@@ -139,19 +143,20 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
        (instance) =>
        {
-             instance.GetHashCode();
+             _retVal =instance.GetHashCode();
        },
       (instance) =>
       {
-              GetHashCode_PostValidate(instance);
+              GetHashCode_PostValidate(instance, _retVal);
       });
   }
     partial void GetType_PreCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
-    partial void GetType_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance);
+    partial void GetType_PostValidate(DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, System.Type _retVal);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void GetType_UnitTest()
   {
+    System.Type _retVal = default(System.Type);
       ExecuteMethod(
         () =>
         {
@@ -163,14 +168,14 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
         },
        (instance) =>
        {
-             instance.GetType();
+             _retVal =instance.GetType();
        },
       (instance) =>
       {
-              GetType_PostValidate(instance);
+              GetType_PostValidate(instance, _retVal);
       });
   }
-   partial void HasChildren_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, ref System.Boolean setValue);
+   partial void HasChildren_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance,ref System.Boolean setValue);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void HasChildren_UnitTest()
@@ -193,7 +198,7 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
        {
        });
   }
-   partial void Name_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, ref System.String setValue);
+   partial void Name_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance,ref System.String setValue);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void Name_UnitTest()
@@ -216,7 +221,7 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
        {
        });
   }
-   partial void Url_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, ref System.String setValue);
+   partial void Url_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance,ref System.String setValue);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void Url_UnitTest()
@@ -239,7 +244,7 @@ return new List<DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode>{ G
        {
        });
   }
-   partial void JsonValue_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance, ref Newtonsoft.Json.Linq.JToken setValue);
+   partial void JsonValue_SetCondition(ref DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonClassificationNode instance,ref Newtonsoft.Json.Linq.JToken setValue);
 /// <summary>Generated Test Template</summary>
   [TestMethod]
   public void JsonValue_UnitTest()

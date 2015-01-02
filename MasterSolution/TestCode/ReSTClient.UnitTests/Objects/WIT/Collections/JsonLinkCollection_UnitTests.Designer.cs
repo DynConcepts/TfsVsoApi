@@ -18,6 +18,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void AddItem_UnitTest()
         {
             Object value = default(Object);
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -25,8 +26,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                     value = new Object();
                     AddItem_PreCondition(ref instance, ref value);
                 },
-                instance => { instance.AddItem(value); },
-                instance => { AddItem_PostValidate(instance, value); });
+                instance => { _retVal = instance.AddItem(value); },
+                instance => { AddItem_PostValidate(instance, value, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -34,15 +35,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void Add_UnitTest()
         {
             JsonHyperlink link = default(JsonHyperlink);
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    link = default(JsonHyperlink); //No Type
+                    link = default(JsonHyperlink); //No Constructor
                     Add_PreCondition(ref instance, ref link);
                 },
-                instance => { instance.Add(link); },
-                instance => { Add_PostValidate(instance, link); });
+                instance => { _retVal = instance.Add(link); },
+                instance => { Add_PostValidate(instance, link, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -54,7 +56,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    newFields = default(JToken); //No Type
+                    newFields = default(JToken); //No Constructor
                     CaptureJson_PreCondition(ref instance, ref newFields);
                 },
                 instance => { instance.CaptureJson(newFields); },
@@ -77,15 +79,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void Contains_UnitTest()
         {
             JsonLink item = default(JsonLink);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    item = default(JsonLink); //No Type
+                    item = default(JsonLink); //No Constructor
                     Contains_PreCondition(ref instance, ref item);
                 },
-                instance => { instance.Contains(item); },
-                instance => { Contains_PostValidate(instance, item); });
+                instance => { _retVal = instance.Contains(item); },
+                instance => { Contains_PostValidate(instance, item, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -98,7 +101,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    array = default(JsonLink[]); //No Type
+                    array = default(JsonLink[]); //No Constructor
                     arrayIndex = default(Int32); //No Constructor
                     CopyTo_PreCondition(ref instance, ref array, ref arrayIndex);
                 },
@@ -129,6 +132,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void Equals_UnitTest()
         {
             Object obj = default(Object);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -136,30 +140,49 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                     obj = new Object();
                     Equals_PreCondition(ref instance, ref obj);
                 },
-                instance => { instance.Equals(obj); },
-                instance => { Equals_PostValidate(instance, obj); });
+                instance => { _retVal = instance.Equals(obj); },
+                instance => { Equals_PostValidate(instance, obj, _retVal); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void FromToken_UnitTest()
+        {
+            JArray value = default(JArray);
+            JsonLinkCollection _retVal = default(JsonLinkCollection);
+            ExecuteMethod(
+                () => { return GetInstance(); },
+                instance =>
+                {
+                    value = new JArray();
+                    FromToken_PreCondition(ref instance, ref value);
+                },
+                instance => { _retVal = JsonLinkCollection.FromToken(value); },
+                instance => { FromToken_PostValidate(instance, value, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetEnumerator_UnitTest()
         {
+            IEnumerator<JsonLink> _retVal = default(IEnumerator<JsonLink>);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetEnumerator_PreCondition(ref instance); },
-                instance => { instance.GetEnumerator(); },
-                instance => { GetEnumerator_PostValidate(instance); });
+                instance => { _retVal = instance.GetEnumerator(); },
+                instance => { GetEnumerator_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetHashCode_UnitTest()
         {
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { instance.GetHashCode(); },
-                instance => { GetHashCode_PostValidate(instance); });
+                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -167,6 +190,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void GetItem_UnitTest()
         {
             Int32 index = default(Int32);
+            Object _retVal = default(Object);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -174,19 +198,20 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                     index = default(Int32); //No Constructor
                     GetItem_PreCondition(ref instance, ref index);
                 },
-                instance => { instance.GetItem(index); },
-                instance => { GetItem_PostValidate(instance, index); });
+                instance => { _retVal = instance.GetItem(index); },
+                instance => { GetItem_PostValidate(instance, index, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetType_UnitTest()
         {
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetType_PreCondition(ref instance); },
-                instance => { instance.GetType(); },
-                instance => { GetType_PostValidate(instance); });
+                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -194,15 +219,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void IndexOf_UnitTest()
         {
             JsonLink item = default(JsonLink);
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    item = default(JsonLink); //No Type
+                    item = default(JsonLink); //No Constructor
                     IndexOf_PreCondition(ref instance, ref item);
                 },
-                instance => { instance.IndexOf(item); },
-                instance => { IndexOf_PostValidate(instance, item); });
+                instance => { _retVal = instance.IndexOf(item); },
+                instance => { IndexOf_PostValidate(instance, item, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -216,7 +242,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     index = default(Int32); //No Constructor
-                    item = default(JsonLink); //No Type
+                    item = default(JsonLink); //No Constructor
                     Insert_PreCondition(ref instance, ref index, ref item);
                 },
                 instance => { instance.Insert(index, item); },
@@ -316,15 +342,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         public void Remove_UnitTest()
         {
             JsonLink item = default(JsonLink);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    item = default(JsonLink); //No Type
+                    item = default(JsonLink); //No Constructor
                     Remove_PreCondition(ref instance, ref item);
                 },
-                instance => { instance.Remove(item); },
-                instance => { Remove_PostValidate(instance, item); });
+                instance => { _retVal = instance.Remove(item); },
+                instance => { Remove_PostValidate(instance, item, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -349,68 +376,66 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         [TestMethod]
         public void ToJSonString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { instance.ToJSonString(); },
-                instance => { ToJSonString_PostValidate(instance); });
+                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void ToString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToString_PreCondition(ref instance); },
-                instance => { instance.ToString(); },
-                instance => { ToString_PostValidate(instance); });
+                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void VersionTag_UnitTest()
         {
-            int originalTagValue = int.MaxValue;
             ExecuteProperty(
                 () =>
                     // Create Test Instance
                 {
                     JsonLinkCollection instance = GetInstance();
-                    originalTagValue = instance.VersionTag;
                     return instance;
                 },
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                instance =>
-                {
-                    instance.Clear();
-                    return instance.VersionTag;
-                },
+                instance => { return instance.VersionTag; },
                 // Validate Get Operation
-                (instance, setValue, getValue) => Assert.IsTrue(getValue > originalTagValue, "VersionTag did not increment on Clear()"));
+                (instance, setValue, getValue) => { });
         }
 
-        partial void AddItem_PostValidate(JsonLinkCollection instance, Object value);
+        partial void AddItem_PostValidate(JsonLinkCollection instance, Object value, Int32 _retVal);
         partial void AddItem_PreCondition(ref JsonLinkCollection instance, ref Object value);
-        partial void Add_PostValidate(JsonLinkCollection instance, JsonHyperlink link);
+        partial void Add_PostValidate(JsonLinkCollection instance, JsonHyperlink link, Int32 _retVal);
         partial void Add_PreCondition(ref JsonLinkCollection instance, ref JsonHyperlink link);
         partial void CaptureJson_PostValidate(JsonLinkCollection instance, JToken newFields);
         partial void CaptureJson_PreCondition(ref JsonLinkCollection instance, ref JToken newFields);
         partial void Clear_PostValidate(JsonLinkCollection instance);
         partial void Clear_PreCondition(ref JsonLinkCollection instance);
-        partial void Contains_PostValidate(JsonLinkCollection instance, JsonLink item);
+        partial void Contains_PostValidate(JsonLinkCollection instance, JsonLink item, Boolean _retVal);
         partial void Contains_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
         partial void CopyTo_PostValidate(JsonLinkCollection instance, JsonLink[] array, Int32 arrayIndex);
         partial void CopyTo_PreCondition(ref JsonLinkCollection instance, ref JsonLink[] array, ref Int32 arrayIndex);
         partial void Count_SetCondition(ref JsonLinkCollection instance, ref Int32 setValue);
 
-        partial void Equals_PostValidate(JsonLinkCollection instance, Object obj);
+        partial void Equals_PostValidate(JsonLinkCollection instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref JsonLinkCollection instance, ref Object obj);
-        partial void GetEnumerator_PostValidate(JsonLinkCollection instance);
+        partial void FromToken_PostValidate(JsonLinkCollection instance, JArray value, JsonLinkCollection _retVal);
+        partial void FromToken_PreCondition(ref JsonLinkCollection instance, ref JArray value);
+        partial void GetEnumerator_PostValidate(JsonLinkCollection instance, IEnumerator<JsonLink> _retVal);
         partial void GetEnumerator_PreCondition(ref JsonLinkCollection instance);
 
-        partial void GetHashCode_PostValidate(JsonLinkCollection instance);
+        partial void GetHashCode_PostValidate(JsonLinkCollection instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref JsonLinkCollection instance);
         internal static IEnumerable<JsonLinkCollection> GetIEnumerableInstance() { return new List<JsonLinkCollection> {GetInstance()}; }
 
@@ -423,12 +448,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             return instance;
         }
 
-        partial void GetItem_PostValidate(JsonLinkCollection instance, Int32 index);
+        partial void GetItem_PostValidate(JsonLinkCollection instance, Int32 index, Object _retVal);
         partial void GetItem_PreCondition(ref JsonLinkCollection instance, ref Int32 index);
 
-        partial void GetType_PostValidate(JsonLinkCollection instance);
+        partial void GetType_PostValidate(JsonLinkCollection instance, Type _retVal);
         partial void GetType_PreCondition(ref JsonLinkCollection instance);
-        partial void IndexOf_PostValidate(JsonLinkCollection instance, JsonLink item);
+        partial void IndexOf_PostValidate(JsonLinkCollection instance, JsonLink item, Int32 _retVal);
         partial void IndexOf_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
         partial void Insert_PostValidate(JsonLinkCollection instance, Int32 index, JsonLink item);
         partial void Insert_PreCondition(ref JsonLinkCollection instance, ref Int32 index, ref JsonLink item);
@@ -443,12 +468,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         partial void JsonValue_SetCondition(ref JsonLinkCollection instance, ref JToken setValue);
         partial void RemoveAt_PostValidate(JsonLinkCollection instance, Int32 index);
         partial void RemoveAt_PreCondition(ref JsonLinkCollection instance, ref Int32 index);
-        partial void Remove_PostValidate(JsonLinkCollection instance, JsonLink item);
+        partial void Remove_PostValidate(JsonLinkCollection instance, JsonLink item, Boolean _retVal);
         partial void Remove_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
         partial void SyncRoot_SetCondition(ref JsonLinkCollection instance, ref Object setValue);
-        partial void ToJSonString_PostValidate(JsonLinkCollection instance);
+        partial void ToJSonString_PostValidate(JsonLinkCollection instance, String _retVal);
         partial void ToJSonString_PreCondition(ref JsonLinkCollection instance);
-        partial void ToString_PostValidate(JsonLinkCollection instance);
+        partial void ToString_PostValidate(JsonLinkCollection instance, String _retVal);
         partial void ToString_PreCondition(ref JsonLinkCollection instance);
         partial void VersionTag_SetCondition(ref JsonLinkCollection instance, ref Int32 setValue);
     }

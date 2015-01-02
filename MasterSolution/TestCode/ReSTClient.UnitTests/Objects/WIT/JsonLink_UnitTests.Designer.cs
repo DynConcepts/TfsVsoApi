@@ -39,7 +39,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    token = default(JToken); //No Type
+                    token = default(JToken); //No Constructor
                     CaptureJson_PreCondition(ref instance, ref token);
                 },
                 instance => { instance.CaptureJson(token); },
@@ -51,6 +51,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         public void Equals_UnitTest()
         {
             Object obj = default(Object);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -58,30 +59,49 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                     obj = new Object();
                     Equals_PreCondition(ref instance, ref obj);
                 },
-                instance => { instance.Equals(obj); },
-                instance => { Equals_PostValidate(instance, obj); });
+                instance => { _retVal = instance.Equals(obj); },
+                instance => { Equals_PostValidate(instance, obj, _retVal); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void FromToken_UnitTest()
+        {
+            JToken content = default(JToken);
+            JsonLink _retVal = default(JsonLink);
+            ExecuteMethod(
+                () => { return GetInstance(); },
+                instance =>
+                {
+                    content = default(JToken); //No Constructor
+                    FromToken_PreCondition(ref instance, ref content);
+                },
+                instance => { _retVal = JsonLink.FromToken(content); },
+                instance => { FromToken_PostValidate(instance, content, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetHashCode_UnitTest()
         {
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { instance.GetHashCode(); },
-                instance => { GetHashCode_PostValidate(instance); });
+                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetType_UnitTest()
         {
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetType_PreCondition(ref instance); },
-                instance => { instance.GetType(); },
-                instance => { GetType_PostValidate(instance); });
+                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -100,6 +120,28 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance => { return instance.JsonValue; },
                 // Validate Get Operation
                 (instance, setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void PreLoadedTypes_UnitTest()
+        {
+            ExecuteProperty(
+                // Create Set Value
+                () =>
+                {
+                    Dictionary<string, JsonRelationType> setValue = default(Dictionary<String, JsonRelationType>);
+                    PreLoadedTypes_SetCondition(ref setValue);
+                    return setValue;
+                },
+                // Invoke Setter
+                setValue => { JsonLink.PreLoadedTypes = setValue; },
+                // Validate Set Operation
+                setValue => { },
+                // Invoke Getter
+                () => { return JsonLink.PreLoadedTypes; },
+                // Validate Get Operation
+                (setValue, getValue) => { });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -124,22 +166,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         [TestMethod]
         public void ToJSonString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { instance.ToJSonString(); },
-                instance => { ToJSonString_PostValidate(instance); });
+                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void ToString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToString_PreCondition(ref instance); },
-                instance => { instance.ToString(); },
-                instance => { ToString_PostValidate(instance); });
+                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -160,14 +204,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 (instance, setValue, getValue) => { });
         }
 
-        partial void Attributes_SetCondition(ref JsonLink instance, ref String setValue);
+        partial void Attributes_SetCondition(ref JsonLink instance, ref JsonLinkAttributes setValue);
         partial void CaptureJson_PostValidate(JsonLink instance, JToken token);
         partial void CaptureJson_PreCondition(ref JsonLink instance, ref JToken token);
 
-        partial void Equals_PostValidate(JsonLink instance, Object obj);
+        partial void Equals_PostValidate(JsonLink instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref JsonLink instance, ref Object obj);
+        partial void FromToken_PostValidate(JsonLink instance, JToken content, JsonLink _retVal);
+        partial void FromToken_PreCondition(ref JsonLink instance, ref JToken content);
 
-        partial void GetHashCode_PostValidate(JsonLink instance);
+        partial void GetHashCode_PostValidate(JsonLink instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref JsonLink instance);
         internal static IEnumerable<JsonLink> GetIEnumerableInstance() { return new List<JsonLink> {GetInstance()}; }
 
@@ -180,16 +226,17 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             return instance;
         }
 
-        partial void GetType_PostValidate(JsonLink instance);
+        partial void GetType_PostValidate(JsonLink instance, Type _retVal);
         partial void GetType_PreCondition(ref JsonLink instance);
         static partial void InstanceFactory(ref JsonLink instance, [CallerMemberName] string callerName = "");
         static partial void JsonSource(ref JToken json);
         partial void JsonValue_SetCondition(ref JsonLink instance, ref JToken setValue);
+        partial void PreLoadedTypes_SetCondition(ref Dictionary<String, JsonRelationType> setValue);
 
         partial void Rel_SetCondition(ref JsonLink instance, ref String setValue);
-        partial void ToJSonString_PostValidate(JsonLink instance);
+        partial void ToJSonString_PostValidate(JsonLink instance, String _retVal);
         partial void ToJSonString_PreCondition(ref JsonLink instance);
-        partial void ToString_PostValidate(JsonLink instance);
+        partial void ToString_PostValidate(JsonLink instance, String _retVal);
         partial void ToString_PreCondition(ref JsonLink instance);
 
         partial void Url_SetCondition(ref JsonLink instance, ref String setValue);

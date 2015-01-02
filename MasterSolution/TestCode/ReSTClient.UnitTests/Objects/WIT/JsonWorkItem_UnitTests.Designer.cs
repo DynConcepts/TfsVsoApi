@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,6 +16,28 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     {
         /// <summary>Generated Test Template</summary>
         [TestMethod]
+        public void APIFactory_UnitTest()
+        {
+            ExecuteProperty(
+                // Create Set Value
+                () =>
+                {
+                    Func<JsonWitAPI> setValue = default(Func<JsonWitAPI>);
+                    APIFactory_SetCondition(ref setValue);
+                    return setValue;
+                },
+                // Invoke Setter
+                setValue => { JsonWorkItem.APIFactory = setValue; },
+                // Validate Set Operation
+                setValue => { },
+                // Invoke Getter
+                () => { return JsonWorkItem.APIFactory; },
+                // Validate Get Operation
+                (setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
         public void CaptureJson_UnitTest()
         {
             JObject jObject = default(JObject);
@@ -22,7 +45,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    jObject = default(JObject); //No Type
+                    jObject = new JObject();
                     CaptureJson_PreCondition(ref instance, ref jObject);
                 },
                 instance => { instance.CaptureJson(jObject); },
@@ -50,6 +73,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         public void Equals_UnitTest()
         {
             Object obj = default(Object);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -57,8 +81,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                     obj = new Object();
                     Equals_PreCondition(ref instance, ref obj);
                 },
-                instance => { instance.Equals(obj); },
-                instance => { Equals_PostValidate(instance, obj); });
+                instance => { _retVal = instance.Equals(obj); },
+                instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -91,6 +115,23 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
+        public void FieldsToJArray_UnitTest()
+        {
+            JsonWorkItem workItem = default(JsonWorkItem);
+            JArray _retVal = default(JArray);
+            ExecuteMethod(
+                () => { return GetInstance(); },
+                instance =>
+                {
+                    workItem = default(JsonWorkItem); //No Constructor
+                    FieldsToJArray_PreCondition(ref instance, ref workItem);
+                },
+                instance => { _retVal = JsonWorkItem.FieldsToJArray(workItem); },
+                instance => { FieldsToJArray_PostValidate(instance, workItem, _retVal); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
         public void Fields_UnitTest()
         {
             ExecuteProperty(
@@ -109,9 +150,27 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
+        public void FromToken_UnitTest()
+        {
+            JToken json = default(JToken);
+            JsonWorkItem _retVal = default(JsonWorkItem);
+            ExecuteMethod(
+                () => { return GetInstance(); },
+                instance =>
+                {
+                    json = default(JToken); //No Constructor
+                    FromToken_PreCondition(ref instance, ref json);
+                },
+                instance => { _retVal = JsonWorkItem.FromToken(json); },
+                instance => { FromToken_PostValidate(instance, json, _retVal); });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
         public void GetFieldType_UnitTest()
         {
             String fieldName = default(String);
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -119,30 +178,32 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                     fieldName = default(String); //No Constructor
                     GetFieldType_PreCondition(ref instance, ref fieldName);
                 },
-                instance => { instance.GetFieldType(fieldName); },
-                instance => { GetFieldType_PostValidate(instance, fieldName); });
+                instance => { _retVal = instance.GetFieldType(fieldName); },
+                instance => { GetFieldType_PostValidate(instance, fieldName, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetHashCode_UnitTest()
         {
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { instance.GetHashCode(); },
-                instance => { GetHashCode_PostValidate(instance); });
+                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetType_UnitTest()
         {
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetType_PreCondition(ref instance); },
-                instance => { instance.GetType(); },
-                instance => { GetType_PostValidate(instance); });
+                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -290,7 +351,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 () => { return GetInstance(); },
                 instance =>
                 {
-                    content = default(JToken); //No Type
+                    content = default(JToken); //No Constructor
                     SetJsonContent_PreCondition(ref instance, ref content);
                 },
                 instance => { instance.SetJsonContent(content); },
@@ -301,22 +362,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         [TestMethod]
         public void ToJSonString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { instance.ToJSonString(); },
-                instance => { ToJSonString_PostValidate(instance); });
+                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void ToString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToString_PreCondition(ref instance); },
-                instance => { instance.ToString(); },
-                instance => { ToString_PostValidate(instance); });
+                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -325,6 +388,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         {
             String fieldName = default(String);
             JsonField fieldValue = default(JsonField);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -332,8 +396,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                     fieldName = default(String); //No Constructor
                     TryGetField_PreCondition(ref instance, ref fieldName, ref fieldValue);
                 },
-                instance => { instance.TryGetField(fieldName, out fieldValue); },
-                instance => { TryGetField_PostValidate(instance, fieldName, fieldValue); });
+                instance => { _retVal = instance.TryGetField(fieldName, out fieldValue); },
+                instance => { TryGetField_PostValidate(instance, fieldName, fieldValue, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -372,19 +436,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 (instance, setValue, getValue) => { });
         }
 
+        partial void APIFactory_SetCondition(ref Func<JsonWitAPI> setValue);
         partial void CaptureJson_PostValidate(JsonWorkItem instance, JObject jObject);
         partial void CaptureJson_PreCondition(ref JsonWorkItem instance, ref JObject jObject);
         partial void ChangeWorkItemType_PostValidate(JsonWorkItem instance, String workItemType);
         partial void ChangeWorkItemType_PreCondition(ref JsonWorkItem instance, ref String workItemType);
 
-        partial void Equals_PostValidate(JsonWorkItem instance, Object obj);
+        partial void Equals_PostValidate(JsonWorkItem instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref JsonWorkItem instance, ref Object obj);
         partial void FieldsMode_SetCondition(ref JsonWorkItem instance, ref String setValue);
+        partial void FieldsToJArray_PostValidate(JsonWorkItem instance, JsonWorkItem workItem, JArray _retVal);
+        partial void FieldsToJArray_PreCondition(ref JsonWorkItem instance, ref JsonWorkItem workItem);
         partial void Fields_SetCondition(ref JsonWorkItem instance, ref JsonFieldCollection setValue);
-        partial void GetFieldType_PostValidate(JsonWorkItem instance, String fieldName);
+        partial void FromToken_PostValidate(JsonWorkItem instance, JToken json, JsonWorkItem _retVal);
+        partial void FromToken_PreCondition(ref JsonWorkItem instance, ref JToken json);
+        partial void GetFieldType_PostValidate(JsonWorkItem instance, String fieldName, Type _retVal);
         partial void GetFieldType_PreCondition(ref JsonWorkItem instance, ref String fieldName);
 
-        partial void GetHashCode_PostValidate(JsonWorkItem instance);
+        partial void GetHashCode_PostValidate(JsonWorkItem instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref JsonWorkItem instance);
         internal static IEnumerable<JsonWorkItem> GetIEnumerableInstance() { return new List<JsonWorkItem> {GetInstance()}; }
 
@@ -397,7 +466,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             return instance;
         }
 
-        partial void GetType_PostValidate(JsonWorkItem instance);
+        partial void GetType_PostValidate(JsonWorkItem instance, Type _retVal);
         partial void GetType_PreCondition(ref JsonWorkItem instance);
 
         partial void Id_SetCondition(ref JsonWorkItem instance, ref Int32 setValue);
@@ -415,11 +484,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void SetFieldValue_PreCondition(ref JsonWorkItem instance, ref String fieldName, ref Object value);
         partial void SetJsonContent_PostValidate(JsonWorkItem instance, JToken content);
         partial void SetJsonContent_PreCondition(ref JsonWorkItem instance, ref JToken content);
-        partial void ToJSonString_PostValidate(JsonWorkItem instance);
+        partial void ToJSonString_PostValidate(JsonWorkItem instance, String _retVal);
         partial void ToJSonString_PreCondition(ref JsonWorkItem instance);
-        partial void ToString_PostValidate(JsonWorkItem instance);
+        partial void ToString_PostValidate(JsonWorkItem instance, String _retVal);
         partial void ToString_PreCondition(ref JsonWorkItem instance);
-        partial void TryGetField_PostValidate(JsonWorkItem instance, String fieldName, JsonField fieldValue);
+        partial void TryGetField_PostValidate(JsonWorkItem instance, String fieldName, JsonField fieldValue, Boolean _retVal);
         partial void TryGetField_PreCondition(ref JsonWorkItem instance, ref String fieldName, ref JsonField fieldValue);
 
         partial void Url_SetCondition(ref JsonWorkItem instance, ref String setValue);

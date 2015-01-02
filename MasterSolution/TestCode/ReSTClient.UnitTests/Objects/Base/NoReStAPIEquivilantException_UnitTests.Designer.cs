@@ -37,6 +37,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         public void Equals_UnitTest()
         {
             Object obj = default(Object);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -44,30 +45,32 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
                     obj = new Object();
                     Equals_PreCondition(ref instance, ref obj);
                 },
-                instance => { instance.Equals(obj); },
-                instance => { Equals_PostValidate(instance, obj); });
+                instance => { _retVal = instance.Equals(obj); },
+                instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetBaseException_UnitTest()
         {
+            Exception _retVal = default(Exception);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetBaseException_PreCondition(ref instance); },
-                instance => { instance.GetBaseException(); },
-                instance => { GetBaseException_PostValidate(instance); });
+                instance => { _retVal = instance.GetBaseException(); },
+                instance => { GetBaseException_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetHashCode_UnitTest()
         {
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { instance.GetHashCode(); },
-                instance => { GetHashCode_PostValidate(instance); });
+                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -92,11 +95,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         [TestMethod]
         public void GetType_UnitTest()
         {
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetType_PreCondition(ref instance); },
-                instance => { instance.GetType(); },
-                instance => { GetType_PostValidate(instance); });
+                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -249,19 +253,20 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         [TestMethod]
         public void ToString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToString_PreCondition(ref instance); },
-                instance => { instance.ToString(); },
-                instance => { ToString_PostValidate(instance); });
+                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Data_SetCondition(ref NoReStAPIEquivilantException instance, ref IDictionary setValue);
-        partial void Equals_PostValidate(NoReStAPIEquivilantException instance, Object obj);
+        partial void Equals_PostValidate(NoReStAPIEquivilantException instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref NoReStAPIEquivilantException instance, ref Object obj);
-        partial void GetBaseException_PostValidate(NoReStAPIEquivilantException instance);
+        partial void GetBaseException_PostValidate(NoReStAPIEquivilantException instance, Exception _retVal);
         partial void GetBaseException_PreCondition(ref NoReStAPIEquivilantException instance);
-        partial void GetHashCode_PostValidate(NoReStAPIEquivilantException instance);
+        partial void GetHashCode_PostValidate(NoReStAPIEquivilantException instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref NoReStAPIEquivilantException instance);
         internal static IEnumerable<NoReStAPIEquivilantException> GetIEnumerableInstance() { return new List<NoReStAPIEquivilantException> {GetInstance()}; }
 
@@ -274,7 +279,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
 
         partial void GetObjectData_PostValidate(NoReStAPIEquivilantException instance, SerializationInfo info, StreamingContext context);
         partial void GetObjectData_PreCondition(ref NoReStAPIEquivilantException instance, ref SerializationInfo info, ref StreamingContext context);
-        partial void GetType_PostValidate(NoReStAPIEquivilantException instance);
+        partial void GetType_PostValidate(NoReStAPIEquivilantException instance, Type _retVal);
         partial void GetType_PreCondition(ref NoReStAPIEquivilantException instance);
         partial void HResult_SetCondition(ref NoReStAPIEquivilantException instance, ref Int32 setValue);
 
@@ -286,7 +291,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         partial void Source_SetCondition(ref NoReStAPIEquivilantException instance, ref String setValue);
         partial void StackTrace_SetCondition(ref NoReStAPIEquivilantException instance, ref String setValue);
         partial void TargetSite_SetCondition(ref NoReStAPIEquivilantException instance, ref MethodBase setValue);
-        partial void ToString_PostValidate(NoReStAPIEquivilantException instance);
+        partial void ToString_PostValidate(NoReStAPIEquivilantException instance, String _retVal);
         partial void ToString_PreCondition(ref NoReStAPIEquivilantException instance);
     }
 }

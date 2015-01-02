@@ -72,6 +72,10 @@
     <Compile Include="APIs\IterationImpl_UnitTests.Designer.cs">
       <DependentUpon>IterationImpl_UnitTests.cs</DependentUpon>
     </Compile>
+    <Compile Include="APIs\JsonVSOApi_UnitTests.cs" />
+    <Compile Include="APIs\JsonVSOApi_UnitTests.Designer.cs">
+      <DependentUpon>JsonVSOApi_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIs\JsonWorkItemAPI_UnitTests.cs" />
     <Compile Include="APIs\JsonWorkItemAPI_UnitTests.Designer.cs">
       <DependentUpon>JsonWorkItemAPI_UnitTests.cs</DependentUpon>
@@ -103,6 +107,10 @@
     <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
     <Compile Include="APIs\WorkItemAPI_UnitTests.Designer.cs">
       <DependentUpon>WorkItemAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Factories\APIFactory_UnitTests.cs" />
+    <Compile Include="Factories\APIFactory_UnitTests.Designer.cs">
+      <DependentUpon>APIFactory_UnitTests.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\JsonSource\CannedMessages.cs" />
     <Compile Include="LowLevelAPIs\JsonAgileAPI_UnitTests.cs" />
@@ -373,6 +381,90 @@
     <Compile Include="OriginalManualTfs\WorkItemTracking\Client\WorkItemImpl_UnitTests.cs" />
     <Compile Include="OriginalManualTfs\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.cs" />
     <Compile Include="HighLevel_UnitTests.cs" />
+    <Compile Include="RestCalls\AgileRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\AgileRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>AgileRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\BuildRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\BuildRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>BuildRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\ChatRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\ChatRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>ChatRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\CodelensRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\CodelensRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>CodelensRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\ContainerRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\ContainerRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>ContainerRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\CoreRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\CoreRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>CoreRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\DiscussionRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\DiscussionRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>DiscussionRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\distributedtaskRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\distributedtaskRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>distributedtaskRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\GitRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\GitRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>GitRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\HooksRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\HooksRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>HooksRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\IMSRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\IMSRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>IMSRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\LocationRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\LocationRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>LocationRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\PackagingRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\PackagingRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>PackagingRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\PolicyRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\PolicyRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>PolicyRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\PropertiesRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\PropertiesRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>PropertiesRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\ReportingRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\ReportingRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>ReportingRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\SBSRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\SBSRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>SBSRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\TaggingRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\TaggingRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>TaggingRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\TestRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\TestRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>TestRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\TfvcRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\TfvcRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>TfvcRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestCalls\WitRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\WitRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>WitRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl_UnitTests.cs">
       <SubType>Code</SubType>
     </Compile>

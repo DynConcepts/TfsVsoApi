@@ -7,6 +7,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonWorkItemTypeCategory_UnitTests : DynTestClassBase
     {
+        partial void FromToken_PreCondition(ref JsonWorkItemTypeCategory instance, ref JToken json) { json = JsonSource(); }
         static partial void InstanceFactory(ref JsonWorkItemTypeCategory instance, string callerName) { instance = JsonWorkItemTypeCategory.FromToken(JsonSource()); }
 
         private static JObject JsonSource()

@@ -8,12 +8,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonQueryFolder_UnitTests : DynTestClassBase
     {
-        static partial void InstanceFactory(ref JsonQueryFolder instance, string callerName)
+        partial void FromToken_PreCondition(ref JsonQueryFolder instance, ref JToken json)
         {
             JObject jobject = JObject.Parse(CannedMessages.SampleQueries);
             var array = jobject["value"].Value<JArray>();
-            JToken token = array[0];
-            instance = JsonQueryFolder.FromToken(token);
+            json = array[0];
+        }
+
+        static partial void JsonSource(ref JToken json)
+        {
+            JObject jobject = JObject.Parse(CannedMessages.SampleQueries);
+            var array = jobject["value"].Value<JArray>();
+            json = array[0];
         }
     }
 }

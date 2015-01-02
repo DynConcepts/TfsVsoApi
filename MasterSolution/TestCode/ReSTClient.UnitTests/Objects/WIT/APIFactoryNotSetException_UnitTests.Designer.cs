@@ -37,6 +37,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         public void Equals_UnitTest()
         {
             Object obj = default(Object);
+            Boolean _retVal = default(Boolean);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance =>
@@ -44,30 +45,32 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                     obj = new Object();
                     Equals_PreCondition(ref instance, ref obj);
                 },
-                instance => { instance.Equals(obj); },
-                instance => { Equals_PostValidate(instance, obj); });
+                instance => { _retVal = instance.Equals(obj); },
+                instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetBaseException_UnitTest()
         {
+            Exception _retVal = default(Exception);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetBaseException_PreCondition(ref instance); },
-                instance => { instance.GetBaseException(); },
-                instance => { GetBaseException_PostValidate(instance); });
+                instance => { _retVal = instance.GetBaseException(); },
+                instance => { GetBaseException_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void GetHashCode_UnitTest()
         {
+            Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { instance.GetHashCode(); },
-                instance => { GetHashCode_PostValidate(instance); });
+                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -92,11 +95,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         [TestMethod]
         public void GetType_UnitTest()
         {
+            Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { GetType_PreCondition(ref instance); },
-                instance => { instance.GetType(); },
-                instance => { GetType_PostValidate(instance); });
+                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PostValidate(instance, _retVal); });
         }
 
         /// <summary>Generated Test Template</summary>
@@ -249,19 +253,20 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         [TestMethod]
         public void ToString_UnitTest()
         {
+            String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
                 instance => { ToString_PreCondition(ref instance); },
-                instance => { instance.ToString(); },
-                instance => { ToString_PostValidate(instance); });
+                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Data_SetCondition(ref APIFactoryNotSetException instance, ref IDictionary setValue);
-        partial void Equals_PostValidate(APIFactoryNotSetException instance, Object obj);
+        partial void Equals_PostValidate(APIFactoryNotSetException instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref APIFactoryNotSetException instance, ref Object obj);
-        partial void GetBaseException_PostValidate(APIFactoryNotSetException instance);
+        partial void GetBaseException_PostValidate(APIFactoryNotSetException instance, Exception _retVal);
         partial void GetBaseException_PreCondition(ref APIFactoryNotSetException instance);
-        partial void GetHashCode_PostValidate(APIFactoryNotSetException instance);
+        partial void GetHashCode_PostValidate(APIFactoryNotSetException instance, Int32 _retVal);
         partial void GetHashCode_PreCondition(ref APIFactoryNotSetException instance);
         internal static IEnumerable<APIFactoryNotSetException> GetIEnumerableInstance() { return new List<APIFactoryNotSetException> {GetInstance()}; }
 
@@ -274,7 +279,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         partial void GetObjectData_PostValidate(APIFactoryNotSetException instance, SerializationInfo info, StreamingContext context);
         partial void GetObjectData_PreCondition(ref APIFactoryNotSetException instance, ref SerializationInfo info, ref StreamingContext context);
-        partial void GetType_PostValidate(APIFactoryNotSetException instance);
+        partial void GetType_PostValidate(APIFactoryNotSetException instance, Type _retVal);
         partial void GetType_PreCondition(ref APIFactoryNotSetException instance);
         partial void HResult_SetCondition(ref APIFactoryNotSetException instance, ref Int32 setValue);
 
@@ -286,7 +291,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void Source_SetCondition(ref APIFactoryNotSetException instance, ref String setValue);
         partial void StackTrace_SetCondition(ref APIFactoryNotSetException instance, ref String setValue);
         partial void TargetSite_SetCondition(ref APIFactoryNotSetException instance, ref MethodBase setValue);
-        partial void ToString_PostValidate(APIFactoryNotSetException instance);
+        partial void ToString_PostValidate(APIFactoryNotSetException instance, String _retVal);
         partial void ToString_PreCondition(ref APIFactoryNotSetException instance);
     }
 }

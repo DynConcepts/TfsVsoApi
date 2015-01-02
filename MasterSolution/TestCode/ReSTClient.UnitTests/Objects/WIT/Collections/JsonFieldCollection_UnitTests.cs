@@ -41,6 +41,31 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             return json;
         }
 
-        partial void TryGetField_PreCondition(ref JsonFieldCollection instance, ref String fieldName, ref JsonField field) { fieldName = "System.Id"; }
+
+        partial void TryGetField_PostValidate(JsonFieldCollection instance, String fieldName, JsonField field, Boolean _retVal)
+        {
+            switch (DataSequence)
+            {
+                case 1:
+                    MoreData = true;
+                    break;
+                case 2:
+                    MoreData = false;
+                    break;
+            }
+        }
+
+        partial void TryGetField_PreCondition(ref JsonFieldCollection instance, ref String fieldName, ref JsonField field)
+        {
+            switch (DataSequence)
+            {
+                case 1:
+                    fieldName = "System.Id";
+                    break;
+                case 2:
+                    fieldName = "System.Title";
+                    break;
+            }
+        }
     }
 }

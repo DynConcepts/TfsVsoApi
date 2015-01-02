@@ -7,6 +7,7 @@ using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT.Collections;
 using DynCon.OSI.VSO.ReSTClient.RestCalls;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
@@ -339,14 +340,31 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
             return result;
         }
 
-        private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(IEnumerable<int> ids, DateTime timeStamp, Func<JToken, T> func) where T : JsonWorkItem
+        private static List<List<T>> SplitList<T>(List<T> source, int nSize)
         {
-            var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItems0);
-            exchange.SetQuery("ids", ToCommaList(ids));
-            exchange.SetQuery("fields", "System.Title");
-            exchange.SetQuery("asOf", timeStamp.ToString("o"));
-            IReadOnlyList<T> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, func));
-            return result;
+            var retVal = new List<List<T>>();
+
+            for (int i = 0; i < source.Count; i += nSize)
+            {
+                retVal.Add(source.GetRange(i, Math.Min(nSize, source.Count - i)));
+            }
+
+            return retVal;
+        } 
+        private async Task<IReadOnlyList<T>> JsonWorkItemsLoader<T>(List<int> ids, DateTime timeStamp, Func<JToken, T> func) where T : JsonWorkItem
+        {
+            var lists = SplitList(ids, 190);
+            var retVal = new List<T>();
+            foreach (var list in lists)
+            {
+                var exchange = StructuredHttpExchange.Get(WitRestCalls.WorkItems0);
+                exchange.SetQuery("ids", ToCommaList(list));
+                exchange.SetQuery("fields", "System.Title");
+                exchange.SetQuery("asOf", timeStamp.ToString("o"));
+                IReadOnlyList<T> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, func));
+                retVal.AddRange(result);
+            }
+            return retVal;
         }
 
         /// <summary>

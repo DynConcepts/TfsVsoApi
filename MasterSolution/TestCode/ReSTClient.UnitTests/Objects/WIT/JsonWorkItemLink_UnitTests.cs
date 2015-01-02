@@ -22,6 +22,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Assert.IsNotNull(api);
         }
 
+        partial void FromToken_PreCondition(ref JsonWorkItemLink instance, ref JToken json)
+        {
+            string src =
+                @"{
+ }";
+            JObject jobject = JObject.Parse(src);
+            json = jobject;
+        }
+
         static partial void JsonSource(ref JToken json)
         {
             string src =

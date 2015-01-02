@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.Objects;
 using DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers.JsonSource;
 using Newtonsoft.Json.Linq;
 
@@ -85,6 +86,13 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
                     sw.WriteLine("}");
                 }
             }
+        }
+
+        partial void FromToken_PreCondition(ref JsonAvailableRestCall instance, ref JToken json)
+        {
+            JObject jobject = JObject.Parse(CannedMessages.AvailableRestCalls);
+            var array = jobject["value"].Value<JArray>();
+            json = array[0];
         }
 
         static partial void JsonSource(ref JToken json)

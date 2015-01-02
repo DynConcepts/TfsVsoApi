@@ -27,6 +27,13 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             JsonLink.PreLoadedTypes = preLoadedTypes;
         }
 
+        partial void FromToken_PreCondition(ref JsonRelationType instance, ref JToken json)
+        {
+            JObject jobject = JObject.Parse(CannedMessages.JsonRelationTypes);
+            var array = jobject["value"].Value<JArray>();
+            json = array[0];
+        }
+
         static partial void JsonSource(ref JToken json)
         {
             JObject jobject = JObject.Parse(CannedMessages.JsonRelationTypes);

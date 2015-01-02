@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.DynTest.ChangeTracking;
 using DynCon.OSI.DynTest.Comparisions;
@@ -37,6 +38,8 @@ namespace DynCon.OSI.DynTest
         /// <exception cref="Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException">Unable to Aquire Trarget Instance</exception>
         public void ExecuteMethod<T>(Func<T> instanceCreator, Action<T> initializer, Action<T> executor, Action<T> validator, [CallerMemberName] string callerName = "")
         {
+            var count = Interlocked.Increment(ref m_Concurrent);
+            if (count > 1) throw new Exception();
             if (DisabledTests.Contains(callerName))
             {
                 if (PassDisabledTests)
@@ -46,70 +49,76 @@ namespace DynCon.OSI.DynTest
                 }
                 throw new AssertInconclusiveException("Test is on the Disabled List");
             }
-            T instance = default(T);
-            try
+            do
             {
-                instance = instanceCreator();
-                if ((typeof (T).IsClass || typeof (T).IsInterface) & instance == null)
-                {
-                    throw new AssertInconclusiveException("Instance Creator returned Null!!");
-                }
-            }
-            catch (Exception ex)
-            {
-                if (SkipOnTargetAquisitionError)
-                    throw new AssertInconclusiveException("Unable to Aquire Trarget Instance", ex);
-                throw new AssertFailedException("Unable to Aquire Trarget Instance", ex);
-            }
-            try
-            {
-                initializer(instance);
-            }
-            catch (Exception ex)
-            {
-                throw new AssertInconclusiveException("Exception during Parameter Value Initialization", ex);
-            }
-            try
-            {
+                T instance = default(T);
+                ++DataSequence;
                 try
                 {
-                    TrackObjectGraph(instance, () => executor(instance));
-                }
-                catch (AggregateException ex)
-                {
-                    if (ex.InnerExceptions.Count == 1)
+                    instance = instanceCreator();
+                    if ((typeof (T).IsClass || typeof (T).IsInterface) & instance == null)
                     {
-                        Exception realEx = ex.InnerException;
-                        throw realEx;
+                        throw new AssertInconclusiveException("Instance Creator returned Null!!");
                     }
+                }
+                catch (Exception ex)
+                {
+                    if (SkipOnTargetAquisitionError)
+                        throw new AssertInconclusiveException("Unable to Aquire Trarget Instance", ex);
+                    throw new AssertFailedException("Unable to Aquire Trarget Instance", ex);
+                }
+                try
+                {
+                    initializer(instance);
+                }
+                catch (Exception ex)
+                {
+                    throw new AssertInconclusiveException("Exception during Parameter Value Initialization", ex);
+                }
+                try
+                {
+                    try
+                    {
+                        TrackObjectGraph(instance, () => executor(instance));
+                    }
+                    catch (AggregateException ex)
+                    {
+                        if (ex.InnerExceptions.Count == 1)
+                        {
+                            Exception realEx = ex.InnerException;
+                            throw realEx;
+                        }
+                        throw;
+                    }
+                }
+                catch (ToBeImplementedException ex)
+                {
+                    throw new AssertInconclusiveException("Target Method is yet to be implemented!", ex);
+                }
+                catch (Exception ex)
+                {
+                    bool wasExpected = false;
+                    Type expected;
+                    if (ExpectedExceptions.TryGetValue(callerName, out expected))
+                        if (expected == ex.GetType())
+                            wasExpected = true;
+                    if (!wasExpected)
+                        throw;
+                }
+                try
+                {
+                    validator(instance);
+                }
+
+                catch (Exception)
+                {
                     throw;
                 }
-            }
-            catch (ToBeImplementedException ex)
-            {
-                throw new AssertInconclusiveException("Target Method is yet to be implemented!", ex);
-            }
-            catch (Exception ex)
-            {
-                bool wasExpected = false;
-                Type expected;
-                if (ExpectedExceptions.TryGetValue(callerName, out expected))
-                    if (expected == ex.GetType())
-                        wasExpected = true;
-                if (!wasExpected)
-                    throw;
-            }
-            try
-            {
-                validator(instance);
-            }
-
-            catch (Exception)
-            {
-                throw;
-            }
+            } while (MoreData);
         }
 
+        protected int DataSequence { get; set; }
+        protected bool MoreData { get; set; }
 
         /// <summary>
         ///     Executes the method.
@@ -129,52 +138,57 @@ namespace DynCon.OSI.DynTest
         {
             if (DisabledTests.Contains(callerName))
                 throw new AssertInconclusiveException("Test is on the Disabled List");
-            try
+            do
             {
-                initializer();
-            }
-            catch (Exception ex)
-            {
-                throw new AssertInconclusiveException("Exception during Parameter Value Initialization", ex);
-            }
-            try
-            {
+                ++DataSequence;
                 try
                 {
-                    executor();
+                    initializer();
                 }
-                catch (AggregateException ex)
+                catch (Exception ex)
                 {
-                    if (ex.InnerExceptions.Count == 1)
+                    throw new AssertInconclusiveException("Exception during Parameter Value Initialization", ex);
+                }
+                try
+                {
+                    try
                     {
-                        Exception realEx = ex.InnerException;
-                        throw realEx;
+                        executor();
                     }
+                    catch (AggregateException ex)
+                    {
+                        if (ex.InnerExceptions.Count == 1)
+                        {
+                            Exception realEx = ex.InnerException;
+                            throw realEx;
+                        }
+                        throw;
+                    }
+                }
+                catch (ToBeImplementedException ex)
+                {
+                    throw new AssertInconclusiveException("Target Method is yet to be implemented!", ex);
+                }
+                catch (Exception ex)
+                {
+                    bool wasExpected = false;
+                    Type expected;
+                    if (ExpectedExceptions.TryGetValue(callerName, out expected))
+                        if (expected == ex.GetType())
+                            wasExpected = true;
+                    if (!wasExpected)
+                        throw;
+                }
+                try
+                {
+                    validator();
+                }
+                catch (Exception)
+                {
                     throw;
                 }
-            }
-            catch (ToBeImplementedException ex)
-            {
-                throw new AssertInconclusiveException("Target Method is yet to be implemented!", ex);
-            }
-            catch (Exception ex)
-            {
-                bool wasExpected = false;
-                Type expected;
-                if (ExpectedExceptions.TryGetValue(callerName, out expected))
-                    if (expected == ex.GetType())
-                        wasExpected = true;
-                if (!wasExpected)
-                    throw;
-            }
-            try
-            {
-                validator();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            } while (MoreData);
+
         }
 
         /// <summary>
@@ -213,88 +227,175 @@ namespace DynCon.OSI.DynTest
             T instance;
             V setValue;
             V getValue;
-            try
+            do
             {
-                instance = instanceCreator();
-                if ((typeof (T).IsClass || typeof (T).IsInterface) & instance == null)
-                {
-                    throw new AssertInconclusiveException("Instance Creator returned Null!!");
-                }
-            }
-            catch (Exception ex)
-            {
-                if (SkipOnTargetAquisitionError)
-                    throw new AssertInconclusiveException("Unable to Aquire Trarget Instance", ex);
-                throw new AssertFailedException("Unable to Aquire Trarget Instance", ex);
-            }
-            if (setExecutor != null)
-            {
+                ++DataSequence;
                 try
                 {
-                    setValue = setInitializer(instance);
-                }
-                catch (Exception ex)
-                {
-                    throw new AssertInconclusiveException("Exception during Set Value Initialization", ex);
-                }
-
-                Type expected;
-                ExpectedExceptions.TryGetValue(callerName, out expected);
-                try
-                {
-                    TrackObjectGraph(instance, () =>
+                    instance = instanceCreator();
+                    if ((typeof(T).IsClass || typeof(T).IsInterface) & instance == null)
                     {
-                        setExecutor(instance, setValue);
-                        if (expected != null)
-                            throw new Exception(String.Format("Expected {0} was not thrown", expected.Name));
-                    });
-                }
-                catch (ToBeImplementedException ex)
-                {
-                    throw new AssertInconclusiveException("Target Set Accessor is yet to be implemented!", ex);
+                        throw new AssertInconclusiveException("Instance Creator returned Null!!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    bool wasExpected = (expected != null) && (expected == ex.GetType());
-                    if (!wasExpected)
+                    if (SkipOnTargetAquisitionError)
+                        throw new AssertInconclusiveException("Unable to Aquire Trarget Instance", ex);
+                    throw new AssertFailedException("Unable to Aquire Trarget Instance", ex);
+                }
+                if (setExecutor != null)
+                {
+                    try
+                    {
+                        setValue = setInitializer(instance);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AssertInconclusiveException("Exception during Set Value Initialization", ex);
+                    }
+
+                    Type expected;
+                    ExpectedExceptions.TryGetValue(callerName, out expected);
+                    try
+                    {
+                        TrackObjectGraph(instance, () =>
+                        {
+                            setExecutor(instance, setValue);
+                            if (expected != null)
+                                throw new Exception(String.Format("Expected {0} was not thrown", expected.Name));
+                        });
+                    }
+                    catch (ToBeImplementedException ex)
+                    {
+                        throw new AssertInconclusiveException("Target Set Accessor is yet to be implemented!", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        bool wasExpected = (expected != null) && (expected == ex.GetType());
+                        if (!wasExpected)
+                            throw;
+                    }
+                    try
+                    {
+                        setValidator(instance, setValue);
+                    }
+                    catch (Exception)
+                    {
                         throw;
+                    }
                 }
-                try
+                else
                 {
-                    setValidator(instance, setValue);
+                    setValue = default(V);
                 }
-                catch (Exception)
+                if (getExecutor != null)
                 {
-                    throw;
+                    try
+                    {
+                        getValue = getExecutor(instance);
+                    }
+                    catch (ToBeImplementedException ex)
+                    {
+                        throw new AssertInconclusiveException("Target Get Accessor is yet to be implemented!", ex);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    try
+                    {
+                        getValidator(instance, setValue, getValue);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                 }
-            }
-            else
+            } while (MoreData);
+        }
+
+             public void ExecuteProperty<V>(
+            Func<V> setInitializer, Action<V> setExecutor, Action<V> setValidator,
+            Func<V> getExecutor, Action<V, V> getValidator, [CallerMemberName] string callerName = "")
+        {
+            if (DisabledTests.Contains(callerName))
+                throw new AssertInconclusiveException("Test is on the Disabled List");
+
+            V setValue;
+            V getValue;
+            do
             {
-                setValue = default(V);
-            }
-            if (getExecutor != null)
-            {
-                try
+                ++DataSequence;
+                if (setExecutor != null)
                 {
-                    getValue = getExecutor(instance);
+                    try
+                    {
+                        setValue = setInitializer();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new AssertInconclusiveException("Exception during Set Value Initialization", ex);
+                    }
+
+                    Type expected;
+                    ExpectedExceptions.TryGetValue(callerName, out expected);
+                    try
+                    {
+                        TrackObjectGraph(null, () =>
+                        {
+                            setExecutor(setValue);
+                            if (expected != null)
+                                throw new Exception(String.Format("Expected {0} was not thrown", expected.Name));
+                        });
+                    }
+                    catch (ToBeImplementedException ex)
+                    {
+                        throw new AssertInconclusiveException("Target Set Accessor is yet to be implemented!", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        bool wasExpected = (expected != null) && (expected == ex.GetType());
+                        if (!wasExpected)
+                            throw;
+                    }
+                    try
+                    {
+                        setValidator(setValue);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                 }
-                catch (ToBeImplementedException ex)
+                else
                 {
-                    throw new AssertInconclusiveException("Target Get Accessor is yet to be implemented!", ex);
+                    setValue = default(V);
                 }
-                catch (Exception)
+                if (getExecutor != null)
                 {
-                    throw;
+                    try
+                    {
+                        getValue = getExecutor();
+                    }
+                    catch (ToBeImplementedException ex)
+                    {
+                        throw new AssertInconclusiveException("Target Get Accessor is yet to be implemented!", ex);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    try
+                    {
+                        getValidator(setValue, getValue);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                 }
-                try
-                {
-                    getValidator(instance, setValue, getValue);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
+            } while (MoreData);
         }
 
         /// <summary>
@@ -304,6 +405,12 @@ namespace DynCon.OSI.DynTest
         /// <param name="action">The action.</param>
         protected void TrackObjectGraph(Object graphRoot, Action action)
         {
+            if (graphRoot == null)
+            {
+                action();
+                return;
+            }
+
             CaptureResults initialGraph = null;
             if (ReportObjectGraphChanges)
             {
@@ -354,5 +461,7 @@ namespace DynCon.OSI.DynTest
         ///     The skip on target aquisition error
         /// </summary>
         public static bool SkipOnTargetAquisitionError = true;
+
+        private int m_Concurrent;
     }
 }

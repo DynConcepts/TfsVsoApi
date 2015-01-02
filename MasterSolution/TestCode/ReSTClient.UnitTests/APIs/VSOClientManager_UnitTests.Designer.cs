@@ -64,6 +64,28 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void VsoCollection_UnitTest()
+        {
+            ExecuteProperty(
+                // Create Set Value
+                () =>
+                {
+                    string setValue = default(String);
+                    VsoCollection_SetCondition(ref setValue);
+                    return setValue;
+                },
+                // Invoke Setter
+                setValue => { VSOClientManager.VsoCollection = setValue; },
+                // Validate Set Operation
+                setValue => { },
+                // Invoke Getter
+                () => { return VSOClientManager.VsoCollection; },
+                // Validate Get Operation
+                (setValue, getValue) => { });
+        }
+
         partial void Equals_PostValidate(VSOClientManager instance, Object obj, Boolean _retVal);
         partial void Equals_PreCondition(ref VSOClientManager instance, ref Object obj);
 
@@ -83,5 +105,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         static partial void InstanceFactory(ref VSOClientManager instance, [CallerMemberName] string callerName = "");
         partial void ToString_PostValidate(VSOClientManager instance, String _retVal);
         partial void ToString_PreCondition(ref VSOClientManager instance);
+
+        partial void VsoCollection_SetCondition(ref String setValue);
     }
 }

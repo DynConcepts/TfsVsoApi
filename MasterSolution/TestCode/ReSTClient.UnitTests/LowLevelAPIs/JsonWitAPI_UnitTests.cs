@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using DynCon.OSI.DynTest;
+using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 
-namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
+namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 {
     /// <summary>Generated Test Template</summary>
     public partial class JsonWitAPI_UnitTests : DynTestClassBase
