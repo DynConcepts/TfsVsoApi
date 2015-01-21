@@ -15,29 +15,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.ReSTClient",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.ObjectModelClient", "SourceCode\ObjectModelClient\DynCon.OSI.VSO.ObjectModelClient.csproj", "{338A6F10-BB26-4794-9170-DA1E761808FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.ObjectModelClient_UnitTests", "TestCode\ObjectModelClient_UnitTests\DynCon.OSI.VSO.ObjectModelClient_UnitTests.csproj", "{594D20A3-77BC-4FC0-AA10-80CEC8A799BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.ObjectModelClient.UnitTests", "TestCode\ObjectModelClient.UnitTests\DynCon.OSI.VSO.ObjectModelClient.UnitTests.csproj", "{594D20A3-77BC-4FC0-AA10-80CEC8A799BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.ReSTClient.UnitTests", "TestCode\ReSTClient.UnitTests\DynCon.OSI.VSO.ReSTClient.UnitTests.csproj", "{51B3409C-69B6-4ADC-86A9-0B88E82538EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.Core", "SourceCode\DynCon.OSI.Core\DynCon.OSI.Core.csproj", "{FE661B0F-9647-4D83-8C6F-2776E8614988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.Core_UnitTests", "TestCode\DynCon.OSI.Core_UnitTests\DynCon.OSI.Core_UnitTests.csproj", "{668E159D-1992-4C66-A4CC-095DE4E0CEF0}"
-EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "TfVsoApi_SandCastleDocumentation", "Documentation\TfVsoApi_SandCastleDocumentation\TfVsoApi_SandCastleDocumentation.shfbproj", "{B99896DA-3D51-4891-B221-282B7B1B4500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.JasonBackedObjects_UnitTests", "TestCode\JasonBackedObjects_UnitTests\DynCon.OSI.JasonBackedObjects_UnitTests.csproj", "{1A98A4EF-62E4-437F-9E2B-E633267E86B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.JasonBackedObjects.UnitTests", "TestCode\JasonBackedObjects.UnitTests\DynCon.OSI.JasonBackedObjects.UnitTests.csproj", "{1A98A4EF-62E4-437F-9E2B-E633267E86B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSamples", "SimpleSamples\SimpleSamples.csproj", "{23FC3855-10DC-4661-ACF7-809ED317170A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest", "TestCode\DynCon.OSI.DynTest\DynCon.OSI.DynTest.csproj", "{4253B165-E851-4F14-B3B4-13FB6131DEEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest", "TestCode\DynTest\DynCon.OSI.DynTest.csproj", "{4253B165-E851-4F14-B3B4-13FB6131DEEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPerformanceAnalysis", "TestCode\TestPErformanceAnalysis\TestPerformanceAnalysis.csproj", "{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPerformanceAnalysis", "TestCode\TestPerformanceAnalysis\TestPerformanceAnalysis.csproj", "{7E92585D-D4CE-413F-8CA9-797F4DA64DDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.JasonBackedObjects.AdvancedLogging", "SourceCode\DynCon.OSI.JasonBackedObjects.AdvancedLogging\DynCon.OSI.JasonBackedObjects.AdvancedLogging.csproj", "{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.RestClient.ObjectModel", "SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj", "{798BF552-9A39-48B8-9A4B-AF057927062F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest_UnitTests", "DynCon.OSI.DynTest_UnitTests\DynCon.OSI.DynTest_UnitTests.csproj", "{80281429-6C07-42EE-9DAE-D7C49347DFD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.DynTest.UnitTests", "TestCode\DynTest.UnitTests\DynCon.OSI.DynTest.UnitTests.csproj", "{80281429-6C07-42EE-9DAE-D7C49347DFD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.VSO.RestClient.ObjectModel.UnitTests", "TestCode\ReSTClient.ObjectModel.UnitTests\DynCon.OSI.VSO.RestClient.ObjectModel.UnitTests.csproj", "{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynCon.OSI.Core.UnitTests", "TestCode\Core.UnitTests\DynCon.OSI.Core.UnitTests.csproj", "{668E159D-1992-4C66-A4CC-095DE4E0CEF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5FD0305-F81E-48BD-92D3-B183666C1BE2}"
+	ProjectSection(SolutionItems) = preProject
+		CodeCoverage.RunSettings = CodeCoverage.RunSettings
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +80,6 @@ Global
 		{FE661B0F-9647-4D83-8C6F-2776E8614988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE661B0F-9647-4D83-8C6F-2776E8614988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE661B0F-9647-4D83-8C6F-2776E8614988}.Release|Any CPU.Build.0 = Release|Any CPU
-		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B99896DA-3D51-4891-B221-282B7B1B4500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B99896DA-3D51-4891-B221-282B7B1B4500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A98A4EF-62E4-437F-9E2B-E633267E86B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -107,6 +110,14 @@ Global
 		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80281429-6C07-42EE-9DAE-D7C49347DFD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668E159D-1992-4C66-A4CC-095DE4E0CEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,10 +130,12 @@ Global
 		{594D20A3-77BC-4FC0-AA10-80CEC8A799BC} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{51B3409C-69B6-4ADC-86A9-0B88E82538EA} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{FE661B0F-9647-4D83-8C6F-2776E8614988} = {7E54FB76-54BE-431C-BA8D-EF52BFC0CB44}
-		{668E159D-1992-4C66-A4CC-095DE4E0CEF0} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{1A98A4EF-62E4-437F-9E2B-E633267E86B8} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{4253B165-E851-4F14-B3B4-13FB6131DEEA} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 		{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D} = {7E54FB76-54BE-431C-BA8D-EF52BFC0CB44}
 		{798BF552-9A39-48B8-9A4B-AF057927062F} = {7E54FB76-54BE-431C-BA8D-EF52BFC0CB44}
+		{80281429-6C07-42EE-9DAE-D7C49347DFD3} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
+		{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
+		{668E159D-1992-4C66-A4CC-095DE4E0CEF0} = {212FA6E6-1EBC-4E5A-AF83-82DA614E9339}
 	EndGlobalSection
 EndGlobal

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DynCon.OSI.DynTest;
@@ -9,6 +10,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
     /// <summary>Generated Test Template</summary>
     public partial class VSOApi_UnitTests : DynTestClassBase
     {
-        partial void GetAvailableRestCalls_PostValidate(JsonVSOApi instance, Task<IReadOnlyList<JsonAvailableRestCall>> _retVal) { _retVal.Wait(); }
+        partial void GetAvailableRestCalls_PostValidate(JsonVSOApi instance, Task<IReadOnlyList<JsonAvailableRestCall>> _retVal) { if (!_retVal.IsCompleted) throw new Exception(); }
     }
 }

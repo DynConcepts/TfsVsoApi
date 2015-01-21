@@ -10,13 +10,13 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
     /// <summary>Generated Test Template</summary>
     public partial class JsonFieldDefinitionCollection_UnitTests : DynTestClassBase
     {
-        partial void CopyTo_PreCondition(ref JsonFieldDefinitionCollection instance, ref Array array, ref Int32 index)
+        partial void CopyTo_PreCondition(JsonFieldDefinitionCollection instance, ref Array array, ref Int32 index)
         {
             array = new JsonFieldDefinition[instance.Count + 1];
             index = 1;
         }
 
-        partial void FromToken_PreCondition(ref JsonFieldDefinitionCollection instance, ref JToken json) { json = new JArray(); }
+        partial void FromToken_PreCondition(JsonFieldDefinitionCollection instance, ref JToken json) { json = new JArray(); }
 
 
         static partial void JsonSource(ref JToken json) { json = new JArray(); }

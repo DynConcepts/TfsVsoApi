@@ -40,7 +40,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref token);
+                    CaptureJson_PreCondition(instance, ref token);
                 },
                 instance => { instance.CaptureJson(token); },
                 instance => { CaptureJson_PostValidate(instance, token); });
@@ -57,9 +57,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -74,9 +74,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    FromToken_PreCondition(ref instance, ref token);
+                    FromToken_PreCondition(instance, ref token);
                 },
-                instance => { _retVal = JsonAvailableRestCall.FromToken(token); },
+                instance => { return _retVal = JsonAvailableRestCall.FromToken(token); },
                 instance => { FromToken_PostValidate(instance, token, _retVal); });
         }
 
@@ -87,8 +87,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -99,8 +99,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -255,8 +255,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -267,22 +267,22 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Area_SetCondition(ref JsonAvailableRestCall instance, ref String setValue);
         partial void CaptureJson_PostValidate(JsonAvailableRestCall instance, JToken token);
-        partial void CaptureJson_PreCondition(ref JsonAvailableRestCall instance, ref JToken token);
+        partial void CaptureJson_PreCondition(JsonAvailableRestCall instance, ref JToken token);
 
         partial void Equals_PostValidate(JsonAvailableRestCall instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonAvailableRestCall instance, ref Object obj);
+        partial void Equals_PreCondition(JsonAvailableRestCall instance, ref Object obj);
         partial void FromToken_PostValidate(JsonAvailableRestCall instance, JToken token, JsonAvailableRestCall _retVal);
-        partial void FromToken_PreCondition(ref JsonAvailableRestCall instance, ref JToken token);
+        partial void FromToken_PreCondition(JsonAvailableRestCall instance, ref JToken token);
 
         partial void GetHashCode_PostValidate(JsonAvailableRestCall instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonAvailableRestCall instance);
+        partial void GetHashCode_PreCondition(JsonAvailableRestCall instance);
         internal static IEnumerable<JsonAvailableRestCall> GetIEnumerableInstance() { return new List<JsonAvailableRestCall> {GetInstance()}; }
 
         internal static JsonAvailableRestCall GetInstance([CallerMemberName] string callerName = "")
@@ -295,7 +295,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
         }
 
         partial void GetType_PostValidate(JsonAvailableRestCall instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonAvailableRestCall instance);
+        partial void GetType_PreCondition(JsonAvailableRestCall instance);
 
         partial void Id_SetCondition(ref JsonAvailableRestCall instance, ref Guid setValue);
         static partial void InstanceFactory(ref JsonAvailableRestCall instance, [CallerMemberName] string callerName = "");
@@ -314,8 +314,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
 
         partial void RouteTemplate_SetCondition(ref JsonAvailableRestCall instance, ref String setValue);
         partial void ToJSonString_PostValidate(JsonAvailableRestCall instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonAvailableRestCall instance);
+        partial void ToJSonString_PreCondition(JsonAvailableRestCall instance);
         partial void ToString_PostValidate(JsonAvailableRestCall instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonAvailableRestCall instance);
+        partial void ToString_PreCondition(JsonAvailableRestCall instance);
     }
 }

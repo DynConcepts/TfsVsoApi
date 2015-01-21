@@ -61,7 +61,8 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         /// <summary>
         ///     The SR_ projects
         /// </summary>
-        private static readonly CallSpec sr_Projects = new CallSpec("_apis/projects/{*projectId}");
+        private static readonly CallSpec sr_Projects = new CallSpec("_apis/projects");
+        private static readonly CallSpec sr_Project = new CallSpec("_apis/projects/{*projectId}");
 
         /// <summary>
         ///     The SR_ proxies

@@ -40,7 +40,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref token);
+                    CaptureJson_PreCondition(instance, ref token);
                 },
                 instance => { instance.CaptureJson(token); },
                 instance => { CaptureJson_PostValidate(instance, token); });
@@ -57,9 +57,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -74,9 +74,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    FromToken_PreCondition(ref instance, ref token);
+                    FromToken_PreCondition(instance, ref token);
                 },
-                instance => { _retVal = JsonAttachedFileLink.FromToken(token); },
+                instance => { return _retVal = JsonAttachedFileLink.FromToken(token); },
                 instance => { FromToken_PostValidate(instance, token, _retVal); });
         }
 
@@ -87,8 +87,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -99,8 +99,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -147,8 +147,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -159,8 +159,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
@@ -184,15 +184,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
 
         partial void Attributes_SetCondition(ref JsonAttachedFileLink instance, ref JsonLinkAttributes setValue);
         partial void CaptureJson_PostValidate(JsonAttachedFileLink instance, JToken token);
-        partial void CaptureJson_PreCondition(ref JsonAttachedFileLink instance, ref JToken token);
+        partial void CaptureJson_PreCondition(JsonAttachedFileLink instance, ref JToken token);
 
         partial void Equals_PostValidate(JsonAttachedFileLink instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonAttachedFileLink instance, ref Object obj);
+        partial void Equals_PreCondition(JsonAttachedFileLink instance, ref Object obj);
         partial void FromToken_PostValidate(JsonAttachedFileLink instance, JToken token, JsonAttachedFileLink _retVal);
-        partial void FromToken_PreCondition(ref JsonAttachedFileLink instance, ref JToken token);
+        partial void FromToken_PreCondition(JsonAttachedFileLink instance, ref JToken token);
 
         partial void GetHashCode_PostValidate(JsonAttachedFileLink instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonAttachedFileLink instance);
+        partial void GetHashCode_PreCondition(JsonAttachedFileLink instance);
         internal static IEnumerable<JsonAttachedFileLink> GetIEnumerableInstance() { return new List<JsonAttachedFileLink> {GetInstance()}; }
 
         internal static JsonAttachedFileLink GetInstance([CallerMemberName] string callerName = "")
@@ -205,16 +205,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         }
 
         partial void GetType_PostValidate(JsonAttachedFileLink instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonAttachedFileLink instance);
+        partial void GetType_PreCondition(JsonAttachedFileLink instance);
         static partial void InstanceFactory(ref JsonAttachedFileLink instance, [CallerMemberName] string callerName = "");
         static partial void JsonSource(ref JToken json);
         partial void JsonValue_SetCondition(ref JsonAttachedFileLink instance, ref JToken setValue);
 
         partial void Rel_SetCondition(ref JsonAttachedFileLink instance, ref String setValue);
         partial void ToJSonString_PostValidate(JsonAttachedFileLink instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonAttachedFileLink instance);
+        partial void ToJSonString_PreCondition(JsonAttachedFileLink instance);
         partial void ToString_PostValidate(JsonAttachedFileLink instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonAttachedFileLink instance);
+        partial void ToString_PreCondition(JsonAttachedFileLink instance);
 
         partial void Url_SetCondition(ref JsonAttachedFileLink instance, ref String setValue);
     }

@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communications\CallSpec.cs" />
+    <Compile Include="Communications\FailedRestCallException.cs" />
     <Compile Include="Communications\HttpClientLive.cs" />
     <Compile Include="Communications\HttpClientMock.cs" />
     <Compile Include="Communications\RestAPIBase.cs" />

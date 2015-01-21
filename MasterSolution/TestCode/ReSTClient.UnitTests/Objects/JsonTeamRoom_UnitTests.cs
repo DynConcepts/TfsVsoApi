@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
     /// <summary>Generated Test Template</summary>
     public partial class JsonTeamRoom_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonTeamRoom instance, ref JToken json) { json = JObject.Parse(CannedMessages.JsonTeamRoom); }
+        partial void FromToken_PreCondition(JsonTeamRoom instance, ref JToken json) { json = JObject.Parse(CannedMessages.JsonTeamRoom); }
         static partial void JsonSource(ref JToken json) { json = JObject.Parse(CannedMessages.JsonTeamRoom); }
     }
 }

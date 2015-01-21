@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonFieldDefinition_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonFieldDefinition instance, ref JToken json) { json = JObject.Parse(CannedMessages.SampleWorkItemsFieldDefinition); }
+        partial void FromToken_PreCondition(JsonFieldDefinition instance, ref JToken json) { json = JObject.Parse(CannedMessages.SampleWorkItemsFieldDefinition); }
         static partial void JsonSource(ref JToken json) { json = JObject.Parse(CannedMessages.SampleWorkItemsFieldDefinition); }
     }
 }

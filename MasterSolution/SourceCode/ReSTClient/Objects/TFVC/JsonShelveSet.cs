@@ -36,7 +36,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.TFVC
         /// Gets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        public int Id { get { return sr_Id.Eval(this); } }
+        public string Id { get { return sr_Id.Eval(this); } }
 
         /// <summary>
         /// Gets the name.
@@ -76,7 +76,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.TFVC
         /// <summary>
         /// The SR_ identifier
         /// </summary>
-        private static readonly JsonBackedField<int> sr_Id = new JsonBackedField<int>("id");
+        private static readonly JsonBackedField<string> sr_Id = new JsonBackedField<string>("id");
 
         /// <summary>
         /// The SR_ name

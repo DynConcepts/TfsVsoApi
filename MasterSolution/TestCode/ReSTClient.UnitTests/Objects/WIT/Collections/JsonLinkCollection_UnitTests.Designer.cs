@@ -24,9 +24,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     value = new Object();
-                    AddItem_PreCondition(ref instance, ref value);
+                    AddItem_PreCondition(instance, ref value);
                 },
-                instance => { _retVal = instance.AddItem(value); },
+                instance => { return _retVal = instance.AddItem(value); },
                 instance => { AddItem_PostValidate(instance, value, _retVal); });
         }
 
@@ -41,9 +41,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     link = default(JsonHyperlink); //No Constructor
-                    Add_PreCondition(ref instance, ref link);
+                    Add_PreCondition(instance, ref link);
                 },
-                instance => { _retVal = instance.Add(link); },
+                instance => { return _retVal = instance.Add(link); },
                 instance => { Add_PostValidate(instance, link, _retVal); });
         }
 
@@ -57,7 +57,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     newFields = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref newFields);
+                    CaptureJson_PreCondition(instance, ref newFields);
                 },
                 instance => { instance.CaptureJson(newFields); },
                 instance => { CaptureJson_PostValidate(instance, newFields); });
@@ -69,7 +69,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         {
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { Clear_PreCondition(ref instance); },
+                instance => { Clear_PreCondition(instance); },
                 instance => { instance.Clear(); },
                 instance => { Clear_PostValidate(instance); });
         }
@@ -85,9 +85,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     item = default(JsonLink); //No Constructor
-                    Contains_PreCondition(ref instance, ref item);
+                    Contains_PreCondition(instance, ref item);
                 },
-                instance => { _retVal = instance.Contains(item); },
+                instance => { return _retVal = instance.Contains(item); },
                 instance => { Contains_PostValidate(instance, item, _retVal); });
         }
 
@@ -103,7 +103,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 {
                     array = default(JsonLink[]); //No Constructor
                     arrayIndex = default(Int32); //No Constructor
-                    CopyTo_PreCondition(ref instance, ref array, ref arrayIndex);
+                    CopyTo_PreCondition(instance, ref array, ref arrayIndex);
                 },
                 instance => { instance.CopyTo(array, arrayIndex); },
                 instance => { CopyTo_PostValidate(instance, array, arrayIndex); });
@@ -138,9 +138,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -155,9 +155,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     value = new JArray();
-                    FromToken_PreCondition(ref instance, ref value);
+                    FromToken_PreCondition(instance, ref value);
                 },
-                instance => { _retVal = JsonLinkCollection.FromToken(value); },
+                instance => { return _retVal = JsonLinkCollection.FromToken(value); },
                 instance => { FromToken_PostValidate(instance, value, _retVal); });
         }
 
@@ -168,8 +168,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             IEnumerator<JsonLink> _retVal = default(IEnumerator<JsonLink>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetEnumerator_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetEnumerator(); },
+                instance => { GetEnumerator_PreCondition(instance); },
+                instance => { return _retVal = instance.GetEnumerator(); },
                 instance => { GetEnumerator_PostValidate(instance, _retVal); });
         }
 
@@ -180,8 +180,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -196,9 +196,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     index = default(Int32); //No Constructor
-                    GetItem_PreCondition(ref instance, ref index);
+                    GetItem_PreCondition(instance, ref index);
                 },
-                instance => { _retVal = instance.GetItem(index); },
+                instance => { return _retVal = instance.GetItem(index); },
                 instance => { GetItem_PostValidate(instance, index, _retVal); });
         }
 
@@ -209,8 +209,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -225,9 +225,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     item = default(JsonLink); //No Constructor
-                    IndexOf_PreCondition(ref instance, ref item);
+                    IndexOf_PreCondition(instance, ref item);
                 },
-                instance => { _retVal = instance.IndexOf(item); },
+                instance => { return _retVal = instance.IndexOf(item); },
                 instance => { IndexOf_PostValidate(instance, item, _retVal); });
         }
 
@@ -243,7 +243,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 {
                     index = default(Int32); //No Constructor
                     item = default(JsonLink); //No Constructor
-                    Insert_PreCondition(ref instance, ref index, ref item);
+                    Insert_PreCondition(instance, ref index, ref item);
                 },
                 instance => { instance.Insert(index, item); },
                 instance => { Insert_PostValidate(instance, index, item); });
@@ -331,7 +331,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     index = default(Int32); //No Constructor
-                    RemoveAt_PreCondition(ref instance, ref index);
+                    RemoveAt_PreCondition(instance, ref index);
                 },
                 instance => { instance.RemoveAt(index); },
                 instance => { RemoveAt_PostValidate(instance, index); });
@@ -348,9 +348,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     item = default(JsonLink); //No Constructor
-                    Remove_PreCondition(ref instance, ref item);
+                    Remove_PreCondition(instance, ref item);
                 },
-                instance => { _retVal = instance.Remove(item); },
+                instance => { return _retVal = instance.Remove(item); },
                 instance => { Remove_PostValidate(instance, item, _retVal); });
         }
 
@@ -379,8 +379,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -391,8 +391,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
@@ -415,28 +415,28 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         }
 
         partial void AddItem_PostValidate(JsonLinkCollection instance, Object value, Int32 _retVal);
-        partial void AddItem_PreCondition(ref JsonLinkCollection instance, ref Object value);
+        partial void AddItem_PreCondition(JsonLinkCollection instance, ref Object value);
         partial void Add_PostValidate(JsonLinkCollection instance, JsonHyperlink link, Int32 _retVal);
-        partial void Add_PreCondition(ref JsonLinkCollection instance, ref JsonHyperlink link);
+        partial void Add_PreCondition(JsonLinkCollection instance, ref JsonHyperlink link);
         partial void CaptureJson_PostValidate(JsonLinkCollection instance, JToken newFields);
-        partial void CaptureJson_PreCondition(ref JsonLinkCollection instance, ref JToken newFields);
+        partial void CaptureJson_PreCondition(JsonLinkCollection instance, ref JToken newFields);
         partial void Clear_PostValidate(JsonLinkCollection instance);
-        partial void Clear_PreCondition(ref JsonLinkCollection instance);
+        partial void Clear_PreCondition(JsonLinkCollection instance);
         partial void Contains_PostValidate(JsonLinkCollection instance, JsonLink item, Boolean _retVal);
-        partial void Contains_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
+        partial void Contains_PreCondition(JsonLinkCollection instance, ref JsonLink item);
         partial void CopyTo_PostValidate(JsonLinkCollection instance, JsonLink[] array, Int32 arrayIndex);
-        partial void CopyTo_PreCondition(ref JsonLinkCollection instance, ref JsonLink[] array, ref Int32 arrayIndex);
+        partial void CopyTo_PreCondition(JsonLinkCollection instance, ref JsonLink[] array, ref Int32 arrayIndex);
         partial void Count_SetCondition(ref JsonLinkCollection instance, ref Int32 setValue);
 
         partial void Equals_PostValidate(JsonLinkCollection instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonLinkCollection instance, ref Object obj);
+        partial void Equals_PreCondition(JsonLinkCollection instance, ref Object obj);
         partial void FromToken_PostValidate(JsonLinkCollection instance, JArray value, JsonLinkCollection _retVal);
-        partial void FromToken_PreCondition(ref JsonLinkCollection instance, ref JArray value);
+        partial void FromToken_PreCondition(JsonLinkCollection instance, ref JArray value);
         partial void GetEnumerator_PostValidate(JsonLinkCollection instance, IEnumerator<JsonLink> _retVal);
-        partial void GetEnumerator_PreCondition(ref JsonLinkCollection instance);
+        partial void GetEnumerator_PreCondition(JsonLinkCollection instance);
 
         partial void GetHashCode_PostValidate(JsonLinkCollection instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonLinkCollection instance);
+        partial void GetHashCode_PreCondition(JsonLinkCollection instance);
         internal static IEnumerable<JsonLinkCollection> GetIEnumerableInstance() { return new List<JsonLinkCollection> {GetInstance()}; }
 
         internal static JsonLinkCollection GetInstance([CallerMemberName] string callerName = "")
@@ -449,14 +449,14 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         }
 
         partial void GetItem_PostValidate(JsonLinkCollection instance, Int32 index, Object _retVal);
-        partial void GetItem_PreCondition(ref JsonLinkCollection instance, ref Int32 index);
+        partial void GetItem_PreCondition(JsonLinkCollection instance, ref Int32 index);
 
         partial void GetType_PostValidate(JsonLinkCollection instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonLinkCollection instance);
+        partial void GetType_PreCondition(JsonLinkCollection instance);
         partial void IndexOf_PostValidate(JsonLinkCollection instance, JsonLink item, Int32 _retVal);
-        partial void IndexOf_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
+        partial void IndexOf_PreCondition(JsonLinkCollection instance, ref JsonLink item);
         partial void Insert_PostValidate(JsonLinkCollection instance, Int32 index, JsonLink item);
-        partial void Insert_PreCondition(ref JsonLinkCollection instance, ref Int32 index, ref JsonLink item);
+        partial void Insert_PreCondition(JsonLinkCollection instance, ref Int32 index, ref JsonLink item);
         static partial void InstanceFactory(ref JsonLinkCollection instance, [CallerMemberName] string callerName = "");
 
         partial void IsFixedSize_SetCondition(ref JsonLinkCollection instance, ref Boolean setValue);
@@ -467,14 +467,14 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
 
         partial void JsonValue_SetCondition(ref JsonLinkCollection instance, ref JToken setValue);
         partial void RemoveAt_PostValidate(JsonLinkCollection instance, Int32 index);
-        partial void RemoveAt_PreCondition(ref JsonLinkCollection instance, ref Int32 index);
+        partial void RemoveAt_PreCondition(JsonLinkCollection instance, ref Int32 index);
         partial void Remove_PostValidate(JsonLinkCollection instance, JsonLink item, Boolean _retVal);
-        partial void Remove_PreCondition(ref JsonLinkCollection instance, ref JsonLink item);
+        partial void Remove_PreCondition(JsonLinkCollection instance, ref JsonLink item);
         partial void SyncRoot_SetCondition(ref JsonLinkCollection instance, ref Object setValue);
         partial void ToJSonString_PostValidate(JsonLinkCollection instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonLinkCollection instance);
+        partial void ToJSonString_PreCondition(JsonLinkCollection instance);
         partial void ToString_PostValidate(JsonLinkCollection instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonLinkCollection instance);
+        partial void ToString_PreCondition(JsonLinkCollection instance);
         partial void VersionTag_SetCondition(ref JsonLinkCollection instance, ref Int32 setValue);
     }
 }

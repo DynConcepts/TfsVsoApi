@@ -185,6 +185,7 @@
     <Compile Include="TFS\Framework\Common\ConnectOptionsWrapper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\EnumTransform.cs" />
     <Compile Include="TFS\Framework\Common\IdentityPropertyScopeWrapper.cs">
       <SubType>Code</SubType>
     </Compile>

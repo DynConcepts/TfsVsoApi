@@ -1,5 +1,6 @@
 using DynCon.OSI.DynTest;
 using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.Projects;
 using DynCon.OSI.VSO.ReSTClient.UnitTests.Helpers.JsonSource;
 using Newtonsoft.Json.Linq;
 
@@ -19,7 +20,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             return array[0];
         }
 
-        partial void FromToken_PreCondition(ref JsonProject instance, ref JToken json)
+        partial void FromToken_PreCondition(JsonProject instance, ref JToken json)
         {
             JObject jobject = JObject.Parse(CannedMessages.JsonProjects);
             var array = jobject["value"].Value<JArray>();

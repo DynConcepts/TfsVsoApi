@@ -24,9 +24,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -37,8 +37,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetDetails_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetDetails(); },
+                instance => { GetDetails_PreCondition(instance); },
+                instance => { return _retVal = instance.GetDetails(); },
                 instance => { GetDetails_PostValidate(instance, _retVal); });
         }
 
@@ -49,8 +49,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -61,8 +61,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetSummaries_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetSummaries(); },
+                instance => { GetSummaries_PreCondition(instance); },
+                instance => { return _retVal = instance.GetSummaries(); },
                 instance => { GetSummaries_PostValidate(instance, _retVal); });
         }
 
@@ -73,8 +73,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -85,18 +85,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Equals_PostValidate(JsonCodeLensAPI instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonCodeLensAPI instance, ref Object obj);
+        partial void Equals_PreCondition(JsonCodeLensAPI instance, ref Object obj);
         partial void GetDetails_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetDetails_PreCondition(ref JsonCodeLensAPI instance);
+        partial void GetDetails_PreCondition(JsonCodeLensAPI instance);
 
         partial void GetHashCode_PostValidate(JsonCodeLensAPI instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonCodeLensAPI instance);
+        partial void GetHashCode_PreCondition(JsonCodeLensAPI instance);
         internal static IEnumerable<JsonCodeLensAPI> GetIEnumerableInstance() { return new List<JsonCodeLensAPI> {GetInstance()}; }
 
         internal static JsonCodeLensAPI GetInstance([CallerMemberName] string callerName = "")
@@ -107,12 +107,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         }
 
         partial void GetSummaries_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetSummaries_PreCondition(ref JsonCodeLensAPI instance);
+        partial void GetSummaries_PreCondition(JsonCodeLensAPI instance);
 
         partial void GetType_PostValidate(JsonCodeLensAPI instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonCodeLensAPI instance);
+        partial void GetType_PreCondition(JsonCodeLensAPI instance);
         static partial void InstanceFactory(ref JsonCodeLensAPI instance, [CallerMemberName] string callerName = "");
         partial void ToString_PostValidate(JsonCodeLensAPI instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonCodeLensAPI instance);
+        partial void ToString_PreCondition(JsonCodeLensAPI instance);
     }
 }

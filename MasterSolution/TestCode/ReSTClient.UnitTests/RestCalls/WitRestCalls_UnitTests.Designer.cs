@@ -59,9 +59,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -72,7 +72,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return WitRestCalls.Fields; },
+                () => { return WitRestCalls.FieldDefinitions; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -84,8 +84,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -96,8 +96,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -115,12 +115,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
-        public void Iterations_UnitTest()
+        public void AllIterations_UnitTest()
         {
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return WitRestCalls.Iterations; },
+                () => { return WitRestCalls.AllIterations; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -139,12 +139,24 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
-        public void Queries1_UnitTest()
+        public void AllProjectQueries_UnitTest()
         {
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return WitRestCalls.Queries1; },
+                () => { return WitRestCalls.AllProjectQueries; },
+                // Validate Get Operation
+                (setValue, getValue) => { });
+        }
+
+        /// <summary>Generated Test Template</summary>
+        [TestMethod]
+        public void ProjectQueriesInPath_UnitTest()
+        {
+            ExecuteProperty(
+                null, null, null, // No Set Accessor
+                // Invoke Getter
+                () => { return WitRestCalls.ProjectQueriesInPath; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -192,8 +204,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
@@ -295,12 +307,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         /// <summary>Generated Test Template</summary>
         [TestMethod]
-        public void WorkItems0_UnitTest()
+        public void WorkItems_UnitTest()
         {
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return WitRestCalls.WorkItems0; },
+                () => { return WitRestCalls.WorkItems; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -323,11 +335,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         partial void ClassificationNodes_SetCondition(ref CallSpec setValue);
         partial void Equals_PostValidate(WitRestCalls instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref WitRestCalls instance, ref Object obj);
+        partial void Equals_PreCondition(WitRestCalls instance, ref Object obj);
 
         partial void Fields_SetCondition(ref CallSpec setValue);
         partial void GetHashCode_PostValidate(WitRestCalls instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref WitRestCalls instance);
+        partial void GetHashCode_PreCondition(WitRestCalls instance);
         internal static IEnumerable<WitRestCalls> GetIEnumerableInstance() { return new List<WitRestCalls> {GetInstance()}; }
 
         internal static WitRestCalls GetInstance([CallerMemberName] string callerName = "")
@@ -338,7 +350,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
         }
 
         partial void GetType_PostValidate(WitRestCalls instance, Type _retVal);
-        partial void GetType_PreCondition(ref WitRestCalls instance);
+        partial void GetType_PreCondition(WitRestCalls instance);
 
         partial void History_SetCondition(ref CallSpec setValue);
         static partial void InstanceFactory(ref WitRestCalls instance, [CallerMemberName] string callerName = "");
@@ -355,7 +367,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         partial void RuleEngine_SetCondition(ref CallSpec setValue);
         partial void ToString_PostValidate(WitRestCalls instance, String _retVal);
-        partial void ToString_PreCondition(ref WitRestCalls instance);
+        partial void ToString_PreCondition(WitRestCalls instance);
 
         partial void Updates_SetCondition(ref CallSpec setValue);
 

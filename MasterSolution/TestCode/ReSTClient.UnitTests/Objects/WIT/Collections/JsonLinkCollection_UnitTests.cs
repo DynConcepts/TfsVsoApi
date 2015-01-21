@@ -11,9 +11,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
     /// <summary>Generated Test Template</summary>
     public partial class JsonLinkCollection_UnitTests : DynTestClassBase
     {
-        partial void AddItem_PreCondition(ref JsonLinkCollection instance, ref Object value) { value = JsonHyperlink_UnitTests.GetInstance(); }
+        partial void AddItem_PreCondition(JsonLinkCollection instance, ref Object value) { value = JsonHyperlink_UnitTests.GetInstance(); }
 
-        partial void CopyTo_PreCondition(ref JsonLinkCollection instance, ref JsonLink[] array, ref Int32 arrayIndex)
+        partial void CopyTo_PreCondition(JsonLinkCollection instance, ref JsonLink[] array, ref Int32 arrayIndex)
         {
             array = new JsonLink[100];
             arrayIndex = 1;

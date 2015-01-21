@@ -43,9 +43,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -56,8 +56,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Exception _retVal = default(Exception);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetBaseException_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetBaseException(); },
+                instance => { GetBaseException_PreCondition(instance); },
+                instance => { return _retVal = instance.GetBaseException(); },
                 instance => { GetBaseException_PostValidate(instance, _retVal); });
         }
 
@@ -68,8 +68,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -85,7 +85,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 {
                     info = default(SerializationInfo); //No Constructor
                     context = default(StreamingContext); //No Constructor
-                    GetObjectData_PreCondition(ref instance, ref info, ref context);
+                    GetObjectData_PreCondition(instance, ref info, ref context);
                 },
                 instance => { instance.GetObjectData(info, context); },
                 instance => { GetObjectData_PostValidate(instance, info, context); });
@@ -98,8 +98,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -256,18 +256,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Data_SetCondition(ref APIFactoryNotSetException instance, ref IDictionary setValue);
         partial void Equals_PostValidate(APIFactoryNotSetException instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref APIFactoryNotSetException instance, ref Object obj);
+        partial void Equals_PreCondition(APIFactoryNotSetException instance, ref Object obj);
         partial void GetBaseException_PostValidate(APIFactoryNotSetException instance, Exception _retVal);
-        partial void GetBaseException_PreCondition(ref APIFactoryNotSetException instance);
+        partial void GetBaseException_PreCondition(APIFactoryNotSetException instance);
         partial void GetHashCode_PostValidate(APIFactoryNotSetException instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref APIFactoryNotSetException instance);
+        partial void GetHashCode_PreCondition(APIFactoryNotSetException instance);
         internal static IEnumerable<APIFactoryNotSetException> GetIEnumerableInstance() { return new List<APIFactoryNotSetException> {GetInstance()}; }
 
         internal static APIFactoryNotSetException GetInstance([CallerMemberName] string callerName = "")
@@ -278,9 +278,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         }
 
         partial void GetObjectData_PostValidate(APIFactoryNotSetException instance, SerializationInfo info, StreamingContext context);
-        partial void GetObjectData_PreCondition(ref APIFactoryNotSetException instance, ref SerializationInfo info, ref StreamingContext context);
+        partial void GetObjectData_PreCondition(APIFactoryNotSetException instance, ref SerializationInfo info, ref StreamingContext context);
         partial void GetType_PostValidate(APIFactoryNotSetException instance, Type _retVal);
-        partial void GetType_PreCondition(ref APIFactoryNotSetException instance);
+        partial void GetType_PreCondition(APIFactoryNotSetException instance);
         partial void HResult_SetCondition(ref APIFactoryNotSetException instance, ref Int32 setValue);
 
         partial void HelpLink_SetCondition(ref APIFactoryNotSetException instance, ref String setValue);
@@ -292,6 +292,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void StackTrace_SetCondition(ref APIFactoryNotSetException instance, ref String setValue);
         partial void TargetSite_SetCondition(ref APIFactoryNotSetException instance, ref MethodBase setValue);
         partial void ToString_PostValidate(APIFactoryNotSetException instance, String _retVal);
-        partial void ToString_PreCondition(ref APIFactoryNotSetException instance);
+        partial void ToString_PreCondition(APIFactoryNotSetException instance);
     }
 }

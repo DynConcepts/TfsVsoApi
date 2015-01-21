@@ -26,6 +26,6 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
         /// Gets the dictionary.
         /// </summary>
         /// <returns>Dictionary&lt;System.String, System.String&gt;.</returns>
-        public Dictionary<string, string> GetDictionary() { return StringFormatter.Parse(r_RawRoute); }
+        public Dictionary<string, object> GetDictionary() { return StringFormatter.Parse(r_RawRoute); }
     }
 }

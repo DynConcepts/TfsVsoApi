@@ -1,0 +1,254 @@
+{
+   "method": "GET",
+   "resourceFormat": "/wit/queries?$depth=1&$expand=all",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/Fabrikam-Fiber-Git/_apis/wit/queries?$depth=1&$expand=all&api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json"
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "ff77edfc-0a6c-4196-aea9-783f613949dc",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=530d5d2a-08d3-0006-6c62-0f53d308d001; path=/; secure",
+         "Tfs-SessionActive=2014-11-26T22:38:47; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "514366d0-08d3-0004-d0c0-4b51d308d001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Wed, 26 Nov 2014 22:38:46 GMT",
+      "content-length": "6206"
+   },
+   "responseBody": {
+      "count": 2,
+      "value": [
+         {
+            "id": "3c65fbc1-d427-48ce-9091-633dde9e27e2",
+            "name": "My Queries",
+            "path": "My Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "children": [
+               {
+                  "id": "0ea88f4d-5585-41a1-be58-5f1c6b9c2853",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "queryType": "tree",
+                  "columns": [
+                     {
+                        "referenceName": "System.Id",
+                        "name": "ID",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Id"
+                     },
+                     {
+                        "referenceName": "System.WorkItemType",
+                        "name": "Work Item Type",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.WorkItemType"
+                     },
+                     {
+                        "referenceName": "System.Title",
+                        "name": "Title",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Title"
+                     },
+                     {
+                        "referenceName": "System.AssignedTo",
+                        "name": "Assigned To",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.AssignedTo"
+                     },
+                     {
+                        "referenceName": "System.State",
+                        "name": "State",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.State"
+                     }
+                  ],
+                  "wiql": "Select [System.Id], [System.WorkItemType], [System.Title], [System.AssignedTo], [System.State] From WorkItemLinks WHERE (Source.[System.TeamProject] = @project and Source.[System.State] <> 'Removed') and ([System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward') and (Target.[System.WorkItemType] <> '') mode(Recursive)",
+                  "isPublic": false,
+                  "linkClauses": {
+                     "logicalOperator": "and",
+                     "clauses": [
+                        {
+                           "field": {
+                              "referenceName": "System.Links.LinkType",
+                              "name": "Link Type",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Links.LinkType"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.Equals",
+                              "name": "="
+                           },
+                           "value": "System.LinkTypes.Hierarchy-Forward"
+                        }
+                     ]
+                  },
+                  "filterOptions": "linksRecursiveMayContain",
+                  "sourceClauses": {
+                     "logicalOperator": "and",
+                     "clauses": [
+                        {
+                           "field": {
+                              "referenceName": "System.TeamProject",
+                              "name": "Team Project",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.TeamProject"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.Equals",
+                              "name": "="
+                           },
+                           "value": "@project"
+                        },
+                        {
+                           "field": {
+                              "referenceName": "System.State",
+                              "name": "State",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.State"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.NotEquals",
+                              "name": "<>"
+                           },
+                           "value": "Removed"
+                        }
+                     ]
+                  },
+                  "targetClauses": {
+                     "logicalOperator": "and",
+                     "clauses": [
+                        {
+                           "field": {
+                              "referenceName": "System.WorkItemType",
+                              "name": "Work Item Type",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.WorkItemType"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.NotEquals",
+                              "name": "<>"
+                           },
+                           "value": ""
+                        }
+                     ]
+                  },
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/0ea88f4d-5585-41a1-be58-5f1c6b9c2853"
+               }
+            ],
+            "isPublic": false,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3c65fbc1-d427-48ce-9091-633dde9e27e2"
+         },
+         {
+            "id": "eb5c1e25-9b3e-4416-a833-e500122882c7",
+            "name": "Shared Queries",
+            "path": "Shared Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "children": [
+               {
+                  "id": "7662ea76-d42d-43db-abb0-19e6f1d0be9b",
+                  "name": "Feedback",
+                  "path": "Shared Queries/Feedback",
+                  "queryType": "flat",
+                  "columns": [
+                     {
+                        "referenceName": "System.Id",
+                        "name": "ID",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Id"
+                     },
+                     {
+                        "referenceName": "System.Title",
+                        "name": "Title",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Title"
+                     },
+                     {
+                        "referenceName": "System.State",
+                        "name": "State",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.State"
+                     },
+                     {
+                        "referenceName": "System.CreatedBy",
+                        "name": "Created By",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.CreatedBy"
+                     },
+                     {
+                        "referenceName": "Microsoft.VSTS.Common.Rating",
+                        "name": "Rating",
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/Microsoft.VSTS.Common.Rating"
+                     }
+                  ],
+                  "sortColumns": [
+                     {
+                        "field": {
+                           "referenceName": "System.Id",
+                           "name": "ID",
+                           "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.Id"
+                        },
+                        "descending": false
+                     }
+                  ],
+                  "wiql": "\n    SELECT [System.Id], \n           [System.Title],\n           [System.State], \n           [System.CreatedBy], \n           [Microsoft.VSTS.Common.Rating]\n     FROM WorkItems\n     WHERE (\n            [System.TeamProject] = @project\n            AND [System.WorkItemType] IN GROUP 'Microsoft.FeedbackResponseCategory'\n            AND [System.State] = 'Active'\n           )\n  ORDER BY [System.Id]\n  ",
+                  "isPublic": true,
+                  "clauses": {
+                     "logicalOperator": "and",
+                     "clauses": [
+                        {
+                           "field": {
+                              "referenceName": "System.TeamProject",
+                              "name": "Team Project",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.TeamProject"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.Equals",
+                              "name": "="
+                           },
+                           "value": "@project"
+                        },
+                        {
+                           "field": {
+                              "referenceName": "System.WorkItemType",
+                              "name": "Work Item Type",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.WorkItemType"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.InGroup",
+                              "name": "In Group"
+                           },
+                           "value": "Microsoft.FeedbackResponseCategory"
+                        },
+                        {
+                           "field": {
+                              "referenceName": "System.State",
+                              "name": "State",
+                              "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/wit/fields/System.State"
+                           },
+                           "operator": {
+                              "referenceName": "SupportedOperations.Equals",
+                              "name": "="
+                           },
+                           "value": "Active"
+                        }
+                     ]
+                  },
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7662ea76-d42d-43db-abb0-19e6f1d0be9b"
+               },
+               {
+                  "id": "139a3503-6ac6-4fa0-9a91-f76f180e7b65",
+                  "name": "Current Sprint",
+                  "path": "Shared Queries/Current Sprint",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/139a3503-6ac6-4fa0-9a91-f76f180e7b65"
+               }
+            ],
+            "isPublic": true,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/eb5c1e25-9b3e-4416-a833-e500122882c7"
+         }
+      ]
+   }
+}

@@ -34,6 +34,8 @@ namespace DynCon.OSI.VSO.ReSTClient.APIs
         /// <returns>StructuredHttpExchange.</returns>
         private static StructuredHttpExchange MakeProjectScopeRequestString(string project, StructuredHttpExchange exchange)
         {
+            if (String.IsNullOrWhiteSpace(project))
+                throw new Exception("Project Name must be Specified");
             exchange.BaseRoute = VSOClientManager.VsoCollection + "/" + project + "/_apis";
             exchange.SetQuery("api-version", "1.0");
             return exchange;

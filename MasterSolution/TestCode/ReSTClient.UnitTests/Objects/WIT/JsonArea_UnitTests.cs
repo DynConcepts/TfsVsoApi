@@ -7,6 +7,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonArea_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonArea instance, ref JToken json) { json = new JObject(); }
+        partial void FromToken_PreCondition(JsonArea instance, ref JToken json) { json = new JObject(); }
     }
 }

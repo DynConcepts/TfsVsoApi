@@ -21,7 +21,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Assert.IsNotNull(api);
         }
 
-        partial void FromToken_PreCondition(ref JsonField instance, ref JToken json) { json = new JProperty("System.Title", "WorkItem Created by Unit Testing"); }
+        partial void FromToken_PreCondition(JsonField instance, ref JToken json) { json = new JProperty("System.Title", "WorkItem Created by Unit Testing"); }
 
         static partial void InstanceFactory(ref JsonField instance, string callerName)
         {
@@ -29,6 +29,11 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             instance = JsonField.FromToken(json);
         }
 
-        partial void Value_SetCondition(ref JsonField instance, ref Object setValue) { setValue = "Title For Setting Value"; }
+        partial void Value_SetCondition(ref JsonField instance, ref Object setValue)
+        {
+            setValue = "Title For Setting Value";
+            ExpectEvent("ListChanged{Newtonsoft.Json.Linq.JContainer}");
+            ExpectEvent("CollectionChanged{Newtonsoft.Json.Linq.JContainer}");
+        }
     }
 }

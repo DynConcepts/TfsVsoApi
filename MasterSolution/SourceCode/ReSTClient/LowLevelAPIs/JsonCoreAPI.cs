@@ -1,31 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.Build;
+using DynCon.OSI.VSO.ReSTClient.Objects.Projects;
 using DynCon.OSI.VSO.ReSTClient.RestCalls;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
     /// <summary>
-    ///     Class JsonCoreAPI.
+    /// Class JsonCoreAPI.
     /// </summary>
     internal class JsonCoreAPI : VsoRestAPIBase
     {
         /// <summary>
-        ///     Gets the connected services.
+        /// Gets the connected services.
         /// </summary>
+        /// <param name="projectId">The project identifier.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetConnectedServices()
+        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetConnectedServices(string projectId)
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(CoreRestCalls.ConnectedServices);
+            exchange.SetRoute("{projectId}", projectId);
+            exchange.SetRoute("{name}", String.Empty);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
 
         /// <summary>
-        ///     Gets the details.
+        /// Gets the details.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetDetails()
@@ -36,29 +42,34 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         }
 
         /// <summary>
-        ///     Gets the identity MRU.
+        /// Gets the identity MRU.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetIdentityMru()
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(CoreRestCalls.IdentityMru);
+            exchange.SetRoute("{mruName}", String.Empty);
             IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
             return result;
         }
 
         /// <summary>
-        ///     Gets the members.
+        /// Gets the members.
         /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetMembers()
+        /// <param name="projectId">The project identifier.</param>
+        /// <param name="teamId">The team identifier.</param>
+        /// <returns>Task&lt;IReadOnlyList&lt;JsonIdentity&gt;&gt;.</returns>
+        public async Task<IReadOnlyList<JsonIdentity>> GetMembers(string projectId, string teamId)
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(CoreRestCalls.Members);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            exchange.SetRoute("{projectId}", projectId);
+            exchange.SetRoute("{teamId}", teamId);
+            IReadOnlyList<JsonIdentity> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonIdentity.FromToken));
             return result;
         }
 
         /// <summary>
-        ///     Gets the projects.
+        /// Gets the projects.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonProject>> GetProjects()
@@ -69,7 +80,7 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         }
 
         /// <summary>
-        ///     Gets the proxies.
+        /// Gets the proxies.
         /// </summary>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
         public async Task<IReadOnlyList<JsonProxy>> GetProxies()
@@ -80,13 +91,16 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         }
 
         /// <summary>
-        ///     Gets the teams.
+        /// Gets the teams.
         /// </summary>
+        /// <param name="projectId">The project identifier.</param>
         /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetTeams()
+        public async Task<IReadOnlyList<JsonTeam>> GetTeams(string projectId)
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(CoreRestCalls.Teams);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            exchange.SetRoute("{projectId}", projectId);
+            exchange.SetRoute("{*teamId}", String.Empty);
+            IReadOnlyList<JsonTeam> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonTeam.FromToken));
             return result;
         }
     }

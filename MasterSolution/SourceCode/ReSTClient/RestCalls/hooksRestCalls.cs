@@ -7,6 +7,21 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
     /// </summary>
     internal class HooksRestCalls
     {
+        /*
+        /hooks/consumers		GET		_apis/hooks/consumers?api-version=1.0
+        /hooks/consumers/{consumerId}		GET		_apis/hooks/consumers/zendesk?api-version=1.0
+        /hooks/consumers/{consumerId}/actions		GET		_apis/hooks/consumers/zendesk/actions?api-version=1.0
+        /hooks/consumers/{consumerId}/actions/{consumerActionId}		GET		_apis/hooks/consumers/zendesk/actions/createPrivateComment?api-version=1.0
+        /hooks/publishers		GET		_apis/hooks/publishers?api-version=1.0
+        /hooks/publishers/{publisherId}/eventTypes		GET		_apis/hooks/publishers/tfs/eventTypes?api-version=1.0
+        /hooks/publishers/{publisherId}/eventTypes/{eventTypeId}		GET		_apis/hooks/publishers/tfs/eventTypes/build.complete?api-version=1.0
+        /hooks/subscriptions/{newSubscriptionId}		DELETE		_apis/hooks/subscriptions/fd672255-8b6b-4769-9260-beea83d752ce?api-version=1.0
+        /hooks/subscriptions/		GET		_apis/hooks/subscriptions/?api-version=1.0
+        /hooks/subscriptions/{subscriptionId}		GET		_apis/hooks/subscriptions/8dea9aba-3a9a-4ad0-860f-2a5c7379e3eb?api-version=1.0
+        /hooks/subscriptions		POST		_apis/hooks/subscriptions?api-version=1.0
+        /hooks/subscriptions/{newSubscriptionId}		PUT		_apis/hooks/subscriptions/fd672255-8b6b-4769-9260-beea83d752ce?api-version=1.0
+
+         */
         /// <summary>
         ///     Gets the actions.
         /// </summary>

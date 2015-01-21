@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
     /// <summary>Generated Test Template</summary>
     public partial class JsonChangeSet_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonChangeSet instance, ref JToken json)
+        partial void FromToken_PreCondition(JsonChangeSet instance, ref JToken json)
         {
             var jObject = new JObject();
             jObject.Add(new JProperty("url", "http://www.example.com"));

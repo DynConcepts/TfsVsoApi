@@ -22,7 +22,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref token);
+                    CaptureJson_PreCondition(instance, ref token);
                 },
                 instance => { instance.CaptureJson(token); },
                 instance => { CaptureJson_PostValidate(instance, token); });
@@ -39,9 +39,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -56,9 +56,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    FromToken_PreCondition(ref instance, ref token);
+                    FromToken_PreCondition(instance, ref token);
                 },
-                instance => { _retVal = JsonQueryDefinition.FromToken(token); },
+                instance => { return _retVal = JsonQueryDefinition.FromToken(token); },
                 instance => { FromToken_PostValidate(instance, token, _retVal); });
         }
 
@@ -69,8 +69,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -81,8 +81,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -183,8 +183,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -195,19 +195,19 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void CaptureJson_PostValidate(JsonQueryDefinition instance, JToken token);
-        partial void CaptureJson_PreCondition(ref JsonQueryDefinition instance, ref JToken token);
+        partial void CaptureJson_PreCondition(JsonQueryDefinition instance, ref JToken token);
         partial void Equals_PostValidate(JsonQueryDefinition instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonQueryDefinition instance, ref Object obj);
+        partial void Equals_PreCondition(JsonQueryDefinition instance, ref Object obj);
         partial void FromToken_PostValidate(JsonQueryDefinition instance, JToken token, JsonQueryDefinition _retVal);
-        partial void FromToken_PreCondition(ref JsonQueryDefinition instance, ref JToken token);
+        partial void FromToken_PreCondition(JsonQueryDefinition instance, ref JToken token);
         partial void GetHashCode_PostValidate(JsonQueryDefinition instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonQueryDefinition instance);
+        partial void GetHashCode_PreCondition(JsonQueryDefinition instance);
         internal static IEnumerable<JsonQueryDefinition> GetIEnumerableInstance() { return new List<JsonQueryDefinition> {GetInstance()}; }
 
         internal static JsonQueryDefinition GetInstance([CallerMemberName] string callerName = "")
@@ -220,7 +220,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         }
 
         partial void GetType_PostValidate(JsonQueryDefinition instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonQueryDefinition instance);
+        partial void GetType_PreCondition(JsonQueryDefinition instance);
         partial void Id_SetCondition(ref JsonQueryDefinition instance, ref Guid setValue);
         static partial void InstanceFactory(ref JsonQueryDefinition instance, [CallerMemberName] string callerName = "");
 
@@ -231,8 +231,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         partial void Name_SetCondition(ref JsonQueryDefinition instance, ref String setValue);
         partial void Path_SetCondition(ref JsonQueryDefinition instance, ref String setValue);
         partial void ToJSonString_PostValidate(JsonQueryDefinition instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonQueryDefinition instance);
+        partial void ToJSonString_PreCondition(JsonQueryDefinition instance);
         partial void ToString_PostValidate(JsonQueryDefinition instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonQueryDefinition instance);
+        partial void ToString_PreCondition(JsonQueryDefinition instance);
     }
 }

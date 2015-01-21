@@ -9,25 +9,36 @@ namespace DynCon.OSI.Core.Helpers
     /// </summary>
     public class StringFormatter
     {
+/// <summary>
+/// Class MissingFormatterElement.
+/// </summary>
+        public class MissingFormatterElement
+        {
+
+        }
+
         /// <summary>
         /// Builds the specified template.
         /// </summary>
         /// <param name="template">The template.</param>
         /// <param name="values">The values.</param>
         /// <returns>System.String.</returns>
-        public static string Build(string template, Dictionary<string, string> values)
+        public static string Build(string template, Dictionary<string, object> values)
         {
             var sb = new StringBuilder();
             var remaining = template;
             while (remaining.Length > 0)
             {
-                int startIndex = remaining.IndexOf("{", System.StringComparison.Ordinal);
+                int startIndex = remaining.IndexOf("{", StringComparison.Ordinal);
                 if (startIndex >= 0)
                 {
-                    int endIndex = remaining.IndexOf("}", startIndex, System.StringComparison.Ordinal);
+                    int endIndex = remaining.IndexOf("}", startIndex, StringComparison.Ordinal);
                     sb.Append(remaining.Substring(0, startIndex));
                     var key = remaining.Substring(startIndex, 1 + endIndex - startIndex);
-                    sb.Append(values[key]);
+                    object value = values[key];
+                    if (value is MissingFormatterElement)
+                        throw new Exception(String.Format("Formatter Parameter {0} is missing", key));
+                    sb.Append(value);
                     if (endIndex < remaining.Length)
                         remaining = remaining.Substring(endIndex + 1);
                     else
@@ -46,19 +57,19 @@ namespace DynCon.OSI.Core.Helpers
         /// Parses the specified template.
         /// </summary>
         /// <param name="template">The template.</param>
-        /// <returns>Dictionary&lt;System.String, System.String&gt;.</returns>
-        public static Dictionary<string, string> Parse(string template)
+        /// <returns>Dictionary&lt;System.String, System.Object&gt;.</returns>
+        public static Dictionary<string, object> Parse(string template)
         {
-            var retVal = new Dictionary<string, string>();
+            var retVal = new Dictionary<string, object>();
             var remaining = template;
             while (remaining.Length > 0)
             {
-                int startIndex = remaining.IndexOf("{", System.StringComparison.Ordinal);
+                int startIndex = remaining.IndexOf("{", StringComparison.Ordinal);
                 if (startIndex >= 0)
                 {
-                    int endIndex = remaining.IndexOf("}", startIndex, System.StringComparison.Ordinal);
+                    int endIndex = remaining.IndexOf("}", startIndex, StringComparison.Ordinal);
                     var key = remaining.Substring(startIndex, 1 + endIndex - startIndex);
-                    retVal.Add(key, null);
+                    retVal.Add(key, new MissingFormatterElement());
                     if (endIndex < remaining.Length)
                         remaining = remaining.Substring(endIndex + 1);
                     else

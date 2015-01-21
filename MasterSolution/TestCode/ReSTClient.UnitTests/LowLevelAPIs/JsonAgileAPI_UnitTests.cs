@@ -10,7 +10,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
     /// <summary>Generated Test Template</summary>
     public partial class JsonAgileAPI_UnitTests : DynTestClassBase
     {
-        partial void GetBacklogs_PostValidate(JsonAgileAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        partial void GetBacklogs_PostValidate(JsonAgileAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { if (!_retVal.IsCompleted) throw new Exception(); }
 
         /// <summary>
         ///     Gets the disabled tests.
@@ -20,7 +20,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
 
         private static readonly List<String> sr_DisabledTests = new List<string>
         {
-            "GetBacklogs_UnitTest",
+           "GetBacklogs_UnitTest",
         };
     }
 }

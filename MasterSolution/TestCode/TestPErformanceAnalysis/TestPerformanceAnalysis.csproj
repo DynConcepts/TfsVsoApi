@@ -48,13 +48,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DynCon.OSI.DynTest\DynCon.OSI.DynTest.csproj">
+    <ProjectReference Include="..\DynTest\DynCon.OSI.DynTest.csproj">
       <Project>{4253B165-E851-4F14-B3B4-13FB6131DEEA}</Project>
       <Name>DynCon.OSI.DynTest</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ObjectModelClient_UnitTests\DynCon.OSI.VSO.ObjectModelClient_UnitTests.csproj">
+    <ProjectReference Include="..\ObjectModelClient.UnitTests\DynCon.OSI.VSO.ObjectModelClient.UnitTests.csproj">
       <Project>{594D20A3-77BC-4FC0-AA10-80CEC8A799BC}</Project>
-      <Name>DynCon.OSI.VSO.ObjectModelClient_UnitTests</Name>
+      <Name>DynCon.OSI.VSO.ObjectModelClient.UnitTests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

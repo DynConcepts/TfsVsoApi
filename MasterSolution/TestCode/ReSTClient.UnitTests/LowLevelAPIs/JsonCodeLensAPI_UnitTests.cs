@@ -10,8 +10,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
     /// <summary>Generated Test Template</summary>
     public partial class JsonCodeLensAPI_UnitTests : DynTestClassBase
     {
-        partial void GetDetails_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
-        partial void GetSummaries_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { _retVal.Wait(); }
+        partial void GetDetails_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { if (!_retVal.IsCompleted) throw new Exception(); }
+        partial void GetSummaries_PostValidate(JsonCodeLensAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal) { if (!_retVal.IsCompleted) throw new Exception(); }
 
         /// <summary>
         ///     Gets the disabled tests.

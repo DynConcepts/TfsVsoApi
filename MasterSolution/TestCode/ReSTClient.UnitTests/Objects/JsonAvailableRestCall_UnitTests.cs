@@ -88,7 +88,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
             }
         }
 
-        partial void FromToken_PreCondition(ref JsonAvailableRestCall instance, ref JToken json)
+        partial void FromToken_PreCondition(JsonAvailableRestCall instance, ref JToken json)
         {
             JObject jobject = JObject.Parse(CannedMessages.AvailableRestCalls);
             var array = jobject["value"].Value<JArray>();

@@ -7,6 +7,40 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
     /// </summary>
     internal class TestRestCalls
     {
+        /*
+/test/{projectName}/plans/{planId}/suites/{suiteId}/testcases		GET		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/testcases?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}/testcases/{testcaseId}		GET		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/testcases/39?api-version=1.0
+/test/{projectName}/plans/{id}		DELETE		https://vishac.visualstudio.com/tfs/DefaultCollection/_apis/test/Scrum1/plans/1?api-version=1.0
+/test/{projectName}/plans/{planId}		GET		fabrikam-fiber-tfvc/_apis/test/plans/1?api-version=1.0
+/test/{projectName}/plans		GET		fabrikam-fiber-tfvc/_apis/test/plans?api-version=1.0
+/test/{projectName}/plans/{planId}		PATCH		fabrikam-fiber-tfvc/_apis/test/plans/3?api-version=1.0
+/test/{projectName}/plans		POST		fabrikam-fiber-tfvc/_apis/test/plans?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}/points		GET		https://Fabrikam-Fiber-inc.VisualStudio.com/DefaultCollection/fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/points?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}/points/{pointId}		GET		https://Fabrikam-Fiber-inc.VisualStudio.com/DefaultCollection/fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/points/1?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}/points/{pointId}		PATCH		https://Fabrikam-Fiber-inc.VisualStudio.com/DefaultCollection/fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/points/1?api-version=1.0
+/test/{projectName}/runs/{runId}/results/100000/iterations		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results/100000/iterations?api-version=1.0
+/test/{projectName}/runs/{runId}/results		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results?api-version=1.0
+/test/{projectName}/runs/{runId}/results/100000/iterations/1/actionresults		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results/100000/iterations/1/actionresults?api-version=1.0
+/test/{projectName}/runs/{runId}/results/{testCaseResultId}/iterations/{iterationId}/attachments		GET		http://johnkr.me.tfsallin.net:81/DefaultCollection/_apis/test/john/runs/8/results/100000/iterations/1/attachments?api-version=1.0
+/test/{projectName}/runs/{runId}/results/100000		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results/100000?api-version=1.0
+/test/{projectName}/runs/{runId}/results/100000/iterations/1/parameterresults		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results/100000/iterations/1/parameterresults?api-version=1.0
+/test/{projectName}/runs/{runId}/results/100000/iterations/1		GET		fabrikam-fiber-tfvc/_apis/test/runs/4/results/100000/iterations/1?api-version=1.0
+/test/{projectName}/runs/{newRunId}		DELETE		fabrikam-fiber-tfvc/_apis/test/runs/5?api-version=1.0
+/test/{projectName}/runs/{runId}/statistics		GET		fabrikam-fiber-tfvc/_apis/test/runs/1/statistics?api-version=1.0
+/test/{projectName}/runs		GET		fabrikam-fiber-tfvc/_apis/test/runs?includeRunDetails=true&api-version=1.0
+/test/{projectName}/runs/{runId}		GET		fabrikam-fiber-tfvc/_apis/test/runs/1?api-version=1.0
+/test/{projectName}/runs/{runId}		PATCH		fabrikam-fiber-tfvc/_apis/test/runs/1?api-version=1.0
+/test/{projectName}/runs		POST		fabrikam-fiber-tfvc/_apis/test/runs?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{staticSuiteId}		DELETE		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/8?api-version=1.0
+/test/{projectName}/plans/1/suites/{suiteId}/testcases/39		DELETE		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/testcases/39?api-version=1.0
+/test/{projectName}/plans/{planId}/suites		GET		fabrikam-fiber-tfvc/_apis/test/plans/1/suites?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}		GET		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/9		PATCH		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/9?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{staticSuiteId}		PATCH		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/8?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}		POST		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{parentSuiteId}		POST		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1?api-version=1.0
+/test/{projectName}/plans/{planId}/suites/{suiteId}/testcases/39,40		POST		fabrikam-fiber-tfvc/_apis/test/plans/1/suites/1/testcases/39,40?api-version=1.0
+         */
         /// <summary>
         ///     Gets the agents.
         /// </summary>

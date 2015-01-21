@@ -1,0 +1,879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D96AB2F-167D-4A5E-911F-24ADFCFAB1FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DynCon.OSI.VSO.RestClient.ObjectModel_UnitTests</RootNamespace>
+    <AssemblyName>DynCon.OSI.VSO.RestClient.ObjectModel_UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="APIs\IterationImpl_UnitTests.cs" />
+    <Compile Include="APIs\IterationImpl_UnitTests.Designer.cs">
+      <DependentUpon>IterationImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\TeamRoomAPI_UnitTests.cs" />
+    <Compile Include="APIs\TeamRoomAPI_UnitTests.Designer.cs">
+      <DependentUpon>TeamRoomAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.cs" />
+    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.Designer.cs">
+      <DependentUpon>TFSVersionControlAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
+    <Compile Include="APIs\WorkItemAPI_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAPI_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyControl.cs" />
+    <Compile Include="OriginalManual\HighLevel_UnitTests.cs" />
+    <Compile Include="OriginalManual\ProjectImpl_UnitTests.cs" />
+    <Compile Include="OriginalManual\TeamRoomAPI_UnitTests.cs" />
+    <Compile Include="OriginalManual\WorkItemCollectionImpl_UnitTests.cs" />
+    <Compile Include="OriginalManual\WorkItemImpl_UnitTests.cs" />
+    <Compile Include="OriginalManual\WorkItemStoreImpl_UnitTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestChannelFactoryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestChannelImpl_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestChannelImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\ITfsRequestListenerImpl_UnitTests.Designer.cs">
+      <DependentUpon>ITfsRequestListenerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsHttpClientStateImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsHttpClientStateImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageHeaderImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsMessageHeaderImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsMessageImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsMessageImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsMessageImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\Channels\TfsRequestSettingsImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsRequestSettingsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsChangedEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\CredentialsChangedEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>CredentialsChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\FederatedCredentialImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\FederatedCredentialImpl_UnitTests.Designer.cs">
+      <DependentUpon>FederatedCredentialImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ICancelableAsyncResultImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ICancelableAsyncResultImpl_UnitTests.Designer.cs">
+      <DependentUpon>ICancelableAsyncResultImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenCredentialImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenCredentialImpl_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenCredentialImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenImpl_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\IssuedTokenProviderImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\IssuedTokenProviderImpl_UnitTests.Designer.cs">
+      <DependentUpon>IssuedTokenProviderImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectImpl_UnitTests.Designer.cs">
+      <DependentUpon>ITfsTeamProjectCollectionObjectImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ITfsXmlSerializableImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ITfsXmlSerializableImpl_UnitTests.Designer.cs">
+      <DependentUpon>ITfsXmlSerializableImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\ServerCapabilitiesImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\ServerCapabilitiesImpl_UnitTests.Designer.cs">
+      <DependentUpon>ServerCapabilitiesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TeamFoundationServerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TeamFoundationServerImpl_UnitTests.Designer.cs">
+      <DependentUpon>TeamFoundationServerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TFProxyServerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TFProxyServerImpl_UnitTests.Designer.cs">
+      <DependentUpon>TFProxyServerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialsImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsClientCredentialsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsClientCredentialStorageImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsClientCredentialStorageImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsClientCredentialStorageImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConfigurationServerImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsConfigurationServerImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsConfigurationServerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsConnectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsConnectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsConnectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>TfsTeamProjectCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Client\WindowsCredentialImpl_UnitTests.cs" />
+    <Compile Include="TFS\Client\WindowsCredentialImpl_UnitTests.Designer.cs">
+      <DependentUpon>WindowsCredentialImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlEntryImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlEntryImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessControlListImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessControlListImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AccessMappingImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AccessMappingImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessMappingImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\AceExtendedInformationImpl_UnitTests.Designer.cs">
+      <DependentUpon>AceExtendedInformationImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogDependencyGroupImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogNodeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogNodeImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogNodeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogResourceImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\CatalogResourceTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogResourceTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\IdentityDescriptorImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdentityDescriptorImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ILocationServiceImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\ILocationServiceImpl_UnitTests.Designer.cs">
+      <DependentUpon>ILocationServiceImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\IServerDataProviderImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\IServerDataProviderImpl_UnitTests.Designer.cs">
+      <DependentUpon>IServerDataProviderImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\LocationMappingImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\LocationMappingImpl_UnitTests.Designer.cs">
+      <DependentUpon>LocationMappingImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\ServiceDefinitionImpl_UnitTests.Designer.cs">
+      <DependentUpon>ServiceDefinitionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityImpl_UnitTests.Designer.cs">
+      <DependentUpon>TeamFoundationIdentityImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogQueryOptionsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\CatalogTreeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\CatalogTreeImpl_UnitTests.Designer.cs">
+      <DependentUpon>CatalogTreeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\ConnectOptionsImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\ConnectOptionsImpl_UnitTests.Designer.cs">
+      <DependentUpon>ConnectOptionsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdentityPropertyScopeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Framework\Common\RelativeToSettingImpl_UnitTests.cs" />
+    <Compile Include="TFS\Framework\Common\RelativeToSettingImpl_UnitTests.Designer.cs">
+      <DependentUpon>RelativeToSettingImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>ApplicationGroupSpecialTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityImpl_UnitTests.cs" />
+    <Compile Include="TFS\Server\IdentityImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdentityImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\Server\IdentityTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\Server\IdentityTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdentityTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>AllowedValuesCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>AttachmentCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\AttachmentImpl_UnitTests.Designer.cs">
+      <DependentUpon>AttachmentImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>BaseLinkTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>BatchReadParameterCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterImpl_UnitTests.Designer.cs">
+      <DependentUpon>BatchReadParameterImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorImpl_UnitTests.Designer.cs">
+      <DependentUpon>BatchSaveErrorImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateImpl_UnitTests.Designer.cs">
+      <DependentUpon>CancelableActionStateImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultImpl_UnitTests.Designer.cs">
+      <DependentUpon>CancelableAsyncResultImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>CategoryCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CategoryImpl_UnitTests.Designer.cs">
+      <DependentUpon>CategoryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldImpl_UnitTests.Designer.cs">
+      <DependentUpon>CoreFieldImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListImpl_UnitTests.Designer.cs">
+      <DependentUpon>DisplayFieldListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkImpl_UnitTests.Designer.cs">
+      <DependentUpon>ExternalLinkImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldDefinitionCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldDefinitionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldFilterImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldFilterListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldStatusImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesImpl_UnitTests.Designer.cs">
+      <DependentUpon>FieldUsagesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkImpl_UnitTests.Designer.cs">
+      <DependentUpon>HyperlinkImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>ImportEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>ImportEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityImpl_UnitTests.Designer.cs">
+      <DependentUpon>ImportSeverityImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>LinkCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\LinkImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\LinkImpl_UnitTests.Designer.cs">
+      <DependentUpon>LinkImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>MetadataChangeEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesImpl_UnitTests.Designer.cs">
+      <DependentUpon>MetadataChangeTypesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>MetadataEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheImpl_UnitTests.Designer.cs">
+      <DependentUpon>CacheImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotImpl_UnitTests.Designer.cs">
+      <DependentUpon>SnapshotImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>NodeCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\NodeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\NodeImpl_UnitTests.Designer.cs">
+      <DependentUpon>NodeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>ProjectCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ProjectImpl_UnitTests.Designer.cs">
+      <DependentUpon>ProjectImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryDefinitionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderActionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderContentsChangedEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderContentsChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryFolderImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyProviderImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryHierarchyRefreshDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryItemImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryItemImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryScopeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>QueryTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>RegisteredLinkTypeCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>RegisteredLinkTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkImpl_UnitTests.Designer.cs">
+      <DependentUpon>RelatedLinkImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesImpl_UnitTests.Designer.cs">
+      <DependentUpon>ReportingAttributesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>ReportingTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>RevisionCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\RevisionImpl_UnitTests.Designer.cs">
+      <DependentUpon>RevisionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsImpl_UnitTests.Designer.cs">
+      <DependentUpon>SaveFlagsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoImpl_UnitTests.Designer.cs">
+      <DependentUpon>ServerInfoImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldImpl_UnitTests.Designer.cs">
+      <DependentUpon>SortFieldImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListImpl_UnitTests.Designer.cs">
+      <DependentUpon>SortFieldListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\SortTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>SortTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionImpl_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesActionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesChangedEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueriesEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueryCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryImpl_UnitTests.Designer.cs">
+      <DependentUpon>StoredQueryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeImpl_UnitTests.Designer.cs">
+      <DependentUpon>UserDisplayModeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAsyncEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemAsyncEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemCopyFlagsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemEventArgsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemFieldChangeEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemFieldDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkInfoImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeEndCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeEndImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemOperationErrorImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemPreSaveEventHandlerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemStoreDiagnosticsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemStoreImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemSyncDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemTypeCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemTypeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumImpl_UnitTests.Designer.cs">
+      <DependentUpon>PsFieldDefinitionTypeEnumImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskImpl_UnitTests.Designer.cs">
+      <DependentUpon>PsUserRightsMaskImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagImpl_UnitTests.Designer.cs">
+      <DependentUpon>IVersionTagImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListImpl_UnitTests.Designer.cs">
+      <DependentUpon>OrderedVariableSizeListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListImpl_UnitTests.Designer.cs">
+      <DependentUpon>ReadOnlyListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListImpl_UnitTests.Designer.cs">
+      <DependentUpon>VariableSizeListImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemServerVersionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperImpl_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemOpenFieldDataHelperImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationImpl_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemRelationImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperImpl_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemSaveFieldDataHelperImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperImpl_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemSaveLinkDataHelperImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoImpl_UnitTests.Designer.cs">
+      <DependentUpon>LinkInfoImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesImpl_UnitTests.Designer.cs">
+      <DependentUpon>LinkPropertiesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateImpl_UnitTests.Designer.cs">
+      <DependentUpon>LinkUpdateImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkInfoImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlEntryExtendedDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataImpl_UnitTests.Designer.cs">
+      <DependentUpon>AccessControlListMetadataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsImpl_UnitTests.Designer.cs">
+      <DependentUpon>ArtifactWorkItemIdsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>ExtendedAccessControlListDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentImpl_UnitTests.Designer.cs">
+      <DependentUpon>FileAttachmentImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdentityDescriptorDataImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairImpl_UnitTests.Designer.cs">
+      <DependentUpon>IdRevisionPairImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsImpl_UnitTests.Designer.cs">
+      <DependentUpon>IMetadataRowSetsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsImpl_UnitTests.Designer.cs">
+      <DependentUpon>IPagedItemsRowSetsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetImpl_UnitTests.Designer.cs">
+      <DependentUpon>IRowSetImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsImpl_UnitTests.Designer.cs">
+      <DependentUpon>IWorkItemRowSetsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesImpl_UnitTests.Designer.cs">
+      <DependentUpon>MetadataRowSetNamesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryImpl_UnitTests.Designer.cs">
+      <DependentUpon>MetadataTableHaveEntryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesImpl_UnitTests.Designer.cs">
+      <DependentUpon>PagedItemsRowSetNamesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryImpl_UnitTests.Designer.cs">
+      <DependentUpon>QuerySortOrderEntryImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsImpl_UnitTests.Designer.cs">
+      <DependentUpon>RequiredPermissionsImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionImpl_UnitTests.Designer.cs">
+      <DependentUpon>RowSetCollectionImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnImpl_UnitTests.Designer.cs">
+      <DependentUpon>RowSetColumnImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetImpl_UnitTests.Designer.cs">
+      <DependentUpon>RowSetImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemIdImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemLinkChangeImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemRelationImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemRowSetNamesImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerImpl_UnitTests.cs" />
+    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerImpl_UnitTests.Designer.cs">
+      <DependentUpon>WorkItemServerImpl_UnitTests.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
+      <Project>{fe661b0f-9647-4d83-8c6f-2776e8614988}</Project>
+      <Name>DynCon.OSI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.JasonBackedObjects.AdvancedLogging\DynCon.OSI.JasonBackedObjects.AdvancedLogging.csproj">
+      <Project>{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}</Project>
+      <Name>DynCon.OSI.JasonBackedObjects.AdvancedLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj">
+      <Project>{798bf552-9a39-48b8-9a4b-af057927062f}</Project>
+      <Name>DynCon.OSI.VSO.RestClient.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
+      <Project>{a69b24f0-1420-4abf-9bd5-a8fdb17e334e}</Project>
+      <Name>DynCon.OSI.JasonBackedObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\ReSTClient\DynCon.OSI.VSO.ReSTClient.csproj">
+      <Project>{CE58EDCC-7E05-48B8-8C52-8F31FDDEA5C3}</Project>
+      <Name>DynCon.OSI.VSO.ReSTClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\SharedInterfaces\DynCon.OSI.VSO.SharedInterfaces.csproj">
+      <Project>{d42275be-b928-4c19-ba51-b4dfefd66127}</Project>
+      <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DynTest\DynCon.OSI.DynTest.csproj">
+      <Project>{4253b165-e851-4f14-b3b4-13fb6131deea}</Project>
+      <Name>DynCon.OSI.DynTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReSTClient.UnitTests\DynCon.OSI.VSO.ReSTClient.UnitTests.csproj">
+      <Project>{51B3409C-69B6-4ADC-86A9-0B88E82538EA}</Project>
+      <Name>DynCon.OSI.VSO.ReSTClient.UnitTests</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

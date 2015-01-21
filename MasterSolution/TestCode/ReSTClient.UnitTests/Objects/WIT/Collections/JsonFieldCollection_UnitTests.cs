@@ -11,16 +11,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
     /// <summary>Generated Test Template</summary>
     public partial class JsonFieldCollection_UnitTests : DynTestClassBase
     {
-        partial void CaptureJson_PreCondition(ref JsonFieldCollection instance, ref Int32 id, ref Int32 rev, ref JToken newFields)
+        partial void CaptureJson_PreCondition(JsonFieldCollection instance, ref Int32 id, ref Int32 rev, ref JToken newFields)
         {
             id = 1234;
             rev = 1;
             newFields = JsonFactory();
         }
 
-        partial void Contains_PreCondition(ref JsonFieldCollection instance, ref String fieldName) { fieldName = "System.Id"; }
+        partial void Contains_PreCondition(JsonFieldCollection instance, ref String fieldName) { fieldName = "System.Id"; }
 
-        partial void CopyTo_PreCondition(ref JsonFieldCollection instance, ref Array array, ref Int32 index)
+        partial void CopyTo_PreCondition(JsonFieldCollection instance, ref Array array, ref Int32 index)
         {
             array = new JsonField[100];
             index = 1;
@@ -55,7 +55,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             }
         }
 
-        partial void TryGetField_PreCondition(ref JsonFieldCollection instance, ref String fieldName, ref JsonField field)
+        partial void TryGetField_PreCondition(JsonFieldCollection instance, ref String fieldName, ref JsonField field)
         {
             switch (DataSequence)
             {

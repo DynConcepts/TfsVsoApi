@@ -7,6 +7,26 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
     /// </summary>
     internal class TfvcRestCalls
     {
+        /*
+         /tfvc/branches		GET		_apis/tfvc/branches?api-version=1.0-preview.1
+        /tfvc/branches/{deleted}		GET		https://Fabrikam-Fiber-inc.VisualStudio.com/DefaultCollection/_apis/tfvc/branches/$/Fabrikam-Fiber-TFVC/MyBranch?includeDeleted=true&api-version=1.0-preview.1
+        /tfvc/branches/{path}		GET		https://Fabrikam-Fiber-inc.VisualStudio.com/DefaultCollection/_apis/tfvc/branches/$/Fabrikam-Fiber-TFVC/AuthSample-Dev?api-version=1.0-preview.1
+        /tfvc/changesets		GET		_apis/tfvc/changesets?api-version=1.0
+        /tfvc/changesets/{id}		GET		_apis/tfvc/changesets/16?api-version=1.0
+        /tfvc/changesets/{id}/changes		GET		_apis/tfvc/changesets/16/changes?api-version=1.0
+        /tfvc/changesets/{id}/workitems		GET		_apis/tfvc/changesets/16/workitems?api-version=1.0
+        /tfvc/changesetsBatch		POST		_apis/tfvc/changesetsBatch?api-version=1.0
+        /tfvc/items		GET		_apis/tfvc/items?scopePath=$/Fabrikam-Fiber-TFVC/AuthSample&api-version=1.0-preview.1
+        /tfvc/items/{itempath}		GET		_apis/tfvc/items/$/Fabrikam-Fiber-TFVC/AuthSample/AuthSample.sln?versionType=Changeset&version=9&api-version=1.0-preview.1
+        /tfvc/itemBatch		POST		_apis/tfvc/itemBatch?api-version=1.0-preview.1
+        /tfvc/labels		GET		_apis/tfvc/labels?api-version=1.0-preview.1
+        /tfvc/labels/{labelId}		GET		_apis/tfvc/labels/2883?api-version=1.0-preview.1
+        /tfvc/labels/{labelId}/items		GET		_apis/tfvc/labels/2883/items?api-version=1.0-preview.1
+        /tfvc/shelvesets		GET		_apis/tfvc/shelvesets?api-version=1.0-preview.1
+        /tfvc/shelvesets/{shelvesetId}		GET		_apis/tfvc/shelvesets/My%20first%20shelveset;d6245f20-2af8-44f4-9451-8107cb2767db?api-version=1.0-preview.1
+        /tfvc/shelvesets/{shelvesetId}/changes		GET		_apis/tfvc/shelvesets/My%20first%20shelveset;d6245f20-2af8-44f4-9451-8107cb2767db/changes?api-version=1.0-preview.1
+        /tfvc/shelvesets/{shelvesetId}/workitems		GET		_apis/tfvc/shelvesets/My%20first%20shelveset;d6245f20-2af8-44f4-9451-8107cb2767db/workitems?api-version=1.0-preview.1
+        */
         /// <summary>
         ///     Gets the branches.
         /// </summary>
@@ -65,54 +85,38 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         ///     Gets the project info0.
         /// </summary>
         /// <value>The project info0.</value>
-        internal static CallSpec ProjectInfo0 { get { return sr_ProjectInfo0; } }
+        internal static CallSpec ProjectSpecificInfo { get { return sr_ProjectSpecificInfo; } }
 
         /// <summary>
         ///     Gets the project info1.
         /// </summary>
         /// <value>The project info1.</value>
-        internal static CallSpec ProjectInfo1 { get { return sr_ProjectInfo1; } }
+        internal static CallSpec AllProjectInfo { get { return sr_AllProjectInfo; } }
 
         /// <summary>
         ///     Gets the shelveset changes0.
         /// </summary>
         /// <value>The shelveset changes0.</value>
-        internal static CallSpec ShelvesetChanges0 { get { return sr_ShelvesetChanges0; } }
+        internal static CallSpec ShelvesetChanges { get { return sr_ShelvesetChanges; } }
 
-        /// <summary>
-        ///     Gets the shelveset changes1.
-        /// </summary>
-        /// <value>The shelveset changes1.</value>
-        internal static CallSpec ShelvesetChanges1 { get { return sr_ShelvesetChanges1; } }
-
+   
         /// <summary>
         ///     Gets the shelveset work items0.
         /// </summary>
         /// <value>The shelveset work items0.</value>
-        internal static CallSpec ShelvesetWorkItems0 { get { return sr_ShelvesetWorkItems0; } }
-
-        /// <summary>
-        ///     Gets the shelveset work items1.
-        /// </summary>
-        /// <value>The shelveset work items1.</value>
-        internal static CallSpec ShelvesetWorkItems1 { get { return sr_ShelvesetWorkItems1; } }
+        internal static CallSpec ShelvesetWorkItems { get { return sr_ShelvesetWorkItems; } }
 
         /// <summary>
         ///     Gets the shelvesets0.
         /// </summary>
         /// <value>The shelvesets0.</value>
-        internal static CallSpec Shelvesets0 { get { return sr_Shelvesets0; } }
+        internal static CallSpec AllShelvesets { get { return sr_AllShelvesets; } }
 
-        /// <summary>
-        ///     Gets the shelvesets1.
-        /// </summary>
-        /// <value>The shelvesets1.</value>
-        internal static CallSpec Shelvesets1 { get { return sr_Shelvesets1; } }
-
-        /// <summary>
+         /// <summary>
         ///     The SR_ branches
         /// </summary>
-        private static readonly CallSpec sr_Branches = new CallSpec("_apis/tfvc/branches/{*path}");
+        private static readonly CallSpec sr_Branches = new CallSpec("_apis/tfvc/branches");
+        private static readonly CallSpec sr_BranchesInPath = new CallSpec("_apis/tfvc/branches/{*path}");
 
         /// <summary>
         ///     The SR_ changeset changes
@@ -127,7 +131,8 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         /// <summary>
         ///     The SR_ changesets
         /// </summary>
-        private static readonly CallSpec sr_Changesets = new CallSpec("_apis/tfvc/changesets/{id}");
+        private static readonly CallSpec sr_Changesets = new CallSpec("_apis/tfvc/changesets");
+        private static readonly CallSpec sr_Changeset = new CallSpec("_apis/tfvc/changesets/{id}");
 
         /// <summary>
         ///     The SR_ changesets batch
@@ -142,7 +147,8 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         /// <summary>
         ///     The SR_ items
         /// </summary>
-        private static readonly CallSpec sr_Items = new CallSpec("_apis/tfvc/items/{*path}");
+        private static readonly CallSpec sr_Items = new CallSpec("_apis/tfvc/items");
+        private static readonly CallSpec sr_Item = new CallSpec("_apis/tfvc/items/{*path}");
 
         /// <summary>
         ///     The SR_ label items
@@ -152,46 +158,37 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         /// <summary>
         ///     The SR_ labels
         /// </summary>
-        private static readonly CallSpec sr_Labels = new CallSpec("_apis/tfvc/labels/{labelId}");
+        private static readonly CallSpec sr_Labels = new CallSpec("_apis/tfvc/labels");
+        private static readonly CallSpec sr_Label = new CallSpec("_apis/tfvc/labels/{labelId}");
 
         /// <summary>
         ///     The SR_ project info0
         /// </summary>
-        private static readonly CallSpec sr_ProjectInfo0 = new CallSpec("_apis/tfvc/{projectId}/projectInfo");
+        private static readonly CallSpec sr_ProjectSpecificInfo = new CallSpec("_apis/tfvc/{projectId}/projectInfo");
 
         /// <summary>
         ///     The SR_ project info1
         /// </summary>
-        private static readonly CallSpec sr_ProjectInfo1 = new CallSpec("_apis/tfvc/projectInfo");
+        private static readonly CallSpec sr_AllProjectInfo = new CallSpec("_apis/tfvc/projectInfo");
 
         /// <summary>
-        ///     The SR_ shelveset changes0
+        /// The SR_ shelveset changes
         /// </summary>
-        private static readonly CallSpec sr_ShelvesetChanges0 = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}/changes");
+        private static readonly CallSpec sr_ShelvesetChanges = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}/changes");
+        /// <summary>
+        /// The SR_ shelveset work items
+        /// </summary>
+        private static readonly CallSpec sr_ShelvesetWorkItems = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}/workitems");
+
 
         /// <summary>
-        ///     The SR_ shelveset changes1
+        /// The SR_ all shelvesets
         /// </summary>
-        private static readonly CallSpec sr_ShelvesetChanges1 = new CallSpec("_apis/tfvc/shelvesets/changes");
+        private static readonly CallSpec sr_AllShelvesets = new CallSpec("_apis/tfvc/shelvesets");
 
         /// <summary>
-        ///     The SR_ shelveset work items0
+        /// The SR_ single shelveset
         /// </summary>
-        private static readonly CallSpec sr_ShelvesetWorkItems0 = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}/workitems");
-
-        /// <summary>
-        ///     The SR_ shelveset work items1
-        /// </summary>
-        private static readonly CallSpec sr_ShelvesetWorkItems1 = new CallSpec("_apis/tfvc/shelvesets/workitems");
-
-        /// <summary>
-        ///     The SR_ shelvesets0
-        /// </summary>
-        private static readonly CallSpec sr_Shelvesets0 = new CallSpec("_apis/tfvc/shelvesets");
-
-        /// <summary>
-        ///     The SR_ shelvesets1
-        /// </summary>
-        private static readonly CallSpec sr_Shelvesets1 = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}");
+        private static readonly CallSpec sr_SingleShelveset = new CallSpec("_apis/tfvc/shelvesets/{shelvesetId}");
     }
 }

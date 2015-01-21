@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.Projects;
 using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.SharedInterfaces.TFS.WorkItemTracking.Client;
 using Newtonsoft.Json.Linq;

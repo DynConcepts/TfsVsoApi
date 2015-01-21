@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonIteration_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonIteration JsonFieldCollection, ref JToken json)
+        partial void FromToken_PreCondition(JsonIteration JsonFieldCollection, ref JToken json)
         {
             var o = new JObject();
             json = o;

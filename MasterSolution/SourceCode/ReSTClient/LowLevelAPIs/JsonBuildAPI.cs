@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DynCon.OSI.JasonBackedObjects;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.APIs;
 using DynCon.OSI.VSO.ReSTClient.Objects.Build;
 using DynCon.OSI.VSO.ReSTClient.RestCalls;
+using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
 {
@@ -13,75 +13,26 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
     /// </summary>
     internal class JsonBuildAPI : VsoRestAPIBase
     {
-        /// <summary>
-        ///     Gets the artifacts.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetArtifacts()
+        public async Task<IReadOnlyList<JsonBuild>> GetBuilds(string project)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Artifacts);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Builds);
+            IReadOnlyList<JsonBuild> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonBuild.FromToken));
             return result;
         }
 
-        /// <summary>
-        /// Gets the commits.
-        /// </summary>
-        /// <param name="project">The project.</param>
-        /// <param name="buildId">The build identifier.</param>
-        /// <returns>System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        /// DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetCommits(string project, int buildId)
+        public async Task<JsonBuild> GetBuild(string project, int buildId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Commits);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Build);
             exchange.SetRoute("{buildId}", buildId);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            JsonBuild result = await ProcessProjectRequest(project, exchange, JsonBuild.FromToken);
             return result;
         }
 
-        /// <summary>
-        /// Gets the logs.
-        /// </summary>
-        /// <param name="project">The project.</param>
-        /// <param name="buildId">The build identifier.</param>
-        /// <returns>System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        /// DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetLogs(string project, int buildId)
+        public async Task<IReadOnlyList<JsonBuildDetails>> GetBuildDetails(string project, int buildId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Logs);
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.BuildDetails);
             exchange.SetRoute("{buildId}", buildId);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
-            return result;
-        }
-
-        /// <summary>
-        ///     Gets the options.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetOptions()
-        {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Options);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
-            return result;
-        }
-
-        /// <summary>
-        ///     Gets the revisions.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetRevisions()
-        {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Revisions);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            IReadOnlyList<JsonBuildDetails> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonBuildDetails.FromToken));
             return result;
         }
 
@@ -92,46 +43,60 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
             return result;
         }
 
-        /// <summary>
-        ///     Gets the tags_0.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetTags_0(string project)
+        public async Task<JsonBuildDefinition> GetDefinition(string project, int definitionId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Tags0);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Definition);
+            exchange.SetRoute("{definitionId}", definitionId);
+            JsonBuildDefinition result = await ProcessProjectRequest(project, exchange, JsonBuildDefinition.FromToken);
             return result;
         }
 
-        /// <summary>
-        ///     Gets the tags_1.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetTags_1(string project)
+
+        public async Task<IReadOnlyList<JsonBuildQuality>> GetQualities(string project)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Tags1);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Qualities);
+            IReadOnlyList<JsonBuildQuality> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.JArrayToObjects(o["value"].Value<JArray>(), JsonBuildQuality.FromToken));
             return result;
         }
 
-        /// <summary>
-        ///     Gets the templates.
-        /// </summary>
-        /// <returns>
-        ///     System.Threading.Tasks.Task&lt;System.Collections.Generic.IReadOnlyList&lt;
-        ///     DynCon.OSI.VSO.ReSTClient.Objects.WIT.JsonGeneralPurposeObject&gt;&gt;.
-        /// </returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetTemplates(string project)
+        public async Task<JsonBuildQuality> GetQuality(string project, int qualityId)
         {
-            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Templates);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Quality);
+            exchange.SetRoute("{qualityId}", qualityId);
+            JsonBuildQuality result = await ProcessProjectRequest(project, exchange, JsonBuildQuality.FromToken);
             return result;
         }
+
+        public async Task<IReadOnlyList<JsonBuildQueue>> GetQueues()
+        {
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Queues);
+            IReadOnlyList<JsonBuildQueue> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonBuildQueue.FromToken));
+            return result;
+        }
+
+        public async Task<JsonBuildQueue> GetQueue(int queueId)
+        {
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Queue);
+            exchange.SetRoute("{queueId}", queueId);
+            JsonBuildQueue result = await ProcessCollectionRequest(exchange, JsonBuildQueue.FromToken);
+            return result;
+        }
+
+        public async Task<IReadOnlyList<JsonBuildRequest>> GetRequests(string project)
+        {
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Requests);
+            IReadOnlyList<JsonBuildRequest> result = await ProcessProjectRequest(project, exchange, o => JsonParsers.ValuesToObjects(o, JsonBuildRequest.FromToken));
+            return result;
+        }
+
+        public async Task<JsonBuildRequest> GetRequest(string project, int requestId)
+        {
+            StructuredHttpExchange exchange = StructuredHttpExchange.Get(BuildRestCalls.Request);
+            exchange.SetRoute("{requestId}", requestId);
+            JsonBuildRequest result = await ProcessProjectRequest(project, exchange, JsonBuildRequest.FromToken);
+            return result;
+        }
+
+
     }
 }

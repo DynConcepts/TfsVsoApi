@@ -9,7 +9,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
     /// <summary>Generated Test Template</summary>
     public partial class JsonRoom_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonRoom instance, ref JToken json)
+        partial void FromToken_PreCondition(JsonRoom instance, ref JToken json)
         {
             var jObject = new JObject();
             jObject.Add(new JProperty("id", 12345));

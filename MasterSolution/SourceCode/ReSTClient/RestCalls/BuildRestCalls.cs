@@ -7,17 +7,50 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
     /// </summary>
     internal class BuildRestCalls
     {
-        /// <summary>
-        ///     Gets the artifacts.
-        /// </summary>
-        /// <value>The artifacts.</value>
-        internal static CallSpec Artifacts { get { return sr_Artifacts; } }
+/*
+/build/builds/{build3}		            DELETE	{project}/_apis/build/builds/345?api-version=1.0
+/build/builds		                    GET		{project}/_apis/build/builds?api-version=1.0
+/build/builds/{build1}		            GET		{project}/_apis/build/builds/348?api-version=1.0
+/build/builds/{build1}/details		    GET		{project}/_apis/build/builds/348/details?api-version=1.0
+/build/builds/{build1}		            PATCH	{project}/_apis/build/builds/348?api-version=1.0
+/build/builds/{build2}		            PATCH	{project}/_apis/build/builds/347?api-version=1.0
+/build/builds/{build3}		            PATCH	{project}/_apis/build/builds/345?api-version=1.0
+/build/definitions		                GET		{project}/_apis/build/definitions?api-version=1.0
+/build/definitions/{definitionId}		GET		{project}/_apis/build/definitions/3?api-version=1.0
+/build/qualities/{quality}		        DELETE	{project}/_apis/build/qualities/To%20be%20evaluated?api-version=1.0
+/build/qualities		                GET		{project}/_apis/build/qualities?api-version=1.0
+/build/qualities/{quality}		        PUT		{project}/_apis/build/qualities/To%20be%20evaluated?api-version=1.0
+/build/queues		                    GET		_apis/build/queues?api-version=1.0
+/build/queues/{queueId}		            GET	    _apis/build/queues/274?api-version=1.0
+/build/requests/{requestToDelete}		DELETE	{project}/_apis/build/requests/433?api-version=1.0
+/build/requests		                    GET 	{project}/_apis/build/requests?api-version=1.0
+/build/requests/{request}		        PATCH	{project}/_apis/build/requests/398?api-version=1.0
+/build/requests		                    POST	{project}/_apis/build/requests?api-version=1.0
+*/
 
         /// <summary>
-        ///     Gets the commits.
+        ///     Gets the build.
         /// </summary>
-        /// <value>The commits.</value>
-        internal static CallSpec Commits { get { return sr_Commits; } }
+        /// <value>The build.</value>
+        internal static CallSpec Build { get { return sr_Build; } }
+
+        /// <summary>
+        ///     Gets the build details.
+        /// </summary>
+        /// <value>The build details.</value>
+        internal static CallSpec BuildDetails { get { return sr_BuildDetails; } }
+
+        /// <summary>
+        ///     Gets the builds.
+        /// </summary>
+        /// <value>The builds.</value>
+        internal static CallSpec Builds { get { return sr_Builds; } }
+
+        /// <summary>
+        ///     Gets the definition.
+        /// </summary>
+        /// <value>The definition.</value>
+        internal static CallSpec Definition { get { return sr_Definition; } }
 
         /// <summary>
         ///     Gets the definitions.
@@ -26,50 +59,60 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         internal static CallSpec Definitions { get { return sr_Definitions; } }
 
         /// <summary>
-        ///     Gets the logs.
+        ///     Gets the qualities.
         /// </summary>
-        /// <value>The logs.</value>
-        internal static CallSpec Logs { get { return sr_Logs; } }
+        /// <value>The qualities.</value>
+        internal static CallSpec Qualities { get { return sr_Qualities; } }
 
         /// <summary>
-        ///     Gets the options.
+        ///     Gets the quality.
         /// </summary>
-        /// <value>The options.</value>
-        internal static CallSpec Options { get { return sr_Options; } }
+        /// <value>The quality.</value>
+        internal static CallSpec Quality { get { return sr_Quality; } }
 
         /// <summary>
-        ///     Gets the revisions.
+        ///     Gets the queue.
         /// </summary>
-        /// <value>The revisions.</value>
-        internal static CallSpec Revisions { get { return sr_Revisions; } }
+        /// <value>The queue.</value>
+        internal static CallSpec Queue { get { return sr_Queue; } }
 
         /// <summary>
-        ///     Gets the tags0.
+        ///     Gets the queues.
         /// </summary>
-        /// <value>The tags0.</value>
-        internal static CallSpec Tags0 { get { return sr_Tags0; } }
+        /// <value>The queues.</value>
+        internal static CallSpec Queues { get { return sr_Queues; } }
 
         /// <summary>
-        ///     Gets the tags1.
+        ///     Gets the request.
         /// </summary>
-        /// <value>The tags1.</value>
-        internal static CallSpec Tags1 { get { return sr_Tags1; } }
+        /// <value>The request.</value>
+        internal static CallSpec Request { get { return sr_Request; } }
 
         /// <summary>
-        ///     Gets the templates.
+        ///     Gets the requests.
         /// </summary>
-        /// <value>The templates.</value>
-        internal static CallSpec Templates { get { return sr_Templates; } }
+        /// <value>The requests.</value>
+        internal static CallSpec Requests { get { return sr_Requests; } }
 
         /// <summary>
-        ///     The SR_ artifacts
+        ///     The SR_ build
         /// </summary>
-        private static readonly CallSpec sr_Artifacts = new CallSpec("_apis/build/builds/{buildId}/artifacts/{artifactName}");
+        private static readonly CallSpec sr_Builds = new CallSpec("{project}/_apis/build/builds");
 
         /// <summary>
-        ///     The SR_ commits
+        ///     The SR_ build details
         /// </summary>
-        private static readonly CallSpec sr_Commits = new CallSpec("{project}/_apis/build/builds/{buildId}/commits");
+        private static readonly CallSpec sr_BuildDetails = new CallSpec("{project}/_apis/build/builds/{buildId}/details");
+
+        /// <summary>
+        ///     The SR_ builds
+        /// </summary>
+        private static readonly CallSpec sr_Build = new CallSpec("{project}/_apis/build/builds/{buildId}");
+
+        /// <summary>
+        ///     The SR_ definition
+        /// </summary>
+        private static readonly CallSpec sr_Definition = new CallSpec("{project}/_apis/build/definitions/{definitionId}");
 
         /// <summary>
         ///     The SR_ definitions
@@ -77,33 +120,33 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
         private static readonly CallSpec sr_Definitions = new CallSpec("{project}/_apis/build/definitions");
 
         /// <summary>
-        ///     The SR_ logs
+        ///     The SR_ qualities
         /// </summary>
-        private static readonly CallSpec sr_Logs = new CallSpec("{project}/_apis/build/builds/{buildId}/logs");
+        private static readonly CallSpec sr_Qualities = new CallSpec("{project}/_apis/build/qualities");
 
         /// <summary>
-        ///     The SR_ options
+        ///     The SR_ quality
         /// </summary>
-        private static readonly CallSpec sr_Options = new CallSpec("_apis/build/options");
+        private static readonly CallSpec sr_Quality = new CallSpec("{project}/_apis/build/qualities/{quality}");
 
         /// <summary>
-        ///     The SR_ revisions
+        ///     The SR_ queue
         /// </summary>
-        private static readonly CallSpec sr_Revisions = new CallSpec("_apis/build/definitions/{definitionId}/revisions");
+        private static readonly CallSpec sr_Queue = new CallSpec("_apis/build/queues/{queueId}");
 
         /// <summary>
-        ///     The SR_ tags0
+        ///     The SR_ queues
         /// </summary>
-        private static readonly CallSpec sr_Tags0 = new CallSpec("{project}/_apis/build/tags");
+        private static readonly CallSpec sr_Queues = new CallSpec("_apis/build/queues");
 
         /// <summary>
-        ///     The SR_ tags1
+        ///     The SR_ request
         /// </summary>
-        private static readonly CallSpec sr_Tags1 = new CallSpec("{project}/_apis/build/builds/{buildId}/tags/{tag}");
+        private static readonly CallSpec sr_Request = new CallSpec("{project}/_apis/build/requests/{requestId}");
 
         /// <summary>
-        ///     The SR_ templates
+        ///     The SR_ requests
         /// </summary>
-        private static readonly CallSpec sr_Templates = new CallSpec("{project}/_apis/build/definitions/templates/{templateId}");
+        private static readonly CallSpec sr_Requests = new CallSpec("{project}/_apis/build/requests");
     }
 }

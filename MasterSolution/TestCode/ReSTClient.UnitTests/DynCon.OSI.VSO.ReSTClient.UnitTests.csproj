@@ -68,10 +68,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="APIs\IterationImpl_UnitTests.cs" />
-    <Compile Include="APIs\IterationImpl_UnitTests.Designer.cs">
-      <DependentUpon>IterationImpl_UnitTests.cs</DependentUpon>
-    </Compile>
     <Compile Include="APIs\JsonVSOApi_UnitTests.cs" />
     <Compile Include="APIs\JsonVSOApi_UnitTests.Designer.cs">
       <DependentUpon>JsonVSOApi_UnitTests.cs</DependentUpon>
@@ -83,14 +79,6 @@
     <Compile Include="APIs\ProjectsAPI_UnitTests.cs" />
     <Compile Include="APIs\ProjectsAPI_UnitTests.Designer.cs">
       <DependentUpon>ProjectsAPI_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="APIs\TeamRoomAPI_UnitTests.cs" />
-    <Compile Include="APIs\TeamRoomAPI_UnitTests.Designer.cs">
-      <DependentUpon>TeamRoomAPI_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.cs" />
-    <Compile Include="APIs\TFSVersionControlAPI_UnitTests.Designer.cs">
-      <DependentUpon>TFSVersionControlAPI_UnitTests.cs</DependentUpon>
     </Compile>
     <Compile Include="APIs\VSOApi_UnitTests.cs" />
     <Compile Include="APIs\VSOApi_UnitTests.Designer.cs">
@@ -104,15 +92,13 @@
     <Compile Include="APIs\VsoRestAPIBase_UnitTests.Designer.cs">
       <DependentUpon>VsoRestAPIBase_UnitTests.cs</DependentUpon>
     </Compile>
-    <Compile Include="APIs\WorkItemAPI_UnitTests.cs" />
-    <Compile Include="APIs\WorkItemAPI_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemAPI_UnitTests.cs</DependentUpon>
-    </Compile>
+    <Compile Include="AssemblyControl.cs" />
+    <Compile Include="CodeGeneration\GenerateCodeFRomJsonSpecs.cs" />
     <Compile Include="Factories\APIFactory_UnitTests.cs" />
     <Compile Include="Factories\APIFactory_UnitTests.Designer.cs">
       <DependentUpon>APIFactory_UnitTests.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\JsonSource\CannedMessages.cs" />
+    <Compile Include="JsonSource\CannedMessages.cs" />
     <Compile Include="LowLevelAPIs\JsonAgileAPI_UnitTests.cs" />
     <Compile Include="LowLevelAPIs\JsonAgileAPI_UnitTests.Designer.cs">
       <DependentUpon>JsonAgileAPI_UnitTests.cs</DependentUpon>
@@ -141,9 +127,29 @@
     <Compile Include="LowLevelAPIs\JsonWitAPI_UnitTests.Designer.cs">
       <DependentUpon>JsonWitAPI_UnitTests.cs</DependentUpon>
     </Compile>
+    <Compile Include="LowLevelAPIs\JsonProjectAPI_UnitTests.cs" />
+    <Compile Include="LowLevelAPIs\JsonProjectAPI_UnitTests.Designer.cs">
+      <DependentUpon>JsonProjectAPI_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Build\JsonBuildDefinition_UnitTests.cs" />
     <Compile Include="Objects\Build\JsonBuildDefinition_UnitTests.Designer.cs">
       <DependentUpon>JsonBuildDefinition_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Build\JsonBuildQuality_UnitTests.cs" />
+    <Compile Include="Objects\Build\JsonBuildQuality_UnitTests.Designer.cs">
+      <DependentUpon>JsonBuildQuality_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Build\JsonBuildQueue_UnitTests.cs" />
+    <Compile Include="Objects\Build\JsonBuildQueue_UnitTests.Designer.cs">
+      <DependentUpon>JsonBuildQueue_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Build\JsonBuildRequest_UnitTests.cs" />
+    <Compile Include="Objects\Build\JsonBuildRequest_UnitTests.Designer.cs">
+      <DependentUpon>JsonBuildRequest_UnitTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Build\JsonBuild_UnitTests.cs" />
+    <Compile Include="Objects\Build\JsonBuild_UnitTests.Designer.cs">
+      <DependentUpon>JsonBuild_UnitTests.cs</DependentUpon>
     </Compile>
     <Compile Include="Objects\JsonProjectInfo_UnitTests.cs" />
     <Compile Include="Objects\JsonProjectInfo_UnitTests.Designer.cs">
@@ -173,7 +179,6 @@
     <Compile Include="Objects\TFVC\JsonVersionControlItem_UnitTests.Designer.cs">
       <DependentUpon>JsonVersionControlItem_UnitTests.cs</DependentUpon>
     </Compile>
-    <Compile Include="OriginalManualTfs\APIs\TeamRoomAPI_UnitTests.cs" />
     <Compile Include="OriginalManualTfs\APIs\WorkItemAPI_UnitTests.cs" />
     <Compile Include="Helpers\CredentialsProvider_UnitTests.cs" />
     <Compile Include="Objects\Base\NoReStAPIEquivilantException_UnitTests.cs">
@@ -375,12 +380,7 @@
       <DependentUpon>RegisteredLinkType_UnitTests.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OriginalManualTfs\WorkItemTracking\Client\ProjectImpl_UnitTests.cs" />
     <Compile Include="OriginalManualTfs\WorkItemTracking\Client\UnitTestBase.cs" />
-    <Compile Include="OriginalManualTfs\WorkItemTracking\Client\WorkItemCollectionImpl_UnitTests.cs" />
-    <Compile Include="OriginalManualTfs\WorkItemTracking\Client\WorkItemImpl_UnitTests.cs" />
-    <Compile Include="OriginalManualTfs\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.cs" />
-    <Compile Include="HighLevel_UnitTests.cs" />
     <Compile Include="RestCalls\AgileRestCalls_UnitTests.cs" />
     <Compile Include="RestCalls\AgileRestCalls_UnitTests.Designer.cs">
       <DependentUpon>AgileRestCalls_UnitTests.cs</DependentUpon>
@@ -437,6 +437,10 @@
     <Compile Include="RestCalls\PolicyRestCalls_UnitTests.Designer.cs">
       <DependentUpon>PolicyRestCalls_UnitTests.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestCalls\ProjectRestCalls_UnitTests.cs" />
+    <Compile Include="RestCalls\ProjectRestCalls_UnitTests.Designer.cs">
+      <DependentUpon>ProjectRestCalls_UnitTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestCalls\PropertiesRestCalls_UnitTests.cs" />
     <Compile Include="RestCalls\PropertiesRestCalls_UnitTests.Designer.cs">
       <DependentUpon>PropertiesRestCalls_UnitTests.cs</DependentUpon>
@@ -465,1086 +469,6 @@
     <Compile Include="RestCalls\WitRestCalls_UnitTests.Designer.cs">
       <DependentUpon>WitRestCalls_UnitTests.cs</DependentUpon>
     </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestChannelFactoryImpl_UnitTests.Designer.cs">
-      <DependentUpon>ITfsRequestChannelFactoryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestChannelImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestChannelImpl_UnitTests.Designer.cs">
-      <DependentUpon>ITfsRequestChannelImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestListenerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\ITfsRequestListenerImpl_UnitTests.Designer.cs">
-      <DependentUpon>ITfsRequestListenerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsHttpClientStateImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsHttpClientStateImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsHttpClientStateImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsMessageHeaderImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsMessageHeaderImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsMessageHeaderImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsMessageImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsMessageImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsMessageImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsRequestSettingsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\Channels\TfsRequestSettingsImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsRequestSettingsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>ConnectivityFailureStatusChangedEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>ConnectivityFailureStatusChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\CredentialsChangedEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\CredentialsChangedEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>CredentialsChangedEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\CredentialsChangedEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\CredentialsChangedEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>CredentialsChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\FederatedCredentialImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\FederatedCredentialImpl_UnitTests.Designer.cs">
-      <DependentUpon>FederatedCredentialImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ICancelableAsyncResultImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ICancelableAsyncResultImpl_UnitTests.Designer.cs">
-      <DependentUpon>ICancelableAsyncResultImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenCredentialImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenCredentialImpl_UnitTests.Designer.cs">
-      <DependentUpon>IssuedTokenCredentialImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenImpl_UnitTests.Designer.cs">
-      <DependentUpon>IssuedTokenImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenProviderImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\IssuedTokenProviderImpl_UnitTests.Designer.cs">
-      <DependentUpon>IssuedTokenProviderImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ITfsTeamProjectCollectionObjectImpl_UnitTests.Designer.cs">
-      <DependentUpon>ITfsTeamProjectCollectionObjectImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ITfsXmlSerializableImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ITfsXmlSerializableImpl_UnitTests.Designer.cs">
-      <DependentUpon>ITfsXmlSerializableImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\ServerCapabilitiesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\ServerCapabilitiesImpl_UnitTests.Designer.cs">
-      <DependentUpon>ServerCapabilitiesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TeamFoundationServerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TeamFoundationServerImpl_UnitTests.Designer.cs">
-      <DependentUpon>TeamFoundationServerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TFProxyServerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TFProxyServerImpl_UnitTests.Designer.cs">
-      <DependentUpon>TFProxyServerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TfsClientCredentialsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TfsClientCredentialsImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsClientCredentialsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TfsClientCredentialStorageImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TfsClientCredentialStorageImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsClientCredentialStorageImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TfsConfigurationServerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TfsConfigurationServerImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsConfigurationServerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TfsConnectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TfsConnectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsConnectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\TfsTeamProjectCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>TfsTeamProjectCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Client\WindowsCredentialImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Client\WindowsCredentialImpl_UnitTests.Designer.cs">
-      <DependentUpon>WindowsCredentialImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessControlEntryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessControlEntryImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessControlEntryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessControlListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessControlListImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessControlListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessMappingImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AccessMappingImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessMappingImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AceExtendedInformationImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\AceExtendedInformationImpl_UnitTests.Designer.cs">
-      <DependentUpon>AceExtendedInformationImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogDependencyGroupImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogDependencyGroupImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogNodeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogNodeImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogNodeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogResourceImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogResourceImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogResourceImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogResourceTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\CatalogResourceTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogResourceTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\IdentityDescriptorImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\IdentityDescriptorImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdentityDescriptorImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\ILocationServiceImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\ILocationServiceImpl_UnitTests.Designer.cs">
-      <DependentUpon>ILocationServiceImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\IServerDataProviderImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\IServerDataProviderImpl_UnitTests.Designer.cs">
-      <DependentUpon>IServerDataProviderImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\LocationMappingImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\LocationMappingImpl_UnitTests.Designer.cs">
-      <DependentUpon>LocationMappingImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\ServiceDefinitionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\ServiceDefinitionImpl_UnitTests.Designer.cs">
-      <DependentUpon>ServiceDefinitionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Client\TeamFoundationIdentityImpl_UnitTests.Designer.cs">
-      <DependentUpon>TeamFoundationIdentityImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\CatalogQueryOptionsImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogQueryOptionsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\CatalogTreeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\CatalogTreeImpl_UnitTests.Designer.cs">
-      <DependentUpon>CatalogTreeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\ConnectOptionsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\ConnectOptionsImpl_UnitTests.Designer.cs">
-      <DependentUpon>ConnectOptionsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\IdentityPropertyScopeImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdentityPropertyScopeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\RelativeToSettingImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Framework\Common\RelativeToSettingImpl_UnitTests.Designer.cs">
-      <DependentUpon>RelativeToSettingImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Server\ApplicationGroupSpecialTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>ApplicationGroupSpecialTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Server\IdentityImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Server\IdentityImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdentityImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\Server\IdentityTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\Server\IdentityTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdentityTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AllowedValuesCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>AllowedValuesCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AttachmentCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>AttachmentCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AttachmentImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\AttachmentImpl_UnitTests.Designer.cs">
-      <DependentUpon>AttachmentImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BaseLinkTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>BaseLinkTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>BatchReadParameterCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchReadParameterImpl_UnitTests.Designer.cs">
-      <DependentUpon>BatchReadParameterImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\BatchSaveErrorImpl_UnitTests.Designer.cs">
-      <DependentUpon>BatchSaveErrorImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CancelableActionStateImpl_UnitTests.Designer.cs">
-      <DependentUpon>CancelableActionStateImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CancelableAsyncResultImpl_UnitTests.Designer.cs">
-      <DependentUpon>CancelableAsyncResultImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CategoryCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>CategoryCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CategoryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CategoryImpl_UnitTests.Designer.cs">
-      <DependentUpon>CategoryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\CoreFieldImpl_UnitTests.Designer.cs">
-      <DependentUpon>CoreFieldImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\DisplayFieldListImpl_UnitTests.Designer.cs">
-      <DependentUpon>DisplayFieldListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ExternalLinkImpl_UnitTests.Designer.cs">
-      <DependentUpon>ExternalLinkImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldDefinitionCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldDefinitionImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldDefinitionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldFilterImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldFilterListImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldFilterListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldStatusImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldStatusImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\FieldUsagesImpl_UnitTests.Designer.cs">
-      <DependentUpon>FieldUsagesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\HyperlinkImpl_UnitTests.Designer.cs">
-      <DependentUpon>HyperlinkImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>ImportEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>ImportEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ImportSeverityImpl_UnitTests.Designer.cs">
-      <DependentUpon>ImportSeverityImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\LinkCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>LinkCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\LinkImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\LinkImpl_UnitTests.Designer.cs">
-      <DependentUpon>LinkImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>MetadataChangeEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataChangeTypesImpl_UnitTests.Designer.cs">
-      <DependentUpon>MetadataChangeTypesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\MetadataEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>MetadataEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\Metadata\CacheImpl_UnitTests.Designer.cs">
-      <DependentUpon>CacheImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\Metadata\SnapshotImpl_UnitTests.Designer.cs">
-      <DependentUpon>SnapshotImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\NodeCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>NodeCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\NodeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\NodeImpl_UnitTests.Designer.cs">
-      <DependentUpon>NodeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ProjectCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>ProjectCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ProjectImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ProjectImpl_UnitTests.Designer.cs">
-      <DependentUpon>ProjectImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryDefinitionImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryDefinitionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderActionImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryFolderActionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryFolderContentsChangedEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderContentsChangedEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryFolderContentsChangedEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryFolderImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryFolderImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryHierarchyImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyProviderImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryHierarchyProviderImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryHierarchyRefreshDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryHierarchyRefreshDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryItemImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryItemImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryItemImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryScopeImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryScopeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\QueryTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>QueryTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>RegisteredLinkTypeCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RegisteredLinkTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>RegisteredLinkTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RelatedLinkImpl_UnitTests.Designer.cs">
-      <DependentUpon>RelatedLinkImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ReportingAttributesImpl_UnitTests.Designer.cs">
-      <DependentUpon>ReportingAttributesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ReportingTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>ReportingTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RevisionCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>RevisionCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RevisionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\RevisionImpl_UnitTests.Designer.cs">
-      <DependentUpon>RevisionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SaveFlagsImpl_UnitTests.Designer.cs">
-      <DependentUpon>SaveFlagsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\ServerInfoImpl_UnitTests.Designer.cs">
-      <DependentUpon>ServerInfoImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortFieldImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortFieldImpl_UnitTests.Designer.cs">
-      <DependentUpon>SortFieldImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortFieldListImpl_UnitTests.Designer.cs">
-      <DependentUpon>SortFieldListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\SortTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>SortTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesActionImpl_UnitTests.Designer.cs">
-      <DependentUpon>StoredQueriesActionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesChangedEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>StoredQueriesChangedEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueriesEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>StoredQueriesEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>StoredQueryCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\StoredQueryImpl_UnitTests.Designer.cs">
-      <DependentUpon>StoredQueryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\UserDisplayModeImpl_UnitTests.Designer.cs">
-      <DependentUpon>UserDisplayModeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemAsyncEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemAsyncEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemAsyncEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemCopyFlagsImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemCopyFlagsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemEventArgsImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemEventArgsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldChangeEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemFieldChangeEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemFieldDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemFieldDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkInfoImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkInfoImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkTypeCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkTypeEndCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeEndImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkTypeEndImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemLinkTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemOperationErrorImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemOperationErrorImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemPreSaveEventHandlerImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemPreSaveEventHandlerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreDiagnosticsImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemStoreDiagnosticsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemStoreImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemStoreImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemSyncDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemSyncDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemTypeCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Client\WorkItemTypeImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemTypeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsFieldDefinitionTypeEnumImpl_UnitTests.Designer.cs">
-      <DependentUpon>PsFieldDefinitionTypeEnumImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\DataStore\PsUserRightsMaskImpl_UnitTests.Designer.cs">
-      <DependentUpon>PsUserRightsMaskImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\IVersionTagImpl_UnitTests.Designer.cs">
-      <DependentUpon>IVersionTagImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\OrderedVariableSizeListImpl_UnitTests.Designer.cs">
-      <DependentUpon>OrderedVariableSizeListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\ReadOnlyListImpl_UnitTests.Designer.cs">
-      <DependentUpon>ReadOnlyListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\VariableSizeListImpl_UnitTests.Designer.cs">
-      <DependentUpon>VariableSizeListImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Common\WorkItemServerVersionImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemServerVersionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemOpenFieldDataHelperImpl_UnitTests.Designer.cs">
-      <DependentUpon>IWorkItemOpenFieldDataHelperImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemRelationImpl_UnitTests.Designer.cs">
-      <DependentUpon>IWorkItemRelationImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveFieldDataHelperImpl_UnitTests.Designer.cs">
-      <DependentUpon>IWorkItemSaveFieldDataHelperImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\IWorkItemSaveLinkDataHelperImpl_UnitTests.Designer.cs">
-      <DependentUpon>IWorkItemSaveLinkDataHelperImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkInfoImpl_UnitTests.Designer.cs">
-      <DependentUpon>LinkInfoImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkPropertiesImpl_UnitTests.Designer.cs">
-      <DependentUpon>LinkPropertiesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\LinkUpdateImpl_UnitTests.Designer.cs">
-      <DependentUpon>LinkUpdateImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Internals\WorkItemLinkInfoImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkInfoImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessControlEntryDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlEntryExtendedDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessControlEntryExtendedDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\AccessControlListMetadataImpl_UnitTests.Designer.cs">
-      <DependentUpon>AccessControlListMetadataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\ArtifactWorkItemIdsImpl_UnitTests.Designer.cs">
-      <DependentUpon>ArtifactWorkItemIdsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\ExtendedAccessControlListDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>ExtendedAccessControlListDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\FileAttachmentImpl_UnitTests.Designer.cs">
-      <DependentUpon>FileAttachmentImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IdentityDescriptorDataImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdentityDescriptorDataImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IdRevisionPairImpl_UnitTests.Designer.cs">
-      <DependentUpon>IdRevisionPairImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IMetadataRowSetsImpl_UnitTests.Designer.cs">
-      <DependentUpon>IMetadataRowSetsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IPagedItemsRowSetsImpl_UnitTests.Designer.cs">
-      <DependentUpon>IPagedItemsRowSetsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IRowSetImpl_UnitTests.Designer.cs">
-      <DependentUpon>IRowSetImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\IWorkItemRowSetsImpl_UnitTests.Designer.cs">
-      <DependentUpon>IWorkItemRowSetsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataRowSetNamesImpl_UnitTests.Designer.cs">
-      <DependentUpon>MetadataRowSetNamesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\MetadataTableHaveEntryImpl_UnitTests.Designer.cs">
-      <DependentUpon>MetadataTableHaveEntryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\PagedItemsRowSetNamesImpl_UnitTests.Designer.cs">
-      <DependentUpon>PagedItemsRowSetNamesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\QuerySortOrderEntryImpl_UnitTests.Designer.cs">
-      <DependentUpon>QuerySortOrderEntryImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RequiredPermissionsImpl_UnitTests.Designer.cs">
-      <DependentUpon>RequiredPermissionsImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetCollectionImpl_UnitTests.Designer.cs">
-      <DependentUpon>RowSetCollectionImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetColumnImpl_UnitTests.Designer.cs">
-      <DependentUpon>RowSetColumnImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\RowSetImpl_UnitTests.Designer.cs">
-      <DependentUpon>RowSetImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemIdImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemIdImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemLinkChangeImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemLinkChangeImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRelationImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemRelationImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemRowSetNamesImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemRowSetNamesImpl_UnitTests.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerImpl_UnitTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TFS\WorkItemTracking\Proxy\WorkItemServerImpl_UnitTests.Designer.cs">
-      <DependentUpon>WorkItemServerImpl_UnitTests.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SourceCode\DynCon.OSI.Core\DynCon.OSI.Core.csproj">
@@ -1554,10 +478,6 @@
     <ProjectReference Include="..\..\SourceCode\DynCon.OSI.JasonBackedObjects.AdvancedLogging\DynCon.OSI.JasonBackedObjects.AdvancedLogging.csproj">
       <Project>{E664DAB7-5ECE-43EF-AE49-D23E7DC16A6D}</Project>
       <Name>DynCon.OSI.JasonBackedObjects.AdvancedLogging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SourceCode\DynCon.OSI.VSO.RestClient.ObjectModel\DynCon.OSI.VSO.RestClient.ObjectModel.csproj">
-      <Project>{798BF552-9A39-48B8-9A4B-AF057927062F}</Project>
-      <Name>DynCon.OSI.VSO.RestClient.ObjectModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SourceCode\JasonBackedObjects\DynCon.OSI.JasonBackedObjects.csproj">
       <Project>{A69B24F0-1420-4ABF-9BD5-A8FDB17E334E}</Project>
@@ -1571,104 +491,827 @@
       <Project>{d42275be-b928-4c19-ba51-b4dfefd66127}</Project>
       <Name>DynCon.OSI.VSO.SharedInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DynCon.OSI.DynTest\DynCon.OSI.DynTest.csproj">
+    <ProjectReference Include="..\DynTest\DynCon.OSI.DynTest.csproj">
       <Project>{4253B165-E851-4F14-B3B4-13FB6131DEEA}</Project>
       <Name>DynCon.OSI.DynTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Helpers\JsonSource\wit\wit\attachments\POST__wit_attachments_fileName-_binaryFile_.json" />
-    <EmbeddedResource Include="Helpers\JsonSource\wit\wit\attachments\POST__wit_attachments_fileName-_textFile_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\batch\POST__wit__batch.json" />
-    <None Include="Helpers\JsonSource\wit\wit\batch\POST__wit__batch2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\categories\GET__wit_workItemTypeCategories.json" />
-    <None Include="Helpers\JsonSource\wit\wit\categories\GET__wit_workItemTypeCategories__categoryName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas__areaPath_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas__depth-2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations__depth-2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations__iterationPath_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\fields\GET__wit_fields.json" />
-    <None Include="Helpers\JsonSource\wit\wit\fields\GET__wit_fields__fieldName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\history\GET__wit_workitems__taskId__history.json" />
-    <None Include="Helpers\JsonSource\wit\wit\history\GET__wit_workitems__taskId__history_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\history\GET__wit_workitems__taskId__history__skip-1__top-2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\DELETE__wit_queries_My Queries__folderNameNew_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\DELETE__wit_queries__folderId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\DELETE__wit_queries__hierarchicalQueryId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\DELETE__wit_queries__queryId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries_Current Sprint.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries_Current Sprint__depth-1.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries__folderName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries__folderName___queryName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__depth-1.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__depth-1__expand-all.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__depth-2__includeDeleted-true.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__folderId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__hierarchicalQueryId___expand-clauses.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__queryId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__queryId___expand-clauses.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\GET__wit_queries__queryId___includeDeleted-true.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\PATCH__wit_queries_Shared Queries__folderName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\PATCH__wit_queries_Shared Queries__folderName___queryNameNew_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\PATCH__wit_queries__folderId___undeleteDescendants-true.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\PATCH__wit_queries__queryId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\PATCH__wit_queries__queryId_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\POST__wit_queries_My Queries.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries__folderName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries__folderName_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\relationTypes\GET__wit_workItemRelationTypes.json" />
-    <None Include="Helpers\JsonSource\wit\wit\relationTypes\GET__wit_workItemRelationTypes__relationName_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions.json" />
-    <None Include="Helpers\JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions_2__expand-all.json" />
-    <None Include="Helpers\JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions__skip-1__top-2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\DELETE__tagging_scopes__scopeId__tags__tagId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags_includeInactive-true.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags__name_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags__tagId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\PATCH__tagging_scopes__scopeId__tags__tagId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\tags\POST__tagging_scopes__scopeId__tags.json" />
-    <None Include="Helpers\JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates.json" />
-    <None Include="Helpers\JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates_4.json" />
-    <None Include="Helpers\JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates__skip-1__top-2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\wiql\GET__wit_wiql__queryId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\wiql\POST__wit_wiql.json" />
-    <None Include="Helpers\JsonSource\wit\wit\wiql\POST__wit_wiql2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\wiql\POST__wit_wiql3.json" />
-    <None Include="Helpers\JsonSource\wit\wit\wiql\POST__wit_wiql4.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns__asOf-_asof_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_3.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_4.json" />
-    <EmbeddedResource Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids___expand-all.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems__PBIId_.json" />
-    <EmbeddedResource Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems__PBIId___expand-all.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\GET__wit_workitems__Task.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__Task.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__Task2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_2.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_3.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_4.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_5.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_6.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_7.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_8.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_9.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItemTypes\GET__wit_workItemTypes.json" />
-    <None Include="Helpers\JsonSource\wit\wit\workItemTypes\GET__wit_workItemTypes_Bug.json" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="JsonSource\build\builds\DELETE__build_builds__build3_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds_definition-_definition_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds_minFinishTime-_after_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds_quality-_quality_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds_requestedFor-_person_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds_status-_status_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds__build1_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds__build1__details.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\GET__build_builds__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\PATCH__build_builds__build1_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\PATCH__build_builds__build2_.json" />
+    <EmbeddedResource Include="JsonSource\build\builds\PATCH__build_builds__build3_.json" />
+    <EmbeddedResource Include="JsonSource\build\definitions\GET__build_definitions.json" />
+    <EmbeddedResource Include="JsonSource\build\definitions\GET__build_definitions__definitionId_.json" />
+    <EmbeddedResource Include="JsonSource\build\qualities\DELETE__build_qualities__quality_.json" />
+    <EmbeddedResource Include="JsonSource\build\qualities\GET__build_qualities.json" />
+    <EmbeddedResource Include="JsonSource\build\qualities\PUT__build_qualities__quality_.json" />
+    <EmbeddedResource Include="JsonSource\build\queues\GET__build_queues.json" />
+    <EmbeddedResource Include="JsonSource\build\queues\GET__build_queues__queueId_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\DELETE__build_requests__requestToDelete_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests_controllerId-_queue_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests_definitionId-_definition_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests_maxCompletedAge-_age_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests_requestedFor-_person_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests_status-_status_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\GET__build_requests__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\PATCH__build_requests__request_.json" />
+    <EmbeddedResource Include="JsonSource\build\requests\POST__build_requests.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\DELETE__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\GET__chat_rooms__roomId__messages.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\GET__chat_rooms__roomId__messages__filter-_filter_.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\GET__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\PATCH__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\messages\POST__chat_rooms__roomId__messages.json" />
+    <EmbeddedResource Include="JsonSource\chat\rooms\DELETE__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\rooms\GET__chat_rooms.json" />
+    <EmbeddedResource Include="JsonSource\chat\rooms\GET__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\rooms\PATCH__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\rooms\POST__chat_rooms.json" />
+    <EmbeddedResource Include="JsonSource\chat\users\DELETE__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\users\GET__chat_rooms__roomId__users.json" />
+    <EmbeddedResource Include="JsonSource\chat\users\GET__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\chat\users\PUT__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\apmapplications\GET__ApmApplications__type_.json" />
+    <EmbeddedResource Include="JsonSource\clt\apmcounters\GET__ApmCounters.json" />
+    <EmbeddedResource Include="JsonSource\clt\apmplugins\GET__ApmPlugins.json" />
+    <EmbeddedResource Include="JsonSource\clt\apmplugins\GET__ApmPlugins__type_.json" />
+    <EmbeddedResource Include="JsonSource\clt\counterinstances\GET__CounterInstances__run_.json" />
+    <EmbeddedResource Include="JsonSource\clt\countersamples\POST__CounterSamples__run_.json" />
+    <EmbeddedResource Include="JsonSource\clt\errors\GET__errors_.json" />
+    <EmbeddedResource Include="JsonSource\clt\messages\GET__messages_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testdrops\DELETE__TestDrops__testDropId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testdrops\GET__TestDrops__includeDetails_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testdrops\GET__TestDrops__testDropId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testdrops\POST__TestDrops__dropType_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testresults\GET__TestResults_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testresults\GET__TestResults__samples_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testresults\GET__TestResults__testMessages_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\DELETE__TestRuns__testRunId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__date_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__detailed_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__name_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__runId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__status_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__filter__user_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\GET__TestRuns__testRunId_.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\PATCH__TestRuns__testRunId_Aborted.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\PATCH__TestRuns__testRunId_Queued.json" />
+    <EmbeddedResource Include="JsonSource\clt\testruns\POST__TestRuns.json" />
+    <EmbeddedResource Include="JsonSource\common\disclaimer.md" />
+    <EmbeddedResource Include="JsonSource\common\version-preview1.md" />
+    <EmbeddedResource Include="JsonSource\common\version-preview2.md" />
+    <EmbeddedResource Include="JsonSource\common\version.md" />
+    <EmbeddedResource Include="JsonSource\git\blobs\GET__git_repositories__repositoryId__blobs__objectId_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits_author-_author_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits_committer-_committer_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits_itemPath-_itemPath_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits_user-_committer_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits__commitId_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits__commitId__changeCount-10.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits__commitId__changes_top-_top__skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__commits__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\GET__git_repositories__repositoryId__pushes__pushId__commits.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\POST__git_repositories__repositoryId__commitsBatch.json" />
+    <EmbeddedResource Include="JsonSource\git\commits\POST__git_repositories__repositoryId__commitsBatch2.json" />
+    <EmbeddedResource Include="JsonSource\git\diffs\GET__git_repositories__repositoryId__diffs_commits_targetVersion-_targetVersion__baseVersion-_baseVersion_.json" />
+    <EmbeddedResource Include="JsonSource\git\GET__git_repositories__repoId__items.json" />
+    <EmbeddedResource Include="JsonSource\git\GET__git_repositories__repoId__items_recursionLevel-OneLevel.json" />
+    <EmbeddedResource Include="JsonSource\git\items\GET__git_repositories__repositoryId__items_scopePath-_filePath_.json" />
+    <EmbeddedResource Include="JsonSource\git\items\GET__git_repositories__repositoryId__items_scopePath-_filePath__download-true.json" />
+    <EmbeddedResource Include="JsonSource\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath_.json" />
+    <EmbeddedResource Include="JsonSource\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath__recursionLevel-Full_includeContentMetadata-true.json" />
+    <EmbeddedResource Include="JsonSource\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath__recursionLevel-OneLevel.json" />
+    <EmbeddedResource Include="JsonSource\git\items\POST__git_repositories__repositoryId__itemsBatch.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\DELETE__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests_status-completed.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests_targetRefName-refs_heads_master.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\PATCH__git_repositories__repositoryId__pullRequests__pullRequestId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\POST__git_repositories__repositoryId__pullRequests.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\PUT__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pullRequests\PUT__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__initialReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes_pusherId-_pusherId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes__pushId_.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes__pushId__includeRefUpdates-true.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\GET__git_repositories__repositoryId__pushes__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes2.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes3.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes4.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes5.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes6.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes7.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes8.json" />
+    <EmbeddedResource Include="JsonSource\git\pushes\POST__git_repositories__tempRepoId__pushes9.json" />
+    <EmbeddedResource Include="JsonSource\git\refs\GET__git_repositories__repositoryId__refs.json" />
+    <EmbeddedResource Include="JsonSource\git\refs\GET__git_repositories__repositoryId__refs_heads.json" />
+    <EmbeddedResource Include="JsonSource\git\refs\GET__git_repositories__repositoryId__refs_tags.json" />
+    <EmbeddedResource Include="JsonSource\git\repositories\DELETE__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\git\repositories\GET__git_repositories.json" />
+    <EmbeddedResource Include="JsonSource\git\repositories\GET__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\git\repositories\PATCH__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\git\repositories\POST__git_repositories.json" />
+    <EmbeddedResource Include="JsonSource\git\stats\GET__git_repositories__repositoryId__stats_branches.json" />
+    <EmbeddedResource Include="JsonSource\git\stats\GET__git_repositories__repositoryId__stats_branches__name_.json" />
+    <EmbeddedResource Include="JsonSource\git\stats\GET__git_repositories__repositoryId__stats_branches__name__baseVersionType-_baseVersionType__baseVersion-_baseVersion_.json" />
+    <EmbeddedResource Include="JsonSource\git\trees\GET__git_repositories__repositoryId__trees__objectId_.json" />
+    <EmbeddedResource Include="JsonSource\git\trees\GET__git_repositories__repositoryId__trees__objectId__recursive-true.json" />
+    <EmbeddedResource Include="JsonSource\hooks\consumers\GET__hooks_consumers.json" />
+    <EmbeddedResource Include="JsonSource\hooks\consumers\GET__hooks_consumers__consumerId_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\consumers\GET__hooks_consumers__consumerId__actions.json" />
+    <EmbeddedResource Include="JsonSource\hooks\consumers\GET__hooks_consumers__consumerId__actions__consumerActionId_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\publishers\GET__hooks_publishers.json" />
+    <EmbeddedResource Include="JsonSource\hooks\publishers\GET__hooks_publishers__publisherId__eventTypes.json" />
+    <EmbeddedResource Include="JsonSource\hooks\publishers\GET__hooks_publishers__publisherId__eventTypes__eventTypeId_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\subscriptions\DELETE__hooks_subscriptions__newSubscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\subscriptions\GET__hooks_subscriptions_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\subscriptions\GET__hooks_subscriptions__subscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\hooks\subscriptions\POST__hooks_subscriptions.json" />
+    <EmbeddedResource Include="JsonSource\hooks\subscriptions\PUT__hooks_subscriptions__newSubscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\sps\accounts\GET__Accounts_memberId-_userId_.json" />
+    <EmbeddedResource Include="JsonSource\sps\accounts\GET__Accounts_ownerId-_userId_.json" />
+    <EmbeddedResource Include="JsonSource\sps\profiles\GET__profile_profiles_me.json" />
+    <EmbeddedResource Include="JsonSource\sps\profiles\GET__profile_profiles_me_avatar.json" />
+    <EmbeddedResource Include="JsonSource\test\cases\GET_testmanagement_testsuite_testcases.json" />
+    <EmbeddedResource Include="JsonSource\test\cases\GET_testmanagement_testsuite_testcase_id.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\DELETE_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET_test_arvind_plans.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET__test__projectName__plans.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET__test__projectName__plans_filterActivePlans-true.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET__test__projectName__plans_includePlanDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET__test__projectName__plans__planId_.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\GET__test__projectName__plans__top-3.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\PATCH_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\PATCH__test__projectName__plans__planId_.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\PATCH__test__projectName__plans__planId_23state.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\PATCH__test__projectName__plans__planId_2areaiteration.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\PATCH__test__projectName__plans__planId_namedescription.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\POST_testmanagement_testplan.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\POST__test__plans_areaiteration.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\POST__test__plans_description.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\POST__test__plans_startdateenddate.json" />
+    <EmbeddedResource Include="JsonSource\test\plans\POST__test__projectName__plans.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_configuration-_configuration_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_includePointDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_testcaseid-_testcaseId_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_testPointIds-_testpointIds_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_witFields-_fields_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__pointId_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__pointId__witFields-_fields_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_.json" />
+    <EmbeddedResource Include="JsonSource\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_2.json" />
+    <EmbeddedResource Include="JsonSource\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_23.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_iterationresults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_testresults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_testresults_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_testresults_attachmentResults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_testresults_id.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET_testmanagement_testresults_parameterResults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__projectName__runs__runId__results_100000_includeIterationDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_includeActionResults-true.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_parameterresults_paramName-_parameterName_.json" />
+    <EmbeddedResource Include="JsonSource\test\results\GET__test__results_100000_iterations_1_actionresults_actionPath-_actionPath_.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\DELETE_test_runs_id.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\DELETE__test__projectName__runs__newRunId_.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET_run_statistics.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET_test_runs_all.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET_test_run_id.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs_includeRunDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs_top-3.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId_.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__results.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__results_100000.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__results_100000_iterations.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__results_100000_iterations_1_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__results_100000_iterations_1_parameterresults.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\GET__test__projectName__runs__runId__statistics.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH_test_arvind_runs.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH__test__projectName__runs__comment.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH__test__projectName__runs__completedDate.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH__test__projectName__runs__duedate.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH__test__projectName__runs__runId_.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\PATCH__test__projectName__runs__startedDate.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST_test_arvind_run.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST__test__projectName__runs.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST__test__projectName__runs_comment.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST__test__projectName__runs_duedate.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST__test__projectName__runs_iteration.json" />
+    <EmbeddedResource Include="JsonSource\test\runs\POST__test__projectName__runs_state.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\DELETE_testmanagement_testsuite_id.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\DELETE_testmanagement_testsuite_testcase_ids.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET_testmanagement_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET_testmanagement_testsuite_id.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET__test__projectName__plans__planId__suites.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET__test__projectName__plans__planId__suites__suiteId_.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET__test__projectName__plans__planId__suites__suiteId__includeChildSuites-true.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\GET__test__projectName__plans__planId__suites__top-3.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\PATCH_testmanagement_testsuite_move_id.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\PATCH_testmanagement_testsuite_rename_id.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\PATCH__test__suites_configurations.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\PATCH__test__suites_querystring_.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\POST_testmanagement_query_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\POST_testmanagement_requirement_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\POST_testmanagement_static_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\test\suites\POST_testmanagement_testsuite_testcase_ids.json" />
+    <EmbeddedResource Include="JsonSource\test\testcases.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projectCollections\GET__projectCollections.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projectCollections\GET__projectCollections__collectionId_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projectCollections\GET__projectCollections__collectionId___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\GET__projects.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\GET__projects__projectId__stateFilter-_state_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\GET__projects__projectId___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\GET__projects__projectName_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\GET__projects__projectName__includeCapabilities-true.json" />
+    <EmbeddedResource Include="JsonSource\tfs\projects\PATCH__projects__projectId_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\teams\GET__projects__projectId__teams.json" />
+    <EmbeddedResource Include="JsonSource\tfs\teams\GET__projects__projectId__teams__teamId_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\teams\GET__projects__projectId__teams__teamId__members_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\teams\GET__projects__projectId__teams__teamId__members___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfs\teams\GET__projects__projectId__teams__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches_includeChildren-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches_includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches__deleted__includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches__path_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches__path__includeChildren-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\branches\GET__tfvc_branches__path__includeParent-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets_fromId-_from__toId-_to_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets_maxCommentLength-_commentLength_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets_searchcriteria.author-_author_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets_searchCriteria.itemPath-_path_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id__changes.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id__includeDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id__includeWorkItems-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id__maxChangeCount-All.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__id__workitems.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__orderBy-_order_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\GET__tfvc_changesets__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\changesets\POST__tfvc_changesetsBatch.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\items\GET__tfvc_items_scopePath-_folder_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\items\GET__tfvc_items_scopePath-_folder__recursionLevel-_recursionLevel_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\items\GET__tfvc_items__itempath__versionType-Changeset_version-_version_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\items\POST__tfvc_itembatch.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels_itemLabelFilter-_item_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels_name-_name_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels_owner-_person_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels__labelId_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels__labelId__items.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels__labelId__items__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels__labelId__maxItemCount-100.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\labels\GET__tfvc_labels__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets_maxCommentLength-_maxCommentLength_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets_owner-_owner_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__changes.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__changes__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__includeDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__includeWorkItems-true.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__maxChangeCount-100.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__maxCommentLength-_maxCommentLength_.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__workitems.json" />
+    <EmbeddedResource Include="JsonSource\tfvc\shelvesets\GET__tfvc_shelvesets__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\attachments\POST__wit_attachments_fileName-_binaryFile_.json" />
+    <EmbeddedResource Include="JsonSource\wit\attachments\POST__wit_attachments_fileName-_textFile_.json" />
+    <EmbeddedResource Include="JsonSource\wit\batch\POST__wit__batch.json" />
+    <EmbeddedResource Include="JsonSource\wit\batch\POST__wit__batch2.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\DELETE__build_builds__build3_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds_definition-_definition_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds_minFinishTime-_after_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds_quality-_quality_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds_requestedFor-_person_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds_status-_status_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds__build1_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds__build1__details.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\GET__build_builds__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\PATCH__build_builds__build1_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\PATCH__build_builds__build2_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\builds\PATCH__build_builds__build3_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\definitions\GET__build_definitions.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\definitions\GET__build_definitions__definitionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\qualities\DELETE__build_qualities__quality_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\qualities\GET__build_qualities.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\qualities\PUT__build_qualities__quality_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\queues\GET__build_queues.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\queues\GET__build_queues__queueId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\DELETE__build_requests__requestToDelete_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests_controllerId-_queue_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests_definitionId-_definition_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests_maxCompletedAge-_age_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests_requestedFor-_person_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests_status-_status_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\GET__build_requests__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\PATCH__build_requests__request_.json" />
+    <EmbeddedResource Include="JsonSource\wit\build\requests\POST__build_requests.json" />
+    <EmbeddedResource Include="JsonSource\wit\categories\GET__wit_workItemTypeCategories.json" />
+    <EmbeddedResource Include="JsonSource\wit\categories\GET__wit_workItemTypeCategories__categoryName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\DELETE__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\GET__chat_rooms__roomId__messages.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\GET__chat_rooms__roomId__messages__filter-_filter_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\GET__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\PATCH__chat_rooms__roomId__messages__messageId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\messages\POST__chat_rooms__roomId__messages.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\rooms\DELETE__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\rooms\GET__chat_rooms.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\rooms\GET__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\rooms\PATCH__chat_rooms__roomId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\rooms\POST__chat_rooms.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\users\DELETE__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\users\GET__chat_rooms__roomId__users.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\users\GET__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\chat\users\PUT__chat_rooms__roomId__users__userId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_areas.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_areas__areaPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_areas__depth-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_iterations.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_iterations__depth-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\classificationNodes\GET__wit_classificationNodes_iterations__iterationPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\apmapplications\GET__ApmApplications__type_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\apmcounters\GET__ApmCounters.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\apmplugins\GET__ApmPlugins.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\apmplugins\GET__ApmPlugins__type_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\counterinstances\GET__CounterInstances__run_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\countersamples\POST__CounterSamples__run_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\errors\GET__errors_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\messages\GET__messages_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testdrops\DELETE__TestDrops__testDropId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testdrops\GET__TestDrops__includeDetails_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testdrops\GET__TestDrops__testDropId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testdrops\POST__TestDrops__dropType_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testresults\GET__TestResults_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testresults\GET__TestResults__samples_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testresults\GET__TestResults__testMessages_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\DELETE__TestRuns__testRunId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__date_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__detailed_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__name_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__runId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__status_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__filter__user_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\GET__TestRuns__testRunId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\PATCH__TestRuns__testRunId_Aborted.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\PATCH__TestRuns__testRunId_Queued.json" />
+    <EmbeddedResource Include="JsonSource\wit\clt\testruns\POST__TestRuns.json" />
+    <EmbeddedResource Include="JsonSource\wit\common\disclaimer.md" />
+    <EmbeddedResource Include="JsonSource\wit\common\version-preview1.md" />
+    <EmbeddedResource Include="JsonSource\wit\common\version-preview2.md" />
+    <EmbeddedResource Include="JsonSource\wit\common\version.md" />
+    <EmbeddedResource Include="JsonSource\wit\fields\GET__wit_fields.json" />
+    <EmbeddedResource Include="JsonSource\wit\fields\GET__wit_fields__fieldName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\blobs\GET__git_repositories__repositoryId__blobs__objectId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits_author-_author_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits_committer-_committer_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits_itemPath-_itemPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits_user-_committer_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits__commitId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits__commitId__changeCount-10.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits__commitId__changes_top-_top__skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__commits__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\GET__git_repositories__repositoryId__pushes__pushId__commits.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\POST__git_repositories__repositoryId__commitsBatch.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\commits\POST__git_repositories__repositoryId__commitsBatch2.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\diffs\GET__git_repositories__repositoryId__diffs_commits_targetVersion-_targetVersion__baseVersion-_baseVersion_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\GET__git_repositories__repoId__items.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\GET__git_repositories__repoId__items_recursionLevel-OneLevel.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\GET__git_repositories__repositoryId__items_scopePath-_filePath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\GET__git_repositories__repositoryId__items_scopePath-_filePath__download-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath__recursionLevel-Full_includeContentMetadata-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\GET__git_repositories__repositoryId__items_scopePath-_folderPath__recursionLevel-OneLevel.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\items\POST__git_repositories__repositoryId__itemsBatch.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\DELETE__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests_status-completed.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests_targetRefName-refs_heads_master.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\GET__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\PATCH__git_repositories__repositoryId__pullRequests__pullRequestId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\POST__git_repositories__repositoryId__pullRequests.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\PUT__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__additionalReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pullRequests\PUT__git_repositories__repositoryId__pullRequests__pullRequestId__reviewers__initialReviewerId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes_pusherId-_pusherId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes__pushId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes__pushId__includeRefUpdates-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\GET__git_repositories__repositoryId__pushes__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes2.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes3.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes4.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes5.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes6.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes7.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes8.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\pushes\POST__git_repositories__tempRepoId__pushes9.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\refs\GET__git_repositories__repositoryId__refs.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\refs\GET__git_repositories__repositoryId__refs_heads.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\refs\GET__git_repositories__repositoryId__refs_tags.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\repositories\DELETE__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\repositories\GET__git_repositories.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\repositories\GET__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\repositories\PATCH__git_repositories__repositoryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\repositories\POST__git_repositories.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\stats\GET__git_repositories__repositoryId__stats_branches.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\stats\GET__git_repositories__repositoryId__stats_branches__name_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\stats\GET__git_repositories__repositoryId__stats_branches__name__baseVersionType-_baseVersionType__baseVersion-_baseVersion_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\trees\GET__git_repositories__repositoryId__trees__objectId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\git\trees\GET__git_repositories__repositoryId__trees__objectId__recursive-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\history\GET__wit_workitems__taskId__history.json" />
+    <EmbeddedResource Include="JsonSource\wit\history\GET__wit_workitems__taskId__history_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\history\GET__wit_workitems__taskId__history__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\consumers\GET__hooks_consumers.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\consumers\GET__hooks_consumers__consumerId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\consumers\GET__hooks_consumers__consumerId__actions.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\consumers\GET__hooks_consumers__consumerId__actions__consumerActionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\publishers\GET__hooks_publishers.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\publishers\GET__hooks_publishers__publisherId__eventTypes.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\publishers\GET__hooks_publishers__publisherId__eventTypes__eventTypeId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\subscriptions\DELETE__hooks_subscriptions__newSubscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\subscriptions\GET__hooks_subscriptions_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\subscriptions\GET__hooks_subscriptions__subscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\subscriptions\POST__hooks_subscriptions.json" />
+    <EmbeddedResource Include="JsonSource\wit\hooks\subscriptions\PUT__hooks_subscriptions__newSubscriptionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\DELETE__wit_queries_My Queries__folderNameNew_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\DELETE__wit_queries__folderId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\DELETE__wit_queries__hierarchicalQueryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\DELETE__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries_Shared Queries_Current Sprint.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries_Shared Queries_Current Sprint__depth-1.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries_Shared Queries__folderName___queryName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__depth-1.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__depth-1__expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__depth-2__includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__folderId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__hierarchicalQueryId___expand-clauses.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__queryId___expand-clauses.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\GET__wit_queries__queryId___includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\PATCH__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\PATCH__wit_queries_Shared Queries__folderName___queryNameNew_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\PATCH__wit_queries__folderId___undeleteDescendants-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\PATCH__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\PATCH__wit_queries__queryId_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\POST__wit_queries_My Queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\POST__wit_queries_Shared Queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\POST__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\queries\POST__wit_queries_Shared Queries__folderName_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\relationTypes\GET__wit_workItemRelationTypes.json" />
+    <EmbeddedResource Include="JsonSource\wit\relationTypes\GET__wit_workItemRelationTypes__relationName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\revisions\GET__wit_workitems__taskId__revisions.json" />
+    <EmbeddedResource Include="JsonSource\wit\revisions\GET__wit_workitems__taskId__revisions_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\revisions\GET__wit_workitems__taskId__revisions_2__expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\revisions\GET__wit_workitems__taskId__revisions__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\sps\accounts\GET__Accounts_memberId-_userId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\sps\accounts\GET__Accounts_ownerId-_userId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\sps\profiles\GET__profile_profiles_me.json" />
+    <EmbeddedResource Include="JsonSource\wit\sps\profiles\GET__profile_profiles_me_avatar.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\DELETE__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\GET__tagging_scopes__scopeId__tags.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\GET__tagging_scopes__scopeId__tags_includeInactive-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\GET__tagging_scopes__scopeId__tags__name_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\GET__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\PATCH__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tags\POST__tagging_scopes__scopeId__tags.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\cases\GET_testmanagement_testsuite_testcases.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\cases\GET_testmanagement_testsuite_testcase_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\DELETE_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET_test_arvind_plans.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET__test__projectName__plans.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET__test__projectName__plans_filterActivePlans-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET__test__projectName__plans_includePlanDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET__test__projectName__plans__planId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\GET__test__projectName__plans__top-3.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\PATCH_testmanagement_testplan_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\PATCH__test__projectName__plans__planId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\PATCH__test__projectName__plans__planId_23state.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\PATCH__test__projectName__plans__planId_2areaiteration.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\PATCH__test__projectName__plans__planId_namedescription.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\POST_testmanagement_testplan.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\POST__test__plans_areaiteration.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\POST__test__plans_description.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\POST__test__plans_startdateenddate.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\plans\POST__test__projectName__plans.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_configuration-_configuration_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_includePointDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_testcaseid-_testcaseId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_testPointIds-_testpointIds_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points_witFields-_fields_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__pointId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__pointId__witFields-_fields_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\GET__test__projectName__plans__planId__suites__suiteId__points__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\points\PATCH__test__projectName__plans__planId__suites__suiteId__points__pointId_23.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_iterationresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_testresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_testresults_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_testresults_attachmentResults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_testresults_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET_testmanagement_testresults_parameterResults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__projectName__runs__runId__results_100000_includeIterationDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_includeActionResults-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__projectName__runs__runId__results_100000_iterations_1_parameterresults_paramName-_parameterName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\results\GET__test__results_100000_iterations_1_actionresults_actionPath-_actionPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\DELETE_test_runs_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\DELETE__test__projectName__runs__newRunId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET_run_statistics.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET_test_runs_all.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET_test_run_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs_includeRunDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs_top-3.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__results.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__results_100000.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__results_100000_iterations.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__results_100000_iterations_1_actionresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__results_100000_iterations_1_parameterresults.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\GET__test__projectName__runs__runId__statistics.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH_test_arvind_runs.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH__test__projectName__runs__comment.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH__test__projectName__runs__completedDate.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH__test__projectName__runs__duedate.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH__test__projectName__runs__runId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\PATCH__test__projectName__runs__startedDate.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST_test_arvind_run.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST__test__projectName__runs.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST__test__projectName__runs_comment.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST__test__projectName__runs_duedate.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST__test__projectName__runs_iteration.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\runs\POST__test__projectName__runs_state.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\DELETE_testmanagement_testsuite_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\DELETE_testmanagement_testsuite_testcase_ids.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET_testmanagement_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET_testmanagement_testsuite_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET__test__projectName__plans__planId__suites.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET__test__projectName__plans__planId__suites__suiteId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET__test__projectName__plans__planId__suites__suiteId__includeChildSuites-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\GET__test__projectName__plans__planId__suites__top-3.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\PATCH_testmanagement_testsuite_move_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\PATCH_testmanagement_testsuite_rename_id.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\PATCH__test__suites_configurations.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\PATCH__test__suites_querystring_.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\POST_testmanagement_query_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\POST_testmanagement_requirement_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\POST_testmanagement_static_testsuite.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\suites\POST_testmanagement_testsuite_testcase_ids.json" />
+    <EmbeddedResource Include="JsonSource\wit\test\testcases.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projectCollections\GET__projectCollections.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projectCollections\GET__projectCollections__collectionId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projectCollections\GET__projectCollections__collectionId___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\GET__projects.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\GET__projects__projectId__stateFilter-_state_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\GET__projects__projectId___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\GET__projects__projectName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\GET__projects__projectName__includeCapabilities-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\projects\PATCH__projects__projectId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\teams\GET__projects__projectId__teams.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\teams\GET__projects__projectId__teams__teamId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\teams\GET__projects__projectId__teams__teamId__members_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\teams\GET__projects__projectId__teams__teamId__members___top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfs\teams\GET__projects__projectId__teams__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches_includeChildren-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches_includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches__deleted__includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches__path_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches__path__includeChildren-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\branches\GET__tfvc_branches__path__includeParent-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets_fromDate-_fromDate__toDate-_toDate_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets_fromId-_from__toId-_to_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets_maxCommentLength-_commentLength_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets_searchcriteria.author-_author_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets_searchCriteria.itemPath-_path_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id__changes.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id__includeDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id__includeWorkItems-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id__maxChangeCount-All.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__id__workitems.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__orderBy-_order_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\GET__tfvc_changesets__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\changesets\POST__tfvc_changesetsBatch.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\items\GET__tfvc_items_scopePath-_folder_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\items\GET__tfvc_items_scopePath-_folder__recursionLevel-_recursionLevel_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\items\GET__tfvc_items__itempath__versionType-Changeset_version-_version_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\items\POST__tfvc_itembatch.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels_itemLabelFilter-_item_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels_name-_name_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels_owner-_person_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels__labelId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels__labelId__items.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels__labelId__items__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels__labelId__maxItemCount-100.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\labels\GET__tfvc_labels__skip-_skip___top-_top_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets_maxCommentLength-_maxCommentLength_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets_owner-_owner_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__changes.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__changes__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__includeDetails-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__includeWorkItems-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__maxChangeCount-100.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__maxCommentLength-_maxCommentLength_.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__shelvesetId__workitems.json" />
+    <EmbeddedResource Include="JsonSource\wit\tfvc\shelvesets\GET__tfvc_shelvesets__top-_top___skip-_skip_.json" />
+    <EmbeddedResource Include="JsonSource\wit\updates\GET__wit_workitems__taskId__updates.json" />
+    <EmbeddedResource Include="JsonSource\wit\updates\GET__wit_workitems__taskId__updates_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\updates\GET__wit_workitems__taskId__updates_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\updates\GET__wit_workitems__taskId__updates__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wiql\GET__wit_wiql__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wiql\POST__wit_wiql.json" />
+    <EmbeddedResource Include="JsonSource\wit\wiql\POST__wit_wiql2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wiql\POST__wit_wiql3.json" />
+    <EmbeddedResource Include="JsonSource\wit\wiql\POST__wit_wiql4.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\attachments\POST__wit_attachments_fileName-_binaryFile_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\attachments\POST__wit_attachments_fileName-_textFile_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\batch\POST__wit__batch.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\batch\POST__wit__batch2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\categories\GET__wit_workItemTypeCategories.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\categories\GET__wit_workItemTypeCategories__categoryName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas__areaPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_areas__depth-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations__depth-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\classificationNodes\GET__wit_classificationNodes_iterations__iterationPath_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\fields\GET__wit_fields.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\fields\GET__wit_fields__fieldName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\history\GET__wit_workitems__taskId__history.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\history\GET__wit_workitems__taskId__history_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\history\GET__wit_workitems__taskId__history__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\DELETE__wit_queries_My Queries__folderNameNew_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\DELETE__wit_queries__folderId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\DELETE__wit_queries__hierarchicalQueryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\DELETE__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries_Current Sprint.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries_Current Sprint__depth-1.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries_Shared Queries__folderName___queryName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__depth-1.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__depth-1__expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__depth-2__includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__folderId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__hierarchicalQueryId___expand-clauses.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__queryId___expand-clauses.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\GET__wit_queries__queryId___includeDeleted-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\PATCH__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\PATCH__wit_queries_Shared Queries__folderName___queryNameNew_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\PATCH__wit_queries__folderId___undeleteDescendants-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\PATCH__wit_queries__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\PATCH__wit_queries__queryId_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\POST__wit_queries_My Queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries__folderName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\queries\POST__wit_queries_Shared Queries__folderName_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\relationTypes\GET__wit_workItemRelationTypes.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\relationTypes\GET__wit_workItemRelationTypes__relationName_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions_2__expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\revisions\GET__wit_workitems__taskId__revisions__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\DELETE__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags_includeInactive-true.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags__name_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\GET__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\PATCH__tagging_scopes__scopeId__tags__tagId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\tags\POST__tagging_scopes__scopeId__tags.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\updates\GET__wit_workitems__taskId__updates__skip-1__top-2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\wiql\GET__wit_wiql__queryId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\wiql\POST__wit_wiql.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\wiql\POST__wit_wiql2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\wiql\POST__wit_wiql3.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\wiql\POST__wit_wiql4.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns__asOf-_asof_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_3.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems_ids-_ids___expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems__PBIId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems__PBIId___expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\GET__wit_workitems__Task.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__Task.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__Task2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_3.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_5.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_6.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_7.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_8.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItems\PATCH__wit_workitems__taskId_9.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItemTypes\GET__wit_workItemTypes.json" />
+    <EmbeddedResource Include="JsonSource\wit\wit\workItemTypes\GET__wit_workItemTypes_Bug.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems_ids-_ids_.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns_.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems_ids-_ids__fields-_columns__asOf-_asof_.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_3.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_WorkItems_ids-_ids__fields-_columns__asOf-_asof_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems_ids-_ids___expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems__PBIId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems__PBIId___expand-all.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\GET__wit_workitems__Task.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__Task.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__Task2.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_2.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_3.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_4.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_5.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_6.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_7.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_8.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItems\PATCH__wit_workitems__taskId_9.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItemTypes\GET__wit_workItemTypes.json" />
+    <EmbeddedResource Include="JsonSource\wit\workItemTypes\GET__wit_workItemTypes_Bug.json" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="JsonSource\build\build-resources.png" />
+    <Content Include="JsonSource\chat\Team-room-resources.png" />
+    <Content Include="JsonSource\clt\CLTAPIsSteps.png" />
+    <Content Include="JsonSource\git\GIt-items.png" />
+    <Content Include="JsonSource\git\Git-resources.png" />
+    <Content Include="JsonSource\hooks\service-hook-resources.png" />
+    <Content Include="JsonSource\sps\accounts.png" />
+    <Content Include="JsonSource\sps\profile.png" />
+    <Content Include="JsonSource\test\test-resources.png" />
+    <Content Include="JsonSource\tfs\projects-and-teams.png" />
+    <Content Include="JsonSource\tfvc\tfvc-resources.png" />
+    <Content Include="JsonSource\wit\build\build-resources.png" />
+    <Content Include="JsonSource\wit\chat\Team-room-resources.png" />
+    <Content Include="JsonSource\wit\clt\CLTAPIsSteps.png" />
+    <Content Include="JsonSource\wit\git\GIt-items.png" />
+    <Content Include="JsonSource\wit\git\Git-resources.png" />
+    <Content Include="JsonSource\wit\hooks\service-hook-resources.png" />
+    <Content Include="JsonSource\wit\sps\accounts.png" />
+    <Content Include="JsonSource\wit\sps\profile.png" />
+    <Content Include="JsonSource\wit\test\test-resources.png" />
+    <Content Include="JsonSource\wit\tfs\projects-and-teams.png" />
+    <Content Include="JsonSource\wit\tfvc\tfvc-resources.png" />
+    <Content Include="JsonSource\wit\wit-onehop.png" />
+    <Content Include="JsonSource\wit\Wit-resources.png" />
+    <Content Include="JsonSource\wit\wit-tree.png" />
+    <Content Include="JsonSource\wit\wit\wit-onehop.png" />
+    <Content Include="JsonSource\wit\wit\Wit-resources.png" />
+    <Content Include="JsonSource\wit\wit\wit-tree.png" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

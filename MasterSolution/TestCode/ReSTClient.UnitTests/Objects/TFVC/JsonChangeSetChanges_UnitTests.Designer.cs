@@ -22,7 +22,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref token);
+                    CaptureJson_PreCondition(instance, ref token);
                 },
                 instance => { instance.CaptureJson(token); },
                 instance => { CaptureJson_PostValidate(instance, token); });
@@ -57,9 +57,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -74,9 +74,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    FromToken_PreCondition(ref instance, ref token);
+                    FromToken_PreCondition(instance, ref token);
                 },
-                instance => { _retVal = JsonChangeSetChanges.FromToken(token); },
+                instance => { return _retVal = JsonChangeSetChanges.FromToken(token); },
                 instance => { FromToken_PostValidate(instance, token, _retVal); });
         }
 
@@ -87,8 +87,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -99,8 +99,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -129,8 +129,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -141,22 +141,22 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void CaptureJson_PostValidate(JsonChangeSetChanges instance, JToken token);
-        partial void CaptureJson_PreCondition(ref JsonChangeSetChanges instance, ref JToken token);
+        partial void CaptureJson_PreCondition(JsonChangeSetChanges instance, ref JToken token);
         partial void ChangeType_SetCondition(ref JsonChangeSetChanges instance, ref String setValue);
 
         partial void Equals_PostValidate(JsonChangeSetChanges instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonChangeSetChanges instance, ref Object obj);
+        partial void Equals_PreCondition(JsonChangeSetChanges instance, ref Object obj);
         partial void FromToken_PostValidate(JsonChangeSetChanges instance, JToken token, JsonChangeSetChanges _retVal);
-        partial void FromToken_PreCondition(ref JsonChangeSetChanges instance, ref JToken token);
+        partial void FromToken_PreCondition(JsonChangeSetChanges instance, ref JToken token);
 
         partial void GetHashCode_PostValidate(JsonChangeSetChanges instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonChangeSetChanges instance);
+        partial void GetHashCode_PreCondition(JsonChangeSetChanges instance);
         internal static IEnumerable<JsonChangeSetChanges> GetIEnumerableInstance() { return new List<JsonChangeSetChanges> {GetInstance()}; }
 
         internal static JsonChangeSetChanges GetInstance([CallerMemberName] string callerName = "")
@@ -169,14 +169,14 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.TFVC
         }
 
         partial void GetType_PostValidate(JsonChangeSetChanges instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonChangeSetChanges instance);
+        partial void GetType_PreCondition(JsonChangeSetChanges instance);
         static partial void InstanceFactory(ref JsonChangeSetChanges instance, [CallerMemberName] string callerName = "");
         static partial void JsonSource(ref JToken json);
 
         partial void JsonValue_SetCondition(ref JsonChangeSetChanges instance, ref JToken setValue);
         partial void ToJSonString_PostValidate(JsonChangeSetChanges instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonChangeSetChanges instance);
+        partial void ToJSonString_PreCondition(JsonChangeSetChanges instance);
         partial void ToString_PostValidate(JsonChangeSetChanges instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonChangeSetChanges instance);
+        partial void ToString_PreCondition(JsonChangeSetChanges instance);
     }
 }

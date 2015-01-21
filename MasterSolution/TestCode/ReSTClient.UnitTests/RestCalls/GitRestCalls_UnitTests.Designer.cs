@@ -215,9 +215,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -228,8 +228,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -240,8 +240,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -468,8 +468,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
@@ -529,9 +529,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         partial void CommitsBatch1_SetCondition(ref CallSpec setValue);
         partial void Equals_PostValidate(GitRestCalls instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref GitRestCalls instance, ref Object obj);
+        partial void Equals_PreCondition(GitRestCalls instance, ref Object obj);
         partial void GetHashCode_PostValidate(GitRestCalls instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref GitRestCalls instance);
+        partial void GetHashCode_PreCondition(GitRestCalls instance);
         internal static IEnumerable<GitRestCalls> GetIEnumerableInstance() { return new List<GitRestCalls> {GetInstance()}; }
 
         internal static GitRestCalls GetInstance([CallerMemberName] string callerName = "")
@@ -542,7 +542,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
         }
 
         partial void GetType_PostValidate(GitRestCalls instance, Type _retVal);
-        partial void GetType_PreCondition(ref GitRestCalls instance);
+        partial void GetType_PreCondition(GitRestCalls instance);
         static partial void InstanceFactory(ref GitRestCalls instance, [CallerMemberName] string callerName = "");
 
         partial void Items0_SetCondition(ref CallSpec setValue);
@@ -581,7 +581,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         partial void Repositories1_SetCondition(ref CallSpec setValue);
         partial void ToString_PostValidate(GitRestCalls instance, String _retVal);
-        partial void ToString_PreCondition(ref GitRestCalls instance);
+        partial void ToString_PreCondition(GitRestCalls instance);
 
         partial void Trees0_SetCondition(ref CallSpec setValue);
 

@@ -8,7 +8,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
     /// <summary>Generated Test Template</summary>
     public partial class JsonLink_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonLink instance, ref JToken json)
+        partial void FromToken_PreCondition(JsonLink instance, ref JToken json)
         {
             JsonRelationType_UnitTests.PopulateLinkTypes();
 

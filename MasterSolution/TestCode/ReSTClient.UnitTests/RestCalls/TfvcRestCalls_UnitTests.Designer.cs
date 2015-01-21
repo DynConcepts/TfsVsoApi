@@ -83,9 +83,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -96,8 +96,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -108,8 +108,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -168,7 +168,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return TfvcRestCalls.ProjectInfo0; },
+                () => { return TfvcRestCalls.ProjectSpecificInfo; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -180,7 +180,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return TfvcRestCalls.ProjectInfo1; },
+                () => { return TfvcRestCalls.AllProjectInfo; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -192,23 +192,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return TfvcRestCalls.ShelvesetChanges0; },
+                () => { return TfvcRestCalls.ShelvesetChanges; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
 
-        /// <summary>Generated Test Template</summary>
-        [TestMethod]
-        public void ShelvesetChanges1_UnitTest()
-        {
-            ExecuteProperty(
-                null, null, null, // No Set Accessor
-                // Invoke Getter
-                () => { return TfvcRestCalls.ShelvesetChanges1; },
-                // Validate Get Operation
-                (setValue, getValue) => { });
-        }
-
+    
         /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void ShelvesetWorkItems0_UnitTest()
@@ -216,43 +205,19 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return TfvcRestCalls.ShelvesetWorkItems0; },
+                () => { return TfvcRestCalls.ShelvesetWorkItems; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
 
-        /// <summary>Generated Test Template</summary>
-        [TestMethod]
-        public void ShelvesetWorkItems1_UnitTest()
-        {
-            ExecuteProperty(
-                null, null, null, // No Set Accessor
-                // Invoke Getter
-                () => { return TfvcRestCalls.ShelvesetWorkItems1; },
-                // Validate Get Operation
-                (setValue, getValue) => { });
-        }
-
-        /// <summary>Generated Test Template</summary>
+           /// <summary>Generated Test Template</summary>
         [TestMethod]
         public void Shelvesets0_UnitTest()
         {
             ExecuteProperty(
                 null, null, null, // No Set Accessor
                 // Invoke Getter
-                () => { return TfvcRestCalls.Shelvesets0; },
-                // Validate Get Operation
-                (setValue, getValue) => { });
-        }
-
-        /// <summary>Generated Test Template</summary>
-        [TestMethod]
-        public void Shelvesets1_UnitTest()
-        {
-            ExecuteProperty(
-                null, null, null, // No Set Accessor
-                // Invoke Getter
-                () => { return TfvcRestCalls.Shelvesets1; },
+                () => { return TfvcRestCalls.AllShelvesets; },
                 // Validate Get Operation
                 (setValue, getValue) => { });
         }
@@ -264,8 +229,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
@@ -278,9 +243,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
         partial void ChangesetsBatch_SetCondition(ref CallSpec setValue);
         partial void Changesets_SetCondition(ref CallSpec setValue);
         partial void Equals_PostValidate(TfvcRestCalls instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref TfvcRestCalls instance, ref Object obj);
+        partial void Equals_PreCondition(TfvcRestCalls instance, ref Object obj);
         partial void GetHashCode_PostValidate(TfvcRestCalls instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref TfvcRestCalls instance);
+        partial void GetHashCode_PreCondition(TfvcRestCalls instance);
         internal static IEnumerable<TfvcRestCalls> GetIEnumerableInstance() { return new List<TfvcRestCalls> {GetInstance()}; }
 
         internal static TfvcRestCalls GetInstance([CallerMemberName] string callerName = "")
@@ -291,7 +256,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
         }
 
         partial void GetType_PostValidate(TfvcRestCalls instance, Type _retVal);
-        partial void GetType_PreCondition(ref TfvcRestCalls instance);
+        partial void GetType_PreCondition(TfvcRestCalls instance);
         static partial void InstanceFactory(ref TfvcRestCalls instance, [CallerMemberName] string callerName = "");
 
         partial void ItemBatch_SetCondition(ref CallSpec setValue);
@@ -318,6 +283,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 
         partial void Shelvesets1_SetCondition(ref CallSpec setValue);
         partial void ToString_PostValidate(TfvcRestCalls instance, String _retVal);
-        partial void ToString_PreCondition(ref TfvcRestCalls instance);
+        partial void ToString_PreCondition(TfvcRestCalls instance);
     }
 }

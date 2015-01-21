@@ -1,0 +1,907 @@
+{
+   "method": "GET",
+   "resourceFormat": "/wit/queries?$depth=2&$includeDeleted=true",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/Fabrikam-Fiber-Git/_apis/wit/queries?$depth=2&$includeDeleted=true&api-version=1.0",
+   "requestHeaders": {
+      "Accept": "application/json"
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "ff77edfc-0a6c-4196-aea9-783f613949dc",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=530d5d2a-08d3-0006-6c62-0f53d308d001; path=/; secure",
+         "Tfs-SessionActive=2014-11-26T22:38:52; path=/; secure"
+      ],
+      "x-vss-userdata": "d291b0c4-a05c-4ea6-8df1-4b41d5f39eff:fabrikamfiber4@hotmail.com",
+      "activityid": "514366d0-08d3-0004-03c1-4b51d308d001",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Wed, 26 Nov 2014 22:38:52 GMT",
+      "content-length": "29356"
+   },
+   "responseBody": {
+      "count": 2,
+      "value": [
+         {
+            "id": "3c65fbc1-d427-48ce-9091-633dde9e27e2",
+            "name": "My Queries",
+            "path": "My Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "children": [
+               {
+                  "id": "15d7497e-a4ad-4194-a442-032d6eb0f04e",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "4e64fd81-42f8-44ae-8860-f04cd3858107",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/4e64fd81-42f8-44ae-8860-f04cd3858107"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/15d7497e-a4ad-4194-a442-032d6eb0f04e"
+               },
+               {
+                  "id": "356c7c68-1061-458c-8617-046812be14e8",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "71f39623-7205-4123-99a3-2cc969154401",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/71f39623-7205-4123-99a3-2cc969154401"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/356c7c68-1061-458c-8617-046812be14e8"
+               },
+               {
+                  "id": "bd8cbee0-3e43-4928-9fdc-088321e79c9c",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "c5df567b-7780-4ac1-afa8-5a01b38935f9",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/c5df567b-7780-4ac1-afa8-5a01b38935f9"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/bd8cbee0-3e43-4928-9fdc-088321e79c9c"
+               },
+               {
+                  "id": "2f55f0a4-0fbe-42a8-8907-0e72b12dbe4f",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "fb230123-988d-495d-b021-5152bd0eb4a3",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/fb230123-988d-495d-b021-5152bd0eb4a3"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/2f55f0a4-0fbe-42a8-8907-0e72b12dbe4f"
+               },
+               {
+                  "id": "f36bd889-2154-4044-9916-1971e93c0ea7",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "00138d42-a355-4a64-9f42-6e2082c4a69e",
+                        "name": "Hierarchical Query",
+                        "path": "My Queries/Website/Hierarchical Query",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/00138d42-a355-4a64-9f42-6e2082c4a69e"
+                     },
+                     {
+                        "id": "5352de4c-f08f-4add-8ea7-bed905e6a313",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/5352de4c-f08f-4add-8ea7-bed905e6a313"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/f36bd889-2154-4044-9916-1971e93c0ea7"
+               },
+               {
+                  "id": "a563e69b-c05b-4454-9676-1b53f0f80624",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "05e06f3d-d509-4b56-b8ac-53fe49872f0b",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/05e06f3d-d509-4b56-b8ac-53fe49872f0b"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a563e69b-c05b-4454-9676-1b53f0f80624"
+               },
+               {
+                  "id": "6e7ee208-0830-425f-bb50-1b8601d43d37",
+                  "name": "New Query 1",
+                  "path": "My Queries/New Query 1",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/6e7ee208-0830-425f-bb50-1b8601d43d37"
+               },
+               {
+                  "id": "fb503623-f44c-4689-bca2-1be74b0485fa",
+                  "name": "Tree",
+                  "path": "My Queries/Tree",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/fb503623-f44c-4689-bca2-1be74b0485fa"
+               },
+               {
+                  "id": "6a9b4c6c-da63-4041-98f0-1eb51edebf31",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "793944d2-8d47-4f3c-8c78-8e6a953c1647",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/793944d2-8d47-4f3c-8c78-8e6a953c1647"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/6a9b4c6c-da63-4041-98f0-1eb51edebf31"
+               },
+               {
+                  "id": "6266d29b-1614-441e-b6dd-24831b118e91",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "0c47fd0e-d85c-4acb-bf88-74f7c7826ee2",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/0c47fd0e-d85c-4acb-bf88-74f7c7826ee2"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/6266d29b-1614-441e-b6dd-24831b118e91"
+               },
+               {
+                  "id": "7132d977-302c-4239-a120-2509e0dc3320",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "b78ee1c2-3191-4d2d-a09c-7fc8c950aa3f",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/b78ee1c2-3191-4d2d-a09c-7fc8c950aa3f"
+                     },
+                     {
+                        "id": "f3e165d9-13ba-476e-98ac-d4b4af902803",
+                        "name": "Active stories with tasks",
+                        "path": "My Queries/Website/Active stories with tasks",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/f3e165d9-13ba-476e-98ac-d4b4af902803"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7132d977-302c-4239-a120-2509e0dc3320"
+               },
+               {
+                  "id": "457583b8-ac58-4115-9969-2a148636a45f",
+                  "name": "ALL",
+                  "path": "My Queries/ALL",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/457583b8-ac58-4115-9969-2a148636a45f"
+               },
+               {
+                  "id": "c146922d-c8c6-49b6-a674-3a0eaf5c80c8",
+                  "name": "OneHop",
+                  "path": "My Queries/OneHop",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/c146922d-c8c6-49b6-a674-3a0eaf5c80c8"
+               },
+               {
+                  "id": "e0b24d70-c86d-4692-b712-3cca4ec27e5c",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/e0b24d70-c86d-4692-b712-3cca4ec27e5c"
+               },
+               {
+                  "id": "3015f8ed-d2d9-444f-aad2-3f981e5216e9",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3015f8ed-d2d9-444f-aad2-3f981e5216e9"
+               },
+               {
+                  "id": "813ec271-5e98-469e-8082-436ec2ac0c87",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "cf0a939b-ee9d-4d16-9392-d73dacb6289e",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/cf0a939b-ee9d-4d16-9392-d73dacb6289e"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/813ec271-5e98-469e-8082-436ec2ac0c87"
+               },
+               {
+                  "id": "439c3873-64ac-4e28-852b-491522436370",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "a519a725-4098-489a-b307-27b5d58c5423",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a519a725-4098-489a-b307-27b5d58c5423"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/439c3873-64ac-4e28-852b-491522436370"
+               },
+               {
+                  "id": "addcb8b3-12d0-4f2c-b6ca-52bb584ae286",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "df60fdf6-3b5f-4928-aae8-29ee63df6e31",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/df60fdf6-3b5f-4928-aae8-29ee63df6e31"
+                     },
+                     {
+                        "id": "f0ade206-32f8-4360-9254-ad33f906cd2e",
+                        "name": "Active stories with tasks",
+                        "path": "My Queries/Website/Active stories with tasks",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/f0ade206-32f8-4360-9254-ad33f906cd2e"
+                     }
+                  ],
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/addcb8b3-12d0-4f2c-b6ca-52bb584ae286"
+               },
+               {
+                  "id": "ba12ad2b-40c4-4a41-ac04-590c4ff16e7b",
+                  "name": "Website team",
+                  "path": "My Queries/Website team",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "85915dc8-9508-4e5b-80de-37131206a574",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website team/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/85915dc8-9508-4e5b-80de-37131206a574"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/ba12ad2b-40c4-4a41-ac04-590c4ff16e7b"
+               },
+               {
+                  "id": "1efeed4d-282f-423f-aad4-595524560af8",
+                  "name": "Tree",
+                  "path": "My Queries/Tree",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/1efeed4d-282f-423f-aad4-595524560af8"
+               },
+               {
+                  "id": "76afbb50-6005-4e9d-b1f7-599b1d0673c4",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/76afbb50-6005-4e9d-b1f7-599b1d0673c4"
+               },
+               {
+                  "id": "0ea88f4d-5585-41a1-be58-5f1c6b9c2853",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/0ea88f4d-5585-41a1-be58-5f1c6b9c2853"
+               },
+               {
+                  "id": "fb73d45f-d854-4012-9521-62e09ed31211",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "cc010893-0d82-4d49-b98a-2553aeb1bd95",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/cc010893-0d82-4d49-b98a-2553aeb1bd95"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/fb73d45f-d854-4012-9521-62e09ed31211"
+               },
+               {
+                  "id": "af30c48c-b5de-4cc8-823b-74715ffdafd2",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "d6413bea-7802-4492-af06-b4fdf94181d8",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/d6413bea-7802-4492-af06-b4fdf94181d8"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/af30c48c-b5de-4cc8-823b-74715ffdafd2"
+               },
+               {
+                  "id": "0864108d-4d78-451c-b9d0-7c4240ac7109",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/0864108d-4d78-451c-b9d0-7c4240ac7109"
+               },
+               {
+                  "id": "7b691b2f-e75f-43e7-82e5-821c5f72af98",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "a4a80fa0-0b5c-445f-9fbb-9bb59bcd0779",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a4a80fa0-0b5c-445f-9fbb-9bb59bcd0779"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7b691b2f-e75f-43e7-82e5-821c5f72af98"
+               },
+               {
+                  "id": "230c4643-9e22-4123-b66f-84087ef43b99",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/230c4643-9e22-4123-b66f-84087ef43b99"
+               },
+               {
+                  "id": "e2250d1d-3e35-47db-a1de-945491626caa",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "f4fef4c1-23d7-48ca-b22d-260149e23cb2",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/f4fef4c1-23d7-48ca-b22d-260149e23cb2"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/e2250d1d-3e35-47db-a1de-945491626caa"
+               },
+               {
+                  "id": "8b3e86a5-a133-45a7-8f08-977c81bd4f7c",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "3b61d4df-44b6-4596-835d-8109730a626f",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3b61d4df-44b6-4596-835d-8109730a626f"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/8b3e86a5-a133-45a7-8f08-977c81bd4f7c"
+               },
+               {
+                  "id": "8fa88050-b185-45cb-b764-9d08c718a72e",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "bea6df2c-219f-4f47-bad0-0d21f32da392",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/bea6df2c-219f-4f47-bad0-0d21f32da392"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/8fa88050-b185-45cb-b764-9d08c718a72e"
+               },
+               {
+                  "id": "1db695fe-321f-46d3-b5f7-a201dae15856",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "163f9faa-2e00-49f9-b9b3-c94e87771884",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/163f9faa-2e00-49f9-b9b3-c94e87771884"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/1db695fe-321f-46d3-b5f7-a201dae15856"
+               },
+               {
+                  "id": "c9298b6d-ba9f-44ce-99e9-a7907895fcd8",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/c9298b6d-ba9f-44ce-99e9-a7907895fcd8"
+               },
+               {
+                  "id": "950259eb-4708-4685-95ec-cffda0b1f0b2",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "47b8cd19-6d59-4f12-8a75-12060d743dc4",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/47b8cd19-6d59-4f12-8a75-12060d743dc4"
+                     },
+                     {
+                        "id": "ce8da3e2-40c0-435c-8aea-eece82f27779",
+                        "name": "Hierarchical Query",
+                        "path": "My Queries/Website/Hierarchical Query",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/ce8da3e2-40c0-435c-8aea-eece82f27779"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/950259eb-4708-4685-95ec-cffda0b1f0b2"
+               },
+               {
+                  "id": "acce688c-8aeb-47e1-b6fd-d43174e92181",
+                  "name": "New Query 1",
+                  "path": "My Queries/New Query 1",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/acce688c-8aeb-47e1-b6fd-d43174e92181"
+               },
+               {
+                  "id": "59963d0a-b108-445e-aa01-df670147e443",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "cc229a52-76ce-4030-b627-1fcdf8895e22",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/cc229a52-76ce-4030-b627-1fcdf8895e22"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/59963d0a-b108-445e-aa01-df670147e443"
+               },
+               {
+                  "id": "8c805af7-f3c1-4d59-bb92-df8d6359d1ef",
+                  "name": "New Query 1",
+                  "path": "My Queries/New Query 1",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/8c805af7-f3c1-4d59-bb92-df8d6359d1ef"
+               },
+               {
+                  "id": "93ca504e-a23c-4287-91b6-dfbd75b928c7",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "8d3eb18f-f7f9-4456-87b7-e36b013f8c82",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/8d3eb18f-f7f9-4456-87b7-e36b013f8c82"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/93ca504e-a23c-4287-91b6-dfbd75b928c7"
+               },
+               {
+                  "id": "eaa77225-f81f-46b6-8b37-e38424606fc0",
+                  "name": "New Query 1",
+                  "path": "My Queries/New Query 1",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/eaa77225-f81f-46b6-8b37-e38424606fc0"
+               },
+               {
+                  "id": "df241e29-d7c1-4b23-aebb-e3b1e7fe7258",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "a0b69d8b-eba0-4865-b16b-9e06132499da",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a0b69d8b-eba0-4865-b16b-9e06132499da"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/df241e29-d7c1-4b23-aebb-e3b1e7fe7258"
+               },
+               {
+                  "id": "72e37d90-04b3-437c-8a3a-e6d56d1c66ff",
+                  "name": "New Query 1",
+                  "path": "My Queries/New Query 1",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/72e37d90-04b3-437c-8a3a-e6d56d1c66ff"
+               },
+               {
+                  "id": "46a4cb0b-5dd8-423d-89bd-ef8c4dd34037",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "ec9f83e8-2732-4745-ad28-aaf0f300d1bf",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/ec9f83e8-2732-4745-ad28-aaf0f300d1bf"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/46a4cb0b-5dd8-423d-89bd-ef8c4dd34037"
+               },
+               {
+                  "id": "4bac6574-3852-4c7b-a273-ef9409c7b384",
+                  "name": "Onehop",
+                  "path": "My Queries/Onehop",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/4bac6574-3852-4c7b-a273-ef9409c7b384"
+               },
+               {
+                  "id": "49a97016-3d6a-4c86-9858-efefacf6fbe9",
+                  "name": "All Work",
+                  "path": "My Queries/All Work",
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/49a97016-3d6a-4c86-9858-efefacf6fbe9"
+               },
+               {
+                  "id": "e47e5930-e93d-4cc0-b049-f2dfb645fd07",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "d6eda571-e862-425a-baf0-506730513ce3",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/d6eda571-e862-425a-baf0-506730513ce3"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/e47e5930-e93d-4cc0-b049-f2dfb645fd07"
+               },
+               {
+                  "id": "4da0b91e-a751-44ed-85e8-f57cd8564957",
+                  "name": "Website",
+                  "path": "My Queries/Website",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "314ddfda-34bc-41c9-9acf-71ebfc8b8d9a",
+                        "name": "Active Bugs",
+                        "path": "My Queries/Website/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": false,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/314ddfda-34bc-41c9-9acf-71ebfc8b8d9a"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": false,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/4da0b91e-a751-44ed-85e8-f57cd8564957"
+               }
+            ],
+            "isPublic": false,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/3c65fbc1-d427-48ce-9091-633dde9e27e2"
+         },
+         {
+            "id": "eb5c1e25-9b3e-4416-a833-e500122882c7",
+            "name": "Shared Queries",
+            "path": "Shared Queries",
+            "isFolder": true,
+            "hasChildren": true,
+            "children": [
+               {
+                  "id": "761fdaab-173f-490f-844b-041352e12a46",
+                  "name": "Website team",
+                  "path": "Shared Queries/Website team",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "a361e0f3-34e1-41b6-9c37-c36eb6bda320",
+                        "name": "Active Bugs",
+                        "path": "Shared Queries/Website team/Active Bugs",
+                        "isDeleted": true,
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a361e0f3-34e1-41b6-9c37-c36eb6bda320"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/761fdaab-173f-490f-844b-041352e12a46"
+               },
+               {
+                  "id": "95cd9466-84e9-4d41-bebd-17b7a897f1e5",
+                  "name": "Product Backlog",
+                  "path": "Shared Queries/Product Backlog",
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/95cd9466-84e9-4d41-bebd-17b7a897f1e5"
+               },
+               {
+                  "id": "7662ea76-d42d-43db-abb0-19e6f1d0be9b",
+                  "name": "Feedback",
+                  "path": "Shared Queries/Feedback",
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7662ea76-d42d-43db-abb0-19e6f1d0be9b"
+               },
+               {
+                  "id": "fb1c8967-e9f0-46fa-9cac-1cbb05f414fe",
+                  "name": "All Bugs",
+                  "path": "Shared Queries/All Bugs",
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/fb1c8967-e9f0-46fa-9cac-1cbb05f414fe"
+               },
+               {
+                  "id": "a6a14cf5-3c47-4297-87d9-57bc4abc8ac8",
+                  "name": "Website Team",
+                  "path": "Shared Queries/Website Team",
+                  "isFolder": true,
+                  "hasChildren": false,
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/a6a14cf5-3c47-4297-87d9-57bc4abc8ac8"
+               },
+               {
+                  "id": "d6d5c8dd-2901-4876-9ef4-c88b5049d616",
+                  "name": "Parents and Children",
+                  "path": "Shared Queries/Parents and Children",
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/d6d5c8dd-2901-4876-9ef4-c88b5049d616"
+               },
+               {
+                  "id": "955eb00e-83d7-42ea-9278-f051c15ee9d0",
+                  "name": "Website team",
+                  "path": "Shared Queries/Website team",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "fe2c589b-e714-48c3-941c-e1b9fb6a866c",
+                        "name": "All Bugs",
+                        "path": "Shared Queries/Website team/All Bugs",
+                        "isDeleted": true,
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/fe2c589b-e714-48c3-941c-e1b9fb6a866c"
+                     }
+                  ],
+                  "isDeleted": true,
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/955eb00e-83d7-42ea-9278-f051c15ee9d0"
+               },
+               {
+                  "id": "139a3503-6ac6-4fa0-9a91-f76f180e7b65",
+                  "name": "Current Sprint",
+                  "path": "Shared Queries/Current Sprint",
+                  "isFolder": true,
+                  "hasChildren": true,
+                  "children": [
+                     {
+                        "id": "03fe5df2-f88a-4f1d-a29e-05c5588920d2",
+                        "name": "Unfinished Work",
+                        "path": "Shared Queries/Current Sprint/Unfinished Work",
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/03fe5df2-f88a-4f1d-a29e-05c5588920d2"
+                     },
+                     {
+                        "id": "5219b150-9c7e-4d42-9fa6-07546a67aae3",
+                        "name": "Open Impediments",
+                        "path": "Shared Queries/Current Sprint/Open Impediments",
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/5219b150-9c7e-4d42-9fa6-07546a67aae3"
+                     },
+                     {
+                        "id": "2469c406-13af-4e41-8315-290f9bd0efd6",
+                        "name": "Work in Progress",
+                        "path": "Shared Queries/Current Sprint/Work in Progress",
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/2469c406-13af-4e41-8315-290f9bd0efd6"
+                     },
+                     {
+                        "id": "7fabe7bd-1f50-4be1-a021-6cb655eec86f",
+                        "name": "Blocked Tasks",
+                        "path": "Shared Queries/Current Sprint/Blocked Tasks",
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/7fabe7bd-1f50-4be1-a021-6cb655eec86f"
+                     },
+                     {
+                        "id": "6e511ae8-aafe-455a-b318-a4158bbd0f1e",
+                        "name": "Test Cases",
+                        "path": "Shared Queries/Current Sprint/Test Cases",
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/6e511ae8-aafe-455a-b318-a4158bbd0f1e"
+                     },
+                     {
+                        "id": "47d90993-13fb-4691-a3e2-dde8cd47d9f8",
+                        "name": "Sprint Backlog",
+                        "path": "Shared Queries/Current Sprint/Sprint Backlog",
+                        "isDeleted": true,
+                        "isPublic": true,
+                        "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/47d90993-13fb-4691-a3e2-dde8cd47d9f8"
+                     }
+                  ],
+                  "isPublic": true,
+                  "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/139a3503-6ac6-4fa0-9a91-f76f180e7b65"
+               }
+            ],
+            "isPublic": true,
+            "url": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/6ce954b1-ce1f-45d1-b94d-e6bf2464ba2c/_apis/wit/queries/eb5c1e25-9b3e-4416-a833-e500122882c7"
+         }
+      ]
+   }
+}

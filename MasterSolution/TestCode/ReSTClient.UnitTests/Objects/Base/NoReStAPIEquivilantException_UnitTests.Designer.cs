@@ -43,9 +43,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -56,8 +56,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
             Exception _retVal = default(Exception);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetBaseException_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetBaseException(); },
+                instance => { GetBaseException_PreCondition(instance); },
+                instance => { return _retVal = instance.GetBaseException(); },
                 instance => { GetBaseException_PostValidate(instance, _retVal); });
         }
 
@@ -68,8 +68,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -85,7 +85,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
                 {
                     info = default(SerializationInfo); //No Constructor
                     context = default(StreamingContext); //No Constructor
-                    GetObjectData_PreCondition(ref instance, ref info, ref context);
+                    GetObjectData_PreCondition(instance, ref info, ref context);
                 },
                 instance => { instance.GetObjectData(info, context); },
                 instance => { GetObjectData_PostValidate(instance, info, context); });
@@ -98,8 +98,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -256,18 +256,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Data_SetCondition(ref NoReStAPIEquivilantException instance, ref IDictionary setValue);
         partial void Equals_PostValidate(NoReStAPIEquivilantException instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref NoReStAPIEquivilantException instance, ref Object obj);
+        partial void Equals_PreCondition(NoReStAPIEquivilantException instance, ref Object obj);
         partial void GetBaseException_PostValidate(NoReStAPIEquivilantException instance, Exception _retVal);
-        partial void GetBaseException_PreCondition(ref NoReStAPIEquivilantException instance);
+        partial void GetBaseException_PreCondition(NoReStAPIEquivilantException instance);
         partial void GetHashCode_PostValidate(NoReStAPIEquivilantException instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref NoReStAPIEquivilantException instance);
+        partial void GetHashCode_PreCondition(NoReStAPIEquivilantException instance);
         internal static IEnumerable<NoReStAPIEquivilantException> GetIEnumerableInstance() { return new List<NoReStAPIEquivilantException> {GetInstance()}; }
 
         internal static NoReStAPIEquivilantException GetInstance([CallerMemberName] string callerName = "")
@@ -278,9 +278,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         }
 
         partial void GetObjectData_PostValidate(NoReStAPIEquivilantException instance, SerializationInfo info, StreamingContext context);
-        partial void GetObjectData_PreCondition(ref NoReStAPIEquivilantException instance, ref SerializationInfo info, ref StreamingContext context);
+        partial void GetObjectData_PreCondition(NoReStAPIEquivilantException instance, ref SerializationInfo info, ref StreamingContext context);
         partial void GetType_PostValidate(NoReStAPIEquivilantException instance, Type _retVal);
-        partial void GetType_PreCondition(ref NoReStAPIEquivilantException instance);
+        partial void GetType_PreCondition(NoReStAPIEquivilantException instance);
         partial void HResult_SetCondition(ref NoReStAPIEquivilantException instance, ref Int32 setValue);
 
         partial void HelpLink_SetCondition(ref NoReStAPIEquivilantException instance, ref String setValue);
@@ -292,6 +292,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.Base
         partial void StackTrace_SetCondition(ref NoReStAPIEquivilantException instance, ref String setValue);
         partial void TargetSite_SetCondition(ref NoReStAPIEquivilantException instance, ref MethodBase setValue);
         partial void ToString_PostValidate(NoReStAPIEquivilantException instance, String _retVal);
-        partial void ToString_PreCondition(ref NoReStAPIEquivilantException instance);
+        partial void ToString_PreCondition(NoReStAPIEquivilantException instance);
     }
 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DynCon.OSI.Core.Helpers;
 using DynCon.OSI.VSO.ReSTClient.LowLevelAPIs;
 using DynCon.OSI.VSO.RestClient.ObjectModel.TFS.WorkItemTracking.Client;
+using DynCon.OSI.VSO.ReSTClient.Objects.WIT;
 using DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client;
 using DynCon.OSI.VSO.SharedInterfaces.APIs;
 using DynCon.OSI.VSO.SharedInterfaces.Objects.WIT;
@@ -30,7 +31,7 @@ namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
         /// <returns>IWorkItem.</returns>
         public IWorkItem BuildWorkItem(string projectName, string workItemType, IReadOnlyList<KeyValuePair<string, object>> fieldValues)
         {
-            var result = r_JsonAPI.BuildWorkItem(projectName, workItemType, fieldValues, WorkItemImpl.FromToken);
+            var result = JsonWitAPI.BuildWorkItem(projectName, workItemType, fieldValues, WorkItemImpl.FromToken);
             return result;
         }
 
@@ -41,7 +42,28 @@ namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
         /// <param name="workItem">The work item.</param>
         /// <returns>Task&lt;IWorkItem&gt;.</returns>
         /// <exception cref="ToBeImplementedException"></exception>
-        public Task<IWorkItem> CreateWorkItem(string project, IWorkItem workItem) { throw new ToBeImplementedException(); }
+        public Task<IWorkItem> CreateWorkItem(string project, IWorkItem workItem)
+        {
+            string workItemType = workItem.Type.Name;
+            var fieldValues = new List<KeyValuePair<string, object>>();
+            for (int index = 0; index < workItem.Fields.Count; ++index)
+            {
+                var item = workItem.Fields[index];
+                var fieldName = item.Name;
+                var fieldValue = item.Value;
+                fieldValues.Add(new KeyValuePair<string, object>(fieldName, fieldValue));
+            }
+            JsonWorkItem jWorkItem = JsonWitAPI.BuildWorkItem(project, workItemType, fieldValues);
+            var internalTask = r_JsonAPI.CreateWorkItem(project, workItemType, jWorkItem, true);
+            var result = new Task<IWorkItem>(() =>
+            {
+                internalTask.Wait();
+                // TODO Transfer State from jWorkItem to workItem;
+                return workItem;
+            });
+            result.Start();
+            return result;
+        }
 
         /// <summary>
         /// Gets the areas.
@@ -62,7 +84,7 @@ namespace DynCon.OSI.VSO.RestClient.ObjectModel.APIs
         /// <returns>Task&lt;IReadOnlyList&lt;IIteration&gt;&gt;.</returns>
         public async Task<IReadOnlyList<IIteration>> GetIterations(string project, int depth)
        {
-           var result = await r_JsonAPI.GetIterations(project, depth, IterationImpl.FromToken);
+           var result = await r_JsonAPI.GetAllIterations(project, depth, IterationImpl.FromToken);
             return result;
         }
 

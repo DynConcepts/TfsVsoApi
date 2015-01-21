@@ -19,33 +19,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.APIs
     public class WorkItemAPI_UnitTests
     {
         /// <summary>
-        ///     Assemblies the cleanup.
-        /// </summary>
-        [AssemblyCleanup]
-        public static void AssemblyCleanup() { StructuredExchangeLogger.Uninstall(); }
-
-        /// <summary>
-        ///     Assemblies the initialize.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        [AssemblyInitialize]
-        public static void AssemblyInitialize(TestContext context)
-        {
-            //CredentialsStore credentials = new CredentialsStore();
-            //credentials.BasicAuthorizationUsername = "*****";
-            //credentials.BasicAuthorizationPassword = "*****";
-            //credentials.VsoCollection = "https://*****.visualstudio.com/defaultcollection";
-            //CredentialsProvider.Write(@"..\..\RestCredentials.xml", credentials);
-            CredentialsStore credentials = CredentialsProvider.Read(@"..\..\..\RestCredentials.xml");
-
-            RestClientManager.BasicAuthorizationUsername = credentials.BasicAuthorizationUsername;
-            RestClientManager.BasicAuthorizationPassword = credentials.BasicAuthorizationPassword;
-            VSOClientManager.VsoCollection = credentials.VsoCollection;
-
-            StructuredExchangeLogger.Install();
-        }
-
-        /// <summary>
         ///     Builds the work item_ unit test.
         /// </summary>
         [TestMethod]
@@ -56,7 +29,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.APIs
             {
                 new KeyValuePair<string, object>("System.Title", "Sample Title"),
             };
-            JsonWorkItem workItem = api.BuildWorkItem("RestPlaypen", "Task", fieldValues);
+            JsonWorkItem workItem = JsonWitAPI.BuildWorkItem("RestPlaypen", "Task", fieldValues);
             Assert.IsNotNull(workItem);
         }
 
@@ -76,7 +49,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.APIs
 //                new KeyValuePair<string, object>("System.Project", "RestPlaypen"),
 //                new KeyValuePair<string, object>("System.WorkItemType", "Task")
             };
-            JsonWorkItem workItem = api.BuildWorkItem(project, workItemType, fieldValues);
+            JsonWorkItem workItem = JsonWitAPI.BuildWorkItem(project, workItemType, fieldValues);
             Task<JsonWorkItem> createTask = api.CreateWorkItem(project, workItemType, workItem, false);
             JsonWorkItem finalResult = createTask.Result;
             Assert.IsNotNull(finalResult);
@@ -114,12 +87,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.OriginalManualTfs.APIs
         ///     Gets the iterations_ unit test.
         /// </summary>
         [TestMethod]
-        public void GetIterations_UnitTest()
+        public void GetAllIterations_UnitTest()
         {
             JsonWitAPI api = APIFactory.JsonWorkItemAPI;
             const string project = "RestPlaypen";
 
-            Task<IReadOnlyList<JsonIteration>> task = api.GetIterations(project, 999);
+            Task<IReadOnlyList<JsonIteration>> task = api.GetAllIterations(project, 999);
             IReadOnlyList<JsonIteration> result = task.Result;
             Assert.IsNotNull(result);
         }

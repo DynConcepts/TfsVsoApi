@@ -23,7 +23,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     newFields = default(JToken); //No Constructor
-                    CaptureJson_PreCondition(ref instance, ref newFields);
+                    CaptureJson_PreCondition(instance, ref newFields);
                 },
                 instance => { instance.CaptureJson(newFields); },
                 instance => { CaptureJson_PostValidate(instance, newFields); });
@@ -41,7 +41,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 {
                     array = default(Array); //No Constructor
                     index = default(Int32); //No Constructor
-                    CopyTo_PreCondition(ref instance, ref array, ref index);
+                    CopyTo_PreCondition(instance, ref array, ref index);
                 },
                 instance => { instance.CopyTo(array, index); },
                 instance => { CopyTo_PostValidate(instance, array, index); });
@@ -76,9 +76,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -93,9 +93,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     token = default(JToken); //No Constructor
-                    FromToken_PreCondition(ref instance, ref token);
+                    FromToken_PreCondition(instance, ref token);
                 },
-                instance => { _retVal = JsonFieldDefinitionCollection.FromToken(token); },
+                instance => { return _retVal = JsonFieldDefinitionCollection.FromToken(token); },
                 instance => { FromToken_PostValidate(instance, token, _retVal); });
         }
 
@@ -110,9 +110,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
                 instance =>
                 {
                     referenceName = default(String); //No Constructor
-                    GetDefinition_PreCondition(ref instance, ref referenceName);
+                    GetDefinition_PreCondition(instance, ref referenceName);
                 },
-                instance => { _retVal = JsonFieldDefinitionCollection.GetDefinition(referenceName); },
+                instance => { return _retVal = JsonFieldDefinitionCollection.GetDefinition(referenceName); },
                 instance => { GetDefinition_PostValidate(instance, referenceName, _retVal); });
         }
 
@@ -123,8 +123,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             IEnumerator<JsonFieldDefinition> _retVal = default(IEnumerator<JsonFieldDefinition>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetEnumerator_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetEnumerator(); },
+                instance => { GetEnumerator_PreCondition(instance); },
+                instance => { return _retVal = instance.GetEnumerator(); },
                 instance => { GetEnumerator_PostValidate(instance, _retVal); });
         }
 
@@ -135,8 +135,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -147,8 +147,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -195,8 +195,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToJSonString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToJSonString(); },
+                instance => { ToJSonString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToJSonString(); },
                 instance => { ToJSonString_PostValidate(instance, _retVal); });
         }
 
@@ -207,28 +207,28 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void CaptureJson_PostValidate(JsonFieldDefinitionCollection instance, JToken newFields);
-        partial void CaptureJson_PreCondition(ref JsonFieldDefinitionCollection instance, ref JToken newFields);
+        partial void CaptureJson_PreCondition(JsonFieldDefinitionCollection instance, ref JToken newFields);
         partial void CopyTo_PostValidate(JsonFieldDefinitionCollection instance, Array array, Int32 index);
-        partial void CopyTo_PreCondition(ref JsonFieldDefinitionCollection instance, ref Array array, ref Int32 index);
+        partial void CopyTo_PreCondition(JsonFieldDefinitionCollection instance, ref Array array, ref Int32 index);
         partial void Count_SetCondition(ref JsonFieldDefinitionCollection instance, ref Int32 setValue);
 
         partial void Equals_PostValidate(JsonFieldDefinitionCollection instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonFieldDefinitionCollection instance, ref Object obj);
+        partial void Equals_PreCondition(JsonFieldDefinitionCollection instance, ref Object obj);
         partial void FromToken_PostValidate(JsonFieldDefinitionCollection instance, JToken token, JsonFieldDefinitionCollection _retVal);
-        partial void FromToken_PreCondition(ref JsonFieldDefinitionCollection instance, ref JToken token);
+        partial void FromToken_PreCondition(JsonFieldDefinitionCollection instance, ref JToken token);
         partial void GetDefinition_PostValidate(JsonFieldDefinitionCollection instance, String referenceName, JsonFieldDefinition _retVal);
-        partial void GetDefinition_PreCondition(ref JsonFieldDefinitionCollection instance, ref String referenceName);
+        partial void GetDefinition_PreCondition(JsonFieldDefinitionCollection instance, ref String referenceName);
         partial void GetEnumerator_PostValidate(JsonFieldDefinitionCollection instance, IEnumerator<JsonFieldDefinition> _retVal);
-        partial void GetEnumerator_PreCondition(ref JsonFieldDefinitionCollection instance);
+        partial void GetEnumerator_PreCondition(JsonFieldDefinitionCollection instance);
 
         partial void GetHashCode_PostValidate(JsonFieldDefinitionCollection instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonFieldDefinitionCollection instance);
+        partial void GetHashCode_PreCondition(JsonFieldDefinitionCollection instance);
         internal static IEnumerable<JsonFieldDefinitionCollection> GetIEnumerableInstance() { return new List<JsonFieldDefinitionCollection> {GetInstance()}; }
 
         internal static JsonFieldDefinitionCollection GetInstance([CallerMemberName] string callerName = "")
@@ -241,7 +241,7 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
         }
 
         partial void GetType_PostValidate(JsonFieldDefinitionCollection instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonFieldDefinitionCollection instance);
+        partial void GetType_PreCondition(JsonFieldDefinitionCollection instance);
         static partial void InstanceFactory(ref JsonFieldDefinitionCollection instance, [CallerMemberName] string callerName = "");
 
         partial void IsReadOnly_SetCondition(ref JsonFieldDefinitionCollection instance, ref Boolean setValue);
@@ -249,8 +249,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT.Collections
 
         partial void JsonValue_SetCondition(ref JsonFieldDefinitionCollection instance, ref JToken setValue);
         partial void ToJSonString_PostValidate(JsonFieldDefinitionCollection instance, String _retVal);
-        partial void ToJSonString_PreCondition(ref JsonFieldDefinitionCollection instance);
+        partial void ToJSonString_PreCondition(JsonFieldDefinitionCollection instance);
         partial void ToString_PostValidate(JsonFieldDefinitionCollection instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonFieldDefinitionCollection instance);
+        partial void ToString_PreCondition(JsonFieldDefinitionCollection instance);
     }
 }

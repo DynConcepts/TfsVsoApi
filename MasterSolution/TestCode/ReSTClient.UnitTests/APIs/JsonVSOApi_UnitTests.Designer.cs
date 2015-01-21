@@ -24,9 +24,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -37,8 +37,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
             Task<IReadOnlyList<JsonAvailableRestCall>> _retVal = default(Task<IReadOnlyList<JsonAvailableRestCall>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetAvailableRestCalls_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetAvailableRestCalls(); },
+                instance => { GetAvailableRestCalls_PreCondition(instance); },
+                instance => { return _retVal = instance.GetAvailableRestCalls(); },
                 instance => { GetAvailableRestCalls_PostValidate(instance, _retVal); });
         }
 
@@ -49,8 +49,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -61,8 +61,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -73,18 +73,18 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Equals_PostValidate(JsonVSOApi instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonVSOApi instance, ref Object obj);
+        partial void Equals_PreCondition(JsonVSOApi instance, ref Object obj);
         partial void GetAvailableRestCalls_PostValidate(JsonVSOApi instance, Task<IReadOnlyList<JsonAvailableRestCall>> _retVal);
-        partial void GetAvailableRestCalls_PreCondition(ref JsonVSOApi instance);
+        partial void GetAvailableRestCalls_PreCondition(JsonVSOApi instance);
 
         partial void GetHashCode_PostValidate(JsonVSOApi instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonVSOApi instance);
+        partial void GetHashCode_PreCondition(JsonVSOApi instance);
         internal static IEnumerable<JsonVSOApi> GetIEnumerableInstance() { return new List<JsonVSOApi> {GetInstance()}; }
 
         internal static JsonVSOApi GetInstance([CallerMemberName] string callerName = "")
@@ -95,9 +95,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.APIs
         }
 
         partial void GetType_PostValidate(JsonVSOApi instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonVSOApi instance);
+        partial void GetType_PreCondition(JsonVSOApi instance);
         static partial void InstanceFactory(ref JsonVSOApi instance, [CallerMemberName] string callerName = "");
         partial void ToString_PostValidate(JsonVSOApi instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonVSOApi instance);
+        partial void ToString_PreCondition(JsonVSOApi instance);
     }
 }

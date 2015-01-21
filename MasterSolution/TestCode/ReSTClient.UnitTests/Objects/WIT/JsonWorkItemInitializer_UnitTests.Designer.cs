@@ -23,9 +23,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -36,8 +36,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -48,8 +48,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -116,15 +116,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Equals_PostValidate(JsonWorkItemInitializer instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonWorkItemInitializer instance, ref Object obj);
+        partial void Equals_PreCondition(JsonWorkItemInitializer instance, ref Object obj);
         partial void GetHashCode_PostValidate(JsonWorkItemInitializer instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonWorkItemInitializer instance);
+        partial void GetHashCode_PreCondition(JsonWorkItemInitializer instance);
         internal static IEnumerable<JsonWorkItemInitializer> GetIEnumerableInstance() { return new List<JsonWorkItemInitializer> {GetInstance()}; }
 
         internal static JsonWorkItemInitializer GetInstance([CallerMemberName] string callerName = "")
@@ -135,12 +135,12 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects.WIT
         }
 
         partial void GetType_PostValidate(JsonWorkItemInitializer instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonWorkItemInitializer instance);
+        partial void GetType_PreCondition(JsonWorkItemInitializer instance);
         static partial void InstanceFactory(ref JsonWorkItemInitializer instance, [CallerMemberName] string callerName = "");
 
         partial void LinkTypeEndInitializer_SetCondition(ref JsonWorkItemInitializer instance, ref IParameterizedLazyWithReset<JsonRelatedLink, JsonLinkTypeEnd> setValue);
         partial void OtherItemInitializer_SetCondition(ref JsonWorkItemInitializer instance, ref IParameterizedLazyWithReset<JsonRelatedLink, JsonWorkItem> setValue);
         partial void ToString_PostValidate(JsonWorkItemInitializer instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonWorkItemInitializer instance);
+        partial void ToString_PreCondition(JsonWorkItemInitializer instance);
     }
 }

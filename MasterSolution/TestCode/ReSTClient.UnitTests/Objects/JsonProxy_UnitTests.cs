@@ -7,6 +7,6 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.Objects
     /// <summary>Generated Test Template</summary>
     public partial class JsonProxy_UnitTests : DynTestClassBase
     {
-        partial void FromToken_PreCondition(ref JsonProxy instance, ref JToken json) { json = new JObject(); }
+        partial void FromToken_PreCondition(JsonProxy instance, ref JToken json) { json = new JObject(); }
     }
 }

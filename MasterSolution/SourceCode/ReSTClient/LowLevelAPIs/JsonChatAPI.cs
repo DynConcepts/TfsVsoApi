@@ -14,13 +14,15 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
     internal class JsonChatAPI : VsoRestAPIBase
     {
         /// <summary>
-        ///     Gets the messages.
+        /// Gets the messages.
         /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetMessages()
+        /// <param name="roomId">The room identifier.</param>
+        /// <returns>Task&lt;IReadOnlyList&lt;JsonRoomMember&gt;&gt;.</returns>
+        public async Task<IReadOnlyList<JsonRoomMessage>> GetMessages(string roomId)
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(ChatRestCalls.Messages);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            exchange.SetRoute("{roomId}", roomId);
+            IReadOnlyList<JsonRoomMessage> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonRoomMessage.FromToken));
             return result;
         }
 
@@ -36,13 +38,15 @@ namespace DynCon.OSI.VSO.ReSTClient.LowLevelAPIs
         }
 
         /// <summary>
-        ///     Gets the users.
+        /// Gets the users.
         /// </summary>
-        /// <returns>Task&lt;IReadOnlyList&lt;JsonGeneralPurposeObject&gt;&gt;.</returns>
-        public async Task<IReadOnlyList<JsonGeneralPurposeObject>> GetUsers()
+        /// <param name="roomId">The room identifier.</param>
+        /// <returns>Task&lt;IReadOnlyList&lt;JsonRoomMember&gt;&gt;.</returns>
+        public async Task<IReadOnlyList<JsonRoomMember>> GetUsers(string roomId)
         {
             StructuredHttpExchange exchange = StructuredHttpExchange.Get(ChatRestCalls.Users);
-            IReadOnlyList<JsonGeneralPurposeObject> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonGeneralPurposeObject.FromToken));
+            exchange.SetRoute("{roomId}", roomId);
+            IReadOnlyList<JsonRoomMember> result = await ProcessCollectionRequest(exchange, o => JsonParsers.ValuesToObjects(o, JsonRoomMember.FromToken));
             return result;
         }
     }

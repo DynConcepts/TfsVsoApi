@@ -2,8 +2,8 @@ using DynCon.OSI.DynTest;
 
 namespace DynCon.OSI.VSO.ReSTClient.UnitTests.RestCalls
 {
-    /// <summary>Generated Test Template</summary>
-    public partial class BuildRestCalls_UnitTests : DynTestClassBase
-    {
-    }
+/// <summary>Generated Test Template</summary>
+  public partial class BuildRestCalls_UnitTests : DynTestClassBase 
+  {
+  }
 }

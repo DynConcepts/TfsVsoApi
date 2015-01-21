@@ -454,7 +454,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
             }
             else
             {
-                result = APIFactory().UpdateWorkItem(ProjectName, this);
+                result = APIFactory().UpdateWorkItem(this);
             }
             result.Wait();
         }
@@ -611,7 +611,7 @@ namespace DynCon.OSI.VSO.ReSTClient.TFS.WorkItemTracking.Client
 
         private static LinkCollectionImpl DeferredLoadLinks(JsonWorkItem workItem)
         {
-            LinkCollectionImpl result = APIFactory().GetLinksForWorkItem(workItem, LinkCollectionImpl.FromToken).Result;
+            LinkCollectionImpl result = APIFactory().GetLinksForWorkItemRevision(workItem, LinkCollectionImpl.FromToken).Result;
             return result;
         }
 

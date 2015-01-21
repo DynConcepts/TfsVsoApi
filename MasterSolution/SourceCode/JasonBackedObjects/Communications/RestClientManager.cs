@@ -112,9 +112,15 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
                 catch (AggregateException ex)
                 {
                     exchange.RecordException(ex);
-                    thrownException = ex;
                     if (ex.InnerExceptions.Count == 1)
-                        throw ex.InnerException;
+                    {
+                        Exception innerException = ex.InnerException;
+                        exchange.RecordException(innerException);
+                        thrownException = innerException;
+                        throw innerException;
+                    }
+                    exchange.RecordException(ex);
+                    thrownException = ex;
                     throw;
                 }
                 catch (Exception ex)
@@ -196,7 +202,7 @@ namespace DynCon.OSI.JasonBackedObjects.Communications
             if (!response.IsSuccessStatusCode)
             {
                 string message = String.Format("Response Code: {0} on {1}", response.StatusCode, request.RequestUri);
-                throw new Exception(message);
+                throw new FailedRestCallException(message);
             }
         }
 

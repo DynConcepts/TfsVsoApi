@@ -7,6 +7,41 @@ namespace DynCon.OSI.VSO.ReSTClient.RestCalls
     /// </summary>
     internal class GitRestCalls
     {
+/*
+/git/repositories/{repositoryId}/blobs/{objectId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/blobs/61a86fdaa79e5c6f5fb6e4026508489feb6ed92c?api-version=1.0
+/git/repositories/{repositoryId}/commits		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/commits?api-version=1.0
+/git/repositories/{repositoryId}/commits/{commitId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/commits/be67f8871a4d2c75f13a51c1d3c30ac0d74d4ef4?api-version=1.0
+/git/repositories/{repositoryId}/commits/{commitId}/changes		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/commits/be67f8871a4d2c75f13a51c1d3c30ac0d74d4ef4/changes?top=2&skip=10&api-version=1.0
+/git/repositories/{repositoryId}/pushes/{pushId}/commits		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pushes/1/commits?api-version=1.0
+/git/repositories/{repositoryId}/commitsBatch		POST		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/commitsBatch?api-version=1.0
+/git/repositories/{repositoryId}/diffs/commits		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/diffs/commits?targetVersion=master&baseVersion=develop&api-version=1.0
+/git/repositories/{repoId}/items		GET		http://localhost:8080/tfs/DefaultCollection/_apis/git/repositories/18b70da6-63c5-4767-a77d-7847538e05f1/items
+/git/repositories/{repositoryId}/items		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/items?scopePath=/MyWebSite/MyWebSite/Views/Home/_Home.cshtml&api-version=1.0
+/git/repositories/{repositoryId}/itemsBatch		POST		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/itemsBatch?api-version=1.0
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{additionalReviewerId}		DELETE		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers/19d9411e-9a34-45bb-b985-d24d9d87c0c9?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{additionalReviewerId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers/19d9411e-9a34-45bb-b985-d24d9d87c0c9?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}		PATCH		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests		POST		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{additionalReviewerId}		PUT		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers/19d9411e-9a34-45bb-b985-d24d9d87c0c9?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{initialReviewerId}		PUT		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers/3b5f0c34-4aec-4bf4-8708-1d36f0dbc468?api-version=1.0-preview.1
+/git/repositories/{repositoryId}/pushes		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pushes?api-version=1.0
+/git/repositories/{repositoryId}/pushes/{pushId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pushes/23?api-version=1.0
+/git/repositories/{tempRepoId}/pushes		POST		_apis/git/repositories/8ee9091d-0f54-4633-9bb2-b5ac74855a46/pushes?api-version=2.0-preview
+/git/repositories/{repositoryId}/refs		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/refs?api-version=1.0
+/git/repositories/{repositoryId}/refs/heads		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/refs/heads?api-version=1.0
+/git/repositories/{repositoryId}/refs/tags		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/refs/tags?api-version=1.0
+/git/repositories/{repositoryId}		DELETE		_apis/git/repositories/5febef5a-833d-4e14-b9c0-14cb638f91e6?api-version=1.0
+/git/repositories		GET		_apis/git/repositories?api-version=1.0
+/git/repositories/{repositoryId}		GET		_apis/git/repositories/5febef5a-833d-4e14-b9c0-14cb638f91e6?api-version=1.0
+/git/repositories/{repositoryId}		PATCH		_apis/git/repositories/5febef5a-833d-4e14-b9c0-14cb638f91e6?api-version=1.0
+/git/repositories		POST		_apis/git/repositories?api-version=1.0
+/git/repositories/{repositoryId}/stats/branches		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/stats/branches?api-version=1.0
+/git/repositories/{repositoryId}/stats/branches/{name}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/stats/branches/develop?api-version=1.0
+/git/repositories/{repositoryId}/trees/{objectId}		GET		_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/trees/d1d5c2d49045d52bba6419652d6ecb2cd560dc29?api-version=1.0
+*/
         /// <summary>
         ///     Gets the blobs0.
         /// </summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DynCon.OSI.JasonBackedObjects.Communications;
 using DynCon.OSI.VSO.ReSTClient.Objects;
+using DynCon.OSI.VSO.ReSTClient.Objects.Projects;
 using Newtonsoft.Json.Linq;
 
 namespace DynCon.OSI.VSO.ReSTClient.APIs

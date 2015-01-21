@@ -25,9 +25,9 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
                 instance =>
                 {
                     obj = new Object();
-                    Equals_PreCondition(ref instance, ref obj);
+                    Equals_PreCondition(instance, ref obj);
                 },
-                instance => { _retVal = instance.Equals(obj); },
+                instance => { return _retVal = instance.Equals(obj); },
                 instance => { Equals_PostValidate(instance, obj, _retVal); });
         }
 
@@ -38,8 +38,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Int32 _retVal = default(Int32);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetHashCode_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetHashCode(); },
+                instance => { GetHashCode_PreCondition(instance); },
+                instance => { return _retVal = instance.GetHashCode(); },
                 instance => { GetHashCode_PostValidate(instance, _retVal); });
         }
 
@@ -47,11 +47,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         [TestMethod]
         public void GetMessages_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonRoomMessage>> _retVal = default(Task<IReadOnlyList<JsonRoomMessage>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetMessages_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetMessages(); },
+                instance => { GetMessages_PreCondition(instance); },
+                instance =>
+                {
+                    string roomId = instance.GetRooms().Result[0].Id;
+                    return _retVal = instance.GetMessages(roomId);
+                },
                 instance => { GetMessages_PostValidate(instance, _retVal); });
         }
 
@@ -62,8 +66,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Task<IReadOnlyList<JsonRoom>> _retVal = default(Task<IReadOnlyList<JsonRoom>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetRooms_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetRooms(); },
+                instance => { GetRooms_PreCondition(instance); },
+                instance => { return _retVal = instance.GetRooms(); },
                 instance => { GetRooms_PostValidate(instance, _retVal); });
         }
 
@@ -74,8 +78,8 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             Type _retVal = default(Type);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetType_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetType(); },
+                instance => { GetType_PreCondition(instance); },
+                instance => { return _retVal = instance.GetType(); },
                 instance => { GetType_PostValidate(instance, _retVal); });
         }
 
@@ -83,11 +87,15 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
         [TestMethod]
         public void GetUsers_UnitTest()
         {
-            Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal = default(Task<IReadOnlyList<JsonGeneralPurposeObject>>);
+            Task<IReadOnlyList<JsonRoomMember>> _retVal = default(Task<IReadOnlyList<JsonRoomMember>>);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { GetUsers_PreCondition(ref instance); },
-                instance => { _retVal = instance.GetUsers(); },
+                instance => { GetUsers_PreCondition(instance); },
+                instance =>
+                {
+                    string roomId = instance.GetRooms().Result[0].Id;
+                    return _retVal = instance.GetUsers(roomId);
+                },
                 instance => { GetUsers_PostValidate(instance, _retVal); });
         }
 
@@ -98,16 +106,16 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             String _retVal = default(String);
             ExecuteMethod(
                 () => { return GetInstance(); },
-                instance => { ToString_PreCondition(ref instance); },
-                instance => { _retVal = instance.ToString(); },
+                instance => { ToString_PreCondition(instance); },
+                instance => { return _retVal = instance.ToString(); },
                 instance => { ToString_PostValidate(instance, _retVal); });
         }
 
         partial void Equals_PostValidate(JsonChatAPI instance, Object obj, Boolean _retVal);
-        partial void Equals_PreCondition(ref JsonChatAPI instance, ref Object obj);
+        partial void Equals_PreCondition(JsonChatAPI instance, ref Object obj);
 
         partial void GetHashCode_PostValidate(JsonChatAPI instance, Int32 _retVal);
-        partial void GetHashCode_PreCondition(ref JsonChatAPI instance);
+        partial void GetHashCode_PreCondition(JsonChatAPI instance);
         internal static IEnumerable<JsonChatAPI> GetIEnumerableInstance() { return new List<JsonChatAPI> {GetInstance()}; }
 
         internal static JsonChatAPI GetInstance([CallerMemberName] string callerName = "")
@@ -117,17 +125,17 @@ namespace DynCon.OSI.VSO.ReSTClient.UnitTests.LowLevelAPIs
             return instance;
         }
 
-        partial void GetMessages_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetMessages_PreCondition(ref JsonChatAPI instance);
+        partial void GetMessages_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonRoomMessage>> _retVal);
+        partial void GetMessages_PreCondition(JsonChatAPI instance);
         partial void GetRooms_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonRoom>> _retVal);
-        partial void GetRooms_PreCondition(ref JsonChatAPI instance);
+        partial void GetRooms_PreCondition(JsonChatAPI instance);
 
         partial void GetType_PostValidate(JsonChatAPI instance, Type _retVal);
-        partial void GetType_PreCondition(ref JsonChatAPI instance);
-        partial void GetUsers_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonGeneralPurposeObject>> _retVal);
-        partial void GetUsers_PreCondition(ref JsonChatAPI instance);
+        partial void GetType_PreCondition(JsonChatAPI instance);
+        partial void GetUsers_PostValidate(JsonChatAPI instance, Task<IReadOnlyList<JsonRoomMember>> _retVal);
+        partial void GetUsers_PreCondition(JsonChatAPI instance);
         static partial void InstanceFactory(ref JsonChatAPI instance, [CallerMemberName] string callerName = "");
         partial void ToString_PostValidate(JsonChatAPI instance, String _retVal);
-        partial void ToString_PreCondition(ref JsonChatAPI instance);
+        partial void ToString_PreCondition(JsonChatAPI instance);
     }
 }

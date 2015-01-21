@@ -302,7 +302,7 @@ namespace DynCon.OSI.VSO.ReSTClient.Objects.WIT
         /// </summary>
         /// <param name="jsonWorkItem">The json work item.</param>
         /// <returns>JsonLinkCollection.</returns>
-        private static JsonLinkCollection DeferredLoadLinks(JsonWorkItem jsonWorkItem) { return APIFactory().GetLinksForWorkItem(jsonWorkItem).Result; }
+        private static JsonLinkCollection DeferredLoadLinks(JsonWorkItem jsonWorkItem) { return APIFactory().GetLinksForWorkItemRevision(jsonWorkItem).Result; }
 
 
         /// <summary>

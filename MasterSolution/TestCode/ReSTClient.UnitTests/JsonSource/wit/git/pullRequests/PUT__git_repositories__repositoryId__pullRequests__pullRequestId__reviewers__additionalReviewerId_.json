@@ -1,0 +1,45 @@
+{
+   "method": "PUT",
+   "resourceFormat": "/git/repositories/{repositoryId}/pullRequests/{pullRequestId}/reviewers/{additionalReviewerId}",
+   "requestUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_apis/git/repositories/278d5cd2-584d-4b63-824a-2ba458937249/pullRequests/50/reviewers/19d9411e-9a34-45bb-b985-d24d9d87c0c9?api-version=1.0-preview.1",
+   "requestHeaders": {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Content-Length": 10
+   },
+   "requestBody": {
+      "vote": 0
+   },
+   "statusCode": 200,
+   "responseHeaders": {
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "content-type": "application/json; charset=utf-8; api-version=1.0-preview.1",
+      "expires": "-1",
+      "server": "Microsoft-IIS/8.5",
+      "x-tfs-processid": "0ea0cf16-53eb-4d11-af74-9f8181edb370",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "x-frame-options": "SAMEORIGIN",
+      "set-cookie": [
+         "Tfs-SessionId=c79a736d-f22e-0004-7983-9bc72ef2cf01; path=/; secure",
+         "Tfs-SessionActive=2014-10-28T01:54:44; path=/; secure"
+      ],
+      "x-vss-userdata": "d6245f20-2af8-44f4-9451-8107cb2767db:fabrikamfiber16@hotmail.com",
+      "activityid": "5cd7beb3-f22e-0004-fcd5-d85c2ef2cf01",
+      "x-aspnet-version": "4.0.30319",
+      "x-powered-by": "ASP.NET",
+      "p3p": "CP=\"CAO DSP COR ADMa DEV CONo TELo CUR PSA PSD TAI IVDo OUR SAMi BUS DEM NAV STA UNI COM INT PHY ONL FIN PUR LOC CNT\"",
+      "x-content-type-options": "nosniff",
+      "date": "Tue, 28 Oct 2014 01:54:44 GMT",
+      "content-length": "400"
+   },
+   "responseBody": {
+      "reviewerUrl": null,
+      "vote": 0,
+      "id": "19d9411e-9a34-45bb-b985-d24d9d87c0c9",
+      "displayName": "Johnnie McLeod",
+      "uniqueName": "fabrikamfiber2@hotmail.com",
+      "url": "https://fabrikam-fiber-inc.vssps.visualstudio.com/_apis/Identities/19d9411e-9a34-45bb-b985-d24d9d87c0c9",
+      "imageUrl": "https://fabrikam-fiber-inc.visualstudio.com/DefaultCollection/_api/_common/identityImage?id=19d9411e-9a34-45bb-b985-d24d9d87c0c9"
+   }
+}

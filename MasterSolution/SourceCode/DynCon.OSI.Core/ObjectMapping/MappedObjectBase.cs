@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace DynCon.OSI.Core.ObjectMapping
 {
@@ -78,7 +79,12 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <param name="src">The source.</param>
         /// <returns>TInterface[].</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static TInterface[] GetWrapper(TObjectMode[] src) { return MakeList(src).ToArray(); }
+        public static TInterface[] GetWrapper(TObjectMode[] src)
+        {
+            if (src == null)
+                return null; 
+            return MakeList(src).ToArray();
+        }
 
         /// <summary>
         ///     Gets the wrapper.
@@ -86,7 +92,12 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <param name="src">The source.</param>
         /// <returns>IEnumerable&lt;TInterface&gt;.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static IEnumerable<TInterface> GetWrapper(IEnumerable<TObjectMode> src) { return MakeList(src); }
+        public static IEnumerable<TInterface> GetWrapper(IEnumerable<TObjectMode> src)
+        {
+            if (src == null)
+                return null; 
+            return MakeList(src);
+        }
 
         /// <summary>
         ///     Gets the wrapper.
@@ -94,7 +105,12 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <param name="src">The source.</param>
         /// <returns>Collection&lt;TInterface&gt;.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static Collection<TInterface> GetWrapper(Collection<TObjectMode> src) { throw new NotImplementedException(); }
+        public static Collection<TInterface> GetWrapper(Collection<TObjectMode> src)
+        {
+            if (src == null)
+                return null; 
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         ///     Gets the wrapper.
@@ -102,7 +118,13 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <param name="src">The source.</param>
         /// <returns>ReadOnlyCollection&lt;TInterface&gt;.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static ReadOnlyCollection<TInterface> GetWrapper(ReadOnlyCollection<TObjectMode> src) { throw new NotImplementedException(); }
+        public static ReadOnlyCollection<TInterface> GetWrapper(ReadOnlyCollection<TObjectMode> src)
+        {
+            if (src == null)
+                return null; 
+            var list = src.Select(GetWrapper).ToList();
+            return new ReadOnlyCollection<TInterface>(list);
+        }
 
         /// <summary>
         ///     Gets the wrapper.
@@ -110,7 +132,15 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <param name="src">The source.</param>
         /// <returns>HashSet&lt;TInterface&gt;.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static HashSet<TInterface> GetWrapper(HashSet<TObjectMode> src) { throw new NotImplementedException(); }
+        public static HashSet<TInterface> GetWrapper(HashSet<TObjectMode> src)
+        {
+            if (src == null)
+                return null;
+            var retVal = new HashSet<TInterface>();
+            foreach (var item in src)
+                retVal.Add(GetWrapper(item));
+            return retVal;
+        }
 
         /// <summary>
         ///     Gets or sets the mapper.
@@ -130,12 +160,9 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <returns>List&lt;TObjectMode&gt;.</returns>
         private static List<TObjectMode> MakeList(IEnumerable<TInterface> src)
         {
-            var retVal = new List<TObjectMode>();
-            foreach (TInterface item in src)
-            {
-                retVal.Add(GetInstance(item));
-            }
-            return retVal;
+            if (src == null)
+                return null;
+            return src.Select(GetInstance).ToList();
         }
 
         /// <summary>
@@ -145,12 +172,9 @@ namespace DynCon.OSI.Core.ObjectMapping
         /// <returns>List&lt;TInterface&gt;.</returns>
         private static List<TInterface> MakeList(IEnumerable<TObjectMode> src)
         {
-            var retVal = new List<TInterface>();
-            foreach (TObjectMode item in src)
-            {
-                retVal.Add(GetWrapper(item));
-            }
-            return retVal;
+            if (src == null)
+                return null;
+            return src.Select(GetWrapper).ToList();
         }
 
         /// <summary>

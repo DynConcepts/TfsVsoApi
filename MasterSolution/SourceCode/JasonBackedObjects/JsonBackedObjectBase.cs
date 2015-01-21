@@ -104,21 +104,24 @@ namespace DynCon.OSI.JasonBackedObjects
 
         private void DumpCode()
         {
-            var jObj = (JObject) JsonValue;
-            foreach (var property in jObj.Properties())
+            var jObj = JsonValue as JObject;
+            if (jObj != null)
             {
-                string name = property.Name;
-                string type = property.Value<Object>().GetType().Name;
-                Console.Write("public {0} {1}", type, name);
-                Console.Write("{ get { return ");
-                Console.Write("sr_{0}.Eval(this);", name);
-                Console.Write(" } }");
-                Console.WriteLine();
-                Console.WriteLine("private static readonly JsonBackedField<int> sr_{0} = new JsonBackedField<int>(\"{0}\");", name);
+                foreach (var property in jObj.Properties())
+                {
+                    string name = property.Name;
+                    string type = property.Value<Object>().GetType().Name;
+                    Console.Write("public {0} {1}", type, name);
+                    Console.Write("{ get { return ");
+                    Console.Write("sr_{0}.Eval(this);", name);
+                    Console.Write(" } }");
+                    Console.WriteLine();
+                    Console.WriteLine("private static readonly JsonBackedField<int> sr_{0} = new JsonBackedField<int>(\"{0}\");", name);
+                }
             }
             Console.WriteLine();
             Console.WriteLine(JsonValue);
-            throw new Exception("Code Written!!!!!");
+            //throw new Exception("Code Written!!!!!");
         }
 
         public static JsonGeneralPurposeObject FromToken(JToken token)
